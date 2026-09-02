@@ -25,14 +25,14 @@ export default function BrandLogo({ className, iconClassName, textClassName }: P
         width={28}
         height={28}
         className={cn(
-          'h-7 w-7 shrink-0 object-contain brightness-0 invert',
+          'h-7 w-7 shrink-0 object-contain bn-logo-mark',
           iconClassName
         )}
         priority
       />
       <span
         className={cn(
-          'font-display text-[15px] font-bold tracking-tight text-white',
+          'font-display text-[15px] font-bold tracking-tight text-[var(--bn-text)]',
           textClassName
         )}
       >

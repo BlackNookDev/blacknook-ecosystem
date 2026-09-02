@@ -1,50 +1,34 @@
 'use client';
 
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { Check, Languages } from 'lucide-react';
 import AccountSection from '@/components/account/AccountSection';
-import {
-  APP_LOCALES,
-  getStoredLocale,
-  setStoredLocale,
-  type AppLocale,
-} from '@/lib/locale';
+import { useLocale, useTranslations } from '@/components/LocaleProvider';
 import { cn } from '@/lib/utils';
 
 export default function LanguagePreference() {
-  const [locale, setLocale] = useState<AppLocale>('tr');
+  const { locale, setLocale, locales } = useLocale();
+  const { t } = useTranslations('account');
   const [flash, setFlash] = useState('');
 
-  useEffect(() => {
-    setLocale(getStoredLocale());
-  }, []);
-
-  const select = (code: AppLocale) => {
+  const select = (code: typeof locale) => {
     setLocale(code);
-    setStoredLocale(code);
-    setFlash(
-      code === 'tr'
-        ? 'Dil tercihi kaydedildi. Arayüz çevirisi yakında genişleyecek.'
-        : 'Language preference saved. Full UI translation is coming soon.'
-    );
+    setFlash(code === 'tr' ? t('languageSavedTr') : t('languageSaved'));
     window.setTimeout(() => setFlash(''), 2800);
   };
 
   return (
-    <AccountSection
-      title="Dil / Language"
-      description="Arayüz dilini seçin. İlk aşamada Türkçe ve İngilizce önceliklidir; diğer diller tercih olarak saklanır."
-    >
+    <AccountSection title={t('languageTitle')} description={t('languageDescription')}>
       <div className="mb-3 inline-flex items-center gap-2 text-xs text-zinc-500">
         <Languages className="h-3.5 w-3.5" aria-hidden />
-        Tercih bu cihazda saklanır
+        {t('savedOnDevice')}
       </div>
       <div
         className="grid gap-2 sm:grid-cols-2 lg:grid-cols-3"
         role="radiogroup"
-        aria-label="Dil seçimi"
+        aria-label={t('languageTitle')}
       >
-        {APP_LOCALES.map((item) => {
+        {locales.map((item) => {
           const active = locale === item.code;
           return (
             <button

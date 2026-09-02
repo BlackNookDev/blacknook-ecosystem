@@ -137,7 +137,12 @@ export default function ServicesBrowse() {
       return [...fromMarket, ...staticList];
     }
     if (type === 'saas' || type === 'micro-saas') {
-      return market.filter((item) => (item.listingType || 'saas') === type);
+      const fromMarket = market.filter((item) => (item.listingType || 'saas') === type);
+      const slugs = new Set(fromMarket.map((item) => item.slug));
+      const staticList = SERVICES.filter(
+        (item) => item.listingType === type && !slugs.has(item.slug)
+      ).map(asOfficialCatalog);
+      return [...fromMarket, ...staticList];
     }
     const menu = NAV_MENUS.find((m) => m.id === type);
     if (menu) return [...market, ...getNavMenuServices(menu)];

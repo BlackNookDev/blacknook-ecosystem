@@ -1,0 +1,22 @@
+.flowise-sim .flow-scroll::-webkit-scrollbar {
+  width: 6px;
+}
+
+.flowise-sim .flow-scroll::-webkit-scrollbar-thumb {
+  background: #52525b;
+  border-radius: 99px;
+}
+
+.flowise-sim .node-glow {
+  animation: flowise-node-glow 0.85s ease-in-out 2;
+}
+
+@keyframes flowise-node-glow {
+  0%,
+  100% {
+    box-shadow: 0 0 0 1px rgba(124, 58, 237, 0.35), 0 0 18px rgba(124, 58, 237, 0.15);
+  }
+  50% {
+    box-shadow: 0 0 0 2px rgba(124, 58, 237, 0.75), 0 0 28px rgba(124, 58, 237, 0.35);
+  }
+}

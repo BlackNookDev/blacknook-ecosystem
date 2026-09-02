@@ -13,7 +13,7 @@ export const DEFAULT_TITLE = 'Blacknook — Yazılım Ekosistemi';
 
 /** max ~155–160 chars */
 export const DEFAULT_DESCRIPTION =
-  'Self-host araçlar, SaaS ve bağımsız ekiplerin yazılımlarını keşfet. Kurulum talebi ve geliştirici eşleşmesiyle Blacknook yazılım ekosisteminde başla.';
+  'Self-host araçlar, SaaS ve bağımsız ekiplerin yazılımlarını keşfet. Kurulum talebi ve destek hattıyla Blacknook yazılım ekosisteminde başla.';
 
 export const OG_IMAGE = `${SITE_URL}/og.png`;
 export const FAVICON_48 = `${SITE_URL}/favicon-48.png`;
@@ -181,5 +181,23 @@ export function articleJsonLd(input: {
       },
     },
     inLanguage: 'tr-TR',
+  };
+}
+
+/** Ana sayfa + ekosistem alt kategorileri — Google sitelink ipuçları */
+export function ecosystemNavigationJsonLd(
+  links: { name: string; path: string; description: string }[]
+) {
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'ItemList',
+    name: 'Blacknook Ekosistem Kategorileri',
+    itemListElement: links.map((link, index) => ({
+      '@type': 'SiteNavigationElement',
+      position: index + 1,
+      name: link.name,
+      description: link.description,
+      url: absoluteUrl(link.path),
+    })),
   };
 }

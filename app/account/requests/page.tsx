@@ -7,7 +7,7 @@ export default function AccountRequestsPage() {
         Talepler
       </h1>
       <p className="mt-2 max-w-2xl text-sm leading-relaxed text-zinc-500">
-        Eşleşme ve kurulum talepleriniz veritabanında tutulur; buradan takip edebilirsiniz.
+        Destek ve kurulum talepleriniz veritabanında tutulur; buradan takip edebilirsiniz.
       </p>
 
       <div className="mt-10">

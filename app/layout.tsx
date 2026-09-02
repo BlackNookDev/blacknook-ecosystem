@@ -15,9 +15,11 @@ import {
   SITE_NAME,
   SITE_URL,
   buildPageMetadata,
+  ecosystemNavigationJsonLd,
   organizationJsonLd,
   websiteJsonLd,
 } from '@/lib/seo';
+import { ECOSYSTEM_SITELINKS } from '../lib/siteNavigationSeo';
 import './globals.css';
 
 const syne = Syne({
@@ -88,9 +90,22 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="tr" className={`${syne.variable} ${sourceSans.variable} bg-bn-bg text-white`}>
-      <body className="relative min-h-screen bg-transparent font-sans text-white antialiased">
-        <JsonLd data={[websiteJsonLd(), organizationJsonLd()]} />
+    <html lang="tr" data-theme="dark" suppressHydrationWarning className={`${syne.variable} ${sourceSans.variable}`}>
+      <head>
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `(function(){document.documentElement.setAttribute('data-theme','dark');document.documentElement.style.colorScheme='dark';document.documentElement.lang='tr';})();`,
+          }}
+        />
+      </head>
+      <body className="relative min-h-screen bg-transparent font-sans text-[var(--bn-text)] antialiased">
+        <JsonLd
+          data={[
+            websiteJsonLd(),
+            organizationJsonLd(),
+            ecosystemNavigationJsonLd(ECOSYSTEM_SITELINKS),
+          ]}
+        />
         <SiteBackground />
         <Providers>
           <LocaleBootstrap />
@@ -103,7 +118,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           <Suspense fallback={null}>
             <Navbar />
           </Suspense>
-          <div id="main-content" className="relative z-0 flex min-h-screen flex-col">
+          <div id="main-content" className="theme-surface relative z-0 flex min-h-screen flex-col">
             <div className="flex-1">{children}</div>
             <TechLogoLoop />
             <SiteFooter />

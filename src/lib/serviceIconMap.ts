@@ -57,6 +57,7 @@ export const SIMPLE_ICON_SLUG_ALIASES: Record<string, string> = {
 
 /** Brands not in Simple Icons / react-icons — static or third-party logo URL */
 export const CUSTOM_LOGO_URLS: Record<string, string> = {
+  'nook-muhasebe-mcp': '/bn-mark.png',
   mailcow: `${HOMARR_ICONS}/mailcow.png`,
   typesense: `${HOMARR_ICONS}/typesense.png`,
   openwebui: `${HOMARR_ICONS}/open-webui.png`,
@@ -153,8 +154,13 @@ export function hexLuminance(hex: string): number {
   return (0.299 * r + 0.587 * g + 0.114 * b) / 255;
 }
 
+export type LogoThemeMode = 'dark' | 'light';
+
 /** Dark brand colors disappear on zinc cards — lift icon tint when needed */
-export function iconDisplayColor(hex: string): string {
+export function iconDisplayColor(hex: string, theme: LogoThemeMode = 'dark'): string {
+  if (theme === 'light') {
+    return hexLuminance(hex) > 0.72 ? '#3f3f46' : hex;
+  }
   return hexLuminance(hex) < 0.38 ? '#F4F4F5' : hex;
 }
 
@@ -169,8 +175,26 @@ function fileStem(src: string) {
  * Logo tile: dark by default (icons are lightened for this theme).
  * Light plate only for dark glyphs that would vanish on zinc.
  */
-export function logoPlateTone(iconKey: string, brandColor: string): 'light' | 'dark' {
-  const resolved = resolveServiceLogo(iconKey, brandColor);
+export function logoPlateTone(
+  iconKey: string,
+  brandColor: string,
+  theme: LogoThemeMode = 'dark'
+): 'light' | 'dark' {
+  const resolved = resolveServiceLogo(iconKey, brandColor, theme);
+
+  if (theme === 'light') {
+    if (resolved.kind === 'icon') return 'light';
+
+    const src = resolved.src;
+    const stem = fileStem(src);
+    if (LIGHT_PLATE_KEYS.has(iconKey) || LIGHT_PLATE_KEYS.has(stem)) return 'light';
+
+    const simple = src.match(/cdn\.simpleicons\.org\/[^/]+\/([0-9A-Fa-f]{3,8})/i);
+    if (simple && hexLuminance(simple[1]) > 0.72) return 'dark';
+
+    return 'light';
+  }
+
   if (resolved.kind === 'icon') return 'dark';
 
   const src = resolved.src;
@@ -183,7 +207,15 @@ export function logoPlateTone(iconKey: string, brandColor: string): 'light' | 'd
   return 'dark';
 }
 
-export function resolveServiceLogo(iconKey: string, brandColor: string) {
+export function isCatalogMarkImage(src: string) {
+  return src.includes('bn-mark');
+}
+
+export function resolveServiceLogo(
+  iconKey: string,
+  brandColor: string,
+  theme: LogoThemeMode = 'dark'
+) {
   if (
     iconKey.startsWith('/') ||
     iconKey.startsWith('http://') ||
@@ -194,11 +226,14 @@ export function resolveServiceLogo(iconKey: string, brandColor: string) {
   }
   if (iconKey in SERVICE_ICON_MAP) {
     const Icon = SERVICE_ICON_MAP[iconKey];
-    return { kind: 'icon' as const, Icon, color: iconDisplayColor(brandColor) };
+    return { kind: 'icon' as const, Icon, color: iconDisplayColor(brandColor, theme) };
   }
   const customUrl = CUSTOM_LOGO_URLS[iconKey];
   if (customUrl) {
     return { kind: 'image' as const, src: customUrl };
   }
-  return { kind: 'image' as const, src: brandLogoUrl(iconKey, iconDisplayColor(brandColor)) };
+  return {
+    kind: 'image' as const,
+    src: brandLogoUrl(iconKey, iconDisplayColor(brandColor, theme)),
+  };
 }

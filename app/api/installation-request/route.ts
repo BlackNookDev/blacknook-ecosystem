@@ -52,9 +52,6 @@ export async function POST(req: NextRequest) {
   try {
     await ensureCriticalSchema();
     const user = await getSessionUser();
-    if (!user) {
-      return NextResponse.json({ error: 'Kurulum talebi için giriş yapın.' }, { status: 401 });
-    }
 
     const body = await req.json();
     const { serviceSlug, serviceName, requirements, companyName, email } = body;
@@ -66,7 +63,7 @@ export async function POST(req: NextRequest) {
     const reqText = typeof requirements === 'string' ? requirements.trim() : '';
     const company = typeof companyName === 'string' ? companyName.trim() : '';
     const fromEmail =
-      user.email ||
+      user?.email ||
       (typeof email === 'string' ? email.trim().toLowerCase() : '');
 
     if (!reqText || !company || !fromEmail) {
@@ -90,7 +87,7 @@ export async function POST(req: NextRequest) {
         `INSERT INTO installation_requests
           (user_id, service_slug, service_name, company_name, email, requirements, status)
          VALUES (?, ?, ?, ?, ?, ?, 'active')`,
-        [user.id, String(serviceSlug).slice(0, 255), String(serviceName).slice(0, 255), company, fromEmail, reqText]
+        [user?.id ?? null, String(serviceSlug).slice(0, 255), String(serviceName).slice(0, 255), company, fromEmail, reqText]
       );
       if (result.insertId != null) insertId = Number(result.insertId);
     } catch (dbError) {
@@ -98,17 +95,19 @@ export async function POST(req: NextRequest) {
         source: 'installation-request.POST.insert',
         error: dbError,
         req,
-        userId: user.id,
+        userId: user?.id,
       });
       return failResponse('Talep kaydedilemedi.', logId);
     }
 
-    await notifyUser({
-      userId: user.id,
-      title: 'Kurulum talebiniz alındı',
-      body: `${serviceName}: ${reqText.length > 80 ? `${reqText.slice(0, 77)}…` : reqText}`,
-      href: '/account/requests',
-    });
+    if (user?.id) {
+      await notifyUser({
+        userId: user.id,
+        title: 'Kurulum talebiniz alındı',
+        body: `${serviceName}: ${reqText.length > 80 ? `${reqText.slice(0, 77)}…` : reqText}`,
+        href: '/account/requests',
+      });
+    }
 
     const teamMail = installationTeamEmail({
       serviceName,

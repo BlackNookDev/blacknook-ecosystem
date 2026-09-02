@@ -5,7 +5,9 @@ import Link from 'next/link';
 import { ArrowRight } from 'lucide-react';
 import BrowseProductCard from '@/components/services/BrowseProductCard';
 import ServiceDealCard from '@/components/ServiceDealCard';
-import { getFeaturedServices, type ServiceCatalogEntry } from '../../lib/data';
+import { useLocale, useTranslations } from '@/components/LocaleProvider';
+import { localizeService } from '@/lib/localizeCatalog';
+import { getFeaturedServices, SERVICES, asOfficialCatalog, type ServiceCatalogEntry } from '../../lib/data';
 import { apiFetch } from '@/lib/apiUrl';
 
 const CATALOG = getFeaturedServices(9);
@@ -27,13 +29,13 @@ function ServiceGroup({ title, href, moreLabel, items, featured }: Group) {
       <div className="mb-6 flex items-end justify-between gap-4 md:mb-8">
         <h2
           id={`${title}-heading`}
-          className="font-display text-2xl font-bold tracking-tight text-zinc-50 md:text-3xl"
+          className="bn-heading font-display text-2xl font-bold tracking-tight md:text-3xl"
         >
           {title}
         </h2>
         <Link
           href={href}
-          className="inline-flex shrink-0 items-center gap-1.5 text-sm font-medium text-zinc-400 transition-colors hover:text-white"
+          className="bn-subtitle inline-flex shrink-0 items-center gap-1.5 text-sm font-medium transition-colors hover:text-[var(--bn-heading)]"
         >
           {moreLabel}
           <ArrowRight className="h-3.5 w-3.5" aria-hidden />
@@ -63,6 +65,8 @@ function ServiceGroup({ title, href, moreLabel, items, featured }: Group) {
 
 export default function ServiceGrid() {
   const [market, setMarket] = useState<ServiceCatalogEntry[]>([]);
+  const { t, locale } = useLocale();
+  const { t: th } = useTranslations('home');
 
   useEffect(() => {
     let cancelled = false;
@@ -82,36 +86,52 @@ export default function ServiceGrid() {
   }, []);
 
   const groups = useMemo<Group[]>(() => {
+    const marketSlugs = new Set(market.map((item) => item.slug));
+    const catalogSaas = SERVICES.filter(
+      (item) => item.listingType === 'saas' && !marketSlugs.has(item.slug)
+    ).map(asOfficialCatalog);
+    const catalogMicro = SERVICES.filter(
+      (item) => item.listingType === 'micro-saas' && !marketSlugs.has(item.slug)
+    ).map(asOfficialCatalog);
+
     const services = market.filter((item) => item.listingType === 'service').slice(0, 9);
-    const saas = market.filter((item) => item.listingType === 'saas').slice(0, 9);
-    const micro = market.filter((item) => item.listingType === 'micro-saas').slice(0, 6);
+    const saas = [...market.filter((item) => item.listingType === 'saas'), ...catalogSaas].slice(
+      0,
+      9
+    );
+    const micro = [
+      ...market.filter((item) => item.listingType === 'micro-saas'),
+      ...catalogMicro,
+    ].slice(0, 6);
 
     return [
       {
         id: 'saas',
-        title: 'Bulut yazılım',
+        title: th('groups.saas.title'),
         href: '/services?type=saas',
-        moreLabel: 'Tümünü gör',
-        items: saas,
+        moreLabel: th('groups.saas.more'),
+        items: saas.map((item) => localizeService(item, locale, t)),
         featured: true,
       },
       {
         id: 'micro-saas',
-        title: 'Mini yazılım',
+        title: th('groups.microSaas.title'),
         href: '/services?type=micro-saas',
-        moreLabel: 'Tümünü gör',
-        items: micro,
+        moreLabel: th('groups.microSaas.more'),
+        items: micro.map((item) => localizeService(item, locale, t)),
         featured: true,
       },
       {
         id: 'services',
-        title: 'Ekosistem',
+        title: th('groups.services.title'),
         href: '/services',
-        moreLabel: 'Ekosistemi keşfet',
-        items: services.length ? services : CATALOG,
+        moreLabel: th('groups.services.more'),
+        items: (services.length ? services : CATALOG).map((item) =>
+          localizeService(item, locale, t)
+        ),
       },
     ];
-  }, [market]);
+  }, [market, locale, t, th]);
 
   return (
     <div id="service-grid" className="relative w-full pb-20 pt-8 md:pb-28 md:pt-12">

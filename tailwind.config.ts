@@ -19,6 +19,14 @@ const config: Config = {
           surface: '#1c1c1f',
           elevated: '#242428',
         },
+        wa: {
+          header: '#075E54',
+          headerLight: '#128C7E',
+          chat: '#ECE5DD',
+          accent: '#25D366',
+          teal: '#008069',
+          bubble: '#DCF8C6',
+        },
       },
       fontFamily: {
         display: ['var(--font-display)', 'ui-sans-serif', 'system-ui', 'sans-serif'],

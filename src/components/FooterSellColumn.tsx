@@ -1,40 +1,34 @@
 'use client';
 
 import Link from 'next/link';
-import { useSession } from 'next-auth/react';
-
-const DEVELOPER_LINKS = [
-  { href: '/developers/apply', label: 'Geliştirici ol' },
-  { href: '/partners/self-submission', label: 'Ürün ekle' },
-  { href: '/sell', label: 'Satış yap' },
-  { href: '/partners/overview', label: 'Geliştirici paneli' },
-  { href: '/select', label: 'Select programı' },
-] as const;
+import { useTranslations } from '@/components/LocaleProvider';
 
 export default function FooterSellColumn() {
-  const { status } = useSession();
-  const loggedIn = status === 'authenticated';
+  const { t } = useTranslations('footer');
+
+  const links = [
+    { href: '/developers/apply', label: t('becomeDeveloper') },
+    { href: '/partners/self-submission', label: t('addProduct') },
+    { href: '/sell', label: t('sell') },
+    { href: '/partners/overview', label: t('devPortal') },
+    { href: '/select', label: t('selectProgram') },
+  ] as const;
 
   return (
     <div>
-      <p className="mb-4 text-sm font-semibold text-white">Geliştirici</p>
-      <nav aria-label="Geliştirici ve satış sayfaları">
+      <p className="bn-heading mb-4 text-sm font-semibold">{t('developer')}</p>
+      <nav aria-label={t('developer')}>
         <ul className="space-y-3">
-          {DEVELOPER_LINKS.map((link) => {
-            const href = loggedIn
-              ? link.href
-              : `/login?callbackUrl=${encodeURIComponent(link.href)}`;
-            return (
-              <li key={link.href}>
-                <Link
-                  href={href}
-                  className="text-sm text-zinc-400 transition-colors duration-premium ease-premium hover:text-zinc-100"
-                >
-                  {link.label}
-                </Link>
-              </li>
-            );
-          })}
+          {links.map((link) => (
+            <li key={link.href}>
+              <Link
+                href={link.href}
+                className="bn-subtitle text-sm transition-colors duration-premium ease-premium hover:text-[var(--bn-heading)]"
+              >
+                {link.label}
+              </Link>
+            </li>
+          ))}
         </ul>
       </nav>
     </div>

@@ -8,6 +8,8 @@ export interface ServiceCatalogItem {
   about: string;
   useCases: string[];
   listingType?: 'saas' | 'micro-saas' | 'service';
+  /** Canlı demo / yayın simülasyonu URL’si */
+  demoUrl?: string;
 }
 
 export type ServiceCatalogEntry = ServiceCatalogItem & {
@@ -1019,6 +1021,7 @@ export const SERVICES: ServiceCatalogEntry[] = [
       'Doküman Q&A internal aracı',
       'Çok adımlı agent prototipi',
     ],
+    demoUrl: '/service/flowise/simulasyon',
   },
   {
     slug: 'coolify',
@@ -1566,6 +1569,31 @@ export const SERVICES: ServiceCatalogEntry[] = [
       'İç eğitim akademisi',
       'Açık kaynak müfredat yayını',
       'Topluluk öğrenme portalı',
+    ],
+  },
+  {
+    slug: 'nook-muhasebe-mcp',
+    name: 'NOOK MCP',
+    description:
+      'Şantiye WhatsApp masraflarını Logo Tiger ve Mikro ERP’ye otomatik fiş olarak işleyen otonom muhasebe asistanı.',
+    icon: 'nook-muhasebe-mcp',
+    listingType: 'saas',
+    category: 'Otomasyon & İş Akışı',
+    brandColor: '#14B8A6',
+    demoUrl: '/service/nook-muhasebe-mcp/simulasyon',
+    features: [
+      'WhatsApp üzerinden şantiye masraf girişi',
+      'Logo Tiger / Mikro ERP taslak fiş entegrasyonu',
+      'Yönetici onay akışı ve WhatsApp özeti',
+      'Vade ve çek ödeme uyarıları',
+      'Proje ve tedarikçi bazlı masraf takibi',
+    ],
+    about:
+      'NOOK MCP, inşaat ve saha ekiplerinin WhatsApp üzerinden ilettiği masrafları yapay zeka ile ayrıştırır; cari, KDV ve proje bilgilerini Logo Tiger veya Mikro ERP taslak fişlerine dönüştürür. Yöneticiler tek ekrandan onaylar, vade risklerini görür ve günlük özetleri WhatsApp’tan alır. Blacknook ekosisteminde bulut yazılım olarak sunulur; canlı yayın simülasyonunu hemen deneyebilirsiniz.',
+    useCases: [
+      'Şantiye grubundan gelen fiş ve masraf mesajlarını ERP’ye aktarma',
+      'Muhasebe ekibinin taslak fiş onay sürecini hızlandırma',
+      'Yarın vadesi gelen çek ve ödemeler için erken uyarı',
     ],
   },
 ];

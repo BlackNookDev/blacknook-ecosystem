@@ -1,7 +1,13 @@
 'use client';
 
 import { useEffect, useState } from 'react';
-import { logoPlateTone, resolveServiceLogo } from '@/lib/serviceIconMap';
+import { useTheme } from '@/components/ThemeProvider';
+import {
+  isCatalogMarkImage,
+  logoPlateTone,
+  resolveServiceLogo,
+  type LogoThemeMode,
+} from '@/lib/serviceIconMap';
 import { cn } from '@/lib/utils';
 
 type ServiceCatalogLogoProps = {
@@ -75,10 +81,11 @@ function LogoMark({
   name,
   size,
   className,
-}: Omit<ServiceCatalogLogoProps, 'framed' | 'frameClassName'>) {
+  theme,
+}: Omit<ServiceCatalogLogoProps, 'framed' | 'frameClassName'> & { theme: LogoThemeMode }) {
   const [imgFailed, setImgFailed] = useState(false);
   const dim = SIZE[size ?? 'sm'];
-  const resolved = resolveServiceLogo(icon, brandColor);
+  const resolved = resolveServiceLogo(icon, brandColor, theme);
 
   if (resolved.kind === 'icon') {
     const { Icon, color } = resolved;
@@ -91,7 +98,7 @@ function LogoMark({
         className={cn(
           dim,
           MONO_SIZE[size ?? 'sm'],
-          'inline-flex items-center justify-center font-bold text-zinc-300',
+          'inline-flex items-center justify-center font-bold text-[var(--bn-icon)]',
           className
         )}
         aria-hidden
@@ -106,7 +113,12 @@ function LogoMark({
     <img
       src={resolved.src}
       alt={`${name} logosu`}
-      className={cn(dim, 'object-contain', className)}
+      className={cn(
+        dim,
+        'object-contain',
+        isCatalogMarkImage(resolved.src) && 'bn-logo-mark',
+        className
+      )}
       loading="lazy"
       decoding="async"
       onError={() => setImgFailed(true)}
@@ -123,9 +135,10 @@ export default function ServiceCatalogLogo({
   framed = false,
   frameClassName,
 }: ServiceCatalogLogoProps) {
-  const heuristic = logoPlateTone(icon, brandColor);
+  const { theme } = useTheme();
+  const heuristic = logoPlateTone(icon, brandColor, theme);
   const [plate, setPlate] = useState<'light' | 'dark'>(heuristic);
-  const resolved = resolveServiceLogo(icon, brandColor);
+  const resolved = resolveServiceLogo(icon, brandColor, theme);
   const imageSrc = resolved.kind === 'image' ? resolved.src : '';
 
   useEffect(() => {
@@ -142,7 +155,7 @@ export default function ServiceCatalogLogo({
     return () => {
       cancelled = true;
     };
-  }, [framed, heuristic, imageSrc]);
+  }, [framed, heuristic, imageSrc, theme]);
 
   const mark = (
     <LogoMark
@@ -150,6 +163,7 @@ export default function ServiceCatalogLogo({
       brandColor={brandColor}
       name={name}
       size={size}
+      theme={theme}
       className={framed ? undefined : className}
     />
   );
@@ -162,7 +176,7 @@ export default function ServiceCatalogLogo({
         'flex items-center justify-center overflow-hidden ring-1',
         FRAME[size],
         plate === 'light'
-          ? 'bg-white ring-black/10'
+          ? 'bg-[var(--bn-surface)] ring-[var(--bn-card-border)]'
           : 'bg-zinc-950 ring-white/15',
         frameClassName,
         className

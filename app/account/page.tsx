@@ -5,11 +5,12 @@ import Link from 'next/link';
 import { useSession } from 'next-auth/react';
 import { Eye, EyeOff, ExternalLink, Loader2, Upload } from 'lucide-react';
 import AccountSection from '@/components/account/AccountSection';
-import LanguagePreference from '@/components/account/LanguagePreference';
+import { useLocale, useTranslations } from '@/components/LocaleProvider';
 import { apiFetch } from '@/lib/apiUrl';
 
 export default function AccountProfilePage() {
   const { data: session } = useSession();
+  const { t: ta } = useTranslations('account');
   const [email, setEmail] = useState('');
   const [phone, setPhone] = useState('');
   const [smsOptIn, setSmsOptIn] = useState(false);
@@ -238,11 +239,9 @@ export default function AccountProfilePage() {
           </div>
         </AccountSection>
 
-        <LanguagePreference />
-
         <AccountSection
-          title="Eşleşme havuzu"
-          description="Açıksanız Eşleş talepleri size atanabilir; karşı taraf Hesap → Mesajlar’dan yazar."
+          title={ta('supportPool')}
+          description={ta('supportPoolDesc')}
         >
           <label className="flex items-start gap-3 text-sm text-zinc-300">
             <input
@@ -256,15 +255,15 @@ export default function AccountProfilePage() {
               className="mt-0.5 h-4 w-4 rounded border-white/20 bg-transparent"
             />
             <span>
-              Eşleşmeye açığım
+              {ta('supportAvailable')}
               <span className="mt-1 block text-xs text-zinc-500">
-                Kapalıysa talepler ekibe veya diğer açık profillere düşer.
+                {ta('supportAvailableHint')}
               </span>
             </span>
           </label>
           <div className="mt-5 max-w-md">
             <label htmlFor="match-skills" className="mb-2 block text-sm font-medium text-zinc-300">
-              Uzmanlık
+              {ta('expertise')}
             </label>
             <input
               id="match-skills"

@@ -7,6 +7,13 @@ DB_USER="${DB_USER:-postgres}"
 DB_NAME="${DB_NAME:-postgres}"
 UPLOAD_DIR="${UPLOAD_DIR:-/app/uploads}"
 
+# Yerel Docker (macOS/Windows): konteyner içinden localhost host Postgres'e ulaşmaz
+if [ "$DB_HOST" = "localhost" ] || [ "$DB_HOST" = "127.0.0.1" ]; then
+  if getent hosts host.docker.internal >/dev/null 2>&1; then
+    DB_HOST=host.docker.internal
+  fi
+fi
+
 if [ -z "$DB_HOST" ]; then
   echo "DB_HOST tanımlı değil. Coolify Postgres hostname veya harici host girin."
   exit 1

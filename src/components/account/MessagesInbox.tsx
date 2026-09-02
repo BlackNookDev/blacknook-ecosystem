@@ -175,7 +175,7 @@ export default function MessagesInbox() {
             <Inbox className="mx-auto h-8 w-8 text-zinc-600" aria-hidden />
             <p className="mt-3 text-sm font-medium text-zinc-300">Henüz konuşma yok</p>
             <p className="mt-1 text-sm text-zinc-500">
-              Navbar’daki Eşleş ile bir talep gönderince sohbet burada açılır.
+              Navbar’daki Destek ile bir talep gönderince sohbet burada açılır.
             </p>
           </div>
         ) : (
@@ -210,7 +210,7 @@ export default function MessagesInbox() {
                         ) : null}
                       </span>
                       <span className="mt-0.5 block truncate text-xs text-zinc-500">
-                        {item.lastMessage?.body || item.matchNeed || 'Yeni eşleşme'}
+                        {item.lastMessage?.body || item.matchNeed || 'Yeni destek talebi'}
                       </span>
                     </span>
                   </button>

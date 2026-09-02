@@ -1,5 +1,6 @@
 'use client';
 
+import { useMemo } from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import {
@@ -11,7 +12,9 @@ import {
   User,
 } from 'lucide-react';
 import { signOut } from 'next-auth/react';
-import { ACCOUNT_NAV, type AccountNavIcon } from '@/components/account/accountNav';
+import { useLocale } from '@/components/LocaleProvider';
+import { getAccountNav } from '@/lib/navMenusI18n';
+import type { AccountNavIcon } from '@/components/account/accountNav';
 import { cn } from '@/lib/utils';
 
 const ICONS: Record<AccountNavIcon, typeof User> = {
@@ -24,6 +27,8 @@ const ICONS: Record<AccountNavIcon, typeof User> = {
 
 export default function AccountSidebar() {
   const pathname = usePathname();
+  const { t } = useLocale();
+  const accountNav = useMemo(() => getAccountNav(t), [t]);
 
   const isActive = (href: string) =>
     href === '/account' ? pathname === '/account' : pathname.startsWith(href);
@@ -38,7 +43,7 @@ export default function AccountSidebar() {
         aria-label="Hesap menüsü"
         className="-mx-4 flex gap-1.5 overflow-x-auto px-4 pb-1 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden md:mx-0 md:flex-col md:gap-0.5 md:overflow-visible md:px-0 md:pb-0"
       >
-        {ACCOUNT_NAV.map((item) => {
+        {accountNav.map((item) => {
           const Icon = ICONS[item.icon];
           const active = isActive(item.href);
           return (

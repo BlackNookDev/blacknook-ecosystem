@@ -31,10 +31,10 @@ export default function HeroPresenceStrip() {
           {count > 0 ? (
             <>
               <span className="font-medium text-zinc-300">{count}</span>
-              <span className="text-zinc-500"> kişi eşleşmeye açık</span>
+              <span className="text-zinc-500"> uzman destek hattında</span>
             </>
           ) : (
-            <span className="text-zinc-400">Eşleşme talepleri ekibe düşer</span>
+            <span className="text-zinc-400">Destek talepleri ekibe düşer</span>
           )}
         </p>
       </div>

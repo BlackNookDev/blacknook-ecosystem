@@ -196,7 +196,11 @@ export default async function ServiceDetailPage({ params }: PageProps) {
                 {service.name} servisini Blacknook üzerinden projenize ekleyin.
               </p>
               <Suspense fallback={null}>
-                <ServiceDetailActions serviceName={service.name} serviceSlug={service.slug} />
+                <ServiceDetailActions
+                  serviceName={service.name}
+                  serviceSlug={service.slug}
+                  demoUrl={service.demoUrl}
+                />
               </Suspense>
 
               <dl className="mt-8 space-y-4 border-t border-white/[0.08] pt-6 text-sm">

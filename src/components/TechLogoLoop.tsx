@@ -3,6 +3,7 @@
 import { usePathname } from 'next/navigation';
 import LogoLoop from '@/components/LogoLoop';
 import { isPartnerPortalPath } from '@/lib/partnerPortal';
+import { isSimulationPath } from '@/lib/simulationPaths';
 import { SiReact, SiNextdotjs, SiTypescript, SiTailwindcss } from 'react-icons/si';
 
 const techLogos = [
@@ -14,11 +15,11 @@ const techLogos = [
 
 export default function TechLogoLoop() {
   const pathname = usePathname();
-  if (isPartnerPortalPath(pathname)) return null;
+  if (isPartnerPortalPath(pathname) || isSimulationPath(pathname)) return null;
 
   return (
     <section
-      className="relative overflow-hidden border-t border-white/[0.06] py-12"
+      className="theme-surface relative overflow-hidden border-t border-white/[0.06] py-12"
       aria-label="Technology partners"
     >
       <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-white/12 to-transparent" />

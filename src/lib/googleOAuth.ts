@@ -3,7 +3,7 @@
  * Yerel geliştirmede kapalı tutun; GitHub / prod öncesi `true` yapın
  * (ayrıca GOOGLE_CLIENT_ID / GOOGLE_CLIENT_SECRET ve isteğe bağlı NEXT_PUBLIC_GOOGLE_OAUTH=1).
  */
-export const ENABLE_GOOGLE_OAUTH = false;
+export const ENABLE_GOOGLE_OAUTH = true;
 
 export function isGoogleOAuthEnabled(): boolean {
   if (!ENABLE_GOOGLE_OAUTH) return false;

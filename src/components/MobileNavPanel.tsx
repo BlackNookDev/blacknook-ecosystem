@@ -1,23 +1,11 @@
 'use client';
 
-import { useEffect } from 'react';
+import { useEffect, useMemo } from 'react';
 import Link from 'next/link';
-import { useSession } from 'next-auth/react';
-import { ArrowRight, X } from 'lucide-react';
-import { ECOSYSTEM_NAV } from '../../lib/navMenus';
-
-const SITE_LINKS = [
-  { href: '/developers/apply', label: 'Geliştirici ol', gated: true },
-  { href: '/partners/self-submission', label: 'Ürün ekle', gated: true },
-  { href: '/sell', label: 'Satış yap', gated: true },
-  { href: '/select', label: 'Select programı', gated: true },
-  { href: '/partners/overview', label: 'Geliştirici paneli', gated: true },
-  { href: '/learn/online-isletme', label: 'Online iş rehberi', gated: false },
-  { href: '/learn/creator-economy', label: 'İçerik üreticileri', gated: false },
-  { href: '/about', label: 'Hakkımızda', gated: false },
-  { href: '/help', label: 'Yardım', gated: false },
-  { href: '/careers', label: 'Kariyer', gated: false },
-] as const;
+import { X } from 'lucide-react';
+import { useLocale, useTranslations } from '@/components/LocaleProvider';
+import { getEcosystemNav, getMobileSiteLinks } from '@/lib/navMenusI18n';
+import NavAuth from '@/components/NavAuth';
 
 type Props = {
   open: boolean;
@@ -25,8 +13,10 @@ type Props = {
 };
 
 export default function MobileNavPanel({ open, onClose }: Props) {
-  const { status } = useSession();
-  const loggedIn = status === 'authenticated';
+  const { t } = useLocale();
+  const { t: tn } = useTranslations('nav');
+  const ecosystemNav = useMemo(() => getEcosystemNav(t), [t]);
+  const siteLinks = useMemo(() => getMobileSiteLinks(t), [t]);
 
   useEffect(() => {
     if (!open) return;
@@ -44,70 +34,46 @@ export default function MobileNavPanel({ open, onClose }: Props) {
 
   if (!open) return null;
 
-  const hrefFor = (href: string, gated: boolean) =>
-    gated && !loggedIn ? `/login?callbackUrl=${encodeURIComponent(href)}` : href;
-
   return (
-    <div className="fixed inset-0 z-[60] md:hidden" role="dialog" aria-modal aria-label="Menü">
+    <div className="fixed inset-0 z-[60] md:hidden" role="dialog" aria-modal aria-label={tn('menu')}>
       <button
         type="button"
         className="absolute inset-0 bg-black/70 backdrop-blur-sm"
-        aria-label="Menüyü kapat"
+        aria-label={tn('closeMenu')}
         onClick={onClose}
       />
       <div className="absolute inset-y-0 left-0 flex w-[min(20rem,88vw)] flex-col border-r border-white/10 bg-[var(--bn-bg,#161618)] pb-[max(1.5rem,env(safe-area-inset-bottom))] pt-[max(0.75rem,env(safe-area-inset-top))] shadow-2xl">
         <div className="flex items-center justify-between px-4 pb-3 pt-3">
-          <p className="font-display text-lg font-semibold text-white">Menü</p>
-          <button
-            type="button"
-            onClick={onClose}
-            className="inline-flex h-10 w-10 items-center justify-center rounded-full text-zinc-400 transition-colors hover:bg-white/[0.06] hover:text-white"
-            aria-label="Kapat"
-          >
-            <X className="h-5 w-5" />
-          </button>
+          <p className="font-display text-lg font-semibold text-white">{tn('menu')}</p>
+          <div className="flex items-center gap-2">
+            <NavAuth />
+            <button
+              type="button"
+              onClick={onClose}
+              className="inline-flex h-10 w-10 items-center justify-center rounded-full text-zinc-400 transition-colors hover:bg-white/[0.06] hover:text-white"
+              aria-label={tn('closeMenu')}
+            >
+              <X className="h-5 w-5" />
+            </button>
+          </div>
         </div>
 
-        <div className="flex-1 space-y-6 overflow-y-auto px-4 pb-6">
+        <div className="flex-1 space-y-5 overflow-y-auto px-4 pb-6">
           <section>
-            <p className="mb-2 text-[10px] font-bold uppercase tracking-[0.16em] text-zinc-500">
-              Ekosistem
-            </p>
             <ul className="space-y-0.5">
-              {ECOSYSTEM_NAV.categories.map((item) => (
+              {ecosystemNav.categories.map((item) => (
                 <li key={item.href}>
                   <Link
                     href={item.href}
                     onClick={onClose}
-                    className="flex items-center justify-between gap-2 rounded-xl px-3 py-2.5 text-sm text-zinc-200 transition-colors hover:bg-white/[0.05]"
+                    className="block rounded-xl px-3 py-2.5 text-sm text-zinc-200 transition-colors hover:bg-white/[0.05]"
                   >
-                    <span>{item.label}</span>
-                    {'badge' in item && item.badge ? (
-                      <span className="shrink-0 rounded bg-sky-500/20 px-1.5 py-px text-[9px] font-bold uppercase tracking-wide text-sky-300">
-                        {item.badge}
-                      </span>
-                    ) : null}
+                    {item.label}
                   </Link>
                 </li>
               ))}
-            </ul>
-            <Link
-              href={ECOSYSTEM_NAV.href}
-              onClick={onClose}
-              className="mt-2 inline-flex items-center gap-1.5 px-3 py-2 text-sm font-semibold text-white"
-            >
-              {ECOSYSTEM_NAV.browseAllLabel}
-              <ArrowRight className="h-3.5 w-3.5 text-zinc-500" aria-hidden />
-            </Link>
-          </section>
-
-          <section>
-            <p className="mb-2 text-[10px] font-bold uppercase tracking-[0.16em] text-zinc-500">
-              Popüler
-            </p>
-            <ul className="space-y-0.5">
-              {ECOSYSTEM_NAV.trending.map((item) => (
-                <li key={item.title}>
+              {ecosystemNav.trending.map((item) => (
+                <li key={item.href}>
                   <Link
                     href={item.href}
                     onClick={onClose}
@@ -121,22 +87,27 @@ export default function MobileNavPanel({ open, onClose }: Props) {
                         </span>
                       ) : null}
                     </span>
-                    <span className="mt-0.5 block text-xs text-zinc-500">{item.description}</span>
                   </Link>
                 </li>
               ))}
+              <li>
+                <Link
+                  href={ecosystemNav.href}
+                  onClick={onClose}
+                  className="mt-1 block rounded-xl px-3 py-2.5 text-sm font-semibold text-sky-300 transition-colors hover:bg-white/[0.05]"
+                >
+                  {ecosystemNav.browseAllLabel}
+                </Link>
+              </li>
             </ul>
           </section>
 
-          <section>
-            <p className="mb-2 text-[10px] font-bold uppercase tracking-[0.16em] text-zinc-500">
-              Site
-            </p>
+          <section className="border-t border-white/10 pt-4">
             <ul className="space-y-0.5">
-              {SITE_LINKS.map((item) => (
+              {siteLinks.map((item) => (
                 <li key={item.href}>
                   <Link
-                    href={hrefFor(item.href, item.gated)}
+                    href={item.href}
                     onClick={onClose}
                     className="block rounded-xl px-3 py-2.5 text-sm text-zinc-300 transition-colors hover:bg-white/[0.05] hover:text-white"
                   >

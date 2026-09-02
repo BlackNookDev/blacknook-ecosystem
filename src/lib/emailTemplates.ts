@@ -477,18 +477,18 @@ export function matchUserEmail(params: {
   const html = renderBrandEmail({
     preheader: matched
       ? generic
-        ? 'Bir geliştiriciyle eşleştiniz.'
-        : `${params.assigneeName} ile eşleştiniz.`
-      : 'Eşleşme talebiniz alındı.',
-    eyebrow: 'Eşleşme',
-    title: matched ? 'Eşleşme kuruldu' : 'Talebiniz kaydedildi',
+        ? 'Teknik ekibinizle bağlandınız.'
+        : `${params.assigneeName} ile bağlandınız.`
+      : 'Destek talebiniz alındı.',
+    eyebrow: 'Destek',
+    title: matched ? 'Teknik ekibe bağlandınız' : 'Talebiniz kaydedildi',
     bodyHtml: [
       p(
         matched
           ? generic
-            ? `Merhaba ${escapeHtml(params.name)}, talebiniz bir geliştiriciyle eşleştirildi. Sohbete siteden devam edebilirsiniz.`
-            : `Merhaba ${escapeHtml(params.name)}, talebiniz ${strong(params.assigneeName || '')} ile eşleştirildi. Sohbete siteden devam edebilirsiniz.`
-          : `Merhaba ${escapeHtml(params.name)}, eşleşme talebinizi aldık. Uygun bir geliştirici bulunduğunda sizinle iletişime geçeceğiz.`
+            ? `Merhaba ${escapeHtml(params.name)}, talebiniz teknik ekibe iletildi. Sohbete siteden devam edebilirsiniz.`
+            : `Merhaba ${escapeHtml(params.name)}, talebiniz ${strong(params.assigneeName || '')} ile bağlandı. Sohbete siteden devam edebilirsiniz.`
+          : `Merhaba ${escapeHtml(params.name)}, destek talebinizi aldık. Uygun bir uzman bulunduğunda sizinle iletişime geçeceğiz.`
       ),
       params.requestId != null
         ? detailCard([
@@ -506,17 +506,17 @@ export function matchUserEmail(params: {
   return {
     subject: matched
       ? generic
-        ? 'Bir geliştiriciyle eşleştiniz — Blacknook'
-        : `${params.assigneeName} ile eşleştiniz — Blacknook`
-      : 'Eşleşme talebiniz alındı — Blacknook',
+        ? 'Teknik ekibe bağlandınız — Blacknook'
+        : `${params.assigneeName} ile bağlandınız — Blacknook`
+      : 'Destek talebiniz alındı — Blacknook',
     text: [
       `Merhaba ${params.name},`,
       '',
       matched
         ? generic
-          ? 'Talebiniz bir geliştiriciyle eşleştirildi.'
-          : `Talebiniz ${params.assigneeName} ile eşleştirildi.`
-        : 'Eşleşme talebiniz alındı.',
+          ? 'Talebiniz teknik ekibe iletildi.'
+          : `Talebiniz ${params.assigneeName} ile bağlandı.`
+        : 'Destek talebiniz alındı.',
       params.requestId != null ? `Talep #${params.requestId}` : '',
       '',
       params.need,
@@ -537,9 +537,9 @@ export function matchTeamEmail(params: {
   assigneeName?: string;
 }) {
   const html = renderBrandEmail({
-    preheader: `Eşleşme: ${params.name}`,
+    preheader: `Destek: ${params.name}`,
     eyebrow: 'Ekip',
-    title: 'Yeni eşleşme talebi',
+    title: 'Yeni destek talebi',
     bodyHtml: [
       detailCard([
         { label: 'Kullanıcı', valueHtml: strong(escapeHtml(params.name)) },
@@ -561,7 +561,7 @@ export function matchTeamEmail(params: {
   });
 
   return {
-    subject: `Geliştirici eşleşme talebi: ${params.name}`,
+    subject: `Destek talebi: ${params.name}`,
     text: [
       `Kullanıcı: ${params.name}`,
       `E-posta: ${params.email || '(belirtilmedi)'}`,
@@ -584,12 +584,12 @@ export function matchAssigneeEmail(params: {
     ? siteUrl(`/account/messages?c=${params.conversationId}`)
     : siteUrl('/account/messages');
   const html = renderBrandEmail({
-    preheader: `${params.requesterName} sizinle eşleşmek istiyor.`,
-    eyebrow: 'Eşleşme',
-    title: 'Yeni eşleşme',
+    preheader: `${params.requesterName} destek talebi açtı.`,
+    eyebrow: 'Destek',
+    title: 'Yeni destek talebi',
     bodyHtml: [
       p(
-        `Merhaba ${escapeHtml(params.assigneeName)}, ${strong(params.requesterName)} sizinle eşleştirildi.`
+        `Merhaba ${escapeHtml(params.assigneeName)}, ${strong(params.requesterName)} sizinle bağlandı.`
       ),
       quoteBlock('İhtiyaç', escapeHtml(params.need).replace(/\n/g, '<br />')),
     ].join(''),
@@ -597,11 +597,11 @@ export function matchAssigneeEmail(params: {
   });
 
   return {
-    subject: `${params.requesterName} ile eşleştiniz — Blacknook`,
+    subject: `${params.requesterName} — yeni destek talebi — Blacknook`,
     text: [
       `Merhaba ${params.assigneeName},`,
       '',
-      `${params.requesterName} sizinle eşleştirildi.`,
+      `${params.requesterName} sizinle bağlandı.`,
       '',
       params.need,
       '',

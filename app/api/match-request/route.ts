@@ -8,7 +8,8 @@ import {
 } from '@/lib/emailTemplates';
 import { getMatchMailTo, sendPlatformEmail, sendUserEmail } from '@/lib/mail';
 import { pickMatchAssignee, toRequesterFacingAssignee } from '@/lib/matchAssign';
-import { matchSuccessTitle, publicMatchName } from '@/lib/matchDisplay';
+import { supportSuccessTitle, publicSupportName } from '@/lib/supportDisplay';
+import type { SupportCategory, SupportUrgency } from '@/lib/supportAssistant';
 import { createMatchConversation } from '@/lib/conversations';
 import { notifyUser } from '@/lib/notify';
 import { ensureCriticalSchema } from '@/lib/ensureSchema';
@@ -56,7 +57,7 @@ export async function GET(req: NextRequest) {
         assigned: row.assigned_user_id
           ? {
               id: Number(row.assigned_user_id),
-              name: publicMatchName(row.assigned_name || 'Geliştirici'),
+              name: publicSupportName(row.assigned_name || 'Destek'),
               skills: row.assigned_skills || '',
             }
           : null,
@@ -76,12 +77,17 @@ export async function POST(req: NextRequest) {
   try {
     await ensureCriticalSchema();
     const user = await getSessionUser();
-    if (!user) {
-      return NextResponse.json({ error: 'Eşleşmek için giriş yapın.' }, { status: 401 });
-    }
-
     const body = await req.json();
     const need = typeof body.need === 'string' ? body.need.trim() : '';
+    const urgency =
+      typeof body.urgency === 'string' ? (body.urgency as SupportUrgency) : undefined;
+    const category =
+      typeof body.category === 'string' ? (body.category as SupportCategory) : undefined;
+    const companyName =
+      typeof body.companyName === 'string' ? body.companyName.trim().slice(0, 255) : '';
+    const guestName = typeof body.name === 'string' ? body.name.trim().slice(0, 255) : '';
+    const guestEmail =
+      typeof body.email === 'string' ? body.email.trim().toLowerCase().slice(0, 255) : '';
 
     if (!need) {
       return NextResponse.json({ error: 'İhtiyacınızı kısaca yazın.' }, { status: 400 });
@@ -91,15 +97,38 @@ export async function POST(req: NextRequest) {
       return NextResponse.json({ error: 'Talep metni çok uzun.' }, { status: 400 });
     }
 
-    const name = user.name || 'İsimsiz kullanıcı';
-    const email = user.email;
-    const assignee = await pickMatchAssignee(user.id);
+    if (!user) {
+      if (!guestName || !guestEmail) {
+        return NextResponse.json(
+          { error: 'Destek talebi için ad ve e-posta gerekli.' },
+          { status: 400 }
+        );
+      }
+      if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(guestEmail)) {
+        return NextResponse.json({ error: 'Geçerli bir e-posta adresi girin.' }, { status: 400 });
+      }
+    }
+
+    const name = user?.name || guestName || 'Misafir';
+    const email = user?.email || guestEmail;
+    const assignee = user ? await pickMatchAssignee(user.id) : await pickMatchAssignee(0);
 
     let insertId: number | undefined;
     try {
       const [result]: any = await pool.query(
-        'INSERT INTO match_requests (user_id, name, email, need, status) VALUES (?, ?, ?, ?, ?)',
-        [user.id, name, email, need, 'active']
+        `INSERT INTO match_requests
+          (user_id, name, email, need, status, urgency, category, company_name)
+         VALUES (?, ?, ?, ?, ?, ?, ?, ?)`,
+        [
+          user?.id ?? null,
+          name,
+          email,
+          need,
+          'active',
+          urgency || null,
+          category || null,
+          companyName || null,
+        ]
       );
       if (result.insertId != null) insertId = Number(result.insertId);
     } catch (dbError) {
@@ -107,7 +136,7 @@ export async function POST(req: NextRequest) {
         source: 'match-request.POST.insert',
         error: dbError,
         req,
-        userId: user.id,
+        userId: user?.id,
       });
       return failResponse('Talep kaydedilemedi. Lütfen tekrar deneyin.', logId);
     }
@@ -117,7 +146,7 @@ export async function POST(req: NextRequest) {
     }
 
     let conversationId: number | null = null;
-    if (assignee) {
+    if (user && assignee) {
       try {
         conversationId = await createMatchConversation({
           requesterId: user.id,
@@ -140,17 +169,19 @@ export async function POST(req: NextRequest) {
       ? `/account/messages?c=${conversationId}`
       : '/account/requests';
 
-    await notifyUser({
-      userId: user.id,
-      title: assignee ? matchSuccessTitle(assignee.name) : 'Eşleşme talebiniz alındı',
-      body: need.length > 120 ? `${need.slice(0, 117)}…` : need,
-      href: messagesHref,
-    });
+    if (user) {
+      await notifyUser({
+        userId: user.id,
+        title: assignee ? supportSuccessTitle(assignee.name) : 'Destek talebiniz alındı',
+        body: need.length > 120 ? `${need.slice(0, 117)}…` : need,
+        href: messagesHref,
+      });
+    }
 
-    if (assignee) {
+    if (assignee && user) {
       await notifyUser({
         userId: assignee.id,
-        title: `${name} sizinle eşleşmek istiyor`,
+        title: `${name} destek talebi gönderdi`,
         body: need.length > 120 ? `${need.slice(0, 117)}…` : need,
         href: messagesHref,
       });
@@ -177,7 +208,7 @@ export async function POST(req: NextRequest) {
       name,
       need,
       requestId: insertId,
-      assigneeName: assignee ? publicMatchName(assignee.name) : undefined,
+      assigneeName: assignee ? publicSupportName(assignee.name) : undefined,
       conversationId,
     });
     const userResult = await sendUserEmail({ to: email, ...userMail });

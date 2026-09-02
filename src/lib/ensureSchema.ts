@@ -6,6 +6,9 @@ const CRITICAL_STATEMENTS = [
   `ALTER TABLE users ADD COLUMN IF NOT EXISTS match_skills VARCHAR(255)`,
   `ALTER TABLE match_requests ADD COLUMN IF NOT EXISTS assigned_user_id INTEGER REFERENCES users(id) ON DELETE SET NULL`,
   `ALTER TABLE match_requests ADD COLUMN IF NOT EXISTS conversation_id INTEGER`,
+  `ALTER TABLE match_requests ADD COLUMN IF NOT EXISTS urgency VARCHAR(20)`,
+  `ALTER TABLE match_requests ADD COLUMN IF NOT EXISTS category VARCHAR(40)`,
+  `ALTER TABLE match_requests ADD COLUMN IF NOT EXISTS company_name VARCHAR(255)`,
   `CREATE TABLE IF NOT EXISTS conversations (
      id SERIAL PRIMARY KEY,
      type VARCHAR(20) NOT NULL DEFAULT 'match',

@@ -1,27 +1,31 @@
 'use client';
 
+import Link from 'next/link';
 import { useEffect, useState } from 'react';
 import { createPortal } from 'react-dom';
 import { usePathname, useRouter, useSearchParams } from 'next/navigation';
 import { useSession } from 'next-auth/react';
 import { apiFetch } from '@/lib/apiUrl';
 import { AnimatePresence, m } from 'framer-motion';
-import { Send, X } from 'lucide-react';
-import AuthRequiredModal from '@/components/AuthRequiredModal';
+import { Play, Send, X } from 'lucide-react';
+import SimulationLaunchButton from '@/components/simulations/SimulationLaunchButton';
+import NookMuhasebePricing from '@/components/pricing/NookMuhasebePricing';
+import { NOOK_MCP_SERVICE_SLUG } from '@/lib/nookMuhasebePricing';
 import { duration, easePremium } from '@/components/motion/tokens';
+import { getServiceSimulationPath } from '@/lib/simulationPaths';
 
 type Props = {
   serviceName: string;
   serviceSlug: string;
+  demoUrl?: string;
 };
 
-export default function ServiceDetailActions({ serviceName, serviceSlug }: Props) {
+export default function ServiceDetailActions({ serviceName, serviceSlug, demoUrl }: Props) {
   const router = useRouter();
   const pathname = usePathname();
   const searchParams = useSearchParams();
-  const { data: session, status } = useSession();
+  const { data: session } = useSession();
   const [open, setOpen] = useState(false);
-  const [authOpen, setAuthOpen] = useState(false);
   const [mounted, setMounted] = useState(false);
   const [requirements, setRequirements] = useState('');
   const [companyName, setCompanyName] = useState('');
@@ -34,14 +38,11 @@ export default function ServiceDetailActions({ serviceName, serviceSlug }: Props
     setMounted(true);
   }, []);
 
-  const returnUrl = `${pathname}?openInstall=1`;
-
   useEffect(() => {
-    if (status === 'loading' || !session) return;
     if (searchParams.get('openInstall') !== '1') return;
     setOpen(true);
     router.replace(pathname, { scroll: false });
-  }, [session, status, searchParams, pathname, router]);
+  }, [searchParams, pathname, router]);
 
   useEffect(() => {
     if (session?.user?.email) {
@@ -72,11 +73,6 @@ export default function ServiceDetailActions({ serviceName, serviceSlug }: Props
   };
 
   const handleRequestClick = () => {
-    if (status === 'loading') return;
-    if (!session) {
-      setAuthOpen(true);
-      return;
-    }
     setOpen(true);
   };
 
@@ -240,8 +236,37 @@ export default function ServiceDetailActions({ serviceName, serviceSlug }: Props
     </AnimatePresence>
   );
 
+  const simulationHref = demoUrl ?? getServiceSimulationPath(serviceSlug);
+
   return (
     <>
+      {simulationHref ? (
+        simulationHref.startsWith('/') ? (
+          <SimulationLaunchButton
+            href={simulationHref}
+            splashLabel={`${serviceName} Simülasyonu`}
+            className="mb-3 flex w-full items-center justify-center gap-2 rounded-full border border-teal-400/40 bg-teal-500/15 py-3.5 text-sm font-semibold text-teal-50 transition-[border-color,background-color,opacity] duration-premium ease-premium hover:border-teal-300/55 hover:bg-teal-500/20 disabled:opacity-80"
+          />
+        ) : (
+          <a
+            href={simulationHref}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="mb-3 flex w-full items-center justify-center gap-2 rounded-full border border-teal-400/40 bg-teal-500/15 py-3.5 text-sm font-semibold text-teal-50 transition-[border-color,background-color] duration-premium ease-premium hover:border-teal-300/55 hover:bg-teal-500/20"
+          >
+            <Play className="h-4 w-4 shrink-0" aria-hidden />
+            Simülasyon
+          </a>
+        )
+      ) : null}
+      {serviceSlug === NOOK_MCP_SERVICE_SLUG ? (
+        <NookMuhasebePricing
+          variant="button"
+          buttonStyle="link"
+          className="mb-3"
+          ctaHref={`/service/${serviceSlug}?openInstall=1`}
+        />
+      ) : null}
       <m.button
         type="button"
         whileTap={{ scale: 0.98 }}
@@ -251,12 +276,6 @@ export default function ServiceDetailActions({ serviceName, serviceSlug }: Props
         Kurulum talep et
       </m.button>
       {mounted && createPortal(modal, document.body)}
-      <AuthRequiredModal
-        open={authOpen}
-        onClose={() => setAuthOpen(false)}
-        mounted={mounted}
-        returnUrl={returnUrl}
-      />
     </>
   );
 }

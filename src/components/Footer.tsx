@@ -1,25 +1,10 @@
+'use client';
+
 import Link from 'next/link';
 import BrandLogo from '@/components/BrandLogo';
 import FooterSellColumn from '@/components/FooterSellColumn';
 import { PaytrTrustRow } from '@/components/PaytrLogo';
-
-const ACCOUNT_LINKS = [
-  { href: '/account', label: 'Profil' },
-  { href: '/help', label: 'Yardım' },
-  { href: '/terms', label: 'Kullanım koşulları' },
-  { href: '/privacy', label: 'Gizlilik' },
-];
-
-const COMPANY_LINKS = [
-  { href: '/about', label: 'Hakkımızda' },
-  { href: '/careers', label: 'Kariyer' },
-  { href: '/services', label: 'Ekosistem' },
-];
-
-const LEARN_LINKS = [
-  { href: '/learn/online-isletme', label: 'Online iş rehberi' },
-  { href: '/learn/creator-economy', label: 'İçerik üreticileri' },
-];
+import { useTranslations } from '@/components/LocaleProvider';
 
 function FooterColumn({
   title,
@@ -32,14 +17,14 @@ function FooterColumn({
 }) {
   return (
     <div>
-      <p className="mb-4 text-sm font-semibold text-white">{title}</p>
+      <p className="bn-heading mb-4 text-sm font-semibold">{title}</p>
       <nav aria-label={ariaLabel}>
         <ul className="space-y-3">
           {links.map((link) => (
             <li key={link.href}>
               <Link
                 href={link.href}
-                className="text-sm text-zinc-400 transition-colors duration-premium ease-premium hover:text-zinc-100"
+                className="bn-subtitle text-sm transition-colors duration-premium ease-premium hover:text-[var(--bn-heading)]"
               >
                 {link.label}
               </Link>
@@ -68,22 +53,38 @@ function WhatsAppIcon({ className }: { className?: string }) {
 }
 
 export default function Footer() {
+  const { t } = useTranslations('footer');
+
+  const accountLinks = [
+    { href: '/help', label: t('help') },
+    { href: '/terms', label: t('terms') },
+    { href: '/privacy', label: t('privacy') },
+  ];
+
+  const companyLinks = [
+    { href: '/about', label: t('about') },
+    { href: '/careers', label: t('careers') },
+    { href: '/services', label: t('ecosystem') },
+  ];
+
+  const learnLinks = [
+    { href: '/learn/online-isletme', label: t('onlineBusiness') },
+    { href: '/learn/creator-economy', label: t('creatorEconomy') },
+  ];
+
   return (
-    <footer className="relative border-t border-white/[0.06]">
+    <footer className="theme-surface relative border-t border-white/[0.06]">
       <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-white/15 to-transparent" />
       <div className="mx-auto grid max-w-6xl grid-cols-1 gap-12 px-6 py-16 sm:grid-cols-2 lg:grid-cols-5 lg:gap-8">
         <div className="sm:col-span-2 lg:col-span-1">
           <BrandLogo textClassName="text-xl" iconClassName="h-8 w-8" />
-          <p className="mt-4 max-w-xs text-sm leading-relaxed text-zinc-500">
-            Bağımsız geliştiriciler ve erken aşama girişimler için yazılım ekosistemi.
-          </p>
           <div className="mt-5 flex items-center gap-2.5">
             <a
               href="https://www.linkedin.com/company/black-nook/"
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex h-9 w-9 items-center justify-center rounded-lg border border-white/10 bg-white/[0.03] text-zinc-400 transition-colors hover:border-white/20 hover:text-white"
-              aria-label="Blacknook LinkedIn sayfası"
+              aria-label={t('linkedin')}
             >
               <LinkedInIcon className="h-4 w-4" />
             </a>
@@ -92,22 +93,22 @@ export default function Footer() {
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex h-9 w-9 items-center justify-center rounded-lg border border-white/10 bg-white/[0.03] text-zinc-400 transition-colors hover:border-white/20 hover:text-white"
-              aria-label="Blacknook WhatsApp grubu"
+              aria-label={t('whatsapp')}
             >
               <WhatsAppIcon className="h-4 w-4" />
             </a>
           </div>
         </div>
 
-        <FooterColumn title="Hesap" links={ACCOUNT_LINKS} ariaLabel="Hesap sayfaları" />
-        <FooterColumn title="Blacknook" links={COMPANY_LINKS} ariaLabel="Blacknook sayfaları" />
+        <FooterColumn title={t('support')} links={accountLinks} ariaLabel={t('support')} />
+        <FooterColumn title={t('company')} links={companyLinks} ariaLabel={t('company')} />
         <FooterSellColumn />
-        <FooterColumn title="Öğren" links={LEARN_LINKS} ariaLabel="Öğrenme kaynakları" />
+        <FooterColumn title={t('learn')} links={learnLinks} ariaLabel={t('learn')} />
       </div>
 
       <div className="mx-auto flex max-w-6xl flex-col items-center justify-between gap-3 border-t border-white/[0.06] px-6 py-5 sm:flex-row">
         <p className="text-xs text-zinc-600">
-          © {new Date().getFullYear()} BlackNOOK. Tüm hakları saklıdır.
+          {t('copyright', { year: new Date().getFullYear() })}
         </p>
         <PaytrTrustRow />
       </div>

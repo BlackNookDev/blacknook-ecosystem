@@ -1,12 +1,12 @@
 'use client';
 
-import HeroMailCollector from '@/components/home/HeroMailCollector';
+import HomeProductShowcase from '@/components/home/HomeProductShowcase';
 import ServiceGrid from '@/components/ServiceGrid';
 
 export default function HomeMotion() {
   return (
     <main className="relative bg-transparent">
-      <HeroMailCollector />
+      <HomeProductShowcase />
       <ServiceGrid />
     </main>
   );

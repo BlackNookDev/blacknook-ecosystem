@@ -125,8 +125,8 @@ export default function ActiveRequestsSection() {
   return (
     <>
       <AccountSection
-        title="Eşleşme talepleri"
-        description="Eşleşme talepleriniz. Atanan kişiyle Mesajlar’dan yazışın."
+        title="Destek talepleri"
+        description="Destek talepleriniz. Atanan kişiyle Mesajlar’dan yazışın."
       >
         {loading ? (
           <div className="flex items-center gap-2 text-sm text-zinc-500">
@@ -138,9 +138,9 @@ export default function ActiveRequestsSection() {
         ) : matches.length === 0 ? (
           <div className="rounded-2xl border border-dashed border-white/15 bg-white/[0.02] px-5 py-8 text-center">
             <MessageSquare className="mx-auto h-8 w-8 text-zinc-600" aria-hidden />
-            <p className="mt-3 text-sm font-medium text-zinc-300">Eşleşme talebiniz yok</p>
+            <p className="mt-3 text-sm font-medium text-zinc-300">Destek talebiniz yok</p>
             <p className="mt-1 text-sm text-zinc-500">
-              Navbar’daki Eşleş ile ihtiyaçınızı ilettiğinizde burada görünecek.
+              Navbar’daki Destek ile ihtiyacınızı ilettiğinizde burada görünecek.
             </p>
           </div>
         ) : (
@@ -164,7 +164,7 @@ export default function ActiveRequestsSection() {
                 {req.assigned ? (
                   <p className="mt-2 text-xs text-zinc-500">
                     {req.assigned.name === 'Bir geliştirici'
-                      ? 'Bir geliştiriciyle eşleştiniz'
+                      ? 'Teknik ekibe bağlandınız'
                       : `Atanan: ${req.assigned.name}${req.assigned.skills ? ` · ${req.assigned.skills}` : ''}`}
                   </p>
                 ) : (

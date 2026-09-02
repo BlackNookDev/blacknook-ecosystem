@@ -7,7 +7,7 @@ export default function AccountBillingPage() {
       <ComingSoonAccount
         title="Ödeme & faturalama"
         description="Kart kaydı ve fatura adresi şu an toplanmıyor."
-        body="Satın alma ve faturalama açılınca ödeme yönteminizi PayTR üzerinden bağlayacaksınız. Blacknook kart numarası saklamaz. Bugün canlı olanlar: katalog, kurulum talebi ve eşleşme."
+        body="Satın alma ve faturalama açılınca ödeme yönteminizi PayTR üzerinden bağlayacaksınız. Blacknook kart numarası saklamaz. Bugün canlı olanlar: katalog, kurulum talebi ve destek hattı."
       />
       <PaytrTrustRow className="mt-6" />
     </div>

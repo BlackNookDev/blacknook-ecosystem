@@ -21,7 +21,7 @@ export default function ServiceDealCard({ service, className }: Props) {
       aria-label={`${service.name} servis detayı`}
       className={cn(
         'group relative flex gap-4 rounded-xl p-3 text-left transition-colors duration-premium ease-premium',
-        'hover:bg-white/[0.03] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white/40',
+        'hover:bg-[var(--bn-hover-surface)] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--bn-border-strong)]',
         className
       )}
     >
@@ -37,17 +37,17 @@ export default function ServiceDealCard({ service, className }: Props) {
 
       <div className="relative z-10 min-w-0 flex-1 pt-0.5">
         <div className="flex min-w-0 items-center gap-2">
-          <h3 className="truncate text-[15px] font-bold text-zinc-50 group-hover:text-white">
+          <h3 className="bn-heading truncate text-[15px] font-bold">
             {service.name}
           </h3>
           {service.verified ? <VerifiedBadge compact className="shrink-0 text-sky-300" /> : null}
         </div>
-        <p className="mt-1 line-clamp-2 text-sm leading-snug text-zinc-500">
+        <p className="bn-subtitle mt-1 line-clamp-2 text-sm leading-snug">
           {service.description}
         </p>
 
-        <p className="mt-2 text-sm text-zinc-300">
-          <span className="font-medium text-sky-400/90">Keşfet →</span>
+        <p className="mt-2 text-sm">
+          <span className="bn-link-accent font-medium">Keşfet →</span>
         </p>
       </div>
     </Link>

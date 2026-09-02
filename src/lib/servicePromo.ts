@@ -72,6 +72,7 @@ const SLUG_THEME: Record<string, PromoTheme> = {
   pocketbase: 'backend',
   hasura: 'backend',
   n8n: 'automation',
+  'nook-muhasebe-mcp': 'automation',
   activepieces: 'automation',
   flowise: 'automation',
   typebot: 'automation',

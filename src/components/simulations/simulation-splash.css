@@ -1,0 +1,40 @@
+@keyframes splash-logo-blink {
+  0%,
+  100% {
+    opacity: 0.32;
+    transform: scale(0.96);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes splash-label-blink {
+  0%,
+  100% {
+    opacity: 0.35;
+  }
+  50% {
+    opacity: 0.95;
+  }
+}
+
+.splash-logo-blink {
+  animation: splash-logo-blink 1.1s ease-in-out infinite;
+  will-change: opacity, transform;
+}
+
+.splash-label-blink {
+  animation: splash-label-blink 1.1s ease-in-out infinite;
+  animation-delay: 0.12s;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .splash-logo-blink,
+  .splash-label-blink {
+    animation: none;
+    opacity: 1;
+    transform: none;
+  }
+}

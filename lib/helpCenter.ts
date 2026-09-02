@@ -48,7 +48,7 @@ export const HELP_CATEGORIES: HelpCategory[] = [
   {
     slug: 'servisler',
     title: 'Servisler ve talepler',
-    description: 'Keşif, kurulum talebi, geliştirici eşleşmesi ve taleplerinizi takip.',
+    description: 'Keşif, kurulum talebi, destek hattı ve taleplerinizi takip.',
     articles: [
       {
         id: 'browse',
@@ -60,19 +60,19 @@ export const HELP_CATEGORIES: HelpCategory[] = [
         id: 'install-request',
         title: 'Kurulum talebi nasıl gönderilir?',
         summary: 'Ürün sayfasından talep; Hesap → Talepler’de takip.',
-        body: 'İlgilendiğiniz servisin sayfasında kurulum talebi formunu doldurun. Giriş yapmanız gerekir; oturum yoksa girişe yönlendirilirsiniz. Gönderilen talepler Hesap → Talepler bölümünde listelenir. Talebiniz Blacknook ekibine iletilir; kurulum veya danışmanlık sürecinin ayrıntıları e-posta veya eşleşme yoluyla netleştirilir.',
+        body: 'İlgilendiğiniz servisin sayfasında kurulum talebi formunu doldurun. Giriş yapmanız gerekir; oturum yoksa girişe yönlendirilirsiniz. Gönderilen talepler Hesap → Talepler bölümünde listelenir. Talebiniz Blacknook ekibine iletilir; kurulum veya danışmanlık sürecinin ayrıntıları e-posta veya destek hattı yoluyla netleştirilir.',
       },
       {
         id: 'match',
-        title: 'Geliştirici eşleşmesi nedir?',
-        summary: 'Navbar’daki Eşleş; gerçek atama ve sitede mesaj.',
-        body: 'Eşleş, ihtiyacınıza uygun bir kişiyle sizi bağlar. Navbar’daki “Eşleş” veya sağ alttaki chip ile formu açın (giriş gerekir). Sistem, eşleşmeye açık hesaplar arasından birini atar; yoksa talep ekibe düşer. Atama olursa Hesap → Mesajlar’da sohbet açılır. Talepler Hesap → Talepler’de de görünür. Eşleşme havuzuna girmek için Profil’den “Eşleşmeye açığım”ı işaretleyin.',
+        title: 'Destek hattı nedir?',
+        summary: 'Navbar’daki Destek; AI asistan + teknik ekip ataması.',
+        body: 'Destek, anlık yardıma ihtiyaç duyduğunuzda önce yapay zeka asistanıyla konuşmanızı sağlar; ardından uygun bir teknik uzmana bağlanırsınız. Navbar’daki “Destek” veya sağ alttaki yüzen buton ile sohbeti açın (misafir olarak da başlayabilirsiniz). Sistem, desteğe açık hesaplar arasından birini atar; yoksa talep ekibe düşer. Atama olursa Hesap → Mesajlar’da sohbet açılır. Talepler Hesap → Talepler’de de görünür. Destek havuzuna girmek için Profil’den “Desteğe açığım”ı işaretleyin.',
       },
       {
         id: 'track-requests',
         title: 'Taleplerimi nereden takip ederim?',
         summary: 'Hesap → Talepler.',
-        body: 'Giriş yaptıktan sonra Hesap → Talepler’den kurulum ve eşleşme taleplerinizi görürsünüz. Henüz talep yoksa boş durum mesajı çıkar. Yeni talep için /services üzerinden bir ürün seçin veya Eşleş formunu kullanın.',
+        body: 'Giriş yaptıktan sonra Hesap → Talepler’den kurulum ve destek taleplerinizi görürsünüz. Henüz talep yoksa boş durum mesajı çıkar. Yeni talep için /services üzerinden bir ürün seçin veya Destek sohbetini kullanın.',
       },
       {
         id: 'cart-notifications',
