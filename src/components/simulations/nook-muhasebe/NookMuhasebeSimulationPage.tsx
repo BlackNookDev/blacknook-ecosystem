@@ -1,11 +1,10 @@
 'use client';
 
 import { useEffect, useState } from 'react';
-import Link from 'next/link';
 import Image from 'next/image';
-import { ArrowLeft, RefreshCw } from 'lucide-react';
+import { RefreshCw } from 'lucide-react';
+import SimulationBackLink from '@/components/simulations/SimulationBackLink';
 import NookMuhasebeSimulation from '@/components/simulations/nook-muhasebe/NookMuhasebeSimulation';
-import NookMuhasebePricing from '@/components/pricing/NookMuhasebePricing';
 import { subscribeSimulationSplash } from '@/lib/simulationSplash';
 
 export default function NookMuhasebeSimulationPage() {
@@ -24,13 +23,7 @@ export default function NookMuhasebeSimulationPage() {
     <div className="fixed inset-0 z-10 flex h-[100dvh] min-h-0 flex-col overflow-hidden bg-[var(--bn-bg)]">
       <header className="flex shrink-0 items-center justify-between gap-3 border-b border-[var(--bn-border)] bg-[var(--bn-nav-bg)] px-4 py-3 backdrop-blur-xl sm:px-6">
         <div className="flex min-w-0 items-center gap-3">
-          <Link
-            href="/service/nook-muhasebe-mcp"
-            className="inline-flex h-9 w-9 shrink-0 items-center justify-center rounded-full border border-[var(--bn-border)] text-[var(--bn-icon)] transition-colors hover:bg-[var(--bn-hover-surface)] hover:text-[var(--bn-icon-hover)]"
-            aria-label="NOOK MCP ürün sayfasına dön"
-          >
-            <ArrowLeft className="h-4 w-4" />
-          </Link>
+          <SimulationBackLink fallback="/agent" aria-label="Kokpit'e dön" />
           <Image
             src="/bn-mark.png"
             alt=""
@@ -48,7 +41,6 @@ export default function NookMuhasebeSimulationPage() {
           </div>
         </div>
         <div className="flex shrink-0 items-center gap-2">
-          <NookMuhasebePricing variant="button" buttonStyle="chip" className="!mb-0" />
           <button
             type="button"
             onClick={() => setResetKey((key) => key + 1)}

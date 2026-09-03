@@ -2,26 +2,14 @@
 
 import { useCallback, useEffect, useMemo, useState } from 'react';
 import Link from 'next/link';
-import { ArrowRight, ChevronLeft, ChevronRight } from 'lucide-react';
+import { ArrowRight, Bot, ChevronLeft, ChevronRight } from 'lucide-react';
 import { AnimatePresence, m, useReducedMotion } from 'framer-motion';
 import ServiceCatalogLogo from '@/components/ServiceCatalogLogo';
-import { useLocale, useTranslations } from '@/components/LocaleProvider';
-import { localizeService } from '@/lib/localizeCatalog';
+import { useTranslations } from '@/components/LocaleProvider';
 import { duration, easePremium } from '@/components/motion/tokens';
-import { getServiceBySlug, getFeaturedServices, type ServiceCatalogEntry } from '../../../lib/data';
+import { NOOK_AGENT_LAUNCH_PATH } from '@/lib/nookAgent';
+import { getHeroAgents, type ServiceCatalogEntry } from '../../../lib/data';
 
-const SHOWCASE_SLUGS = [
-  'ollama',
-  'n8n',
-  'flowise',
-  'supabase',
-  'coolify',
-  'langfuse',
-  'ghost',
-  'appwrite',
-] as const;
-
-/** İlk varyasyon: viewport’a göre dağınık balonlar */
 type FloatingStyle = {
   top?: string;
   left?: string;
@@ -31,14 +19,12 @@ type FloatingStyle = {
 };
 
 const FLOATING_LAYOUT: Record<string, FloatingStyle> = {
-  ghost: { top: '10%', left: '8%', rotate: -12 },
-  appwrite: { top: '14%', right: '10%', rotate: 10 },
-  supabase: { top: '40%', left: '5%', rotate: 8 },
+  'nook-muhasebe-mcp': { top: '10%', left: '8%', rotate: -12 },
+  'cal-com': { top: '14%', right: '10%', rotate: 10 },
+  metabase: { top: '40%', left: '5%', rotate: 8 },
   plausible: { top: '44%', right: '6%', rotate: -8 },
-  n8n: { bottom: '18%', left: '7%', rotate: -6 },
-  minio: { bottom: '16%', right: '11%', rotate: 14 },
-  redis: { top: '56%', left: '20%', rotate: 4 },
-  postgresql: { top: '60%', right: '18%', rotate: -4 },
+  chatwoot: { bottom: '18%', left: '7%', rotate: -6 },
+  outline: { bottom: '16%', right: '11%', rotate: 14 },
 };
 
 const FLOATING_FALLBACK: FloatingStyle[] = [
@@ -48,26 +34,12 @@ const FLOATING_FALLBACK: FloatingStyle[] = [
   { top: '44%', right: '6%', rotate: -8 },
   { bottom: '18%', left: '7%', rotate: -6 },
   { bottom: '16%', right: '11%', rotate: 14 },
-  { top: '56%', left: '20%', rotate: 4 },
-  { top: '60%', right: '18%', rotate: -4 },
 ];
 
-function getShowcaseProducts(): ServiceCatalogEntry[] {
-  return SHOWCASE_SLUGS.map((slug) => getServiceBySlug(slug)).filter(
-    (item): item is ServiceCatalogEntry => Boolean(item)
-  );
-}
-
-type FloatingItem = ReturnType<typeof getFeaturedServices>[number] & {
+type FloatingItem = ServiceCatalogEntry & {
   style: FloatingStyle;
   delay: number;
 };
-
-const FLOATING: FloatingItem[] = getFeaturedServices(8).map((item, index) => ({
-  ...item,
-  style: FLOATING_LAYOUT[item.slug] ?? FLOATING_FALLBACK[index],
-  delay: index * 0.35,
-}));
 
 function FloatingIcon({
   item,
@@ -80,7 +52,7 @@ function FloatingIcon({
 
   return (
     <m.div
-      className="absolute"
+      className="group/icon absolute"
       style={{
         top: item.style.top,
         left: item.style.left,
@@ -103,13 +75,21 @@ function FloatingIcon({
         delay: item.delay,
       }}
     >
-      <div className="flex h-10 w-10 items-center justify-center rounded-xl bn-icon-tile shadow-[0_8px_28px_rgba(0,0,0,0.12)] lg:h-11 lg:w-11">
-        <ServiceCatalogLogo
-          icon={item.icon}
-          brandColor={item.brandColor}
-          name={item.name}
-          size="sm"
-        />
+      <div className="pointer-events-auto flex flex-col items-center gap-2">
+        <div className="flex h-10 w-10 items-center justify-center rounded-xl bn-icon-tile shadow-[0_8px_28px_rgba(0,0,0,0.12)] transition group-hover/icon:scale-105 lg:h-11 lg:w-11">
+          <ServiceCatalogLogo
+            icon={item.icon}
+            brandColor={item.brandColor}
+            name={item.name}
+            size="sm"
+          />
+        </div>
+        <Link
+          href={`/service/${item.slug}`}
+          className="pointer-events-none rounded-full border border-white/10 bg-black/70 px-2 py-0.5 text-[9px] font-semibold uppercase tracking-[0.08em] text-zinc-200 opacity-0 backdrop-blur-sm transition group-hover/icon:pointer-events-auto group-hover/icon:opacity-100"
+        >
+          Ajan
+        </Link>
       </div>
     </m.div>
   );
@@ -117,17 +97,23 @@ function FloatingIcon({
 
 export default function HomeProductShowcase() {
   const reduce = useReducedMotion();
-  const { t, locale } = useLocale();
   const { t: th } = useTranslations('home');
-  const products = useMemo(() => getShowcaseProducts(), []);
+  const agents = useMemo(() => getHeroAgents(), []);
   const [index, setIndex] = useState(0);
   const [direction, setDirection] = useState(0);
 
-  const active = useMemo(
-    () => (products[index] ? localizeService(products[index], locale, t) : undefined),
-    [products, index, locale, t]
+  const floating = useMemo<FloatingItem[]>(
+    () =>
+      agents.slice(0, 6).map((item, i) => ({
+        ...item,
+        style: FLOATING_LAYOUT[item.slug] ?? FLOATING_FALLBACK[i],
+        delay: i * 0.35,
+      })),
+    [agents]
   );
-  const count = products.length;
+
+  const active = agents[index];
+  const count = agents.length;
 
   const go = useCallback(
     (next: number) => {
@@ -150,21 +136,15 @@ export default function HomeProductShowcase() {
   if (!active) return null;
 
   const slideVariants = {
-    enter: (d: number) => ({
-      x: d > 0 ? 36 : -36,
-    }),
-    center: {
-      x: 0,
-    },
-    exit: (d: number) => ({
-      x: d > 0 ? -36 : 36,
-    }),
+    enter: (d: number) => ({ x: d > 0 ? 36 : -36 }),
+    center: { x: 0 },
+    exit: (d: number) => ({ x: d > 0 ? -36 : 36 }),
   };
 
   return (
     <section
       className="relative w-full overflow-hidden px-4 pb-10 pt-28 sm:px-6 sm:pb-14 sm:pt-32"
-      aria-label={th('featuredTech')}
+      aria-label={th('featuredAgents')}
     >
       <div className="pointer-events-none absolute inset-0" aria-hidden>
         <div className="absolute left-1/2 top-[38%] h-[42vmin] w-[70vmin] -translate-x-1/2 -translate-y-1/2 rounded-full bg-[radial-gradient(circle,rgba(255,255,255,0.04)_0%,transparent_70%)]" />
@@ -172,7 +152,7 @@ export default function HomeProductShowcase() {
       </div>
 
       <div className="pointer-events-none absolute inset-0 hidden md:block" aria-hidden>
-        {FLOATING.map((item) => (
+        {floating.map((item) => (
           <FloatingIcon key={item.slug} item={item} reduce={reduce} />
         ))}
       </div>
@@ -209,7 +189,7 @@ export default function HomeProductShowcase() {
                 >
                   <div className="flex h-20 w-20 items-center justify-center rounded-2xl bn-icon-tile shadow-lg sm:h-24 sm:w-24">
                     <ServiceCatalogLogo
-                      icon={active.iconImage || active.icon}
+                      icon={active.icon}
                       brandColor={active.brandColor}
                       name={active.name}
                       size="lg"
@@ -217,7 +197,7 @@ export default function HomeProductShowcase() {
                     />
                   </div>
                   <span className="bn-chip mt-4 inline-flex rounded-full px-3 py-1 text-[11px] font-semibold uppercase tracking-wide">
-                    {active.category}
+                    {active.agentDepartment ?? th('heroAgentBadge')}
                   </span>
                 </m.div>
               </AnimatePresence>
@@ -234,7 +214,10 @@ export default function HomeProductShowcase() {
                   exit={reduce ? undefined : 'exit'}
                   transition={{ duration: duration.base, ease: easePremium }}
                 >
-                  <h2 className="bn-heading font-display text-2xl font-bold tracking-tight sm:text-3xl">
+                  <p className="text-[11px] font-semibold uppercase tracking-[0.14em] text-emerald-400/90">
+                    {th('heroAgentBadge')}
+                  </p>
+                  <h2 className="bn-heading mt-2 font-display text-2xl font-bold tracking-tight sm:text-3xl">
                     {active.name}
                   </h2>
                   <p className="bn-subtitle mt-3 text-sm leading-relaxed sm:text-base">
@@ -247,13 +230,22 @@ export default function HomeProductShowcase() {
                       </li>
                     ))}
                   </ul>
-                  <Link
-                    href={`/service/${active.slug}`}
-                    className="bn-cta mt-6 inline-flex items-center gap-2 rounded-full px-5 py-2.5 text-sm font-bold transition-opacity hover:opacity-90"
-                  >
-                    {th('viewDetails')}
-                    <ArrowRight className="h-4 w-4" aria-hidden />
-                  </Link>
+                  <div className="mt-6 flex flex-wrap gap-3">
+                    <Link
+                      href={`/service/${active.slug}`}
+                      className="bn-cta inline-flex items-center gap-2 rounded-full px-5 py-2.5 text-sm font-bold transition-opacity hover:opacity-90"
+                    >
+                      {th('viewAgent')}
+                      <ArrowRight className="h-4 w-4" aria-hidden />
+                    </Link>
+                    <Link
+                      href={NOOK_AGENT_LAUNCH_PATH}
+                      className="inline-flex items-center gap-2 rounded-full border border-white/15 px-5 py-2.5 text-sm font-semibold text-zinc-200 transition-colors hover:border-white/25 hover:bg-white/[0.05]"
+                    >
+                      <Bot className="h-4 w-4" aria-hidden />
+                      {th('openCockpit')}
+                    </Link>
+                  </div>
                 </m.div>
               </AnimatePresence>
             </div>
@@ -261,15 +253,15 @@ export default function HomeProductShowcase() {
 
           <div className="relative flex items-center justify-between border-t border-[var(--bn-card-border)] px-4 py-3 sm:px-6">
             <div className="flex items-center gap-2">
-              {products.map((product, i) => (
+              {agents.map((agent, i) => (
                 <button
-                  key={product.slug}
+                  key={agent.slug}
                   type="button"
                   onClick={() => go(i)}
                   className={`h-2 rounded-full transition-all ${
                     i === index ? 'bn-dot-active w-6' : 'bn-dot w-2 hover:opacity-80'
                   }`}
-                  aria-label={th('goToSlide', { name: product.name })}
+                  aria-label={th('goToSlide', { name: agent.name })}
                   aria-current={i === index ? 'true' : undefined}
                 />
               ))}

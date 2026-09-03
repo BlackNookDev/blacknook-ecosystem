@@ -27,30 +27,30 @@ const en = {
     scripts: { label: 'Scripts' },
     trending: {
       selfHost: {
-        title: 'Self-host on your server',
-        description: 'Coolify, Portainer, Traefik and server tools.',
+        title: 'NOOK MCP agents',
+        description: 'Ready-made autonomous assistants and simulations.',
       },
       ai: {
-        title: 'Artificial intelligence',
-        description: 'Ollama, Flowise, Langfuse and local LLMs.',
+        title: 'Scheduling & sales',
+        description: 'Book demos and meetings with Cal.',
       },
       backend: {
-        title: 'Backend tools',
-        description: 'Supabase, Appwrite, PocketBase, Hasura.',
+        title: 'Reporting',
+        description: 'Business and web metrics with Metabase and Plausible.',
       },
       content: {
-        title: 'Content & blog',
-        description: 'Ghost, Strapi, Directus, WordPress.',
+        title: 'Support & HR',
+        description: 'Chatwoot live support, Outline team wiki.',
       },
       automation: {
-        title: 'Automation',
-        description: 'n8n and workflow tools.',
+        title: 'Accounting MCP',
+        description: 'NOOK assistant for WhatsApp expenses to ERP draft vouchers.',
       },
     },
     featured: {
-      title: 'Marketing & analytics',
-      description: 'Browse analytics and email solutions.',
-      cta: 'Explore',
+      title: 'Accounting MCP',
+      description: 'Try the live simulation now.',
+      cta: 'Try simulation',
     },
   },
   footer: {
@@ -58,7 +58,7 @@ const en = {
     company: 'Blacknook',
     learn: 'Learn',
     developer: 'Developer',
-    copyright: '© {year} BlackNOOK. All rights reserved.',
+    copyright: '© {year} Blacknook. All rights reserved.',
     linkedin: 'Blacknook on LinkedIn',
     whatsapp: 'Blacknook WhatsApp group',
     help: 'Help',
@@ -77,19 +77,41 @@ const en = {
   },
   home: {
     featuredTech: 'Featured technologies',
+    featuredAgents: 'Featured MCP agents',
+    heroAgentBadge: 'Hero MCP agent',
+    viewAgent: 'View agent',
+    openCockpit: 'Open cockpit',
     viewDetails: 'View details',
-    prevProduct: 'Previous product',
-    nextProduct: 'Next product',
+    prevProduct: 'Previous agent',
+    nextProduct: 'Next agent',
     goToSlide: 'Go to {name} slide',
+    heroAgents: {
+      title: 'Hero MCP agents',
+      subtitle: 'Simulated enterprise agents — accounting, BI, support and more',
+    },
+    mcpAgents: {
+      title: 'Enterprise MCP agent catalog',
+      subtitle: '{count}+ department-focused agents — legal, sales, ops and tech',
+      more: 'Explore all agents',
+    },
     groups: {
       saas: { title: 'Cloud software', more: 'View all' },
       microSaas: { title: 'Mini software', more: 'View all' },
-      services: { title: 'Ecosystem', more: 'Explore ecosystem' },
+      services: { title: 'MCP agent ecosystem', more: 'Explore agents' },
     },
   },
   account: {
     profile: 'Profile',
-    messages: 'Messages',
+    nookAgent: 'NOOK Agent',
+    nookAgentTitle: 'Blacknook Autonomous',
+    nookAgentDescription:
+      'Department operations cockpit. The system proposes; you approve — accounting, finance, sales and more in one panel.',
+    nookAgentLaunch: 'Launch application',
+    nookAgentLaunchHint: 'Opens in a new full-screen window (agent.blacknook.com)',
+    nookAgentSetupTitle: 'Application URL',
+    nookAgentSetupHint:
+      'For local development run the Blacknook Otonom service, or use the production URL.',
+    notifications: 'Notifications',
     requests: 'Requests',
     products: 'Products',
     billing: 'Billing',
@@ -106,7 +128,8 @@ const en = {
     expertise: 'Expertise',
   },
   support: {
-    dock: 'Support',
+    dock: 'Urgent Support',
+    dockHint: '{count} team online',
     title: 'Blacknook Support',
     subtitle: 'Secure setup · integration · incident response',
     welcome:

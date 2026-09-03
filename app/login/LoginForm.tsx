@@ -4,8 +4,13 @@ import Link from 'next/link';
 import { useRouter, useSearchParams } from 'next/navigation';
 import { useState } from 'react';
 import { getSession, signIn } from 'next-auth/react';
-import { Loader2 } from 'lucide-react';
+import { Loader2, LogIn } from 'lucide-react';
 import { normalizeEmail, safeCallbackUrl } from '@/lib/authUrl';
+import {
+  DEV_AUTO_LOGIN_PASSWORD,
+  getDevAutoLoginEmail,
+  isDevAutoLoginUiEnabled,
+} from '@/lib/authMode';
 import { isGoogleOAuthUiEnabled } from '@/lib/googleOAuth';
 
 function GoogleIcon() {
@@ -25,11 +30,43 @@ const fieldClass =
 export default function LoginForm() {
   const router = useRouter();
   const searchParams = useSearchParams();
-  const callbackUrl = safeCallbackUrl(searchParams.get('callbackUrl'), '/');
+  const callbackUrl = safeCallbackUrl(searchParams.get('callbackUrl'), '/account');
+  const devAutoLogin = isDevAutoLoginUiEnabled();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
   const [isLoading, setIsLoading] = useState(false);
+
+  const finishLogin = async () => {
+    await getSession();
+    router.push(callbackUrl || '/account');
+    router.refresh();
+  };
+
+  const handleQuickLogin = async () => {
+    if (isLoading) return;
+    setError('');
+    setIsLoading(true);
+
+    try {
+      const result = await signIn('credentials', {
+        email: getDevAutoLoginEmail(),
+        password: DEV_AUTO_LOGIN_PASSWORD,
+        redirect: false,
+      });
+
+      if (result?.error) {
+        setError('Otomatik giriş başarısız. Veritabanı bağlantısını kontrol edin.');
+        return;
+      }
+
+      await finishLogin();
+    } catch {
+      setError('Giriş sırasında bir hata oluştu. Lütfen tekrar deneyin.');
+    } finally {
+      setIsLoading(false);
+    }
+  };
 
   const handleGoogle = () => {
     if (isLoading) return;
@@ -56,9 +93,7 @@ export default function LoginForm() {
         return;
       }
 
-      await getSession();
-      router.push(callbackUrl || '/account');
-      router.refresh();
+      await finishLogin();
     } catch {
       setError('Giriş sırasında bir hata oluştu. Lütfen tekrar deneyin.');
     } finally {
@@ -68,10 +103,53 @@ export default function LoginForm() {
 
   const googleEnabled = isGoogleOAuthUiEnabled();
 
+  if (devAutoLogin) {
+    return (
+      <div className="w-full max-w-md">
+        <h1 className="font-display text-4xl font-bold tracking-tight text-white md:text-[2.75rem]">
+          Giriş yap
+        </h1>
+        <p className="mt-3 text-sm text-zinc-400">
+          Geliştirme modu: Google doğrulaması kapalı. Tek tıkla oturum açılır.
+        </p>
+
+        {error ? (
+          <p className="mt-6 rounded-xl border border-red-500/30 bg-red-500/10 px-4 py-3 text-sm text-red-300">
+            {error}
+          </p>
+        ) : null}
+
+        <button
+          type="button"
+          disabled={isLoading}
+          onClick={() => void handleQuickLogin()}
+          className="mt-8 flex h-12 w-full items-center justify-center gap-2 rounded-xl bg-white text-sm font-bold text-black transition-[opacity,transform] duration-premium ease-premium hover:opacity-90 active:scale-[0.99] disabled:cursor-not-allowed disabled:opacity-60"
+        >
+          {isLoading ? (
+            <>
+              <Loader2 className="h-5 w-5 animate-spin" aria-hidden />
+              Giriş yapılıyor…
+            </>
+          ) : (
+            <>
+              <LogIn className="h-5 w-5" aria-hidden />
+              Giriş yap
+            </>
+          )}
+        </button>
+
+        <p className="mt-6 text-center text-xs text-zinc-500">
+          Git push öncesi doğrulama otomatik açılır. Yerel mod için:{' '}
+          <code className="rounded bg-white/[0.06] px-1.5 py-0.5 text-zinc-400">npm run auth:dev</code>
+        </p>
+      </div>
+    );
+  }
+
   return (
     <div className="w-full max-w-md">
       <h1 className="font-display text-4xl font-bold tracking-tight text-white md:text-[2.75rem]">
-        Giriş Yap
+        Giriş yap
       </h1>
       <p className="mt-3 text-sm text-zinc-400">
         Hesabınız yok mu?{' '}
@@ -79,7 +157,7 @@ export default function LoginForm() {
           href="/register"
           className="font-medium text-sky-400 transition-colors hover:text-sky-300"
         >
-          Kayıt olmak için tıklayın!
+          Kayıt olun.
         </Link>
       </p>
 
@@ -156,7 +234,7 @@ export default function LoginForm() {
               Giriş yapılıyor…
             </>
           ) : (
-            'Giriş Yap'
+            'Giriş yap'
           )}
         </button>
 

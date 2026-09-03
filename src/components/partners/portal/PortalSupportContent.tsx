@@ -57,7 +57,7 @@ export default function PortalSupportContent() {
           {
             href: '/select',
             icon: BookOpen,
-            title: 'Select programı',
+            title: 'Blacknook Select programı',
             body: 'Özel lansman programı hakkında',
           },
           {

@@ -1,131 +1,25 @@
 import type { IconType } from 'react-icons';
 import {
-  SiApachekafka,
-  SiAppwrite,
   SiCaldotcom,
   SiChatwoot,
-  SiClickhouse,
-  SiCoolify,
-  SiDirectus,
-  SiElasticsearch,
-  SiGhost,
-  SiGitea,
-  SiGitlab,
-  SiGrafana,
-  SiHasura,
-  SiHoppscotch,
-  SiKeycloak,
-  SiListmonk,
-  SiMattermost,
-  SiMeilisearch,
   SiMetabase,
-  SiMinio,
-  SiMongodb,
-  SiMysql,
-  SiN8N,
-  SiNginxproxymanager,
-  SiNotion,
-  SiOllama,
   SiOutline,
   SiPlausibleanalytics,
-  SiPocketbase,
-  SiPortainer,
-  SiPostgresql,
-  SiPosthog,
-  SiPrometheus,
-  SiRabbitmq,
-  SiRedis,
-  SiRocketdotchat,
-  SiSentry,
-  SiStrapi,
-  SiSupabase,
-  SiTraefikproxy,
-  SiUmami,
-  SiUptimekuma,
-  SiVaultwarden,
-  SiWordpress,
 } from 'react-icons/si';
-
-const HOMARR_ICONS =
-  'https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/png';
-
-/** Simple Icons CDN slug differs from our `icon` key in data.ts */
-export const SIMPLE_ICON_SLUG_ALIASES: Record<string, string> = {
-  rocketchat: 'rocketdotchat',
-  superset: 'apachesuperset',
-};
 
 /** Brands not in Simple Icons / react-icons — static or third-party logo URL */
 export const CUSTOM_LOGO_URLS: Record<string, string> = {
   'nook-muhasebe-mcp': '/bn-mark.png',
-  mailcow: `${HOMARR_ICONS}/mailcow.png`,
-  typesense: `${HOMARR_ICONS}/typesense.png`,
-  openwebui: `${HOMARR_ICONS}/open-webui.png`,
-  flowise: `${HOMARR_ICONS}/flowise.png`,
-  langfuse: '/service-logos/langfuse.png',
-  dokku: '/service-logos/dokku.svg',
-  activepieces: '/service-logos/activepieces.png',
-  jan: '/service-logos/jan.png',
-  anythingllm: '/service-logos/anything-llm.png',
-  dokploy: '/service-logos/dokploy.png',
-  medusa: '/service-logos/medusa.png',
-  caprover: '/service-logos/caprover.png',
-  superset: '/service-logos/apache-superset.png',
-  typebot: '/service-logos/typebot.png',
-  mastra: '/service-logos/mastra.png',
-  stagehand: '/service-logos/stagehand.png',
-  strix: '/service-logos/strix.png',
-  lightdash: '/service-logos/lightdash.png',
-  corteza: '/service-logos/corteza.png',
-  krayin: '/service-logos/krayin.png',
-  btcpay: '/service-logos/btcpay.png',
 };
 
+export const SIMPLE_ICON_SLUG_ALIASES: Record<string, string> = {};
+
 export const SERVICE_ICON_MAP: Record<string, IconType> = {
-  ghost: SiGhost,
-  appwrite: SiAppwrite,
-  supabase: SiSupabase,
   plausibleanalytics: SiPlausibleanalytics,
-  n8n: SiN8N,
-  minio: SiMinio,
-  redis: SiRedis,
-  postgresql: SiPostgresql,
   metabase: SiMetabase,
-  meilisearch: SiMeilisearch,
-  wordpress: SiWordpress,
-  umami: SiUmami,
-  grafana: SiGrafana,
-  prometheus: SiPrometheus,
-  directus: SiDirectus,
-  strapi: SiStrapi,
-  keycloak: SiKeycloak,
-  vaultwarden: SiVaultwarden,
-  gitea: SiGitea,
-  gitlab: SiGitlab,
-  portainer: SiPortainer,
-  traefikproxy: SiTraefikproxy,
-  nginxproxymanager: SiNginxproxymanager,
-  uptimekuma: SiUptimekuma,
-  sentry: SiSentry,
-  posthog: SiPosthog,
   caldotcom: SiCaldotcom,
   outline: SiOutline,
-  notion: SiNotion,
   chatwoot: SiChatwoot,
-  mattermost: SiMattermost,
-  listmonk: SiListmonk,
-  elasticsearch: SiElasticsearch,
-  mongodb: SiMongodb,
-  mysql: SiMysql,
-  clickhouse: SiClickhouse,
-  rabbitmq: SiRabbitmq,
-  apachekafka: SiApachekafka,
-  ollama: SiOllama,
-  coolify: SiCoolify,
-  pocketbase: SiPocketbase,
-  hasura: SiHasura,
-  hoppscotch: SiHoppscotch,
-  rocketchat: SiRocketdotchat,
 };
 
 export function simpleIconSlug(iconKey: string) {
@@ -156,7 +50,6 @@ export function hexLuminance(hex: string): number {
 
 export type LogoThemeMode = 'dark' | 'light';
 
-/** Dark brand colors disappear on zinc cards — lift icon tint when needed */
 export function iconDisplayColor(hex: string, theme: LogoThemeMode = 'dark'): string {
   if (theme === 'light') {
     return hexLuminance(hex) > 0.72 ? '#3f3f46' : hex;
@@ -164,17 +57,12 @@ export function iconDisplayColor(hex: string, theme: LogoThemeMode = 'dark'): st
   return hexLuminance(hex) < 0.38 ? '#F4F4F5' : hex;
 }
 
-/** Dark-on-transparent marks that need a light plate */
-const LIGHT_PLATE_KEYS = new Set(['medusa']);
+const LIGHT_PLATE_KEYS = new Set<string>();
 
 function fileStem(src: string) {
   return src.split('?')[0].split('/').pop()?.replace(/\.[a-z0-9]+$/i, '') ?? '';
 }
 
-/**
- * Logo tile: dark by default (icons are lightened for this theme).
- * Light plate only for dark glyphs that would vanish on zinc.
- */
 export function logoPlateTone(
   iconKey: string,
   brandColor: string,

@@ -4,9 +4,10 @@ import { useMemo } from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import {
+  Bot,
+  Bell,
   CreditCard,
   Grid2X2,
-  Inbox,
   LogOut,
   MessageSquare,
   User,
@@ -19,7 +20,8 @@ import { cn } from '@/lib/utils';
 
 const ICONS: Record<AccountNavIcon, typeof User> = {
   user: User,
-  inbox: Inbox,
+  agent: Bot,
+  bell: Bell,
   requests: MessageSquare,
   grid: Grid2X2,
   card: CreditCard,

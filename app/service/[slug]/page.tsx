@@ -193,7 +193,7 @@ export default async function ServiceDetailPage({ params }: PageProps) {
                 Projeye entegre et
               </h2>
               <p className="mb-6 text-sm leading-relaxed text-zinc-500">
-                {service.name} servisini Blacknook üzerinden projenize ekleyin.
+                {service.description}
               </p>
               <Suspense fallback={null}>
                 <ServiceDetailActions
@@ -211,11 +211,15 @@ export default async function ServiceDetailPage({ params }: PageProps) {
                 <div className="flex items-center justify-between gap-4">
                   <dt className="text-zinc-500">Sağlayıcı</dt>
                   <dd className="flex items-center gap-1.5 font-medium text-zinc-200">
-                    <span>BlackNook</span>
+                    <span>Blacknook</span>
                     <span title="Doğrulanmış" aria-label="Doğrulanmış" className="inline-flex">
                       <Check className="h-4 w-4 text-sky-300" aria-hidden />
                     </span>
                   </dd>
+                </div>
+                <div className="flex justify-between gap-4">
+                  <dt className="text-zinc-500">Çalışır</dt>
+                  <dd className="text-right font-medium text-zinc-200">Kendi sunucunuzda</dd>
                 </div>
               </dl>
             </div>

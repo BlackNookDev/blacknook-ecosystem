@@ -103,7 +103,7 @@ export default function RegisterEarlyAccessForm() {
               href="/login"
               className="font-medium text-sky-400 transition-colors hover:text-sky-300"
             >
-              Giriş Yap
+              Giriş yap
             </Link>
           </>
         )}

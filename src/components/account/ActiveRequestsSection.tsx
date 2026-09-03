@@ -126,7 +126,7 @@ export default function ActiveRequestsSection() {
     <>
       <AccountSection
         title="Destek talepleri"
-        description="Destek talepleriniz. Atanan kişiyle Mesajlar’dan yazışın."
+        description="Destek talepleriniz. Atanan kişiyle Mesajlar üzerinden yazışın."
       >
         {loading ? (
           <div className="flex items-center gap-2 text-sm text-zinc-500">

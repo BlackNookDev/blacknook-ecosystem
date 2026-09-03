@@ -7,11 +7,17 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
+    "auth:dev": "node scripts/set-auth-mode.mjs dev",
+    "auth:prod": "node scripts/set-auth-mode.mjs prod",
+    "prepare": "git config core.hooksPath .githooks 2>/dev/null || true",
     "seed:admin": "node scripts/seed-admin.js",
     "migrate": "node scripts/migrate.js",
     "aider": "bash ./scripts/run-aider.sh",
     "aider:claude": "bash ./scripts/run-aider.sh claude",
-    "aider:gpt": "bash ./scripts/run-aider.sh gpt"
+    "aider:gpt": "bash ./scripts/run-aider.sh gpt",
+    "fetch:mcp": "python3 scripts/fetch_mcp_servers.py",
+    "fetch:mcp-so": "python3 scripts/fetch_mcp_so_catalog.py",
+    "fetch:agents": "python3 scripts/build_agent_catalog.py"
   },
   "dependencies": {
     "@radix-ui/react-dialog": "^1.1.23",

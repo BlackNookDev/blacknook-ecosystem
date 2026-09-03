@@ -5,6 +5,7 @@ import { useTheme } from '@/components/ThemeProvider';
 import ServiceCatalogLogo from '@/components/ServiceCatalogLogo';
 import VerifiedBadge from '@/components/VerifiedBadge';
 import type { ServiceCatalogEntry } from '../../../lib/data';
+import { hasCatalogSimulation } from '../../../lib/catalogSubheadings';
 import { cn } from '@/lib/utils';
 
 type Props = {
@@ -75,13 +76,20 @@ export default function BrowseProductCard({ service, className }: Props) {
             Partner
           </span>
         ) : null}
+        {hasCatalogSimulation(service) ? (
+          <span className="absolute right-2.5 top-2.5 rounded-full bg-emerald-500/20 px-2 py-0.5 text-[10px] font-bold uppercase tracking-wide text-emerald-200 ring-1 ring-emerald-400/30">
+            Simülasyon
+          </span>
+        ) : null}
       </div>
 
       <div className="flex flex-1 flex-col px-3.5 pb-4 pt-3.5">
         <h3 className="bn-heading truncate font-display text-[15px] font-bold leading-tight tracking-tight">
           {service.name}
         </h3>
-        <p className="bn-subtitle mt-0.5 text-[12px]">{service.category}</p>
+        <p className="bn-subtitle mt-0.5 text-[12px]">
+          {service.catalogKind === 'hero-agent' ? 'Ana MCP ajanı' : service.category}
+        </p>
 
         <p className="bn-subtitle mt-2 line-clamp-2 flex-1 text-[13px] leading-snug">
           {service.description}

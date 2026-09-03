@@ -1,0 +1,2150 @@
+[
+  {
+    "id": "cv-screening-agent",
+    "name": "Aday Ön Değerlendirme & CV Eleme Ajanı",
+    "category": "İnsan Kaynakları",
+    "description": "Pozisyona başvuran adayların özgeçmişlerini doğrudan iş gereksinimleriyle puanlar.",
+    "about": "LinkedIn MCP, oturum açmış LinkedIn hesabınız üzerinden profil, şirket, iş ilanı arama ve ağ verilerine güvenli erişim sağlar.",
+    "features": [
+      "Profil ve şirket araması",
+      "İş ilanı sorgulama",
+      "Bağlantı ve ağ verisi",
+      "Satış araştırması",
+      "Yerel oturum güvenliği"
+    ],
+    "useCases": [
+      "Pozisyona başvuran adayların özgeçmişlerini doğrudan iş gereksinimleriyle puanlar."
+    ],
+    "brandColor": "#0A66C2",
+    "logoUrl": "https://cdn.simpleicons.org/linkedin/0A66C2",
+    "license": "Apache-2.0",
+    "repo": "https://github.com/stickerdaniel/linkedin-mcp-server"
+  },
+  {
+    "id": "api-changelog-writer",
+    "name": "API Dokümantasyon & Değişim Günlüğü Ajanı",
+    "category": "Yazılım & DevOps",
+    "description": "Kod değişikliklerinden geliştiriciler için güncel API dokümanı ve release notes üretir.",
+    "about": "GitLab projelerinde dosya, dal ve sürüm işlemlerini MCP arayüzüyle yönetir.",
+    "features": [
+      "Proje ve dosya yönetimi",
+      "Dal oluşturma",
+      "GitLab API entegrasyonu",
+      "Sürüm işlemleri"
+    ],
+    "useCases": [
+      "Kod değişikliklerinden geliştiriciler için güncel API dokümanı ve release notes üretir."
+    ],
+    "brandColor": "#FC6D26",
+    "logoUrl": "https://cdn.simpleicons.org/gitlab/FC6D26",
+    "license": "Apache-2.0",
+    "repo": "https://github.com/modelcontextprotocol/servers/tree/main/src/gitlab"
+  },
+  {
+    "id": "security-patch-notifier",
+    "name": "Açık Kaynak Güvenlik Yama Bildiricisi",
+    "category": "Güvenlik & Uyum",
+    "description": "Şirketin kullandığı framework'ler için çıkan acil güvenlik yamalarını yazılım liderine bildirir.",
+    "about": "AI-Infra-Guard, AI altyapısı, MCP sunucuları ve ajan becerileri için güvenlik taraması, zafiyet analizi ve jailbreak testleri sunar.",
+    "features": [
+      "MCP sunucu güvenlik taraması",
+      "CVE ve zafiyet eşleştirme",
+      "Ajan beceri denetimi",
+      "Jailbreak değerlendirmesi",
+      "AI altyapı risk analizi"
+    ],
+    "useCases": [
+      "Şirketin kullandığı framework'ler için çıkan acil güvenlik yamalarını yazılım liderine bildirir."
+    ],
+    "brandColor": "#B91C1C",
+    "logoUrl": "https://cdn.simpleicons.org/tencentqq/B91C1C",
+    "license": "Apache-2.0",
+    "repo": "https://github.com/Tencent/AI-Infra-Guard"
+  },
+  {
+    "id": "cold-email-personalizer",
+    "name": "B2B Soğuk Satış E-posta Kişiselleştirici",
+    "category": "Satış & CRM",
+    "description": "Hedef şirketin son haberlerini tarayarak satış temsilcisine özel açılış cümleleri hazırlar.",
+    "about": "LinkedIn MCP, oturum açmış LinkedIn hesabınız üzerinden profil, şirket, iş ilanı arama ve ağ verilerine güvenli erişim sağlar.",
+    "features": [
+      "Profil ve şirket araması",
+      "İş ilanı sorgulama",
+      "Bağlantı ve ağ verisi",
+      "Satış araştırması",
+      "Yerel oturum güvenliği"
+    ],
+    "useCases": [
+      "Hedef şirketin son haberlerini tarayarak satış temsilcisine özel açılış cümleleri hazırlar."
+    ],
+    "brandColor": "#0A66C2",
+    "logoUrl": "https://cdn.simpleicons.org/linkedin/0A66C2",
+    "license": "Apache-2.0",
+    "repo": "https://github.com/stickerdaniel/linkedin-mcp-server"
+  },
+  {
+    "id": "contract-renewal-reminder",
+    "name": "B2B Sözleşme Yenileme Hatırlatıcısı",
+    "category": "Satış & CRM",
+    "description": "Yıllık sözleşmelerin bitişine 60 gün kala hesap yöneticisine yenileme planı açar.",
+    "about": "Yerel bilgi grafiği ile oturumlar arası kalıcı bellek ve bağlam saklama sağlar.",
+    "features": [
+      "Kalıcı bellek grafiği",
+      "Oturumlar arası bağlam",
+      "Bilgi saklama",
+      "İlişkisel hafıza"
+    ],
+    "useCases": [
+      "Yıllık sözleşmelerin bitişine 60 gün kala hesap yöneticisine yenileme planı açar."
+    ],
+    "brandColor": "#7C3AED",
+    "logoUrl": "https://cdn.simpleicons.org/neo4j/7C3AED",
+    "license": "Apache-2.0",
+    "repo": "https://github.com/modelcontextprotocol/servers/tree/main/src/memory"
+  },
+  {
+    "id": "rfp-response-agent",
+    "name": "B2B Teklif & RFP Yanıt Ajanı",
+    "category": "Satış & CRM",
+    "description": "Gelen teknik şartname sorularını şirketin geçmiş başarılı teklif arşivini tarayarak yanıtlar.",
+    "about": "GPT Researcher, web ve yerel kaynaklardan otonom derin araştırma yapan açık kaynak bir araştırma ajanıdır; kaynaklı raporlar üretir.",
+    "features": [
+      "Otonom web araştırması",
+      "Kaynaklı rapor üretimi",
+      "Çoklu kaynak sentezi",
+      "Derin araştırma modu",
+      "Özelleştirilebilir araştırma görevleri"
+    ],
+    "useCases": [
+      "Gelen teknik şartname sorularını şirketin geçmiş başarılı teklif arşivini tarayarak yanıtlar."
+    ],
+    "brandColor": "#2563EB",
+    "logoUrl": "https://cdn.simpleicons.org/arxiv/2563EB",
+    "license": "Apache-2.0",
+    "repo": "https://github.com/assafelovic/gpt-researcher"
+  },
+  {
+    "id": "hr-benefits-qa",
+    "name": "Bordro & Yan Hak Soru-Cevap Ajanı",
+    "category": "İnsan Kaynakları",
+    "description": "Çalışanların izin bakiyesi, prim ve yan hak sorularını İK yerine anında yanıtlar.",
+    "about": "Ctxfile, birden fazla yapay zeka ajanı arasında paylaşılan çalışma bağlamını dosya tabanlı olarak saklar; plan, karar ve proje durumunu korur.",
+    "features": [
+      "Ortak ajan bağlamı",
+      "Proje durumu saklama",
+      "Git durumu ve karar kaydı",
+      "Çoklu ajan uyumu",
+      "Yerel bağlam dosyası"
+    ],
+    "useCases": [
+      "Çalışanların izin bakiyesi, prim ve yan hak sorularını İK yerine anında yanıtlar."
+    ],
+    "brandColor": "#14B8A6",
+    "logoUrl": "https://cdn.simpleicons.org/notion/14B8A6",
+    "license": "Apache-2.0",
+    "repo": "https://github.com/ctxfile/ctxfile"
+  },
+  {
+    "id": "cloud-cost-optimizer",
+    "name": "Bulut (AWS/GCP) Maliyet Optimizatörü",
+    "category": "Sunucu ve altyapı",
+    "description": "Kullanılmayan sanal makineleri ve atıl depolama alanlarını tespit edip kapatma listesi sunar.",
+    "about": "AWS MCP sunucuları, yapay zeka ajanlarına AWS kaynakları, maliyet, güvenlik ve altyapı yönetimi için resmi araçlar sağlar.",
+    "features": [
+      "AWS kaynak yönetimi",
+      "Maliyet ve kullanım analizi",
+      "Altyapı otomasyonu",
+      "Güvenlik ve IAM sorguları",
+      "Bulut operasyon araçları"
+    ],
+    "useCases": [
+      "Kullanılmayan sanal makineleri ve atıl depolama alanlarını tespit edip kapatma listesi sunar."
+    ],
+    "brandColor": "#FF9900",
+    "logoUrl": "https://cdn.simpleicons.org/amazonwebservices/FF9900",
+    "license": "Apache-2.0",
+    "repo": "https://github.com/awslabs/mcp"
+  },
+  {
+    "id": "sentry-error-triage",
+    "name": "Canlı Sistem Hata & Sentry Triyajcısı",
+    "category": "Yazılım & DevOps",
+    "description": "Yazılım çöktüğünde hatanın hangi kod satırından ve commit'ten çıktığını anında özetler.",
+    "about": "Elasticsearch MCP, log, metrik ve arama indekslerine doğal dil ile sorgu göndermeyi ve sonuçları özetlemeyi sağlar.",
+    "features": [
+      "Elasticsearch sorgulama",
+      "Log ve metrik analizi",
+      "İndeks keşfi",
+      "Arama sonucu özetleme",
+      "Operasyonel veri erişimi"
+    ],
+    "useCases": [
+      "Yazılım çöktüğünde hatanın hangi kod satırından ve commit'ten çıktığını anında özetler."
+    ],
+    "brandColor": "#005571",
+    "logoUrl": "https://cdn.simpleicons.org/elastic/005571",
+    "license": "Apache-2.0",
+    "repo": "https://github.com/elastic/mcp-server-elasticsearch"
+  },
+  {
+    "id": "cdn-performance-agent",
+    "name": "CDN Performans Yönetim Ajanı",
+    "category": "Sunucu ve altyapı",
+    "description": "CDN önbellek, trafik metrikleri ve alan adı yönetimi sağlar.",
+    "about": "BlazingCDN MCP, içerik dağıtım ağındaki önbellek, trafik metrikleri ve alan adı ayarlarını yönetmeyi sağlar.",
+    "features": [
+      "CDN önbellek yönetimi",
+      "Trafik metrikleri",
+      "Alan adı kontrolü",
+      "Medya dağıtımı",
+      "Performans optimizasyonu"
+    ],
+    "useCases": [
+      "CDN önbellek, trafik metrikleri ve alan adı yönetimi sağlar."
+    ],
+    "brandColor": "#FF6B00",
+    "logoUrl": "https://cdn.simpleicons.org/cloudflare/FF6B00",
+    "license": "MIT",
+    "repo": "https://github.com/BlazingCDN/blazingcdn-mcp"
+  },
+  {
+    "id": "case-law-researcher",
+    "name": "Dava Dosyası & İçtihat Tarama Ajanı",
+    "category": "Hukuk & Uyum",
+    "description": "Hukuk departmanının davaları için ilgili Yargıtay kararlarını ve emsal davaları özetler.",
+    "about": "Patent Literature Search MCP, patent ve teknik literatür veritabanlarında semantik arama yaparak ilgili buluş ve yayınları bulur.",
+    "features": [
+      "Patent literatür araması",
+      "Semantik sorgulama",
+      "Teknik doküman keşfi",
+      "Atıf ve benzerlik analizi",
+      "Araştırma raporu desteği"
+    ],
+    "useCases": [
+      "Hukuk departmanının davaları için ilgili Yargıtay kararlarını ve emsal davaları özetler."
+    ],
+    "brandColor": "#005587",
+    "logoUrl": "https://cdn.simpleicons.org/wikipedia/005587",
+    "license": "Apache-2.0",
+    "repo": "https://github.com/patsnap/patent-literature-search-mcp"
+  },
+  {
+    "id": "warehouse-picking-route",
+    "name": "Depo İçi Toplama (Picking) Rota Ajanı",
+    "category": "Operasyon",
+    "description": "E-ticaret siparişleri toplanırken depo çalışanına en kısa yürüme rotasını çizer.",
+    "about": "Redis MCP, önbellek ve anahtar-değer deposuna gerçek zamanlı erişim sağlayarak oturum, stok ve olay verilerini yönetir.",
+    "features": [
+      "Gerçek zamanlı veri erişimi",
+      "Anahtar-değer sorgulama",
+      "Önbellek yönetimi",
+      "Olay ve oturum takibi",
+      "Düşük gecikmeli veri"
+    ],
+    "useCases": [
+      "E-ticaret siparişleri toplanırken depo çalışanına en kısa yürüme rotasını çizer."
+    ],
+    "brandColor": "#FF4438",
+    "logoUrl": "https://cdn.simpleicons.org/redis/FF4438",
+    "license": "MIT",
+    "repo": "https://github.com/redis/mcp-redis"
+  },
+  {
+    "id": "reorder-stock-agent",
+    "name": "Depo Stok Seviyesi & Yeniden Sipariş Ajanı",
+    "category": "Operasyon",
+    "description": "Kritik eşiğin altına inen ürünleri tedarik süresine göre hesaplayıp sipariş taslağı açar.",
+    "about": "Supabase MCP, PostgreSQL tabanlı Supabase projelerinde tablo sorgulama, veri okuma ve backend işlemlerini ajanlara açar.",
+    "features": [
+      "PostgreSQL tablo erişimi",
+      "Satır düzeyinde sorgular",
+      "Şema keşfi",
+      "Backend veri işlemleri",
+      "Gerçek zamanlı veri"
+    ],
+    "useCases": [
+      "Kritik eşiğin altına inen ürünleri tedarik süresine göre hesaplayıp sipariş taslağı açar."
+    ],
+    "brandColor": "#3FCF8E",
+    "logoUrl": "https://cdn.simpleicons.org/supabase/3FCF8E",
+    "license": "Apache-2.0",
+    "repo": "https://github.com/supabase-community/supabase-mcp"
+  },
+  {
+    "id": "unsubscribe-analyst",
+    "name": "E-Bülten Unsubscribe Analisti",
+    "category": "Pazarlama & Analiz",
+    "description": "Bülten aboneliğinden çıkanların gerekçelerini analiz edip içerik ekibine aksiyon çıkarır.",
+    "about": "Superset MCP, Apache Superset panolarına ve SQL sorgularına ajan erişimi sağlar; 50'den fazla veri kaynağından rapor çekmeyi kolaylaştırır.",
+    "features": [
+      "Dashboard sorgulama",
+      "50+ veri kaynağı",
+      "SQL ve görsel sorgu desteği",
+      "Metrik ve KPI erişimi",
+      "Self-servis BI entegrasyonu"
+    ],
+    "useCases": [
+      "Bülten aboneliğinden çıkanların gerekçelerini analiz edip içerik ekibine aksiyon çıkarır."
+    ],
+    "brandColor": "#20A6C9",
+    "logoUrl": "https://cdn.simpleicons.org/apache/20A6C9",
+    "license": "MIT",
+    "repo": "https://github.com/aptro/superset-mcp"
+  },
+  {
+    "id": "gtip-classifier",
+    "name": "E-İhracat Gümrük Tarife (GTİP) Kodlayıcı",
+    "category": "Operasyon",
+    "description": "Satılan ürünlerin teknik özelliklerine göre doğru GTİP gümrük kodlarını eşleştirir.",
+    "about": "GPT Researcher, web ve yerel kaynaklardan otonom derin araştırma yapan açık kaynak bir araştırma ajanıdır; kaynaklı raporlar üretir.",
+    "features": [
+      "Otonom web araştırması",
+      "Kaynaklı rapor üretimi",
+      "Çoklu kaynak sentezi",
+      "Derin araştırma modu",
+      "Özelleştirilebilir araştırma görevleri"
+    ],
+    "useCases": [
+      "Satılan ürünlerin teknik özelliklerine göre doğru GTİP gümrük kodlarını eşleştirir."
+    ],
+    "brandColor": "#2563EB",
+    "logoUrl": "https://cdn.simpleicons.org/arxiv/2563EB",
+    "license": "Apache-2.0",
+    "repo": "https://github.com/assafelovic/gpt-researcher"
+  },
+  {
+    "id": "esign-reminder",
+    "name": "E-İmza Bekleyen Belge Takipçisi",
+    "category": "Hukuk & Uyum",
+    "description": "İmzaya gönderilen sözleşmelerde imzalamayan taraflara akıllı aralıklarla hatırlatma çıkarır.",
+    "about": "Zapier MCP, yapay zeka ajanlarının Zapier üzerinden 8.000'den fazla uygulama ve servisle otomatik iş akışı kurmasını sağlar.",
+    "features": [
+      "8.000+ uygulama entegrasyonu",
+      "Tetikleyici ve aksiyon otomasyonu",
+      "Çok adımlı iş akışları",
+      "Kurumsal SaaS bağlantıları",
+      "Kodsuz entegrasyon"
+    ],
+    "useCases": [
+      "İmzaya gönderilen sözleşmelerde imzalamayan taraflara akıllı aralıklarla hatırlatma çıkarır."
+    ],
+    "brandColor": "#FF4A00",
+    "logoUrl": "https://cdn.simpleicons.org/zapier/FF4A00",
+    "license": "MIT",
+    "repo": "https://github.com/zapier/zapier-mcp"
+  },
+  {
+    "id": "email-campaign-qa",
+    "name": "E-Posta Kampanya A/B Metin Denetçisi",
+    "category": "Pazarlama & Analiz",
+    "description": "Pazarlama bültenlerindeki spam tetikleyici kelimeleri ve bozuk bağlantıları gönderimden önce yakalar.",
+    "about": "Playwright MCP, tarayıcı otomasyonu ile web sayfalarını test eder, form doldurur ve kullanıcı akışlarını simüle eder.",
+    "features": [
+      "Tarayıcı otomasyonu",
+      "E2E test senaryoları",
+      "Form ve tıklama simülasyonu",
+      "Ekran görüntüsü alma",
+      "Web QA otomasyonu"
+    ],
+    "useCases": [
+      "Pazarlama bültenlerindeki spam tetikleyici kelimeleri ve bozuk bağlantıları gönderimden önce yakalar."
+    ],
+    "brandColor": "#2EAD33",
+    "logoUrl": "https://cdn.simpleicons.org/playwright/2EAD33",
+    "license": "Apache-2.0",
+    "repo": "https://github.com/microsoft/playwright-mcp"
+  },
+  {
+    "id": "return-fraud-detector",
+    "name": "E-Ticaret İade Sahtekarlığı Dedektörü",
+    "category": "Operasyon",
+    "description": "Sürekli hileli iade talep eden şüpheli müşteri profillerini operasyon paneline taşır.",
+    "about": "Redis MCP, önbellek ve anahtar-değer deposuna gerçek zamanlı erişim sağlayarak oturum, stok ve olay verilerini yönetir.",
+    "features": [
+      "Gerçek zamanlı veri erişimi",
+      "Anahtar-değer sorgulama",
+      "Önbellek yönetimi",
+      "Olay ve oturum takibi",
+      "Düşük gecikmeli veri"
+    ],
+    "useCases": [
+      "Sürekli hileli iade talep eden şüpheli müşteri profillerini operasyon paneline taşır."
+    ],
+    "brandColor": "#FF4438",
+    "logoUrl": "https://cdn.simpleicons.org/redis/FF4438",
+    "license": "MIT",
+    "repo": "https://github.com/redis/mcp-redis"
+  },
+  {
+    "id": "cart-abandonment-recovery",
+    "name": "E-Ticaret Sepet Terk Kurtarma Ajanı",
+    "category": "Satış & CRM",
+    "description": "Sepeti bırakan kullanıcıya ilgilendiği ürünün stok durumuna göre kişisel mesaj kurgular.",
+    "about": "Chroma MCP, gömülü bellek ve vektör arama ile geçmiş teklifler, vaka çalışmaları ve kurumsal bilgiyi anlamsal olarak eşleştirir.",
+    "features": [
+      "Vektör bellek deposu",
+      "Semantik doküman araması",
+      "Bilgi eşleştirme",
+      "RAG destekli yanıtlar",
+      "Kurumsal arşiv erişimi"
+    ],
+    "useCases": [
+      "Sepeti bırakan kullanıcıya ilgilendiği ürünün stok durumuna göre kişisel mesaj kurgular."
+    ],
+    "brandColor": "#FF6442",
+    "logoUrl": "https://cdn.simpleicons.org/semanticui/FF6442",
+    "license": "Apache-2.0",
+    "repo": "https://github.com/chroma-core/chroma-mcp"
+  },
+  {
+    "id": "legacy-code-documenter",
+    "name": "Eski Kod (Legacy) Dokümantasyon Ajanı",
+    "category": "Yazılım & DevOps",
+    "description": "Dokümantasyonu olmayan eski backend kodlarını tarayıp mimari şema ve iş mantığı çıkarır.",
+    "about": "Code Assistant, kod tabanını analiz eden ve otonom geliştirme görevleri yürüten bir MCP/ACP kod asistanıdır.",
+    "features": [
+      "Kod tabanı analizi",
+      "Otonom kod üretimi",
+      "Refactoring desteği",
+      "Test ve dokümantasyon",
+      "MCP ve ACP modu"
+    ],
+    "useCases": [
+      "Dokümantasyonu olmayan eski backend kodlarını tarayıp mimari şema ve iş mantığı çıkarır."
+    ],
+    "brandColor": "#374151",
+    "logoUrl": "https://cdn.simpleicons.org/githubcopilot/374151",
+    "license": "MIT",
+    "repo": "https://github.com/stippi/code-assistant"
+  },
+  {
+    "id": "winback-campaign",
+    "name": "Eski Müşteri Yeniden Etkinleştirici",
+    "category": "Satış & CRM",
+    "description": "6 aydır alışveriş yapmayan kurumsal müşterilere geçmiş tercihlerine göre özel kampanya yazar.",
+    "about": "Chroma MCP, gömülü bellek ve vektör arama ile geçmiş teklifler, vaka çalışmaları ve kurumsal bilgiyi anlamsal olarak eşleştirir.",
+    "features": [
+      "Vektör bellek deposu",
+      "Semantik doküman araması",
+      "Bilgi eşleştirme",
+      "RAG destekli yanıtlar",
+      "Kurumsal arşiv erişimi"
+    ],
+    "useCases": [
+      "6 aydır alışveriş yapmayan kurumsal müşterilere geçmiş tercihlerine göre özel kampanya yazar."
+    ],
+    "brandColor": "#FF6442",
+    "logoUrl": "https://cdn.simpleicons.org/semanticui/FF6442",
+    "license": "Apache-2.0",
+    "repo": "https://github.com/chroma-core/chroma-mcp"
+  },
+  {
+    "id": "ethics-hotline-classifier",
+    "name": "Etik Hat & İhbar Sınıflandırıcı",
+    "category": "Hukuk & Uyum",
+    "description": "Şirket iç ihbar hattına gelen suiistimal bildirimlerini gizlilikle analiz edip yönetim kuruluna iletir.",
+    "about": "Compliant LLM, KVKK ve kurumsal güvenlik gereksinimlerine uygun yapay zeka ajan altyapısı sunar; hassas verilerin politika tabanlı korunmasını sağlar.",
+    "features": [
+      "Veri gizliliği kontrolleri",
+      "Politika tabanlı erişim",
+      "Denetim izi",
+      "Uyum odaklı ajan çalıştırma",
+      "MCP sunucu entegrasyonu"
+    ],
+    "useCases": [
+      "Şirket iç ihbar hattına gelen suiistimal bildirimlerini gizlilikle analiz edip yönetim kuruluna iletir."
+    ],
+    "brandColor": "#1E40AF",
+    "logoUrl": "https://cdn.simpleicons.org/letsencrypt/1E40AF",
+    "license": "MIT",
+    "repo": "https://github.com/fiddlecube/compliant-llm"
+  },
+  {
+    "id": "event-lead-classifier",
+    "name": "Etkinlik & Fuar Lead Sınıflandırıcısı",
+    "category": "Satış & CRM",
+    "description": "Fuarda toplanan kartvizit fotoğraflarını tarayıp CRM'e aktarır ve ilgi puanı verir.",
+    "about": "MarkItDown MCP, PDF, Word, Excel, PowerPoint, görsel ve ses dosyalarını yapılandırılmış Markdown'a dönüştürür; sözleşme, fatura ve raporları yapay zeka için okunabilir hale getirir.",
+    "features": [
+      "29+ dosya formatı desteği",
+      "PDF ve Office belge dönüşümü",
+      "Görsel OCR ve meta veri çıkarımı",
+      "Ses dosyasından metin üretimi",
+      "MCP istemcileriyle doğrudan entegrasyon"
+    ],
+    "useCases": [
+      "Fuarda toplanan kartvizit fotoğraflarını tarayıp CRM'e aktarır ve ilgi puanı verir."
+    ],
+    "brandColor": "#7C3AED",
+    "logoUrl": "https://cdn.simpleicons.org/microsoft/7C3AED",
+    "license": "MIT",
+    "repo": "https://github.com/trsdn/markitdown-mcp"
+  },
+  {
+    "id": "fraud-anomaly-detector",
+    "name": "Finansal Anomali & Dolandırıcılık Tespiti",
+    "category": "Muhasebe & Finans",
+    "description": "Şirket hesaplarından yapılan olağandışı yüksek veya gece yarısı para çıkışlarını dondurur/uyarır.",
+    "about": "Stripe Agent Toolkit, ödeme, fatura, abonelik ve müşteri işlemlerini Stripe API üzerinden yapay zeka ajanlarına güvenli araçlar olarak sunar.",
+    "features": [
+      "Ödeme ve fatura yönetimi",
+      "Abonelik ve müşteri sorgulama",
+      "Stripe API araçları",
+      "Kurumsal ödeme otomasyonu",
+      "Güvenli API anahtarı yönetimi"
+    ],
+    "useCases": [
+      "Şirket hesaplarından yapılan olağandışı yüksek veya gece yarısı para çıkışlarını dondurur/uyarır."
+    ],
+    "brandColor": "#635BFF",
+    "logoUrl": "https://cdn.simpleicons.org/stripe/635BFF",
+    "license": "MIT",
+    "repo": "https://github.com/stripe/agent-toolkit"
+  },
+  {
+    "id": "franchise-auditor",
+    "name": "Franchise Şube Standart Denetçisi",
+    "category": "Operasyon",
+    "description": "Şubelerin gönderdiği haftalık satış ve hijyen kontrol listelerini değerlendirir.",
+    "about": "Superset MCP, Apache Superset panolarına ve SQL sorgularına ajan erişimi sağlar; 50'den fazla veri kaynağından rapor çekmeyi kolaylaştırır.",
+    "features": [
+      "Dashboard sorgulama",
+      "50+ veri kaynağı",
+      "SQL ve görsel sorgu desteği",
+      "Metrik ve KPI erişimi",
+      "Self-servis BI entegrasyonu"
+    ],
+    "useCases": [
+      "Şubelerin gönderdiği haftalık satış ve hijyen kontrol listelerini değerlendirir."
+    ],
+    "brandColor": "#20A6C9",
+    "logoUrl": "https://cdn.simpleicons.org/apache/20A6C9",
+    "license": "MIT",
+    "repo": "https://github.com/aptro/superset-mcp"
+  },
+  {
+    "id": "expense-receipt-approver",
+    "name": "Gider Fişi & Masraf Onay Ajanı",
+    "category": "Muhasebe & Finans",
+    "description": "Çalışanların yüklediği fişleri kategorize eder, şirket harcama politikasını aşanları yakalar.",
+    "about": "Stripe Agent Toolkit, ödeme, fatura, abonelik ve müşteri işlemlerini Stripe API üzerinden yapay zeka ajanlarına güvenli araçlar olarak sunar.",
+    "features": [
+      "Ödeme ve fatura yönetimi",
+      "Abonelik ve müşteri sorgulama",
+      "Stripe API araçları",
+      "Kurumsal ödeme otomasyonu",
+      "Güvenli API anahtarı yönetimi"
+    ],
+    "useCases": [
+      "Çalışanların yüklediği fişleri kategorize eder, şirket harcama politikasını aşanları yakalar."
+    ],
+    "brandColor": "#635BFF",
+    "logoUrl": "https://cdn.simpleicons.org/stripe/635BFF",
+    "license": "MIT",
+    "repo": "https://github.com/stripe/agent-toolkit"
+  },
+  {
+    "id": "secret-leak-scanner",
+    "name": "Gizli API Anahtarı & Sızıntı Tarayıcısı",
+    "category": "Güvenlik & Uyum",
+    "description": "GitHub'a yanlışlıkla push edilen AWS/OpenAI anahtarlarını anında yakalayıp iptal eder.",
+    "about": "AI-Infra-Guard, AI altyapısı, MCP sunucuları ve ajan becerileri için güvenlik taraması, zafiyet analizi ve jailbreak testleri sunar.",
+    "features": [
+      "MCP sunucu güvenlik taraması",
+      "CVE ve zafiyet eşleştirme",
+      "Ajan beceri denetimi",
+      "Jailbreak değerlendirmesi",
+      "AI altyapı risk analizi"
+    ],
+    "useCases": [
+      "GitHub'a yanlışlıkla push edilen AWS/OpenAI anahtarlarını anında yakalayıp iptal eder."
+    ],
+    "brandColor": "#B91C1C",
+    "logoUrl": "https://cdn.simpleicons.org/tencentqq/B91C1C",
+    "license": "Apache-2.0",
+    "repo": "https://github.com/Tencent/AI-Infra-Guard"
+  },
+  {
+    "id": "customs-declaration-auditor",
+    "name": "Gümrük Beyannamesi Hata Denetçisi",
+    "category": "Operasyon",
+    "description": "Beyanname verileriyle fatura tutarları arasındaki matrah uyuşmazlıklarını gümrükten önce bulur.",
+    "about": "MarkItDown MCP, PDF, Word, Excel, PowerPoint, görsel ve ses dosyalarını yapılandırılmış Markdown'a dönüştürür; sözleşme, fatura ve raporları yapay zeka için okunabilir hale getirir.",
+    "features": [
+      "29+ dosya formatı desteği",
+      "PDF ve Office belge dönüşümü",
+      "Görsel OCR ve meta veri çıkarımı",
+      "Ses dosyasından metin üretimi",
+      "MCP istemcileriyle doğrudan entegrasyon"
+    ],
+    "useCases": [
+      "Beyanname verileriyle fatura tutarları arasındaki matrah uyuşmazlıklarını gümrükten önce bulur."
+    ],
+    "brandColor": "#7C3AED",
+    "logoUrl": "https://cdn.simpleicons.org/microsoft/7C3AED",
+    "license": "MIT",
+    "repo": "https://github.com/trsdn/markitdown-mcp"
+  },
+  {
+    "id": "executive-weekly-brief",
+    "name": "Haftalık Yönetim Özeti (Executive Brief)",
+    "category": "Yönetim",
+    "description": "Satış, destek, finans ve yazılım ekiplerinin haftalık çıktılarını 1 sayfalık CEO özetine dönüştürür.",
+    "about": "dbt MCP, dbt projelerinde model, test ve lineage bilgilerine erişerek veri dönüşümü ve analitik iş akışlarını yönetir.",
+    "features": [
+      "dbt model sorgulama",
+      "Veri lineage görünürlüğü",
+      "Test ve kalite kontrol",
+      "Analitik iş akışı",
+      "Metrik ve KPI erişimi"
+    ],
+    "useCases": [
+      "Satış, destek, finans ve yazılım ekiplerinin haftalık çıktılarını 1 sayfalık CEO özetine dönüştürür."
+    ],
+    "brandColor": "#FF694A",
+    "logoUrl": "https://cdn.simpleicons.org/dbt/FF694A",
+    "license": "Apache-2.0",
+    "repo": "https://github.com/dbt-labs/dbt-mcp"
+  },
+  {
+    "id": "equity-vesting-tracker",
+    "name": "Hisse Opsiyon & Vesting Takipçisi",
+    "category": "İnsan Kaynakları",
+    "description": "Şirket çalışanlarının hisse hakediş takvimlerini sözleşme şartlarına göre hesaplar.",
+    "about": "Yapılandırılabilir erişim kontrolleriyle güvenli dosya okuma, yazma ve dizin işlemleri yapar.",
+    "features": [
+      "Dosya okuma ve yazma",
+      "Dizin listeleme",
+      "Erişim kontrolü",
+      "Yerel dosya işlemleri"
+    ],
+    "useCases": [
+      "Şirket çalışanlarının hisse hakediş takvimlerini sözleşme şartlarına göre hesaplar."
+    ],
+    "brandColor": "#F59E0B",
+    "logoUrl": "https://cdn.simpleicons.org/protondrive/F59E0B",
+    "license": "Apache-2.0",
+    "repo": "https://github.com/modelcontextprotocol/servers/tree/main/src/filesystem"
+  },
+  {
+    "id": "influencer-verifier",
+    "name": "Influencer & Reklam İş Birliği Doğrulayıcı",
+    "category": "Pazarlama & Analiz",
+    "description": "Anlaşma yapılacak profillerin sahte takipçi ve etkileşim oranlarını filtreler.",
+    "about": "CrawlForge MCP, web sitelerinden yapılandırılmış veri toplar; fiyat, stok ve içerik değişikliklerini izlemek için tarama araçları sunar.",
+    "features": [
+      "Web sayfası okuma",
+      "Site haritalama",
+      "Yapılandırılmış veri çıkarma",
+      "Toplu tarama",
+      "Değişiklik izleme"
+    ],
+    "useCases": [
+      "Anlaşma yapılacak profillerin sahte takipçi ve etkileşim oranlarını filtreler."
+    ],
+    "brandColor": "#10B981",
+    "logoUrl": "https://cdn.simpleicons.org/googlechrome/10B981",
+    "license": "MIT",
+    "repo": "https://github.com/mysleekdesigns/crawlforge-mcp"
+  },
+  {
+    "id": "soc2-evidence-collector",
+    "name": "ISO/SOC2 Denetim Kanıt Toplayıcı",
+    "category": "Güvenlik & Uyum",
+    "description": "Güvenlik denetimleri için gerekli log, ekran görüntüsü ve erişim kanıtlarını otomatik derler.",
+    "about": "AI-Infra-Guard, AI altyapısı, MCP sunucuları ve ajan becerileri için güvenlik taraması, zafiyet analizi ve jailbreak testleri sunar.",
+    "features": [
+      "MCP sunucu güvenlik taraması",
+      "CVE ve zafiyet eşleştirme",
+      "Ajan beceri denetimi",
+      "Jailbreak değerlendirmesi",
+      "AI altyapı risk analizi"
+    ],
+    "useCases": [
+      "Güvenlik denetimleri için gerekli log, ekran görüntüsü ve erişim kanıtlarını otomatik derler."
+    ],
+    "brandColor": "#B91C1C",
+    "logoUrl": "https://cdn.simpleicons.org/tencentqq/B91C1C",
+    "license": "Apache-2.0",
+    "repo": "https://github.com/Tencent/AI-Infra-Guard"
+  },
+  {
+    "id": "export-certificate-checker",
+    "name": "İhracat Menşe Şahadetnamesi Denetçisi",
+    "category": "Operasyon",
+    "description": "İhracat belgelerindeki ülke kuralları ve dolaşım sertifikası uyumunu kontrol eder.",
+    "about": "MarkItDown MCP, PDF, Word, Excel, PowerPoint, görsel ve ses dosyalarını yapılandırılmış Markdown'a dönüştürür; sözleşme, fatura ve raporları yapay zeka için okunabilir hale getirir.",
+    "features": [
+      "29+ dosya formatı desteği",
+      "PDF ve Office belge dönüşümü",
+      "Görsel OCR ve meta veri çıkarımı",
+      "Ses dosyasından metin üretimi",
+      "MCP istemcileriyle doğrudan entegrasyon"
+    ],
+    "useCases": [
+      "İhracat belgelerindeki ülke kuralları ve dolaşım sertifikası uyumunu kontrol eder."
+    ],
+    "brandColor": "#7C3AED",
+    "logoUrl": "https://cdn.simpleicons.org/microsoft/7C3AED",
+    "license": "MIT",
+    "repo": "https://github.com/trsdn/markitdown-mcp"
+  },
+  {
+    "id": "job-posting-optimizer",
+    "name": "İlan Metni & İş Tanımı Optimizatörü",
+    "category": "İnsan Kaynakları",
+    "description": "Şirket iş ilanlarındaki taraflı dili temizler ve doğru aday profilini çekecek şekilde düzenler.",
+    "about": "Google GenAI Toolbox, Google'ın üretken yapay zeka modellerine ve araçlarına standart MCP arayüzü üzerinden erişim sağlar.",
+    "features": [
+      "Google AI model erişimi",
+      "Çok dilli içerik üretimi",
+      "Uzun doküman analizi",
+      "Görsel anlama",
+      "Kurumsal AI entegrasyonu"
+    ],
+    "useCases": [
+      "Şirket iş ilanlarındaki taraflı dili temizler ve doğru aday profilini çekecek şekilde düzenler."
+    ],
+    "brandColor": "#4285F4",
+    "logoUrl": "https://cdn.simpleicons.org/google/4285F4",
+    "license": "Apache-2.0",
+    "repo": "https://github.com/googleapis/genai-toolbox"
+  },
+  {
+    "id": "tender-spec-analyst",
+    "name": "Kamu İhale & Şartname Analisti",
+    "category": "Satın Alma",
+    "description": "EKAP/ihale bültenlerindeki yüzlerce sayfalık teknik şartnameleri şirket yeterliliğiyle kıyaslar.",
+    "about": "Patent Literature Search MCP, patent ve teknik literatür veritabanlarında semantik arama yaparak ilgili buluş ve yayınları bulur.",
+    "features": [
+      "Patent literatür araması",
+      "Semantik sorgulama",
+      "Teknik doküman keşfi",
+      "Atıf ve benzerlik analizi",
+      "Araştırma raporu desteği"
+    ],
+    "useCases": [
+      "EKAP/ihale bültenlerindeki yüzlerce sayfalık teknik şartnameleri şirket yeterliliğiyle kıyaslar."
+    ],
+    "brandColor": "#005587",
+    "logoUrl": "https://cdn.simpleicons.org/wikipedia/005587",
+    "license": "Apache-2.0",
+    "repo": "https://github.com/patsnap/patent-literature-search-mcp"
+  },
+  {
+    "id": "price-list-converter",
+    "name": "Katalog Fiyat Liste Dönüştürücü",
+    "category": "Satın Alma",
+    "description": "Tedarikçiden gelen karmaşık Excel tablolarını şirketin ERP formatına hatasız haritalar.",
+    "about": "MarkItDown MCP, PDF, Word, Excel, PowerPoint, görsel ve ses dosyalarını yapılandırılmış Markdown'a dönüştürür; sözleşme, fatura ve raporları yapay zeka için okunabilir hale getirir.",
+    "features": [
+      "29+ dosya formatı desteği",
+      "PDF ve Office belge dönüşümü",
+      "Görsel OCR ve meta veri çıkarımı",
+      "Ses dosyasından metin üretimi",
+      "MCP istemcileriyle doğrudan entegrasyon"
+    ],
+    "useCases": [
+      "Tedarikçiden gelen karmaşık Excel tablolarını şirketin ERP formatına hatasız haritalar."
+    ],
+    "brandColor": "#7C3AED",
+    "logoUrl": "https://cdn.simpleicons.org/microsoft/7C3AED",
+    "license": "MIT",
+    "repo": "https://github.com/trsdn/markitdown-mcp"
+  },
+  {
+    "id": "lease-contract-tracker",
+    "name": "Kira & Gayrimenkul Sözleşme Takipçisi",
+    "category": "Muhasebe & Finans",
+    "description": "Şirketin kiraladığı ofis/depoların TEFE-TÜFE artış ve sözleşme fesih sürelerini uyarır.",
+    "about": "Yapılandırılabilir erişim kontrolleriyle güvenli dosya okuma, yazma ve dizin işlemleri yapar.",
+    "features": [
+      "Dosya okuma ve yazma",
+      "Dizin listeleme",
+      "Erişim kontrolü",
+      "Yerel dosya işlemleri"
+    ],
+    "useCases": [
+      "Şirketin kiraladığı ofis/depoların TEFE-TÜFE artış ve sözleşme fesih sürelerini uyarır."
+    ],
+    "brandColor": "#F59E0B",
+    "logoUrl": "https://cdn.simpleicons.org/protondrive/F59E0B",
+    "license": "Apache-2.0",
+    "repo": "https://github.com/modelcontextprotocol/servers/tree/main/src/filesystem"
+  },
+  {
+    "id": "logistics-delay-tracker",
+    "name": "Konteyner & Lojistik Gecikme Takipçisi",
+    "category": "Operasyon",
+    "description": "Deniz/kara taşımacılığındaki gemi konumlarını izleyip tedarik zinciri aksamalarını öngörür.",
+    "about": "Web sayfalarından içerik çekip HTML'i LLM'ler için Markdown'a dönüştürür.",
+    "features": [
+      "Web içeriği çekme",
+      "HTML'den Markdown dönüşümü",
+      "URL tabanlı okuma",
+      "LLM için içerik hazırlama"
+    ],
+    "useCases": [
+      "Deniz/kara taşımacılığındaki gemi konumlarını izleyip tedarik zinciri aksamalarını öngörür."
+    ],
+    "brandColor": "#0284C7",
+    "logoUrl": "https://cdn.simpleicons.org/firefox/0284C7",
+    "license": "Apache-2.0",
+    "repo": "https://github.com/modelcontextprotocol/servers/tree/main/src/fetch"
+  },
+  {
+    "id": "credit-risk-intel",
+    "name": "Kredi & Müşteri Risk İstihbaratçısı",
+    "category": "Muhasebe & Finans",
+    "description": "Vadeli satış yapılacak şirketlerin vergi borcu, protesto ve konkordato geçmişini sorgular.",
+    "about": "GPT Researcher, web ve yerel kaynaklardan otonom derin araştırma yapan açık kaynak bir araştırma ajanıdır; kaynaklı raporlar üretir.",
+    "features": [
+      "Otonom web araştırması",
+      "Kaynaklı rapor üretimi",
+      "Çoklu kaynak sentezi",
+      "Derin araştırma modu",
+      "Özelleştirilebilir araştırma görevleri"
+    ],
+    "useCases": [
+      "Vadeli satış yapılacak şirketlerin vergi borcu, protesto ve konkordato geçmişini sorgular."
+    ],
+    "brandColor": "#2563EB",
+    "logoUrl": "https://cdn.simpleicons.org/arxiv/2563EB",
+    "license": "Apache-2.0",
+    "repo": "https://github.com/assafelovic/gpt-researcher"
+  },
+  {
+    "id": "permission-matrix-auditor",
+    "name": "Kullanıcı İzin & Yetki Matrisi Denetçisi",
+    "category": "Güvenlik & Uyum",
+    "description": "Şirket içi araçlarda gereksiz yere Admin yetkisine sahip kullanıcıları listeler.",
+    "about": "AI-Infra-Guard, AI altyapısı, MCP sunucuları ve ajan becerileri için güvenlik taraması, zafiyet analizi ve jailbreak testleri sunar.",
+    "features": [
+      "MCP sunucu güvenlik taraması",
+      "CVE ve zafiyet eşleştirme",
+      "Ajan beceri denetimi",
+      "Jailbreak değerlendirmesi",
+      "AI altyapı risk analizi"
+    ],
+    "useCases": [
+      "Şirket içi araçlarda gereksiz yere Admin yetkisine sahip kullanıcıları listeler."
+    ],
+    "brandColor": "#B91C1C",
+    "logoUrl": "https://cdn.simpleicons.org/tencentqq/B91C1C",
+    "license": "Apache-2.0",
+    "repo": "https://github.com/Tencent/AI-Infra-Guard"
+  },
+  {
+    "id": "user-manual-generator",
+    "name": "Kullanım Kılavuzu & FAQ Üretici",
+    "category": "Operasyon",
+    "description": "Yeni bir donanım veya yazılım modülünden son kullanıcı için sorun giderme kılavuzu hazırlar.",
+    "about": "Code Assistant, kod tabanını analiz eden ve otonom geliştirme görevleri yürüten bir MCP/ACP kod asistanıdır.",
+    "features": [
+      "Kod tabanı analizi",
+      "Otonom kod üretimi",
+      "Refactoring desteği",
+      "Test ve dokümantasyon",
+      "MCP ve ACP modu"
+    ],
+    "useCases": [
+      "Yeni bir donanım veya yazılım modülünden son kullanıcı için sorun giderme kılavuzu hazırlar."
+    ],
+    "brandColor": "#374151",
+    "logoUrl": "https://cdn.simpleicons.org/githubcopilot/374151",
+    "license": "MIT",
+    "repo": "https://github.com/stippi/code-assistant"
+  },
+  {
+    "id": "waf-log-analyst",
+    "name": "Kötü Niyetli İstek (WAF) Log İnceleyici",
+    "category": "Güvenlik & Uyum",
+    "description": "Şirket web sitesine gelen olağandışı trafik ve brute-force saldırılarını analiz eder.",
+    "about": "Cloudflare MCP, DNS, CDN, Workers ve güvenlik ayarlarını Cloudflare hesabınız üzerinden yönetmeyi sağlar.",
+    "features": [
+      "DNS ve alan adı yönetimi",
+      "CDN ve önbellek kontrolü",
+      "Workers dağıtımı",
+      "Güvenlik ve WAF ayarları",
+      "Trafik analizi"
+    ],
+    "useCases": [
+      "Şirket web sitesine gelen olağandışı trafik ve brute-force saldırılarını analiz eder."
+    ],
+    "brandColor": "#F38020",
+    "logoUrl": "https://cdn.simpleicons.org/cloudflare/F38020",
+    "license": "Apache-2.0",
+    "repo": "https://github.com/cloudflare/mcp-server-cloudflare"
+  },
+  {
+    "id": "microservice-rca",
+    "name": "Mikroservis Kesinti Kök Neden Analisti",
+    "category": "Yazılım & DevOps",
+    "description": "Çöken bir servis için dağıtık tracing kayıtlarını inceleyip ilk kopan noktayı bulur.",
+    "about": "Elasticsearch MCP, log, metrik ve arama indekslerine doğal dil ile sorgu göndermeyi ve sonuçları özetlemeyi sağlar.",
+    "features": [
+      "Elasticsearch sorgulama",
+      "Log ve metrik analizi",
+      "İndeks keşfi",
+      "Arama sonucu özetleme",
+      "Operasyonel veri erişimi"
+    ],
+    "useCases": [
+      "Çöken bir servis için dağıtık tracing kayıtlarını inceleyip ilk kopan noktayı bulur."
+    ],
+    "brandColor": "#005571",
+    "logoUrl": "https://cdn.simpleicons.org/elastic/005571",
+    "license": "Apache-2.0",
+    "repo": "https://github.com/elastic/mcp-server-elasticsearch"
+  },
+  {
+    "id": "feedback-synthesizer",
+    "name": "Müşteri Geri Bildirim Sentezleyicisi",
+    "category": "Müşteri Destek",
+    "description": "Destek biletleri ve anketlerdeki en çok tekrarlanan 5 ürün hatasını haftalık raporlar.",
+    "about": "Qdrant MCP, vektör veritabanında semantik arama, benzerlik eşleştirme ve RAG tabanlı bilgi erişimi sağlar.",
+    "features": [
+      "Semantik vektör araması",
+      "Benzerlik eşleştirme",
+      "RAG bilgi erişimi",
+      "Koleksiyon yönetimi",
+      "Anlamsal geri bildirim analizi"
+    ],
+    "useCases": [
+      "Destek biletleri ve anketlerdeki en çok tekrarlanan 5 ürün hatasını haftalık raporlar."
+    ],
+    "brandColor": "#DC244C",
+    "logoUrl": "https://cdn.simpleicons.org/qdrant/DC244C",
+    "license": "Apache-2.0",
+    "repo": "https://github.com/qdrant/mcp-server-qdrant"
+  },
+  {
+    "id": "churn-early-warning",
+    "name": "Müşteri Kayıp (Churn) Erken Uyarı Ajanı",
+    "category": "Satış & CRM",
+    "description": "Kullanım sıklığı düşen kurumsal müşterileri CRM'de saptayıp satış temsilcisine bildirim atar.",
+    "about": "Superset MCP, Apache Superset panolarına ve SQL sorgularına ajan erişimi sağlar; 50'den fazla veri kaynağından rapor çekmeyi kolaylaştırır.",
+    "features": [
+      "Dashboard sorgulama",
+      "50+ veri kaynağı",
+      "SQL ve görsel sorgu desteği",
+      "Metrik ve KPI erişimi",
+      "Self-servis BI entegrasyonu"
+    ],
+    "useCases": [
+      "Kullanım sıklığı düşen kurumsal müşterileri CRM'de saptayıp satış temsilcisine bildirim atar."
+    ],
+    "brandColor": "#20A6C9",
+    "logoUrl": "https://cdn.simpleicons.org/apache/20A6C9",
+    "license": "MIT",
+    "repo": "https://github.com/aptro/superset-mcp"
+  },
+  {
+    "id": "kyc-kyb-verifier",
+    "name": "Müşteri Onay (KYC/KYB) Doğrulama Ajanı",
+    "category": "Muhasebe & Finans",
+    "description": "Kaydolan kurumsal müşterilerin vergi levhası ve ticaret sicil gazetesi belgelerini kontrol eder.",
+    "about": "MarkItDown MCP, PDF, Word, Excel, PowerPoint, görsel ve ses dosyalarını yapılandırılmış Markdown'a dönüştürür; sözleşme, fatura ve raporları yapay zeka için okunabilir hale getirir.",
+    "features": [
+      "29+ dosya formatı desteği",
+      "PDF ve Office belge dönüşümü",
+      "Görsel OCR ve meta veri çıkarımı",
+      "Ses dosyasından metin üretimi",
+      "MCP istemcileriyle doğrudan entegrasyon"
+    ],
+    "useCases": [
+      "Kaydolan kurumsal müşterilerin vergi levhası ve ticaret sicil gazetesi belgelerini kontrol eder."
+    ],
+    "brandColor": "#7C3AED",
+    "logoUrl": "https://cdn.simpleicons.org/microsoft/7C3AED",
+    "license": "MIT",
+    "repo": "https://github.com/trsdn/markitdown-mcp"
+  },
+  {
+    "id": "agent-coaching",
+    "name": "Müşteri Temsilcisi Eğitim Koçu",
+    "category": "Müşteri Destek",
+    "description": "Yeni temsilcinin canlı çağrısını dinleyip konuşma biter bitmez geliştirmesi gereken 2 noktayı iletir.",
+    "about": "Legion MCP, birden fazla yapay zeka modelinin tartışarak ve oylayarak ortak karar üretmesini sağlayan konsey tabanlı bir sistemdir.",
+    "features": [
+      "Çoklu model konseyi",
+      "Oylama ve konsensüs",
+      "Kalite değerlendirmesi",
+      "Konuşma analizi",
+      "Karar destek çıktıları"
+    ],
+    "useCases": [
+      "Yeni temsilcinin canlı çağrısını dinleyip konuşma biter bitmez geliştirmesi gereken 2 noktayı iletir."
+    ],
+    "brandColor": "#8B5CF6",
+    "logoUrl": "https://cdn.simpleicons.org/openai/8B5CF6",
+    "license": "MIT",
+    "repo": "https://github.com/faulkj/legion-mcp"
+  },
+  {
+    "id": "payment-reminder-agent",
+    "name": "Müşteri Ödeme Hatırlatma & Tahsilat Ajanı",
+    "category": "Muhasebe & Finans",
+    "description": "Vadesi geçen faturalar için müşterinin muhasebe birimine kademeli, nazik hatırlatmalar yapar.",
+    "about": "Stripe Agent Toolkit, ödeme, fatura, abonelik ve müşteri işlemlerini Stripe API üzerinden yapay zeka ajanlarına güvenli araçlar olarak sunar.",
+    "features": [
+      "Ödeme ve fatura yönetimi",
+      "Abonelik ve müşteri sorgulama",
+      "Stripe API araçları",
+      "Kurumsal ödeme otomasyonu",
+      "Güvenli API anahtarı yönetimi"
+    ],
+    "useCases": [
+      "Vadesi geçen faturalar için müşterinin muhasebe birimine kademeli, nazik hatırlatmalar yapar."
+    ],
+    "brandColor": "#635BFF",
+    "logoUrl": "https://cdn.simpleicons.org/stripe/635BFF",
+    "license": "MIT",
+    "repo": "https://github.com/stripe/agent-toolkit"
+  },
+  {
+    "id": "it-asset-tracker",
+    "name": "Ofis Envanter & Donanım Takipçisi",
+    "category": "IT & Operasyon",
+    "description": "Personele zimmetlenen laptop, telefon ve lisansların yenilenme takvimini izler.",
+    "about": "Yapılandırılabilir erişim kontrolleriyle güvenli dosya okuma, yazma ve dizin işlemleri yapar.",
+    "features": [
+      "Dosya okuma ve yazma",
+      "Dizin listeleme",
+      "Erişim kontrolü",
+      "Yerel dosya işlemleri"
+    ],
+    "useCases": [
+      "Personele zimmetlenen laptop, telefon ve lisansların yenilenme takvimini izler."
+    ],
+    "brandColor": "#F59E0B",
+    "logoUrl": "https://cdn.simpleicons.org/protondrive/F59E0B",
+    "license": "Apache-2.0",
+    "repo": "https://github.com/modelcontextprotocol/servers/tree/main/src/filesystem"
+  },
+  {
+    "id": "deep-research-analyst",
+    "name": "Otonom Derin Araştırma Ajanı",
+    "category": "Yapay Zeka",
+    "description": "Herhangi bir konuda kaynaklı derin araştırma raporu üretir.",
+    "about": "GPT Researcher, web ve yerel kaynaklardan otonom derin araştırma yapan açık kaynak bir araştırma ajanıdır; kaynaklı raporlar üretir.",
+    "features": [
+      "Otonom web araştırması",
+      "Kaynaklı rapor üretimi",
+      "Çoklu kaynak sentezi",
+      "Derin araştırma modu",
+      "Özelleştirilebilir araştırma görevleri"
+    ],
+    "useCases": [
+      "Herhangi bir konuda kaynaklı derin araştırma raporu üretir."
+    ],
+    "brandColor": "#2563EB",
+    "logoUrl": "https://cdn.simpleicons.org/arxiv/2563EB",
+    "license": "Apache-2.0",
+    "repo": "https://github.com/assafelovic/gpt-researcher"
+  },
+  {
+    "id": "trademark-researcher",
+    "name": "Patent & Marka Benzerlik Araştırmacısı",
+    "category": "Hukuk & Uyum",
+    "description": "Yeni çıkarılacak marka/ürün isimlerinin tescil veritabanlarında çakışma riskini sorgular.",
+    "about": "Patent Literature Search MCP, patent ve teknik literatür veritabanlarında semantik arama yaparak ilgili buluş ve yayınları bulur.",
+    "features": [
+      "Patent literatür araması",
+      "Semantik sorgulama",
+      "Teknik doküman keşfi",
+      "Atıf ve benzerlik analizi",
+      "Araştırma raporu desteği"
+    ],
+    "useCases": [
+      "Yeni çıkarılacak marka/ürün isimlerinin tescil veritabanlarında çakışma riskini sorgular."
+    ],
+    "brandColor": "#005587",
+    "logoUrl": "https://cdn.simpleicons.org/wikipedia/005587",
+    "license": "Apache-2.0",
+    "repo": "https://github.com/patsnap/patent-literature-search-mcp"
+  },
+  {
+    "id": "retail-visit-reporter",
+    "name": "Perakende Mağaza Ziyaret Raporlayıcısı",
+    "category": "Operasyon",
+    "description": "Saha ekiplerinin sesli veya metin notlarını standart mağaza denetim formuna işler.",
+    "about": "MarkItDown MCP, PDF, Word, Excel, PowerPoint, görsel ve ses dosyalarını yapılandırılmış Markdown'a dönüştürür; sözleşme, fatura ve raporları yapay zeka için okunabilir hale getirir.",
+    "features": [
+      "29+ dosya formatı desteği",
+      "PDF ve Office belge dönüşümü",
+      "Görsel OCR ve meta veri çıkarımı",
+      "Ses dosyasından metin üretimi",
+      "MCP istemcileriyle doğrudan entegrasyon"
+    ],
+    "useCases": [
+      "Saha ekiplerinin sesli veya metin notlarını standart mağaza denetim formuna işler."
+    ],
+    "brandColor": "#7C3AED",
+    "logoUrl": "https://cdn.simpleicons.org/microsoft/7C3AED",
+    "license": "MIT",
+    "repo": "https://github.com/trsdn/markitdown-mcp"
+  },
+  {
+    "id": "budget-overrun-alert",
+    "name": "Proje Bütçe Aşım Erken Uyarıcısı",
+    "category": "Yönetim",
+    "description": "Harcanan adam/saat maliyetini projenin tamamlanma yüzdesiyle kıyaslayıp bütçe alarmı verir.",
+    "about": "dbt MCP, dbt projelerinde model, test ve lineage bilgilerine erişerek veri dönüşümü ve analitik iş akışlarını yönetir.",
+    "features": [
+      "dbt model sorgulama",
+      "Veri lineage görünürlüğü",
+      "Test ve kalite kontrol",
+      "Analitik iş akışı",
+      "Metrik ve KPI erişimi"
+    ],
+    "useCases": [
+      "Harcanan adam/saat maliyetini projenin tamamlanma yüzdesiyle kıyaslayıp bütçe alarmı verir."
+    ],
+    "brandColor": "#FF694A",
+    "logoUrl": "https://cdn.simpleicons.org/dbt/FF694A",
+    "license": "Apache-2.0",
+    "repo": "https://github.com/dbt-labs/dbt-mcp"
+  },
+  {
+    "id": "competitor-price-monitor",
+    "name": "Rakip Fiyat & Stok Monitörü",
+    "category": "Pazarlama & Analiz",
+    "description": "Rakiplerin e-ticaret sitelerindeki fiyat değişikliklerini anlık tarayıp dinamik fiyat önerir.",
+    "about": "CrawlForge MCP, web sitelerinden yapılandırılmış veri toplar; fiyat, stok ve içerik değişikliklerini izlemek için tarama araçları sunar.",
+    "features": [
+      "Web sayfası okuma",
+      "Site haritalama",
+      "Yapılandırılmış veri çıkarma",
+      "Toplu tarama",
+      "Değişiklik izleme"
+    ],
+    "useCases": [
+      "Rakiplerin e-ticaret sitelerindeki fiyat değişikliklerini anlık tarayıp dinamik fiyat önerir."
+    ],
+    "brandColor": "#10B981",
+    "logoUrl": "https://cdn.simpleicons.org/googlechrome/10B981",
+    "license": "MIT",
+    "repo": "https://github.com/mysleekdesigns/crawlforge-mcp"
+  },
+  {
+    "id": "competitor-feature-tracker",
+    "name": "Rakip Ürün Değişim Takipçisi",
+    "category": "Pazarlama & Analiz",
+    "description": "Rakiplerin fiyatlandırma sayfalarındaki ve özellik listelerindeki değişiklikleri yakalar.",
+    "about": "CrawlForge MCP, web sitelerinden yapılandırılmış veri toplar; fiyat, stok ve içerik değişikliklerini izlemek için tarama araçları sunar.",
+    "features": [
+      "Web sayfası okuma",
+      "Site haritalama",
+      "Yapılandırılmış veri çıkarma",
+      "Toplu tarama",
+      "Değişiklik izleme"
+    ],
+    "useCases": [
+      "Rakiplerin fiyatlandırma sayfalarındaki ve özellik listelerindeki değişiklikleri yakalar."
+    ],
+    "brandColor": "#10B981",
+    "logoUrl": "https://cdn.simpleicons.org/googlechrome/10B981",
+    "license": "MIT",
+    "repo": "https://github.com/mysleekdesigns/crawlforge-mcp"
+  },
+  {
+    "id": "ad-roas-guardian",
+    "name": "Reklam Bütçesi RoAS Koruyucusu",
+    "category": "Pazarlama & Analiz",
+    "description": "Beklenen dönüşüm oranının altına düşen Meta/Google reklam setlerini otomatik durdurur.",
+    "about": "Zapier MCP, yapay zeka ajanlarının Zapier üzerinden 8.000'den fazla uygulama ve servisle otomatik iş akışı kurmasını sağlar.",
+    "features": [
+      "8.000+ uygulama entegrasyonu",
+      "Tetikleyici ve aksiyon otomasyonu",
+      "Çok adımlı iş akışları",
+      "Kurumsal SaaS bağlantıları",
+      "Kodsuz entegrasyon"
+    ],
+    "useCases": [
+      "Beklenen dönüşüm oranının altına düşen Meta/Google reklam setlerini otomatik durdurur."
+    ],
+    "brandColor": "#FF4A00",
+    "logoUrl": "https://cdn.simpleicons.org/zapier/FF4A00",
+    "license": "MIT",
+    "repo": "https://github.com/zapier/zapier-mcp"
+  },
+  {
+    "id": "review-response-writer",
+    "name": "Restoran/Otel Yorum Yanıtlama Ajanı",
+    "category": "Müşteri Destek",
+    "description": "Google Maps ve TripAdvisor yorumlarına kurumsal dille kişiselleştirilmiş yanıtlar hazırlar.",
+    "about": "Google GenAI Toolbox, Google'ın üretken yapay zeka modellerine ve araçlarına standart MCP arayüzü üzerinden erişim sağlar.",
+    "features": [
+      "Google AI model erişimi",
+      "Çok dilli içerik üretimi",
+      "Uzun doküman analizi",
+      "Görsel anlama",
+      "Kurumsal AI entegrasyonu"
+    ],
+    "useCases": [
+      "Google Maps ve TripAdvisor yorumlarına kurumsal dille kişiselleştirilmiş yanıtlar hazırlar."
+    ],
+    "brandColor": "#4285F4",
+    "logoUrl": "https://cdn.simpleicons.org/google/4285F4",
+    "license": "Apache-2.0",
+    "repo": "https://github.com/googleapis/genai-toolbox"
+  },
+  {
+    "id": "saas-waste-detector",
+    "name": "SaaS Abonelik İsraf Dedektörü",
+    "category": "IT & Operasyon",
+    "description": "Şirket çalışanlarının kullanmadığı veya mükerrer ödenen yazılım aboneliklerini raporlar.",
+    "about": "Zapier MCP, yapay zeka ajanlarının Zapier üzerinden 8.000'den fazla uygulama ve servisle otomatik iş akışı kurmasını sağlar.",
+    "features": [
+      "8.000+ uygulama entegrasyonu",
+      "Tetikleyici ve aksiyon otomasyonu",
+      "Çok adımlı iş akışları",
+      "Kurumsal SaaS bağlantıları",
+      "Kodsuz entegrasyon"
+    ],
+    "useCases": [
+      "Şirket çalışanlarının kullanmadığı veya mükerrer ödenen yazılım aboneliklerini raporlar."
+    ],
+    "brandColor": "#FF4A00",
+    "logoUrl": "https://cdn.simpleicons.org/zapier/FF4A00",
+    "license": "MIT",
+    "repo": "https://github.com/zapier/zapier-mcp"
+  },
+  {
+    "id": "field-service-router",
+    "name": "Saha Servis Rota & Görev Atayıcı",
+    "category": "Operasyon",
+    "description": "Teknik servis teknisyenlerine konum ve işin aciliyetine göre günlük görev dağıtır.",
+    "about": "Web sayfalarından içerik çekip HTML'i LLM'ler için Markdown'a dönüştürür.",
+    "features": [
+      "Web içeriği çekme",
+      "HTML'den Markdown dönüşümü",
+      "URL tabanlı okuma",
+      "LLM için içerik hazırlama"
+    ],
+    "useCases": [
+      "Teknik servis teknisyenlerine konum ve işin aciliyetine göre günlük görev dağıtır."
+    ],
+    "brandColor": "#0284C7",
+    "logoUrl": "https://cdn.simpleicons.org/firefox/0284C7",
+    "license": "Apache-2.0",
+    "repo": "https://github.com/modelcontextprotocol/servers/tree/main/src/fetch"
+  },
+  {
+    "id": "marketplace-price-sync",
+    "name": "Satıcı Pazar Yeri Fiyat Çakışma Ajanı",
+    "category": "Operasyon",
+    "description": "Trendyol, Hepsiburada, Amazon fiyatları arasındaki tutarsızlıkları satıcı paneline raporlar.",
+    "about": "CrawlForge MCP, web sitelerinden yapılandırılmış veri toplar; fiyat, stok ve içerik değişikliklerini izlemek için tarama araçları sunar.",
+    "features": [
+      "Web sayfası okuma",
+      "Site haritalama",
+      "Yapılandırılmış veri çıkarma",
+      "Toplu tarama",
+      "Değişiklik izleme"
+    ],
+    "useCases": [
+      "Trendyol, Hepsiburada, Amazon fiyatları arasındaki tutarsızlıkları satıcı paneline raporlar."
+    ],
+    "brandColor": "#10B981",
+    "logoUrl": "https://cdn.simpleicons.org/googlechrome/10B981",
+    "license": "MIT",
+    "repo": "https://github.com/mysleekdesigns/crawlforge-mcp"
+  },
+  {
+    "id": "sales-objection-coach",
+    "name": "Satış İtirazı Yanıt Asistanı",
+    "category": "Satış & CRM",
+    "description": "Potansiyel müşterilerin fiyat itirazlarına en uygun vaka çalışmalarını getirir.",
+    "about": "Chroma MCP, gömülü bellek ve vektör arama ile geçmiş teklifler, vaka çalışmaları ve kurumsal bilgiyi anlamsal olarak eşleştirir.",
+    "features": [
+      "Vektör bellek deposu",
+      "Semantik doküman araması",
+      "Bilgi eşleştirme",
+      "RAG destekli yanıtlar",
+      "Kurumsal arşiv erişimi"
+    ],
+    "useCases": [
+      "Potansiyel müşterilerin fiyat itirazlarına en uygun vaka çalışmalarını getirir."
+    ],
+    "brandColor": "#FF6442",
+    "logoUrl": "https://cdn.simpleicons.org/semanticui/FF6442",
+    "license": "Apache-2.0",
+    "repo": "https://github.com/chroma-core/chroma-mcp"
+  },
+  {
+    "id": "healthcare-fhir-agent",
+    "name": "Sağlık Veri Entegrasyon Ajanı",
+    "category": "Sektörel Çözümler",
+    "description": "FHIR uyumlu klinik kayıtlara güvenli erişim ve sorgulama sağlar.",
+    "about": "FHIR Hydrant MCP, FHIR uyumlu sağlık kayıtlarına güvenli sorgu ve terminoloji araması yaparak klinik veri entegrasyonu sağlar.",
+    "features": [
+      "FHIR kayıt sorgulama",
+      "Klinik veri erişimi",
+      "Terminoloji araması",
+      "Güvenli sayfalama",
+      "Sağlık veri entegrasyonu"
+    ],
+    "useCases": [
+      "FHIR uyumlu klinik kayıtlara güvenli erişim ve sorgulama sağlar."
+    ],
+    "brandColor": "#0EA5E9",
+    "logoUrl": "https://cdn.simpleicons.org/openmrs/0EA5E9",
+    "license": "MIT",
+    "repo": "https://github.com/faulkj/fhirhydrant"
+  },
+  {
+    "id": "seo-content-auditor",
+    "name": "SEO İçerik Sapma & Bozulma Ajanı",
+    "category": "Pazarlama & Analiz",
+    "description": "Şirket blogundaki arama sıralaması düşen içerikleri bulup güncelleme noktalarını çıkarır.",
+    "about": "Brave Search API ile web ve yerel arama sonuçlarını yapılandırılmış biçimde döndürür.",
+    "features": [
+      "Web araması",
+      "Yerel işletme araması",
+      "Sonuç filtreleme",
+      "Brave Search API"
+    ],
+    "useCases": [
+      "Şirket blogundaki arama sıralaması düşen içerikleri bulup güncelleme noktalarını çıkarır."
+    ],
+    "brandColor": "#FB542B",
+    "logoUrl": "https://cdn.simpleicons.org/brave/FB542B",
+    "license": "Apache-2.0",
+    "repo": "https://github.com/modelcontextprotocol/servers/tree/main/src/brave-search"
+  },
+  {
+    "id": "social-dm-sales",
+    "name": "Sosyal Medya DM Satış Temsilcisi",
+    "category": "Satış & CRM",
+    "description": "Instagram/WhatsApp üzerinden gelen ürün sorularını cevaplayıp doğrudan ödeme linkine yönlendirir.",
+    "about": "Zapier MCP, yapay zeka ajanlarının Zapier üzerinden 8.000'den fazla uygulama ve servisle otomatik iş akışı kurmasını sağlar.",
+    "features": [
+      "8.000+ uygulama entegrasyonu",
+      "Tetikleyici ve aksiyon otomasyonu",
+      "Çok adımlı iş akışları",
+      "Kurumsal SaaS bağlantıları",
+      "Kodsuz entegrasyon"
+    ],
+    "useCases": [
+      "Instagram/WhatsApp üzerinden gelen ürün sorularını cevaplayıp doğrudan ödeme linkine yönlendirir."
+    ],
+    "brandColor": "#FF4A00",
+    "logoUrl": "https://cdn.simpleicons.org/zapier/FF4A00",
+    "license": "MIT",
+    "repo": "https://github.com/zapier/zapier-mcp"
+  },
+  {
+    "id": "social-crisis-detector",
+    "name": "Sosyal Medya Kriz Dedektörü",
+    "category": "Pazarlama & Analiz",
+    "description": "Marka hakkında sosyal medyada aniden artan negatif yorumları filtreleyip PR ekibini uyarır.",
+    "about": "CrawlForge MCP, web sitelerinden yapılandırılmış veri toplar; fiyat, stok ve içerik değişikliklerini izlemek için tarama araçları sunar.",
+    "features": [
+      "Web sayfası okuma",
+      "Site haritalama",
+      "Yapılandırılmış veri çıkarma",
+      "Toplu tarama",
+      "Değişiklik izleme"
+    ],
+    "useCases": [
+      "Marka hakkında sosyal medyada aniden artan negatif yorumları filtreleyip PR ekibini uyarır."
+    ],
+    "brandColor": "#10B981",
+    "logoUrl": "https://cdn.simpleicons.org/googlechrome/10B981",
+    "license": "MIT",
+    "repo": "https://github.com/mysleekdesigns/crawlforge-mcp"
+  },
+  {
+    "id": "sql-readonly-reporting",
+    "name": "SQL Salt-Okunur Raporlama Ajanı",
+    "category": "Veri & Raporlama",
+    "description": "Finans/pazarlama ekiplerine teknik ekibe gitmeden doğal dille veritabanından veri çeker.",
+    "about": "PostgreSQL veritabanlarına salt-okunur erişim sağlar; şema inceleme ve güvenli SQL sorguları çalıştırır.",
+    "features": [
+      "Salt-okunur SQL sorguları",
+      "Veritabanı şema keşfi",
+      "Güvenli veri erişimi",
+      "PostgreSQL entegrasyonu"
+    ],
+    "useCases": [
+      "Finans/pazarlama ekiplerine teknik ekibe gitmeden doğal dille veritabanından veri çeker."
+    ],
+    "brandColor": "#336791",
+    "logoUrl": "https://cdn.simpleicons.org/postgresql/336791",
+    "license": "Apache-2.0",
+    "repo": "https://github.com/modelcontextprotocol/servers/tree/main/src/postgres"
+  },
+  {
+    "id": "intern-project-scorer",
+    "name": "Stajyer Başvuru & Görev Değerlendirici",
+    "category": "İnsan Kaynakları",
+    "description": "Stajyer adaylarının gönderdiği deneme projelerini temel kriterlere göre ön elemeden geçirir.",
+    "about": "Hugging Face Spaces MCP, Hugging Face üzerindeki demo uygulamalara ve modellere MCP arayüzüyle erişim sağlar.",
+    "features": [
+      "HF Spaces erişimi",
+      "Model demo çalıştırma",
+      "Proje değerlendirme",
+      "Hızlı prototipleme",
+      "Açık model entegrasyonu"
+    ],
+    "useCases": [
+      "Stajyer adaylarının gönderdiği deneme projelerini temel kriterlere göre ön elemeden geçirir."
+    ],
+    "brandColor": "#FFD21E",
+    "logoUrl": "https://cdn.simpleicons.org/huggingface/FFD21E",
+    "license": "MIT",
+    "repo": "https://github.com/evalstate/mcp-hfspace"
+  },
+  {
+    "id": "contract-nda-auditor",
+    "name": "Sözleşme & NDA Risk Denetçisi",
+    "category": "Hukuk & Uyum",
+    "description": "Tedarikçi/müşteri sözleşmelerinde şirketi riske atan cezai şart ve gizlilik açıklarını tespit eder.",
+    "about": "MarkItDown MCP, PDF, Word, Excel, PowerPoint, görsel ve ses dosyalarını yapılandırılmış Markdown'a dönüştürür; sözleşme, fatura ve raporları yapay zeka için okunabilir hale getirir.",
+    "features": [
+      "29+ dosya formatı desteği",
+      "PDF ve Office belge dönüşümü",
+      "Görsel OCR ve meta veri çıkarımı",
+      "Ses dosyasından metin üretimi",
+      "MCP istemcileriyle doğrudan entegrasyon"
+    ],
+    "useCases": [
+      "Tedarikçi/müşteri sözleşmelerinde şirketi riske atan cezai şart ve gizlilik açıklarını tespit eder."
+    ],
+    "brandColor": "#7C3AED",
+    "logoUrl": "https://cdn.simpleicons.org/microsoft/7C3AED",
+    "license": "MIT",
+    "repo": "https://github.com/trsdn/markitdown-mcp"
+  },
+  {
+    "id": "invoice-delivery-matcher",
+    "name": "Tedarikçi Fatura & İrsaliye Eşleştirici",
+    "category": "Muhasebe & Finans",
+    "description": "Gelen faturalar ile depo irsaliyelerini satır bazlı karşılaştırıp farkları muhasebeye bildirir.",
+    "about": "Stripe Agent Toolkit, ödeme, fatura, abonelik ve müşteri işlemlerini Stripe API üzerinden yapay zeka ajanlarına güvenli araçlar olarak sunar.",
+    "features": [
+      "Ödeme ve fatura yönetimi",
+      "Abonelik ve müşteri sorgulama",
+      "Stripe API araçları",
+      "Kurumsal ödeme otomasyonu",
+      "Güvenli API anahtarı yönetimi"
+    ],
+    "useCases": [
+      "Gelen faturalar ile depo irsaliyelerini satır bazlı karşılaştırıp farkları muhasebeye bildirir."
+    ],
+    "brandColor": "#635BFF",
+    "logoUrl": "https://cdn.simpleicons.org/stripe/635BFF",
+    "license": "MIT",
+    "repo": "https://github.com/stripe/agent-toolkit"
+  },
+  {
+    "id": "supplier-sla-tracker",
+    "name": "Tedarikçi SLA & Teslimat Takipçisi",
+    "category": "Satın Alma",
+    "description": "Tedarikçilerin teslim tarihlerini ve gecikme cezası haklarını sözleşmeye göre hesaplar.",
+    "about": "Zapier MCP, yapay zeka ajanlarının Zapier üzerinden 8.000'den fazla uygulama ve servisle otomatik iş akışı kurmasını sağlar.",
+    "features": [
+      "8.000+ uygulama entegrasyonu",
+      "Tetikleyici ve aksiyon otomasyonu",
+      "Çok adımlı iş akışları",
+      "Kurumsal SaaS bağlantıları",
+      "Kodsuz entegrasyon"
+    ],
+    "useCases": [
+      "Tedarikçilerin teslim tarihlerini ve gecikme cezası haklarını sözleşmeye göre hesaplar."
+    ],
+    "brandColor": "#FF4A00",
+    "logoUrl": "https://cdn.simpleicons.org/zapier/FF4A00",
+    "license": "MIT",
+    "repo": "https://github.com/zapier/zapier-mcp"
+  },
+  {
+    "id": "supplier-quote-matrix",
+    "name": "Tedarikçi Teklif Karşılaştırma Matrisi",
+    "category": "Satın Alma",
+    "description": "5 farklı tedarikçiden gelen PDF teklifleri tek bir Excel karşılaştırma tablosuna döker.",
+    "about": "MarkItDown MCP, PDF, Word, Excel, PowerPoint, görsel ve ses dosyalarını yapılandırılmış Markdown'a dönüştürür; sözleşme, fatura ve raporları yapay zeka için okunabilir hale getirir.",
+    "features": [
+      "29+ dosya formatı desteği",
+      "PDF ve Office belge dönüşümü",
+      "Görsel OCR ve meta veri çıkarımı",
+      "Ses dosyasından metin üretimi",
+      "MCP istemcileriyle doğrudan entegrasyon"
+    ],
+    "useCases": [
+      "5 farklı tedarikçiden gelen PDF teklifleri tek bir Excel karşılaştırma tablosuna döker."
+    ],
+    "brandColor": "#7C3AED",
+    "logoUrl": "https://cdn.simpleicons.org/microsoft/7C3AED",
+    "license": "MIT",
+    "repo": "https://github.com/trsdn/markitdown-mcp"
+  },
+  {
+    "id": "l1-it-support",
+    "name": "Teknik Destek L1 Otomasyonu",
+    "category": "IT & Operasyon",
+    "description": "Şifremi unuttum ve bağlantı koptu gibi temel IT destek taleplerini insan müdahalesiz çözer.",
+    "about": "Zapier MCP, yapay zeka ajanlarının Zapier üzerinden 8.000'den fazla uygulama ve servisle otomatik iş akışı kurmasını sağlar.",
+    "features": [
+      "8.000+ uygulama entegrasyonu",
+      "Tetikleyici ve aksiyon otomasyonu",
+      "Çok adımlı iş akışları",
+      "Kurumsal SaaS bağlantıları",
+      "Kodsuz entegrasyon"
+    ],
+    "useCases": [
+      "Şifremi unuttum ve bağlantı koptu gibi temel IT destek taleplerini insan müdahalesiz çözer."
+    ],
+    "brandColor": "#FF4A00",
+    "logoUrl": "https://cdn.simpleicons.org/zapier/FF4A00",
+    "license": "MIT",
+    "repo": "https://github.com/zapier/zapier-mcp"
+  },
+  {
+    "id": "rfp-answer-matcher",
+    "name": "Teknik RFP Soru Eşleştirici",
+    "category": "Satış & CRM",
+    "description": "Banka/kamu şartnamelerindeki sorulara şirketin daha önce verdiği onaylı cevapları eşler.",
+    "about": "Chroma MCP, gömülü bellek ve vektör arama ile geçmiş teklifler, vaka çalışmaları ve kurumsal bilgiyi anlamsal olarak eşleştirir.",
+    "features": [
+      "Vektör bellek deposu",
+      "Semantik doküman araması",
+      "Bilgi eşleştirme",
+      "RAG destekli yanıtlar",
+      "Kurumsal arşiv erişimi"
+    ],
+    "useCases": [
+      "Banka/kamu şartnamelerindeki sorulara şirketin daha önce verdiği onaylı cevapları eşler."
+    ],
+    "brandColor": "#FF6442",
+    "logoUrl": "https://cdn.simpleicons.org/semanticui/FF6442",
+    "license": "Apache-2.0",
+    "repo": "https://github.com/chroma-core/chroma-mcp"
+  },
+  {
+    "id": "meeting-to-jira",
+    "name": "Toplantı Kararları & Jira Çevirici",
+    "category": "Operasyon",
+    "description": "Yönetim kurulu veya proje toplantısı ses kayıtlarından otomatik Jira/Linear görevleri üretir.",
+    "about": "Yerel bilgi grafiği ile oturumlar arası kalıcı bellek ve bağlam saklama sağlar.",
+    "features": [
+      "Kalıcı bellek grafiği",
+      "Oturumlar arası bağlam",
+      "Bilgi saklama",
+      "İlişkisel hafıza"
+    ],
+    "useCases": [
+      "Yönetim kurulu veya proje toplantısı ses kayıtlarından otomatik Jira/Linear görevleri üretir."
+    ],
+    "brandColor": "#7C3AED",
+    "logoUrl": "https://cdn.simpleicons.org/neo4j/7C3AED",
+    "license": "Apache-2.0",
+    "repo": "https://github.com/modelcontextprotocol/servers/tree/main/src/memory"
+  },
+  {
+    "id": "appointment-confirmation",
+    "name": "Tıbbi/Klinik Randevu Teyit Ajanı",
+    "category": "Müşteri Destek",
+    "description": "Sağlık merkezlerinde hastaları arayıp/yazıp gelmeme oranını düşüren teyitler alır.",
+    "about": "Zapier MCP, yapay zeka ajanlarının Zapier üzerinden 8.000'den fazla uygulama ve servisle otomatik iş akışı kurmasını sağlar.",
+    "features": [
+      "8.000+ uygulama entegrasyonu",
+      "Tetikleyici ve aksiyon otomasyonu",
+      "Çok adımlı iş akışları",
+      "Kurumsal SaaS bağlantıları",
+      "Kodsuz entegrasyon"
+    ],
+    "useCases": [
+      "Sağlık merkezlerinde hastaları arayıp/yazıp gelmeme oranını düşüren teyitler alır."
+    ],
+    "brandColor": "#FF4A00",
+    "logoUrl": "https://cdn.simpleicons.org/zapier/FF4A00",
+    "license": "MIT",
+    "repo": "https://github.com/zapier/zapier-mcp"
+  },
+  {
+    "id": "slow-query-hunter",
+    "name": "Veritabanı İndeks & Yavaş Sorgu Avcısı",
+    "category": "Veri & Raporlama",
+    "description": "Veritabanında darboğaz yaratan SQL sorgularını bulup optimizasyon önerisi getirir.",
+    "about": "ClickHouse MCP, yüksek hacimli analitik veritabanına SQL sorguları göndermeyi ve sonuçları yapay zeka için yapılandırmayı sağlar.",
+    "features": [
+      "ClickHouse SQL sorguları",
+      "Yüksek hacimli analitik",
+      "Şema keşfi",
+      "Metrik ve log analizi",
+      "Hızlı OLAP erişimi"
+    ],
+    "useCases": [
+      "Veritabanında darboğaz yaratan SQL sorgularını bulup optimizasyon önerisi getirir."
+    ],
+    "brandColor": "#FFCC00",
+    "logoUrl": "https://cdn.simpleicons.org/clickhouse/FFCC00",
+    "license": "Apache-2.0",
+    "repo": "https://github.com/ClickHouse/mcp-clickhouse"
+  },
+  {
+    "id": "broken-link-detector",
+    "name": "Web Sitesi Bozuk Link & 404 Dedektörü",
+    "category": "Pazarlama & Analiz",
+    "description": "Şirket portallarındaki kırık sayfaları ve çalışmayan formları düzenli test eder.",
+    "about": "Playwright MCP, tarayıcı otomasyonu ile web sayfalarını test eder, form doldurur ve kullanıcı akışlarını simüle eder.",
+    "features": [
+      "Tarayıcı otomasyonu",
+      "E2E test senaryoları",
+      "Form ve tıklama simülasyonu",
+      "Ekran görüntüsü alma",
+      "Web QA otomasyonu"
+    ],
+    "useCases": [
+      "Şirket portallarındaki kırık sayfaları ve çalışmayan formları düzenli test eder."
+    ],
+    "brandColor": "#2EAD33",
+    "logoUrl": "https://cdn.simpleicons.org/playwright/2EAD33",
+    "license": "Apache-2.0",
+    "repo": "https://github.com/microsoft/playwright-mcp"
+  },
+  {
+    "id": "investor-relations-brief",
+    "name": "Yatırımcı İlişkileri Aylık Bülten Ajanı",
+    "category": "Muhasebe & Finans",
+    "description": "Finansal ve operasyonel KPI'ları çekerek hissedarlar için aylık metrik raporunu taslaklar.",
+    "about": "Superset MCP, Apache Superset panolarına ve SQL sorgularına ajan erişimi sağlar; 50'den fazla veri kaynağından rapor çekmeyi kolaylaştırır.",
+    "features": [
+      "Dashboard sorgulama",
+      "50+ veri kaynağı",
+      "SQL ve görsel sorgu desteği",
+      "Metrik ve KPI erişimi",
+      "Self-servis BI entegrasyonu"
+    ],
+    "useCases": [
+      "Finansal ve operasyonel KPI'ları çekerek hissedarlar için aylık metrik raporunu taslaklar."
+    ],
+    "brandColor": "#20A6C9",
+    "logoUrl": "https://cdn.simpleicons.org/apache/20A6C9",
+    "license": "MIT",
+    "repo": "https://github.com/aptro/superset-mcp"
+  },
+  {
+    "id": "oss-license-auditor",
+    "name": "Yazılım Bağımlılık & Lisans Denetçisi",
+    "category": "Güvenlik & Uyum",
+    "description": "Kod tabanındaki açık kaynak kütüphanelerin AGPL/GPL gibi şirket için riskli lisanslarını tarar.",
+    "about": "AI-Infra-Guard, AI altyapısı, MCP sunucuları ve ajan becerileri için güvenlik taraması, zafiyet analizi ve jailbreak testleri sunar.",
+    "features": [
+      "MCP sunucu güvenlik taraması",
+      "CVE ve zafiyet eşleştirme",
+      "Ajan beceri denetimi",
+      "Jailbreak değerlendirmesi",
+      "AI altyapı risk analizi"
+    ],
+    "useCases": [
+      "Kod tabanındaki açık kaynak kütüphanelerin AGPL/GPL gibi şirket için riskli lisanslarını tarar."
+    ],
+    "brandColor": "#B91C1C",
+    "logoUrl": "https://cdn.simpleicons.org/tencentqq/B91C1C",
+    "license": "Apache-2.0",
+    "repo": "https://github.com/Tencent/AI-Infra-Guard"
+  },
+  {
+    "id": "cve-matcher",
+    "name": "Yazılım Güvenlik Zafiyeti (CVE) Eşleştirici",
+    "category": "Güvenlik & Uyum",
+    "description": "Şirketin kullandığı sunucu paketlerini ulusal güvenlik zafiyeti veritabanlarıyla kıyaslar.",
+    "about": "AI-Infra-Guard, AI altyapısı, MCP sunucuları ve ajan becerileri için güvenlik taraması, zafiyet analizi ve jailbreak testleri sunar.",
+    "features": [
+      "MCP sunucu güvenlik taraması",
+      "CVE ve zafiyet eşleştirme",
+      "Ajan beceri denetimi",
+      "Jailbreak değerlendirmesi",
+      "AI altyapı risk analizi"
+    ],
+    "useCases": [
+      "Şirketin kullandığı sunucu paketlerini ulusal güvenlik zafiyeti veritabanlarıyla kıyaslar."
+    ],
+    "brandColor": "#B91C1C",
+    "logoUrl": "https://cdn.simpleicons.org/tencentqq/B91C1C",
+    "license": "Apache-2.0",
+    "repo": "https://github.com/Tencent/AI-Infra-Guard"
+  },
+  {
+    "id": "qa-test-generator",
+    "name": "Yazılım Test Senaryosu (QA) Üreticisi",
+    "category": "Yazılım & DevOps",
+    "description": "Ürün yöneticisinin yazdığı user story'lerden uçtan uca otomatik test senaryoları yazar.",
+    "about": "Playwright MCP, tarayıcı otomasyonu ile web sayfalarını test eder, form doldurur ve kullanıcı akışlarını simüle eder.",
+    "features": [
+      "Tarayıcı otomasyonu",
+      "E2E test senaryoları",
+      "Form ve tıklama simülasyonu",
+      "Ekran görüntüsü alma",
+      "Web QA otomasyonu"
+    ],
+    "useCases": [
+      "Ürün yöneticisinin yazdığı user story'lerden uçtan uca otomatik test senaryoları yazar."
+    ],
+    "brandColor": "#2EAD33",
+    "logoUrl": "https://cdn.simpleicons.org/playwright/2EAD33",
+    "license": "Apache-2.0",
+    "repo": "https://github.com/microsoft/playwright-mcp"
+  },
+  {
+    "id": "schema-migration-tester",
+    "name": "Yazılım Veri Şeması (Migration) Testçisi",
+    "category": "Yazılım & DevOps",
+    "description": "Veritabanı şema güncellemelerinin üretim verisini bozup bozmayacağını simüle eder.",
+    "about": "PostgreSQL veritabanlarına salt-okunur erişim sağlar; şema inceleme ve güvenli SQL sorguları çalıştırır.",
+    "features": [
+      "Salt-okunur SQL sorguları",
+      "Veritabanı şema keşfi",
+      "Güvenli veri erişimi",
+      "PostgreSQL entegrasyonu"
+    ],
+    "useCases": [
+      "Veritabanı şema güncellemelerinin üretim verisini bozup bozmayacağını simüle eder."
+    ],
+    "brandColor": "#336791",
+    "logoUrl": "https://cdn.simpleicons.org/postgresql/336791",
+    "license": "Apache-2.0",
+    "repo": "https://github.com/modelcontextprotocol/servers/tree/main/src/postgres"
+  },
+  {
+    "id": "backup-dr-auditor",
+    "name": "Yedekleme & Felaket Kurtarma Denetçisi",
+    "category": "IT & Operasyon",
+    "description": "Günlük veritabanı yedeklerinin geri yüklenebilirliğini simüle eder.",
+    "about": "PostgreSQL veritabanlarına salt-okunur erişim sağlar; şema inceleme ve güvenli SQL sorguları çalıştırır.",
+    "features": [
+      "Salt-okunur SQL sorguları",
+      "Veritabanı şema keşfi",
+      "Güvenli veri erişimi",
+      "PostgreSQL entegrasyonu"
+    ],
+    "useCases": [
+      "Günlük veritabanı yedeklerinin geri yüklenebilirliğini simüle eder."
+    ],
+    "brandColor": "#336791",
+    "logoUrl": "https://cdn.simpleicons.org/postgresql/336791",
+    "license": "Apache-2.0",
+    "repo": "https://github.com/modelcontextprotocol/servers/tree/main/src/postgres"
+  },
+  {
+    "id": "employee-onboarding",
+    "name": "Yeni Personel Onboarding Ajanı",
+    "category": "İnsan Kaynakları",
+    "description": "Yeni çalışanın ilk 30 gününde sistem izinleri, oryantasyon takvimi ve doküman erişimini yönetir.",
+    "about": "Ghost MCP, Ghost CMS üzerinde yazı oluşturma, düzenleme, etiketleme ve yayınlama işlemlerini yapay zeka ajanlarına bağlar.",
+    "features": [
+      "Yazı oluşturma ve düzenleme",
+      "Taslak ve yayın yönetimi",
+      "Etiket ve kategori işlemleri",
+      "İçerik arama",
+      "CMS otomasyonu"
+    ],
+    "useCases": [
+      "Yeni çalışanın ilk 30 gününde sistem izinleri, oryantasyon takvimi ve doküman erişimini yönetir."
+    ],
+    "brandColor": "#15171A",
+    "logoUrl": "https://cdn.simpleicons.org/ghost/15171A",
+    "license": "MIT",
+    "repo": "https://github.com/MFYDev/ghost-mcp"
+  },
+  {
+    "id": "vat-refund-calculator",
+    "name": "Yurtdışı KDV / VAT İade Hesaplayıcı",
+    "category": "Muhasebe & Finans",
+    "description": "Şirket çalışanlarının yurtdışı seyahat harcamalarındaki geri alınabilir vergi kalemlerini ayıklar.",
+    "about": "Stripe Agent Toolkit, ödeme, fatura, abonelik ve müşteri işlemlerini Stripe API üzerinden yapay zeka ajanlarına güvenli araçlar olarak sunar.",
+    "features": [
+      "Ödeme ve fatura yönetimi",
+      "Abonelik ve müşteri sorgulama",
+      "Stripe API araçları",
+      "Kurumsal ödeme otomasyonu",
+      "Güvenli API anahtarı yönetimi"
+    ],
+    "useCases": [
+      "Şirket çalışanlarının yurtdışı seyahat harcamalarındaki geri alınabilir vergi kalemlerini ayıklar."
+    ],
+    "brandColor": "#635BFF",
+    "logoUrl": "https://cdn.simpleicons.org/stripe/635BFF",
+    "license": "MIT",
+    "repo": "https://github.com/stripe/agent-toolkit"
+  },
+  {
+    "id": "regulation-tracker",
+    "name": "Yönetmelik & Mevzuat Değişim Takipçisi",
+    "category": "Hukuk & Uyum",
+    "description": "Resmi Gazete ve sektör regülasyonlarını tarayıp şirketi ilgilendiren maddeleri özetler.",
+    "about": "Brave Search API ile web ve yerel arama sonuçlarını yapılandırılmış biçimde döndürür.",
+    "features": [
+      "Web araması",
+      "Yerel işletme araması",
+      "Sonuç filtreleme",
+      "Brave Search API"
+    ],
+    "useCases": [
+      "Resmi Gazete ve sektör regülasyonlarını tarayıp şirketi ilgilendiren maddeleri özetler."
+    ],
+    "brandColor": "#FB542B",
+    "logoUrl": "https://cdn.simpleicons.org/brave/FB542B",
+    "license": "Apache-2.0",
+    "repo": "https://github.com/modelcontextprotocol/servers/tree/main/src/brave-search"
+  },
+  {
+    "id": "offboarding-agent",
+    "name": "Çalışan Ayrılış (Offboarding) Ajanı",
+    "category": "İnsan Kaynakları",
+    "description": "Ayrılan personelin tüm SaaS hesaplarını, VPN yetkilerini ve şirket erişimlerini anında kapatır.",
+    "about": "Zapier MCP, yapay zeka ajanlarının Zapier üzerinden 8.000'den fazla uygulama ve servisle otomatik iş akışı kurmasını sağlar.",
+    "features": [
+      "8.000+ uygulama entegrasyonu",
+      "Tetikleyici ve aksiyon otomasyonu",
+      "Çok adımlı iş akışları",
+      "Kurumsal SaaS bağlantıları",
+      "Kodsuz entegrasyon"
+    ],
+    "useCases": [
+      "Ayrılan personelin tüm SaaS hesaplarını, VPN yetkilerini ve şirket erişimlerini anında kapatır."
+    ],
+    "brandColor": "#FF4A00",
+    "logoUrl": "https://cdn.simpleicons.org/zapier/FF4A00",
+    "license": "MIT",
+    "repo": "https://github.com/zapier/zapier-mcp"
+  },
+  {
+    "id": "cross-sell-engine",
+    "name": "Çapraz Satış (Cross-Sell) Öneri Motoru",
+    "category": "Satış & CRM",
+    "description": "Sepetinde X ürünü olan kurumsal alıcıya tamamlayıcı endüstriyel sarf malzemeleri önerir.",
+    "about": "Chroma MCP, gömülü bellek ve vektör arama ile geçmiş teklifler, vaka çalışmaları ve kurumsal bilgiyi anlamsal olarak eşleştirir.",
+    "features": [
+      "Vektör bellek deposu",
+      "Semantik doküman araması",
+      "Bilgi eşleştirme",
+      "RAG destekli yanıtlar",
+      "Kurumsal arşiv erişimi"
+    ],
+    "useCases": [
+      "Sepetinde X ürünü olan kurumsal alıcıya tamamlayıcı endüstriyel sarf malzemeleri önerir."
+    ],
+    "brandColor": "#FF6442",
+    "logoUrl": "https://cdn.simpleicons.org/semanticui/FF6442",
+    "license": "Apache-2.0",
+    "repo": "https://github.com/chroma-core/chroma-mcp"
+  },
+  {
+    "id": "call-quality-auditor",
+    "name": "Çağrı Merkezi Kalite & Ton Denetçisi",
+    "category": "Müşteri Destek",
+    "description": "Temsilcilerin müşteri konuşma kayıtlarını empati, çözüm hızı ve şirket kuralına göre puanlar.",
+    "about": "Legion MCP, birden fazla yapay zeka modelinin tartışarak ve oylayarak ortak karar üretmesini sağlayan konsey tabanlı bir sistemdir.",
+    "features": [
+      "Çoklu model konseyi",
+      "Oylama ve konsensüs",
+      "Kalite değerlendirmesi",
+      "Konuşma analizi",
+      "Karar destek çıktıları"
+    ],
+    "useCases": [
+      "Temsilcilerin müşteri konuşma kayıtlarını empati, çözüm hızı ve şirket kuralına göre puanlar."
+    ],
+    "brandColor": "#8B5CF6",
+    "logoUrl": "https://cdn.simpleicons.org/openai/8B5CF6",
+    "license": "MIT",
+    "repo": "https://github.com/faulkj/legion-mcp"
+  },
+  {
+    "id": "carbon-footprint-reporter",
+    "name": "Çevreci Ayak İzi & Karbon Raporlayıcı",
+    "category": "Yönetim",
+    "description": "Şirketin elektrik faturası, kargo ve seyahat verilerinden kurumsal karbon emisyon raporu çıkarır.",
+    "about": "dbt MCP, dbt projelerinde model, test ve lineage bilgilerine erişerek veri dönüşümü ve analitik iş akışlarını yönetir.",
+    "features": [
+      "dbt model sorgulama",
+      "Veri lineage görünürlüğü",
+      "Test ve kalite kontrol",
+      "Analitik iş akışı",
+      "Metrik ve KPI erişimi"
+    ],
+    "useCases": [
+      "Şirketin elektrik faturası, kargo ve seyahat verilerinden kurumsal karbon emisyon raporu çıkarır."
+    ],
+    "brandColor": "#FF694A",
+    "logoUrl": "https://cdn.simpleicons.org/dbt/FF694A",
+    "license": "Apache-2.0",
+    "repo": "https://github.com/dbt-labs/dbt-mcp"
+  },
+  {
+    "id": "catalog-localizer",
+    "name": "Çok Dilli Katalog & Ürün Çevirmeni",
+    "category": "Pazarlama & Analiz",
+    "description": "E-ticaret ürün açıklamalarını sektörel terminolojiyi bozmadan hedef dillere yerelleştirir.",
+    "about": "Google GenAI Toolbox, Google'ın üretken yapay zeka modellerine ve araçlarına standart MCP arayüzü üzerinden erişim sağlar.",
+    "features": [
+      "Google AI model erişimi",
+      "Çok dilli içerik üretimi",
+      "Uzun doküman analizi",
+      "Görsel anlama",
+      "Kurumsal AI entegrasyonu"
+    ],
+    "useCases": [
+      "E-ticaret ürün açıklamalarını sektörel terminolojiyi bozmadan hedef dillere yerelleştirir."
+    ],
+    "brandColor": "#4285F4",
+    "logoUrl": "https://cdn.simpleicons.org/google/4285F4",
+    "license": "Apache-2.0",
+    "repo": "https://github.com/googleapis/genai-toolbox"
+  },
+  {
+    "id": "bilingual-contract-aligner",
+    "name": "Çok Dilli Sözleşme Hizalama Ajanı",
+    "category": "Hukuk & Uyum",
+    "description": "Sözleşmenin İngilizce ve Türkçe metinleri arasında anlam ve madde kayması olup olmadığını denetler.",
+    "about": "MarkItDown MCP, PDF, Word, Excel, PowerPoint, görsel ve ses dosyalarını yapılandırılmış Markdown'a dönüştürür; sözleşme, fatura ve raporları yapay zeka için okunabilir hale getirir.",
+    "features": [
+      "29+ dosya formatı desteği",
+      "PDF ve Office belge dönüşümü",
+      "Görsel OCR ve meta veri çıkarımı",
+      "Ses dosyasından metin üretimi",
+      "MCP istemcileriyle doğrudan entegrasyon"
+    ],
+    "useCases": [
+      "Sözleşmenin İngilizce ve Türkçe metinleri arasında anlam ve madde kayması olup olmadığını denetler."
+    ],
+    "brandColor": "#7C3AED",
+    "logoUrl": "https://cdn.simpleicons.org/microsoft/7C3AED",
+    "license": "MIT",
+    "repo": "https://github.com/trsdn/markitdown-mcp"
+  },
+  {
+    "id": "ticket-prioritizer",
+    "name": "Çok Kanallı Bilet Önceliklendirici",
+    "category": "Müşteri Destek",
+    "description": "Gelen müşteri destek biletlerini aciliyet ve VIP statüsüne göre doğru birime yönlendirir.",
+    "about": "Slack çalışma alanlarında kanal listeleme, mesajlaşma ve bildirim işlemlerini otomatikleştirir.",
+    "features": [
+      "Kanal listeleme",
+      "Mesaj gönderme",
+      "Bildirim otomasyonu",
+      "Slack workspace erişimi"
+    ],
+    "useCases": [
+      "Gelen müşteri destek biletlerini aciliyet ve VIP statüsüne göre doğru birime yönlendirir."
+    ],
+    "brandColor": "#4A154B",
+    "logoUrl": "https://cdn.simpleicons.org/slack/4A154B",
+    "license": "Apache-2.0",
+    "repo": "https://github.com/modelcontextprotocol/servers/tree/main/src/slack"
+  },
+  {
+    "id": "cash-reconciliation",
+    "name": "Çok Şubeli Nakit Mutabakat Ajanı",
+    "category": "Muhasebe & Finans",
+    "description": "Farklı şubelerden gelen gün sonu Z raporları ile banka pos hareketlerini karşılaştırır.",
+    "about": "ClickHouse MCP, yüksek hacimli analitik veritabanına SQL sorguları göndermeyi ve sonuçları yapay zeka için yapılandırmayı sağlar.",
+    "features": [
+      "ClickHouse SQL sorguları",
+      "Yüksek hacimli analitik",
+      "Şema keşfi",
+      "Metrik ve log analizi",
+      "Hızlı OLAP erişimi"
+    ],
+    "useCases": [
+      "Farklı şubelerden gelen gün sonu Z raporları ile banka pos hareketlerini karşılaştırır."
+    ],
+    "brandColor": "#FFCC00",
+    "logoUrl": "https://cdn.simpleicons.org/clickhouse/FFCC00",
+    "license": "Apache-2.0",
+    "repo": "https://github.com/ClickHouse/mcp-clickhouse"
+  },
+  {
+    "id": "packaging-compliance",
+    "name": "Ürün Barkod & Paketleme Uyum Ajanı",
+    "category": "Operasyon",
+    "description": "Ürün etiketlerindeki yasal zorunlu uyarıların doğruluğunu denetler.",
+    "about": "MarkItDown MCP, PDF, Word, Excel, PowerPoint, görsel ve ses dosyalarını yapılandırılmış Markdown'a dönüştürür; sözleşme, fatura ve raporları yapay zeka için okunabilir hale getirir.",
+    "features": [
+      "29+ dosya formatı desteği",
+      "PDF ve Office belge dönüşümü",
+      "Görsel OCR ve meta veri çıkarımı",
+      "Ses dosyasından metin üretimi",
+      "MCP istemcileriyle doğrudan entegrasyon"
+    ],
+    "useCases": [
+      "Ürün etiketlerindeki yasal zorunlu uyarıların doğruluğunu denetler."
+    ],
+    "brandColor": "#7C3AED",
+    "logoUrl": "https://cdn.simpleicons.org/microsoft/7C3AED",
+    "license": "MIT",
+    "repo": "https://github.com/trsdn/markitdown-mcp"
+  },
+  {
+    "id": "warranty-serial-verifier",
+    "name": "Ürün Garanti & Seri No Doğrulayıcı",
+    "category": "Müşteri Destek",
+    "description": "Müşterinin gönderdiği arızalı ürünün garanti süresini ve yetkili satış kanalını teyit eder.",
+    "about": "Supabase MCP, PostgreSQL tabanlı Supabase projelerinde tablo sorgulama, veri okuma ve backend işlemlerini ajanlara açar.",
+    "features": [
+      "PostgreSQL tablo erişimi",
+      "Satır düzeyinde sorgular",
+      "Şema keşfi",
+      "Backend veri işlemleri",
+      "Gerçek zamanlı veri"
+    ],
+    "useCases": [
+      "Müşterinin gönderdiği arızalı ürünün garanti süresini ve yetkili satış kanalını teyit eder."
+    ],
+    "brandColor": "#3FCF8E",
+    "logoUrl": "https://cdn.simpleicons.org/supabase/3FCF8E",
+    "license": "Apache-2.0",
+    "repo": "https://github.com/supabase-community/supabase-mcp"
+  },
+  {
+    "id": "return-reason-analyst",
+    "name": "Ürün İade Sebebi Analiz Ajanı",
+    "category": "Operasyon",
+    "description": "E-ticaretteki iade notlarını analiz edip hatalı üretim veya yanıltıcı görsel sorunlarını bulur.",
+    "about": "Qdrant MCP, vektör veritabanında semantik arama, benzerlik eşleştirme ve RAG tabanlı bilgi erişimi sağlar.",
+    "features": [
+      "Semantik vektör araması",
+      "Benzerlik eşleştirme",
+      "RAG bilgi erişimi",
+      "Koleksiyon yönetimi",
+      "Anlamsal geri bildirim analizi"
+    ],
+    "useCases": [
+      "E-ticaretteki iade notlarını analiz edip hatalı üretim veya yanıltıcı görsel sorunlarını bulur."
+    ],
+    "brandColor": "#DC244C",
+    "logoUrl": "https://cdn.simpleicons.org/qdrant/DC244C",
+    "license": "Apache-2.0",
+    "repo": "https://github.com/qdrant/mcp-server-qdrant"
+  },
+  {
+    "id": "fleet-fuel-auditor",
+    "name": "Şirket Aracı & Filo Yakıt Takipçisi",
+    "category": "Operasyon",
+    "description": "Taşıt tanıma sistemi fişleri ile kilometre kayıtlarını kıyaslayıp yakıt suiistimalini saptar.",
+    "about": "ClickHouse MCP, yüksek hacimli analitik veritabanına SQL sorguları göndermeyi ve sonuçları yapay zeka için yapılandırmayı sağlar.",
+    "features": [
+      "ClickHouse SQL sorguları",
+      "Yüksek hacimli analitik",
+      "Şema keşfi",
+      "Metrik ve log analizi",
+      "Hızlı OLAP erişimi"
+    ],
+    "useCases": [
+      "Taşıt tanıma sistemi fişleri ile kilometre kayıtlarını kıyaslayıp yakıt suiistimalini saptar."
+    ],
+    "brandColor": "#FFCC00",
+    "logoUrl": "https://cdn.simpleicons.org/clickhouse/FFCC00",
+    "license": "Apache-2.0",
+    "repo": "https://github.com/ClickHouse/mcp-clickhouse"
+  },
+  {
+    "id": "travel-coordinator",
+    "name": "Şirket Etkinlik & Seyahat Koordinatörü",
+    "category": "Operasyon",
+    "description": "Çoklu ekip seyahatlerinde uçak/otel seçeneklerini şirket harcama limitine göre optimize eder.",
+    "about": "Zapier MCP, yapay zeka ajanlarının Zapier üzerinden 8.000'den fazla uygulama ve servisle otomatik iş akışı kurmasını sağlar.",
+    "features": [
+      "8.000+ uygulama entegrasyonu",
+      "Tetikleyici ve aksiyon otomasyonu",
+      "Çok adımlı iş akışları",
+      "Kurumsal SaaS bağlantıları",
+      "Kodsuz entegrasyon"
+    ],
+    "useCases": [
+      "Çoklu ekip seyahatlerinde uçak/otel seçeneklerini şirket harcama limitine göre optimize eder."
+    ],
+    "brandColor": "#FF4A00",
+    "logoUrl": "https://cdn.simpleicons.org/zapier/FF4A00",
+    "license": "MIT",
+    "repo": "https://github.com/zapier/zapier-mcp"
+  },
+  {
+    "id": "wiki-knowledge-updater",
+    "name": "Şirket İçi Bilgi Bankası (Wiki) Güncelleyici",
+    "category": "Operasyon",
+    "description": "Slack/Teams'te konuşulup çözülen yeni konuları otomatik şirket dokümanına ekler.",
+    "about": "Ghost MCP, Ghost CMS üzerinde yazı oluşturma, düzenleme, etiketleme ve yayınlama işlemlerini yapay zeka ajanlarına bağlar.",
+    "features": [
+      "Yazı oluşturma ve düzenleme",
+      "Taslak ve yayın yönetimi",
+      "Etiket ve kategori işlemleri",
+      "İçerik arama",
+      "CMS otomasyonu"
+    ],
+    "useCases": [
+      "Slack/Teams'te konuşulup çözülen yeni konuları otomatik şirket dokümanına ekler."
+    ],
+    "brandColor": "#15171A",
+    "logoUrl": "https://cdn.simpleicons.org/ghost/15171A",
+    "license": "MIT",
+    "repo": "https://github.com/MFYDev/ghost-mcp"
+  },
+  {
+    "id": "training-quiz-builder",
+    "name": "Şirket İçi Eğitim & Quiz Üreticisi",
+    "category": "İnsan Kaynakları",
+    "description": "İç prosedür dokümanlarından çalışanlar için interaktif mini eğitim ve sınavlar çıkarır.",
+    "about": "Ghost MCP, Ghost CMS üzerinde yazı oluşturma, düzenleme, etiketleme ve yayınlama işlemlerini yapay zeka ajanlarına bağlar.",
+    "features": [
+      "Yazı oluşturma ve düzenleme",
+      "Taslak ve yayın yönetimi",
+      "Etiket ve kategori işlemleri",
+      "İçerik arama",
+      "CMS otomasyonu"
+    ],
+    "useCases": [
+      "İç prosedür dokümanlarından çalışanlar için interaktif mini eğitim ve sınavlar çıkarır."
+    ],
+    "brandColor": "#15171A",
+    "logoUrl": "https://cdn.simpleicons.org/ghost/15171A",
+    "license": "MIT",
+    "repo": "https://github.com/MFYDev/ghost-mcp"
+  },
+  {
+    "id": "github-pr-reviewer",
+    "name": "Şirket İçi Git PR İnceleme Asistanı",
+    "category": "Yazılım & DevOps",
+    "description": "Yazılımcıların açtığı pull request'leri şirket kodlama standartlarına ve güvenliğe göre inceler.",
+    "about": "GitHub API üzerinden depo yönetimi, dosya işlemleri ve kod arama yetenekleri sunar.",
+    "features": [
+      "Depo ve dosya yönetimi",
+      "Pull request işlemleri",
+      "Kod arama",
+      "GitHub API entegrasyonu"
+    ],
+    "useCases": [
+      "Yazılımcıların açtığı pull request'leri şirket kodlama standartlarına ve güvenliğe göre inceler."
+    ],
+    "brandColor": "#24292F",
+    "logoUrl": "https://cdn.simpleicons.org/github/24292F",
+    "license": "Apache-2.0",
+    "repo": "https://github.com/modelcontextprotocol/servers/tree/main/src/github"
+  },
+  {
+    "id": "kvkk-pii-masker",
+    "name": "Şirket İçi KVKK/PII Maskeleme Ajanı",
+    "category": "Güvenlik & Uyum",
+    "description": "LLM'lere gönderilmeden önce müşteri T.C., telefon ve kart verilerini bellekten uçurur.",
+    "about": "Compliant LLM, KVKK ve kurumsal güvenlik gereksinimlerine uygun yapay zeka ajan altyapısı sunar; hassas verilerin politika tabanlı korunmasını sağlar.",
+    "features": [
+      "Veri gizliliği kontrolleri",
+      "Politika tabanlı erişim",
+      "Denetim izi",
+      "Uyum odaklı ajan çalıştırma",
+      "MCP sunucu entegrasyonu"
+    ],
+    "useCases": [
+      "LLM'lere gönderilmeden önce müşteri T.C., telefon ve kart verilerini bellekten uçurur."
+    ],
+    "brandColor": "#1E40AF",
+    "logoUrl": "https://cdn.simpleicons.org/letsencrypt/1E40AF",
+    "license": "MIT",
+    "repo": "https://github.com/fiddlecube/compliant-llm"
+  }
+]

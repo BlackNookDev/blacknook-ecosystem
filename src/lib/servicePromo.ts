@@ -29,7 +29,6 @@ export function accentFromBrand(brandColor: string): {
   };
 }
 
-/** Konu — arkaplan görseli seçimi */
 export type PromoTheme =
   | 'deploy'
   | 'payments'
@@ -56,81 +55,14 @@ export type PromoTheme =
   | 'generic';
 
 const SLUG_THEME: Record<string, PromoTheme> = {
-  coolify: 'deploy',
-  dokku: 'deploy',
-  dokploy: 'deploy',
-  caprover: 'deploy',
-  btcpay: 'payments',
-  medusa: 'payments',
-  krayin: 'payments',
-  ghost: 'cms',
-  wordpress: 'cms',
-  strapi: 'cms',
-  directus: 'cms',
-  appwrite: 'backend',
-  supabase: 'backend',
-  pocketbase: 'backend',
-  hasura: 'backend',
-  n8n: 'automation',
   'nook-muhasebe-mcp': 'automation',
-  activepieces: 'automation',
-  flowise: 'automation',
-  typebot: 'automation',
-  freecodecamp: 'education',
-  outline: 'docs',
-  notion: 'docs',
-  bookstack: 'docs',
-  meilisearch: 'search',
-  typesense: 'search',
-  elasticsearch: 'search',
-  grafana: 'charts',
-  metabase: 'charts',
-  superset: 'charts',
-  lightdash: 'charts',
-  redash: 'charts',
   plausible: 'analytics',
-  umami: 'analytics',
-  posthog: 'analytics',
-  portainer: 'containers',
-  traefik: 'proxy',
-  'nginx-proxy-manager': 'proxy',
-  keycloak: 'security',
-  vaultwarden: 'security',
-  authentik: 'security',
-  strix: 'security',
-  sentry: 'observability',
-  'uptime-kuma': 'observability',
-  prometheus: 'observability',
-  rabbitmq: 'queue',
-  kafka: 'queue',
-  redis: 'database',
-  postgresql: 'database',
-  mongodb: 'database',
-  mysql: 'database',
-  clickhouse: 'database',
-  minio: 'database',
-  gitea: 'devops',
-  gitlab: 'devops',
-  hoppscotch: 'devtools',
-  appsmith: 'devtools',
-  listmonk: 'email',
-  mailcow: 'email',
+  metabase: 'charts',
   'cal-com': 'calendar',
-  ollama: 'ai',
-  openwebui: 'ai',
-  langfuse: 'ai',
-  dify: 'ai',
-  jan: 'ai',
-  'anything-llm': 'ai',
-  stagehand: 'ai',
-  mastra: 'ai',
+  outline: 'docs',
   chatwoot: 'comms',
-  mattermost: 'comms',
-  rocketchat: 'comms',
-  corteza: 'comms',
 };
 
-/** Tema → public/service-promo görseli */
 const THEME_IMAGE: Record<PromoTheme, string> = {
   deploy: '/service-promo/deploy.jpg',
   payments: '/service-promo/payments.jpg',
@@ -164,27 +96,12 @@ export function promoThemeFor(slug: string, category: string): PromoTheme {
     if (s.includes(key)) return theme;
   }
   const c = category.toLowerCase();
-  if (c.includes('platform') || c.includes('dağıtım')) return 'deploy';
-  if (c.includes('e-ticaret') || c.includes('ödeme')) return 'payments';
-  if (c.includes('cms') || c.includes('yayın')) return 'cms';
-  if (c.includes('backend') || c.includes('baas')) return 'backend';
-  if (c.includes('depolama') || c.includes('veritaban')) return 'database';
-  if (c.includes('yapay zeka')) return 'ai';
-  if (c.includes('iletişim') || c.includes('destek')) return 'comms';
-  if (c.includes('görselleştir') || c.includes('bi')) return 'charts';
-  if (c.includes('konteyner')) return 'containers';
-  if (c.includes('ağ')) return 'proxy';
-  if (c.includes('kimlik') || c.includes('güvenlik')) return 'security';
-  if (c.includes('gözlem') || c.includes('izleme')) return 'observability';
-  if (c.includes('dokümantasyon') || c.includes('wiki')) return 'docs';
-  if (c.includes('arama')) return 'search';
-  if (c.includes('analitik')) return 'analytics';
-  if (c.includes('otomasyon') || c.includes('iş akışı')) return 'automation';
-  if (c.includes('kuyruk') || c.includes('akış')) return 'queue';
-  if (c.includes('devops') || c.includes('kaynak kod')) return 'devops';
-  if (c.includes('geliştirme')) return 'devtools';
-  if (c.includes('e-posta')) return 'email';
   if (c.includes('planlama') || c.includes('randevu')) return 'calendar';
+  if (c.includes('analitik')) return 'analytics';
+  if (c.includes('görselleştir') || c.includes('bi')) return 'charts';
+  if (c.includes('iletişim') || c.includes('destek')) return 'comms';
+  if (c.includes('dokümantasyon') || c.includes('wiki')) return 'docs';
+  if (c.includes('otomasyon') || c.includes('iş akışı')) return 'automation';
   return 'generic';
 }
 

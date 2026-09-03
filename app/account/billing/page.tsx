@@ -1,15 +1,18 @@
-import ComingSoonAccount from '@/components/account/ComingSoonAccount';
-import { PaytrTrustRow } from '@/components/PaytrLogo';
+import AccountBillingContent from '@/components/account/AccountBillingContent';
 
 export default function AccountBillingPage() {
   return (
     <div>
-      <ComingSoonAccount
-        title="Ödeme & faturalama"
-        description="Kart kaydı ve fatura adresi şu an toplanmıyor."
-        body="Satın alma ve faturalama açılınca ödeme yönteminizi PayTR üzerinden bağlayacaksınız. Blacknook kart numarası saklamaz. Bugün canlı olanlar: katalog, kurulum talebi ve destek hattı."
-      />
-      <PaytrTrustRow className="mt-6" />
+      <h1 className="font-display text-3xl font-bold tracking-tight text-white sm:text-4xl">
+        Ödeme & faturalama
+      </h1>
+      <p className="mt-2 max-w-2xl text-sm leading-relaxed text-zinc-500">
+        Ödeme yöntemlerinizi, fatura bilgilerinizi ve geçmiş faturalarınızı yönetin.
+      </p>
+
+      <div className="mt-10">
+        <AccountBillingContent />
+      </div>
     </div>
   );
 }

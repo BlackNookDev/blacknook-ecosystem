@@ -3,8 +3,9 @@
 import { useEffect, useState } from 'react';
 import Link from 'next/link';
 import { useSession } from 'next-auth/react';
-import { Eye, EyeOff, ExternalLink, Loader2, Upload } from 'lucide-react';
+import { Eye, EyeOff, Loader2, Upload } from 'lucide-react';
 import AccountSection from '@/components/account/AccountSection';
+import LanguagePreference from '@/components/account/LanguagePreference';
 import { useLocale, useTranslations } from '@/components/LocaleProvider';
 import { apiFetch } from '@/lib/apiUrl';
 
@@ -176,16 +177,16 @@ export default function AccountProfilePage() {
         </AccountSection>
 
         <AccountSection
+          id="public-profile"
           title="Herkese açık profil"
           description="Blacknook ekosisteminde işletmenizi ve yetkinliklerinizi görünür kılın. İsterseniz daha sonra gizleyebilirsiniz."
           action={
-            <Link
-              href="/account"
+            <a
+              href="#public-profile"
               className="inline-flex items-center gap-1.5 text-sm font-medium text-sky-400 transition-colors hover:text-sky-300"
             >
-              Profili görüntüle
-              <ExternalLink className="h-3.5 w-3.5" aria-hidden />
-            </Link>
+              Bu bölüme git
+            </a>
           }
         >
           <p className="mb-5 inline-flex items-center gap-1.5 text-xs text-zinc-500">
@@ -208,7 +209,7 @@ export default function AccountProfilePage() {
             </div>
             <div>
               <label htmlFor="bio" className="mb-2 block text-sm font-medium text-zinc-300">
-                Kısa bio / hakkında
+                Kısa biyografi
               </label>
               <textarea
                 id="bio"
@@ -283,6 +284,8 @@ export default function AccountProfilePage() {
             </button>
           </div>
         </AccountSection>
+
+        <LanguagePreference />
 
         <AccountSection
           title="Kişisel bilgiler"

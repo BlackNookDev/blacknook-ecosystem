@@ -6,10 +6,10 @@ import { m, useReducedMotion } from 'framer-motion';
 import ServiceCatalogLogo from '@/components/ServiceCatalogLogo';
 import HeroPresenceStrip from '@/components/presence/HeroPresenceStrip';
 import { duration, easePremium } from '@/components/motion/tokens';
-import { getFeaturedServices } from '../../../lib/data';
+import { getHeroAgents } from '../../../lib/data';
 import { apiFetch } from '@/lib/apiUrl';
 
-const FLOATING = getFeaturedServices(8).map((s, i) => ({
+const FLOATING = getHeroAgents().map((s, i) => ({
   ...s,
   style: [
     { top: '10%', left: '8%', rotate: -12, size: 'lg' as const },
@@ -27,7 +27,7 @@ const FLOATING = getFeaturedServices(8).map((s, i) => ({
 const TRUST = [
   { icon: Sparkles, label: '60 gün para iadesi garantisi' },
   { icon: Shield, label: 'Doğrulanmış sağlayıcılar' },
-  { icon: Check, label: '50+ araç tek ekosistemde' },
+  { icon: Check, label: '100+ MCP ajanı tek ekosistemde' },
 ];
 
 export default function HeroMailCollector() {

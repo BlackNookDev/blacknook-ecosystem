@@ -4,7 +4,13 @@ import GoogleProvider from 'next-auth/providers/google';
 import bcrypt from 'bcryptjs';
 import pool from './db';
 import { ensureAuthEnv, getAuthSecret } from './authEnv';
-import { isGoogleOAuthEnabled } from './googleOAuth';
+import {
+  DEV_AUTO_LOGIN_PASSWORD,
+  DEV_AUTO_LOGIN_DISPLAY_NAME,
+  getDevAutoLoginEmail,
+  isDevAutoLoginEnabled,
+  isGoogleOAuthEnabled,
+} from './authMode';
 
 ensureAuthEnv();
 
@@ -67,12 +73,51 @@ const providers: AuthOptions['providers'] = [
     },
     async authorize(credentials) {
       const email = credentials?.email?.trim().toLowerCase();
-      if (!email || !credentials?.password) return null;
+      const password = credentials?.password;
+
+      if (isDevAutoLoginEnabled()) {
+        const devEmail = email || getDevAutoLoginEmail();
+        if (password && password !== DEV_AUTO_LOGIN_PASSWORD) return null;
+
+        const [rows]: any = await pool.query('SELECT * FROM users WHERE LOWER(email) = ?', [
+          devEmail,
+        ]);
+        const existing = rows[0];
+        if (existing) {
+          const name =
+            !existing.name || existing.name.toLowerCase() === 'demo'
+              ? DEV_AUTO_LOGIN_DISPLAY_NAME
+              : existing.name;
+          return {
+            id: String(existing.id),
+            name,
+            email: existing.email,
+            role: existing.role,
+          };
+        }
+
+        const dbUser = await ensureOAuthUser({
+          email: devEmail,
+          name: DEV_AUTO_LOGIN_DISPLAY_NAME,
+          role: 'user',
+        });
+        const [created]: any = await pool.query('SELECT * FROM users WHERE id = ?', [dbUser.id]);
+        const user = created[0];
+        if (!user) return null;
+        return {
+          id: String(user.id),
+          name: user.name,
+          email: user.email,
+          role: user.role,
+        };
+      }
+
+      if (!email || !password) return null;
 
       const [rows]: any = await pool.query('SELECT * FROM users WHERE LOWER(email) = ?', [email]);
       const user = rows[0];
       if (!user) return null;
-      const isValid = await bcrypt.compare(credentials.password, user.password);
+      const isValid = await bcrypt.compare(password, user.password);
       if (!isValid) return null;
       return {
         id: String(user.id),

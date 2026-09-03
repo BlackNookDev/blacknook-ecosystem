@@ -51,7 +51,7 @@ export default function HelpCategoryContent({ slug }: Props) {
               href="/select"
               className="inline-flex h-10 items-center rounded-full border border-white/15 px-4 text-sm font-semibold text-zinc-200 hover:bg-white/[0.05]"
             >
-              Select programı
+              Blacknook Select programı
             </Link>
           </div>
         ) : null}

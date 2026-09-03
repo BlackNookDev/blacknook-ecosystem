@@ -1,51 +1,27 @@
 'use client';
 
 import { useEffect, useState } from 'react';
-import { usePathname, useRouter, useSearchParams } from 'next/navigation';
+import { usePathname } from 'next/navigation';
 import { Menu } from 'lucide-react';
 import { m, useReducedMotion } from 'framer-motion';
 import BrandLogo from '@/components/BrandLogo';
-import SupportRequestModal from '@/components/SupportRequestModal';
 import MobileNavPanel from '@/components/MobileNavPanel';
 import NavDropdown from '@/components/NavDropdown';
 import NavAuth from '@/components/NavAuth';
 import { useTranslations } from '@/components/LocaleProvider';
 import { duration, easePremium } from '@/components/motion/tokens';
 import { isPartnerPortalPath } from '@/lib/partnerPortal';
+import { isNookAgentLaunchPath } from '@/lib/nookAgent';
 import { isSimulationPath } from '@/lib/simulationPaths';
 
 export default function Navbar() {
   const reduce = useReducedMotion();
   const { t } = useTranslations('nav');
-  const router = useRouter();
   const pathname = usePathname();
-  const searchParams = useSearchParams();
-  const [supportOpen, setSupportOpen] = useState(false);
   const [mobileNavOpen, setMobileNavOpen] = useState(false);
 
-  const openSupport = () => {
-    setSupportOpen(true);
-  };
-  const hideChrome = isPartnerPortalPath(pathname) || isSimulationPath(pathname);
-
-  useEffect(() => {
-    if (hideChrome) return;
-    if (searchParams.get('destek') === '1' || searchParams.get('match') === '1') {
-      setSupportOpen(true);
-      router.replace('/', { scroll: false });
-    }
-  }, [searchParams, hideChrome, router]);
-
-  useEffect(() => {
-    if (hideChrome) return;
-    const onOpen = () => openSupport();
-    window.addEventListener('bn-open-support', onOpen);
-    window.addEventListener('bn-open-match', onOpen);
-    return () => {
-      window.removeEventListener('bn-open-support', onOpen);
-      window.removeEventListener('bn-open-match', onOpen);
-    };
-  }, [hideChrome]);
+  const hideChrome =
+    isPartnerPortalPath(pathname) || isSimulationPath(pathname) || isNookAgentLaunchPath(pathname);
 
   useEffect(() => {
     setMobileNavOpen(false);
@@ -92,7 +68,6 @@ export default function Navbar() {
       </m.div>
 
       <MobileNavPanel open={mobileNavOpen} onClose={() => setMobileNavOpen(false)} />
-      <SupportRequestModal open={supportOpen} onClose={() => setSupportOpen(false)} />
     </>
   );
 }

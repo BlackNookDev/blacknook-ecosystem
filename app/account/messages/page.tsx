@@ -8,12 +8,10 @@ export default function AccountMessagesPage() {
         Mesajlar
       </h1>
       <p className="mt-2 max-w-2xl text-sm leading-relaxed text-zinc-500">
-        Eşleşme sohbetleriniz burada. Sayfa birkaç saniyede bir yenilenir.
+        Destek atamaları ve hesap mesajlarınız burada görünür.
       </p>
       <div className="mt-8">
-        <Suspense
-          fallback={<p className="text-sm text-zinc-500">Mesajlar yükleniyor…</p>}
-        >
+        <Suspense fallback={<p className="text-sm text-zinc-500">Mesajlar yükleniyor…</p>}>
           <MessagesInbox />
         </Suspense>
       </div>

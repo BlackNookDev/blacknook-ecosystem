@@ -119,7 +119,7 @@ export function countBySubcategory(list: ServiceCatalogEntry[]): { label: string
 export function browseHeading(categoryId: string): string {
   const browse = getBrowseCategory(categoryId);
   if (!browse) return 'Ekosistemi keşfet';
-  return `${browse.label} ürünlerini keşfet`;
+  return `${browse.label} çözümleri`;
 }
 
 export function getShopByLinks(categoryId: string) {

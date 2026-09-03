@@ -173,9 +173,9 @@ export default function MessagesInbox() {
         ) : items.length === 0 ? (
           <div className="px-5 py-10 text-center">
             <Inbox className="mx-auto h-8 w-8 text-zinc-600" aria-hidden />
-            <p className="mt-3 text-sm font-medium text-zinc-300">Henüz konuşma yok</p>
+            <p className="mt-3 text-sm font-medium text-zinc-300">Henüz mesaj yok</p>
             <p className="mt-1 text-sm text-zinc-500">
-              Navbar’daki Destek ile bir talep gönderince sohbet burada açılır.
+              Destek atandığında veya yeni mesaj geldiğinde burada görünür.
             </p>
           </div>
         ) : (

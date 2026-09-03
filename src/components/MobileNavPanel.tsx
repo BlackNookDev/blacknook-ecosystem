@@ -4,6 +4,7 @@ import { useEffect, useMemo } from 'react';
 import Link from 'next/link';
 import { X } from 'lucide-react';
 import { useLocale, useTranslations } from '@/components/LocaleProvider';
+import { getFullCatalog } from '../../lib/data';
 import { getEcosystemNav, getMobileSiteLinks } from '@/lib/navMenusI18n';
 import NavAuth from '@/components/NavAuth';
 
@@ -15,7 +16,8 @@ type Props = {
 export default function MobileNavPanel({ open, onClose }: Props) {
   const { t } = useLocale();
   const { t: tn } = useTranslations('nav');
-  const ecosystemNav = useMemo(() => getEcosystemNav(t), [t]);
+  const catalog = useMemo(() => getFullCatalog(), []);
+  const ecosystemNav = useMemo(() => getEcosystemNav(t, catalog), [catalog, t]);
   const siteLinks = useMemo(() => getMobileSiteLinks(t), [t]);
 
   useEffect(() => {
@@ -60,15 +62,19 @@ export default function MobileNavPanel({ open, onClose }: Props) {
 
         <div className="flex-1 space-y-5 overflow-y-auto px-4 pb-6">
           <section>
+            <p className="mb-2 px-3 text-[10px] font-semibold uppercase tracking-wider text-zinc-500">
+              {ecosystemNav.label}
+            </p>
             <ul className="space-y-0.5">
-              {ecosystemNav.categories.map((item) => (
+              {ecosystemNav.browseGroups.map((item) => (
                 <li key={item.href}>
                   <Link
                     href={item.href}
                     onClick={onClose}
-                    className="block rounded-xl px-3 py-2.5 text-sm text-zinc-200 transition-colors hover:bg-white/[0.05]"
+                    className="flex items-center justify-between rounded-xl px-3 py-2.5 text-sm text-zinc-200 transition-colors hover:bg-white/[0.05]"
                   >
-                    {item.label}
+                    <span>{item.label}</span>
+                    <span className="text-[11px] tabular-nums text-zinc-500">{item.count}</span>
                   </Link>
                 </li>
               ))}
@@ -96,7 +102,7 @@ export default function MobileNavPanel({ open, onClose }: Props) {
                   onClick={onClose}
                   className="mt-1 block rounded-xl px-3 py-2.5 text-sm font-semibold text-sky-300 transition-colors hover:bg-white/[0.05]"
                 >
-                  {ecosystemNav.browseAllLabel}
+                  {ecosystemNav.browseAllLabel} ({ecosystemNav.total})
                 </Link>
               </li>
             </ul>

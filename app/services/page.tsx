@@ -2,13 +2,15 @@ import type { Metadata } from 'next';
 import { Suspense } from 'react';
 import ServicesBrowse from '@/components/services/ServicesBrowse';
 import JsonLd from '@/components/seo/JsonLd';
-import { SERVICES } from '../../lib/data';
+import { getFullCatalog } from '../../lib/data';
 import { absoluteUrl, buildPageMetadata } from '@/lib/seo';
 
+const catalog = getFullCatalog();
+
 export const metadata: Metadata = buildPageMetadata({
-  title: 'Ekosistem | Blacknook',
+  title: 'MCP Ajanları | Blacknook',
   description:
-    'Self-host ve iş araçları ekosistemini keşfedin. Kurulum talep edin; bulut yazılım, mini yazılım ve betikler yakında.',
+    'Kurumsal MCP ajan kataloğu ve ana ajan simülasyonları. Departman bazlı ajanları keşfedin ve kokpitte yönetin.',
   path: '/services',
 });
 
@@ -17,11 +19,11 @@ const itemList = {
   '@type': 'CollectionPage',
   name: 'Ekosistem | Blacknook',
   url: absoluteUrl('/services'),
-  description: 'Blacknook yazılım ekosistemi — self-host ve iş araçları kataloğu',
+  description: 'Blacknook MCP ajan ekosistemi — ana ajanlar ve kurumsal MCP kataloğu',
   mainEntity: {
     '@type': 'ItemList',
-    numberOfItems: SERVICES.length,
-    itemListElement: SERVICES.slice(0, 24).map((service, index) => ({
+    numberOfItems: catalog.length,
+    itemListElement: catalog.slice(0, 24).map((service, index) => ({
       '@type': 'ListItem',
       position: index + 1,
       url: absoluteUrl(`/service/${service.slug}`),
@@ -37,7 +39,7 @@ export default function ServicesPage() {
       <Suspense
         fallback={
           <div className="mx-auto max-w-7xl px-6 py-20 text-center text-sm text-zinc-500">
-            Hub yükleniyor…
+            Ekosistem yükleniyor…
           </div>
         }
       >

@@ -1,0 +1,5 @@
+#!/bin/sh
+# Git push öncesi Google doğrulamasını tekrar aç (yerel .env güncellenir)
+
+ROOT="$(git rev-parse --show-toplevel)"
+node "$ROOT/scripts/set-auth-mode.mjs" prod

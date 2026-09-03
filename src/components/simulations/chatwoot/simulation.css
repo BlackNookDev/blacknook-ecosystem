@@ -1,0 +1,39 @@
+.cw-sim {
+  --cw-brand: #1f93ff;
+  --cw-sidebar: #1e293b;
+  --cw-panel: #f8fafc;
+  font-family: system-ui, -apple-system, 'Segoe UI', sans-serif;
+}
+
+.cw-sim .cw-channel-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 9999px;
+  flex-shrink: 0;
+}
+
+.cw-sim .cw-conv-item:hover {
+  background: #f1f5f9;
+}
+
+.cw-sim .cw-conv-item[data-active='true'] {
+  background: #e0f2fe;
+  border-left: 3px solid var(--cw-brand);
+}
+
+.cw-sim .cw-bubble-customer {
+  background: #f1f5f9;
+  color: #0f172a;
+}
+
+.cw-sim .cw-bubble-agent {
+  background: var(--cw-brand);
+  color: #fff;
+}
+
+.cw-sim .cw-bubble-system {
+  background: transparent;
+  color: #94a3b8;
+  font-size: 11px;
+  text-align: center;
+}

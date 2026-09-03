@@ -9,8 +9,6 @@ import { apiFetch } from '@/lib/apiUrl';
 import { AnimatePresence, m } from 'framer-motion';
 import { Play, Send, X } from 'lucide-react';
 import SimulationLaunchButton from '@/components/simulations/SimulationLaunchButton';
-import NookMuhasebePricing from '@/components/pricing/NookMuhasebePricing';
-import { NOOK_MCP_SERVICE_SLUG } from '@/lib/nookMuhasebePricing';
 import { duration, easePremium } from '@/components/motion/tokens';
 import { getServiceSimulationPath } from '@/lib/simulationPaths';
 
@@ -145,7 +143,7 @@ export default function ServiceDetailActions({ serviceName, serviceSlug, demoUrl
 
             <form onSubmit={handleSubmit} className="relative p-8 pt-10">
               <h2 id="install-request-title" className="pr-10 text-xl font-bold text-white">
-                Kurulum Talep Et
+                Kurulum talep et
               </h2>
               <p className="mt-2 text-sm leading-relaxed text-zinc-400">
                 <span className="font-medium text-zinc-300">{serviceName}</span> için kurulum
@@ -184,7 +182,7 @@ export default function ServiceDetailActions({ serviceName, serviceSlug, demoUrl
                       required
                       value={companyName}
                       onChange={(e) => setCompanyName(e.target.value)}
-                      placeholder="Şirket Adı"
+                      placeholder="Şirket adı"
                       className="w-full rounded-xl border border-white/10 bg-zinc-950 px-4 py-3 text-sm text-zinc-100 placeholder:text-zinc-500 focus:border-white/20 focus:outline-none focus:ring-2 focus:ring-white/15"
                     />
                   </div>
@@ -224,7 +222,7 @@ export default function ServiceDetailActions({ serviceName, serviceSlug, demoUrl
                       className="inline-flex flex-1 items-center justify-center gap-2 rounded-xl border border-white/15 bg-black py-3 text-sm font-semibold text-white transition-all hover:border-white/25 hover:bg-zinc-950 disabled:opacity-50"
                     >
                       <Send className="h-4 w-4" aria-hidden />
-                      {sending ? 'Gönderiliyor…' : 'Talebi Gönder'}
+                      {sending ? 'Gönderiliyor…' : 'Talebi gönder'}
                     </button>
                   </div>
                 </div>
@@ -244,6 +242,7 @@ export default function ServiceDetailActions({ serviceName, serviceSlug, demoUrl
         simulationHref.startsWith('/') ? (
           <SimulationLaunchButton
             href={simulationHref}
+            returnTo={pathname}
             splashLabel={`${serviceName} Simülasyonu`}
             className="mb-3 flex w-full items-center justify-center gap-2 rounded-full border border-teal-400/40 bg-teal-500/15 py-3.5 text-sm font-semibold text-teal-50 transition-[border-color,background-color,opacity] duration-premium ease-premium hover:border-teal-300/55 hover:bg-teal-500/20 disabled:opacity-80"
           />
@@ -258,14 +257,6 @@ export default function ServiceDetailActions({ serviceName, serviceSlug, demoUrl
             Simülasyon
           </a>
         )
-      ) : null}
-      {serviceSlug === NOOK_MCP_SERVICE_SLUG ? (
-        <NookMuhasebePricing
-          variant="button"
-          buttonStyle="link"
-          className="mb-3"
-          ctaHref={`/service/${serviceSlug}?openInstall=1`}
-        />
       ) : null}
       <m.button
         type="button"

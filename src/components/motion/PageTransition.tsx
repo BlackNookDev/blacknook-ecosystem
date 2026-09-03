@@ -4,6 +4,7 @@ import { useEffect } from 'react';
 import { usePathname } from 'next/navigation';
 import { AnimatePresence, m, useReducedMotion } from 'framer-motion';
 import { duration, easePremium } from '@/components/motion/tokens';
+import { isNookAgentLaunchPath } from '@/lib/nookAgent';
 import { isSimulationPath } from '@/lib/simulationPaths';
 
 type Props = {
@@ -22,7 +23,7 @@ export default function PageTransition({ children }: Props) {
     window.scrollTo({ top: 0, behavior: 'auto' });
   }, [pathname]);
 
-  if (reduce || isSimulationPath(pathname)) {
+  if (reduce || isSimulationPath(pathname) || isNookAgentLaunchPath(pathname)) {
     return <>{children}</>;
   }
 

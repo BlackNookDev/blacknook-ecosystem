@@ -8,7 +8,7 @@ type Props = {
   textClassName?: string;
 };
 
-/** BlackNOOK markası: ikon + wordmark */
+/** Blacknook markası: ikon + wordmark */
 export default function BrandLogo({ className, iconClassName, textClassName }: Props) {
   return (
     <Link

@@ -154,7 +154,7 @@ function demoSupportReply(messages: SupportChatMessage[]) {
     return 'Güvenlik konusunda ilk adım olarak şunları önerebilirim:\n\n• MFA / SSO yapılandırması\n• IAM rolleri ve en az yetki prensibi\n• TLS ve sertifika yenileme takvimi\n\nHassas bilgi paylaşmayın. «Teknik ekibe bağlan» ile güvenli kanaldan uzmanımıza aktarabilirsiniz.';
   }
 
-  if (/entegrasyon|api|webhook|n8n|zapier/.test(lastUser)) {
+  if (/entegrasyon|api|webhook|zapier/.test(lastUser)) {
     return 'Entegrasyon için tipik akış şöyledir:\n\n1. Kaynak ve hedef sistemleri belirleyin\n2. API dokümantasyonunu paylaşın\n3. Test ortamında doğrulayın\n\nHangi sistemlerin konuşması gerektiğini yazarsanız örnek bir yol haritası çıkarabilirim.';
   }
 

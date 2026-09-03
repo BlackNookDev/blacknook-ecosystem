@@ -341,7 +341,7 @@ export default function SellContent() {
           <p className="mt-5 text-sm text-zinc-600">
             Özel lansman mı arıyorsunuz?{' '}
             <Link href="/select" className="text-zinc-400 underline underline-offset-2 hover:text-zinc-200">
-              Select programı
+              Blacknook Select programı
             </Link>
             {' · '}
             <Link

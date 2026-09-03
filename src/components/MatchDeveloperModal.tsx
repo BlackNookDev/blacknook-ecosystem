@@ -131,7 +131,7 @@ export default function MatchDeveloperModal({ open, onClose }: Props) {
           <div className="relative flex items-center justify-between border-b border-white/10 px-5 py-4 sm:px-8">
             <div className="flex items-center gap-2 text-sm text-zinc-400">
               <Sparkles className="h-4 w-4 text-zinc-200" aria-hidden />
-              BlackNOOK Match
+              Blacknook Match
               <span className="ml-1 inline-flex items-center gap-1 rounded-full border border-emerald-400/20 bg-emerald-400/10 px-2 py-0.5 text-[10px] font-medium text-emerald-300">
                 <span className="h-1.5 w-1.5 animate-pulse rounded-full bg-emerald-400" />
                 {count > 0 ? `${count} açık` : 'Ekip'}

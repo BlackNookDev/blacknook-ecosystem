@@ -22,7 +22,7 @@ const de = {
     support: 'Support',
     learn: 'Lernen',
     developer: 'Entwickler',
-    copyright: '© {year} BlackNOOK. Alle Rechte vorbehalten.',
+    copyright: '© {year} Blacknook. Alle Rechte vorbehalten.',
     help: 'Hilfe',
     terms: 'Nutzungsbedingungen',
     privacy: 'Datenschutz',
@@ -47,7 +47,7 @@ const de = {
   account: {
     ...en.account,
     profile: 'Profil',
-    messages: 'Nachrichten',
+    notifications: 'Benachrichtigungen',
     requests: 'Anfragen',
     products: 'Produkte',
     billing: 'Zahlungen',

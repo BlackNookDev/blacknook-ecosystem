@@ -3,6 +3,7 @@
 import { usePathname } from 'next/navigation';
 import LogoLoop from '@/components/LogoLoop';
 import { isPartnerPortalPath } from '@/lib/partnerPortal';
+import { isNookAgentLaunchPath } from '@/lib/nookAgent';
 import { isSimulationPath } from '@/lib/simulationPaths';
 import { SiReact, SiNextdotjs, SiTypescript, SiTailwindcss } from 'react-icons/si';
 
@@ -15,7 +16,8 @@ const techLogos = [
 
 export default function TechLogoLoop() {
   const pathname = usePathname();
-  if (isPartnerPortalPath(pathname) || isSimulationPath(pathname)) return null;
+  if (isPartnerPortalPath(pathname) || isSimulationPath(pathname) || isNookAgentLaunchPath(pathname))
+    return null;
 
   return (
     <section

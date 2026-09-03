@@ -41,7 +41,7 @@ export default function MarketplaceDetail({ product }: { product: MarketplacePro
         brandColor={product.brandColor || '#71717a'}
         icon={icon}
         features={product.features}
-        eyebrow={`${product.verified ? 'BlackNook' : 'Partner'} · ${product.category}`}
+        eyebrow={`${product.verified ? 'Blacknook' : 'Partner'} · ${product.category}`}
         badge={product.verified ? <VerifiedBadge /> : null}
         coverSrc={product.coverImage || null}
         coverAlt={listing?.heroAlt || product.title}
