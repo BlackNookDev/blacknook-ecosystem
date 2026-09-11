@@ -8,7 +8,7 @@ import { subscribeSimulationSplash } from '@/lib/simulationSplash';
 
 type Props = {
   title: string;
-  subtitle: string;
+  subtitle?: string;
   children: ReactNode;
   resetKey?: number;
   onReset?: () => void;
@@ -37,7 +37,7 @@ export default function SimulationPageLayout({
     <div className="fixed inset-0 z-10 flex h-[100dvh] min-h-0 flex-col overflow-hidden bg-[var(--bn-bg)]">
       <header className="flex shrink-0 items-center justify-between gap-3 border-b border-[var(--bn-border)] bg-[var(--bn-nav-bg)] px-4 py-3 backdrop-blur-xl sm:px-6">
         <div className="flex min-w-0 items-center gap-3">
-          <SimulationBackLink fallback={fallbackReturn} aria-label="Kokpit'e dön" />
+          <SimulationBackLink fallback={fallbackReturn} aria-label="Panele dön" />
           <Image
             src="/bn-mark.png"
             alt=""
@@ -49,7 +49,9 @@ export default function SimulationPageLayout({
             <p className="truncate font-display text-sm font-semibold text-[var(--bn-heading)]">
               {title}
             </p>
-            <p className="truncate text-xs text-[var(--bn-subtitle)]">{subtitle}</p>
+            {subtitle ? (
+              <p className="truncate text-xs text-[var(--bn-subtitle)]">{subtitle}</p>
+            ) : null}
           </div>
         </div>
         <div className="flex shrink-0 items-center gap-2">
@@ -64,7 +66,7 @@ export default function SimulationPageLayout({
             </button>
           ) : null}
           <span className="hidden rounded-full border border-white/20 bg-white/[0.04] px-3 py-1 text-[11px] font-semibold text-zinc-200 md:inline">
-            Blacknook · Simülasyon
+            Blacknook · Önizleme
           </span>
         </div>
       </header>

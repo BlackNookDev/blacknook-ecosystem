@@ -27,13 +27,13 @@ export type SubheadingOption = {
 export const SPECIAL_SUBHEADINGS: SubheadingDefinition[] = [
   {
     id: 'simulasyon',
-    label: 'Simülasyonlu',
+    label: 'Önizleme',
     match: (item) =>
       Boolean(item.demoUrl?.includes('/simulasyon')) || SIMULATION_SLUGS.has(item.slug),
   },
   {
     id: 'ana-ajan',
-    label: 'Ana ajanlar',
+    label: 'MCP',
     match: (item) => (HERO_AGENT_SLUGS as readonly string[]).includes(item.slug),
   },
 ];
@@ -159,7 +159,7 @@ export const DEPARTMENT_SUBHEADINGS: Record<string, SubheadingDefinition[]> = {
   satis: [
     { id: 'crm', label: 'CRM & lead', match: (s) => /crm|lead|linkedin|churn/i.test(haystack(s)) },
     { id: 'teklif', label: 'Teklif & RFP', match: (s) => /teklif|rfp|itiraz/i.test(haystack(s)) },
-    { id: 'randevu', label: 'Randevu & demo', match: (s) => /randevu|cal\.com|demo/i.test(haystack(s)) },
+    { id: 'randevu', label: 'Randevu & görüşme', match: (s) => /randevu|cal\.com|görüşme/i.test(haystack(s)) },
   ],
   destek: [
     { id: 'bilet', label: 'Bilet & inbox', match: (s) => /bilet|ticket|destek|chatwoot|çağrı/i.test(haystack(s)) },

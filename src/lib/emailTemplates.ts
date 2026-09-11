@@ -222,7 +222,7 @@ export function renderBrandEmail(payload: BrandEmailPayload): string {
           <tr>
             <td align="center" style="padding:22px 8px 0;">
               <p style="margin:0;font-family:${FONT_BODY};font-size:11px;line-height:1.5;color:${C.faint};">
-                Yazılım ekosistemi · kurulum · eşleşme
+                Keşif · yönetilen kurulum · otonom panel
               </p>
             </td>
           </tr>
@@ -251,7 +251,7 @@ export function welcomeRegisterEmail(params: { name: string; email: string }) {
     title: `Merhaba ${name}`,
     bodyHtml: [
       p(
-        'Hesabınız hazır. Servis kataloğunu gezebilir, kurulum talebi gönderebilir ve geliştirici eşleşmesi isteyebilirsiniz.'
+        'Hesabınız hazır. Ajan kataloğunu gezebilir, Kurulum Talep Et ile onboarding başlatabilir ve /agent panelini kullanabilirsiniz.'
       ),
       detailCard([
         { label: 'Hesap', valueHtml: strong(escapeHtml(params.email)) },
@@ -388,6 +388,7 @@ export function installationUserEmail(params: {
   serviceSlug: string;
   companyName: string;
   requirements: string;
+  deploymentLabel?: string;
 }) {
   const detail = siteUrl(`/service/${params.serviceSlug}`);
   const html = renderBrandEmail({
@@ -395,10 +396,15 @@ export function installationUserEmail(params: {
     eyebrow: 'Kurulum',
     title: 'Talebiniz alındı',
     bodyHtml: [
-      p('Kurulum talebinizi aldık. Ekibimiz en kısa sürede sizinle iletişime geçecek.'),
+      p(
+        'Kurulum talebinizi aldık. Blacknook operasyon ekibi yönetilen kurulum sürecini başlatacak ve en kısa sürede sizinle iletişime geçecek.'
+      ),
       detailCard([
         { label: 'Servis', valueHtml: strong(escapeHtml(params.serviceName)) },
         { label: 'Şirket', valueHtml: escapeHtml(params.companyName) },
+        ...(params.deploymentLabel
+          ? [{ label: 'Kurulum ortamı', valueHtml: escapeHtml(params.deploymentLabel) }]
+          : []),
       ]),
       quoteBlock(
         'Talebiniz',
@@ -413,11 +419,14 @@ export function installationUserEmail(params: {
     text: [
       `Kurulum talebiniz alındı: ${params.serviceName}`,
       `Şirket: ${params.companyName}`,
+      params.deploymentLabel ? `Kurulum ortamı: ${params.deploymentLabel}` : '',
       '',
       params.requirements,
       '',
       detail,
-    ].join('\n'),
+    ]
+      .filter(Boolean)
+      .join('\n'),
     html,
   };
 }
@@ -428,10 +437,15 @@ export function installationTeamEmail(params: {
   companyName: string;
   email: string;
   requirements: string;
+  deploymentLabel?: string;
+  adminHref?: string;
 }) {
+  const adminUrl = params.adminHref
+    ? siteUrl(params.adminHref)
+    : siteUrl('/admin/installations');
   const html = renderBrandEmail({
     preheader: `Kurulum: ${params.serviceName}`,
-    eyebrow: 'Ekip',
+    eyebrow: 'Operasyon',
     title: 'Yeni kurulum talebi',
     bodyHtml: [
       detailCard([
@@ -441,10 +455,16 @@ export function installationTeamEmail(params: {
         },
         { label: 'Şirket', valueHtml: escapeHtml(params.companyName) },
         { label: 'E-posta', valueHtml: escapeHtml(params.email) },
+        ...(params.deploymentLabel
+          ? [{ label: 'Kurulum ortamı', valueHtml: escapeHtml(params.deploymentLabel) }]
+          : []),
       ]),
       quoteBlock(
         'Detay',
         escapeHtml(params.requirements).replace(/\n/g, '<br />')
+      ),
+      p(
+        `<a href="${escapeHtml(adminUrl)}" style="color:${C.accent};">Admin kurulum paneline git →</a>`
       ),
     ].join(''),
   });
@@ -455,9 +475,14 @@ export function installationTeamEmail(params: {
       `Servis: ${params.serviceName} (${params.serviceSlug})`,
       `Şirket: ${params.companyName}`,
       `E-posta: ${params.email}`,
+      params.deploymentLabel ? `Kurulum ortamı: ${params.deploymentLabel}` : '',
       '',
       params.requirements,
-    ].join('\n'),
+      '',
+      `Admin: ${adminUrl}`,
+    ]
+      .filter(Boolean)
+      .join('\n'),
     html,
   };
 }

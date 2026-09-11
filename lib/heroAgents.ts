@@ -1,4 +1,4 @@
-/** Ana (hero) MCP ajanları — platform vitrininde gösterilen 6 kurumsal ajan */
+/** Ana (hero) MCP ajanları — platform vitrininde gösterilen kurumsal ajanlar */
 export const HERO_AGENT_SLUGS = [
   'nook-muhasebe-mcp',
   'metabase',
@@ -6,6 +6,7 @@ export const HERO_AGENT_SLUGS = [
   'cal-com',
   'chatwoot',
   'outline',
+  'shopppro',
 ] as const;
 
 export type HeroAgentSlug = (typeof HERO_AGENT_SLUGS)[number];

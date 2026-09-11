@@ -68,9 +68,9 @@ export const EVENT_TYPES: CalEventType[] = [
     requiresConfirmation: true,
   },
   {
-    id: 'demo',
-    title: 'Ürün demosu',
-    slug: 'demo',
+    id: 'product-meeting',
+    title: 'Ürün sunumu',
+    slug: 'product-meeting',
     description: 'Canlı ürün turu, entegrasyon soruları ve Q&A.',
     durations: ['45m', '60m'],
     location: 'cal-video',

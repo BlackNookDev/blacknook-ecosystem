@@ -10,7 +10,6 @@ export default function MetabaseSimulationPage() {
   return (
     <SimulationPageLayout
       title="Metabase Simülasyonu"
-      subtitle="Soru · pano · veri tarayıcı · yönetim"
       resetKey={resetKey}
       onReset={() => setResetKey((k) => k + 1)}
     >

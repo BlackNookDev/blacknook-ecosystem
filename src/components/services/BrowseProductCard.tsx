@@ -1,6 +1,7 @@
 'use client';
 
 import Link from 'next/link';
+import { Play } from 'lucide-react';
 import { useTheme } from '@/components/ThemeProvider';
 import ServiceCatalogLogo from '@/components/ServiceCatalogLogo';
 import VerifiedBadge from '@/components/VerifiedBadge';
@@ -71,14 +72,11 @@ export default function BrowseProductCard({ service, className }: Props) {
           <span className="absolute left-2.5 top-2.5 rounded-full bg-sky-500/20 p-1 ring-1 ring-sky-400/30">
             <VerifiedBadge compact className="text-sky-200" />
           </span>
-        ) : service.source === 'marketplace' ? (
-          <span className="absolute left-2.5 top-2.5 rounded-full bg-white px-2 py-0.5 text-[10px] font-bold uppercase tracking-wide text-black">
-            Partner
-          </span>
         ) : null}
         {hasCatalogSimulation(service) ? (
-          <span className="absolute right-2.5 top-2.5 rounded-full bg-emerald-500/20 px-2 py-0.5 text-[10px] font-bold uppercase tracking-wide text-emerald-200 ring-1 ring-emerald-400/30">
-            Simülasyon
+          <span className="absolute right-2.5 top-2.5 inline-flex items-center gap-1 rounded-full bg-emerald-500/20 px-2 py-0.5 text-[10px] font-bold uppercase tracking-wide text-emerald-200 ring-1 ring-emerald-400/30">
+            <Play className="h-2.5 w-2.5 fill-current" aria-hidden />
+            Önizleme
           </span>
         ) : null}
       </div>
@@ -88,11 +86,7 @@ export default function BrowseProductCard({ service, className }: Props) {
           {service.name}
         </h3>
         <p className="bn-subtitle mt-0.5 text-[12px]">
-          {service.catalogKind === 'hero-agent' ? 'Ana MCP ajanı' : service.category}
-        </p>
-
-        <p className="bn-subtitle mt-2 line-clamp-2 flex-1 text-[13px] leading-snug">
-          {service.description}
+          {service.agentDepartment ?? service.category}
         </p>
 
         <p className="bn-link-accent mt-3 text-[12px] font-medium">Keşfet →</p>

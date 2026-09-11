@@ -18,6 +18,8 @@ export interface ServiceCatalogItem {
   demoUrl?: string;
   /** hero-agent = vitrin ajanı, mcp-agent = katalog ajanı */
   catalogKind?: 'hero-agent' | 'mcp-agent';
+  /** enterprise = vitrin/SLA; standard = katalog (UI’da “deneysel” yazılmaz) */
+  catalogTier?: 'enterprise' | 'standard';
   agentDepartment?: string;
 }
 
@@ -31,7 +33,7 @@ export type ServiceCatalogEntry = ServiceCatalogItem & {
   vendorName?: string;
 };
 
-/** Platform vitrinindeki 6 ana MCP ajanı */
+/** Platform vitrinindeki ana MCP ajanları */
 export const HERO_AGENTS: ServiceCatalogEntry[] = [
   {
     slug: 'nook-muhasebe-mcp',
@@ -42,7 +44,7 @@ export const HERO_AGENTS: ServiceCatalogEntry[] = [
     listingType: 'service',
     catalogKind: 'hero-agent',
     agentDepartment: 'Muhasebe',
-    category: 'Ana MCP Ajanı',
+    category: 'Muhasebe & Finans',
     brandColor: '#14B8A6',
     demoUrl: '/service/nook-muhasebe-mcp/simulasyon',
     features: [
@@ -67,7 +69,7 @@ export const HERO_AGENTS: ServiceCatalogEntry[] = [
     icon: 'metabase',
     catalogKind: 'hero-agent',
     agentDepartment: 'Finans',
-    category: 'Ana MCP Ajanı',
+    category: 'BI & Görselleştirme',
     brandColor: '#509EE3',
     demoUrl: '/service/metabase/simulasyon',
     features: [
@@ -92,7 +94,7 @@ export const HERO_AGENTS: ServiceCatalogEntry[] = [
     icon: 'plausibleanalytics',
     catalogKind: 'hero-agent',
     agentDepartment: 'Pazarlama',
-    category: 'Ana MCP Ajanı',
+    category: 'Analitik & Ürün',
     brandColor: '#5850EC',
     demoUrl: '/service/plausible/simulasyon',
     features: [
@@ -118,7 +120,7 @@ export const HERO_AGENTS: ServiceCatalogEntry[] = [
     listingType: 'service',
     catalogKind: 'hero-agent',
     agentDepartment: 'Satış',
-    category: 'Ana MCP Ajanı',
+    category: 'Planlama & Randevu',
     brandColor: '#292929',
     demoUrl: '/service/cal-com/simulasyon',
     features: [
@@ -129,9 +131,9 @@ export const HERO_AGENTS: ServiceCatalogEntry[] = [
       'API ve gömülü bileşen',
     ],
     about:
-      'Cal.com Randevu Ajanı, toplantı slotlarını paylaşarak planlama sürtünmesini azaltır. Satış demo, destek ve danışmanlık görüşmelerini otomatik planlar.',
+      'Cal.com Randevu Ajanı, toplantı slotlarını paylaşarak planlama sürtünmesini azaltır. Satış, destek ve danışmanlık görüşmelerini otomatik planlar.',
     useCases: [
-      'Satış demo ve keşif görüşmesi randevuları',
+      'Satış ve keşif görüşmesi randevuları',
       'Destek ve danışmanlık slot yönetimi',
       'Web sitesine gömülü rezervasyon formu',
     ],
@@ -144,7 +146,7 @@ export const HERO_AGENTS: ServiceCatalogEntry[] = [
     listingType: 'service',
     catalogKind: 'hero-agent',
     agentDepartment: 'Destek',
-    category: 'Ana MCP Ajanı',
+    category: 'İletişim & Destek',
     brandColor: '#1F93FF',
     demoUrl: '/service/chatwoot/simulasyon',
     features: [
@@ -169,7 +171,7 @@ export const HERO_AGENTS: ServiceCatalogEntry[] = [
     icon: 'outline',
     catalogKind: 'hero-agent',
     agentDepartment: 'Operasyon',
-    category: 'Ana MCP Ajanı',
+    category: 'Dokümantasyon & Wiki',
     brandColor: '#000000',
     demoUrl: '/service/outline/simulasyon',
     features: [
@@ -185,6 +187,33 @@ export const HERO_AGENTS: ServiceCatalogEntry[] = [
       'Mühendislik runbook ve standart işlem dokümantasyonu',
       'Onboarding bilgi merkezi',
       'Proje wiki ve karar kayıtları',
+    ],
+  },
+  {
+    slug: 'shopppro',
+    name: 'Shopppro E-ticaret Ajanı',
+    description:
+      'Pazaryeri, stok, sipariş, kargo ve sosyal operasyonları tek panelde yürüten yapay zekâ e-ticaret MCP’si.',
+    icon: 'shopppro',
+    listingType: 'service',
+    catalogKind: 'hero-agent',
+    agentDepartment: 'E-ticaret',
+    category: 'E-ticaret & Operasyon',
+    brandColor: '#E11D2E',
+    demoUrl: 'https://shopppro.io/tr',
+    features: [
+      'Amazon, Trendyol, Hepsiburada ve kendi mağaza senkronu',
+      'YZ ile stok, fiyat ve katalog toplu işlemleri',
+      'Kargo fiyat karşılaştırması ve gönderi yönetimi',
+      'Sosyal içerik planlama ve otomatik yayın',
+      'SEO, ödeme bağlantıları ve operasyon otomasyonları',
+    ],
+    about:
+      'Shopppro, e-ticaret operasyonunu yapay zekâ asistanlarıyla yöneten bir MCP projesidir. Mağaza, pazaryerleri, sipariş, stok, kargo ve sosyal medya tek yerde birleşir; ekipler doğal dille katalog güncelleyip kanalları senkron tutar.',
+    useCases: [
+      'Çok kanallı ürün ve stok senkronizasyonu',
+      'Kargo maliyeti optimizasyonu',
+      'YZ ile toplu fiyat, içerik ve SEO güncellemeleri',
     ],
   },
 ];
@@ -212,6 +241,7 @@ export function asOfficialCatalog(service: ServiceCatalogEntry): ServiceCatalogE
     ...service,
     listingType: service.listingType || 'service',
     catalogKind: service.catalogKind || (isHero ? 'hero-agent' : 'mcp-agent'),
+    catalogTier: service.catalogTier || (isHero ? 'enterprise' : 'standard'),
     verified: true,
     vendorName: 'Blacknook',
     source: service.source ?? (isHero ? 'catalog' : 'mcp'),

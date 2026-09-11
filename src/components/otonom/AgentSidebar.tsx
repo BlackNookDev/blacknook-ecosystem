@@ -5,12 +5,16 @@ import { usePathname } from 'next/navigation';
 import { useEffect, useMemo, useState, type ComponentType } from 'react';
 import { AnimatePresence, m, useReducedMotion } from 'framer-motion';
 import {
+  Link2,
   Boxes,
   Briefcase,
   Building2,
   Calculator,
   ChevronDown,
+  Code2,
   Cpu,
+  CreditCard,
+  Grid2X2,
   HardHat,
   Headset,
   HeartPulse,
@@ -19,6 +23,8 @@ import {
   LineChart,
   Megaphone,
   Menu,
+  MessageSquare,
+  Lock,
   Scale,
   ShieldCheck,
   ShoppingBag,
@@ -135,10 +141,40 @@ export default function AgentSidebar() {
 
   const manageItems: NavItem[] = [
     {
+      href: '/agent/studio',
+      label: 'Ajan yapılandır',
+      icon: Code2,
+      match: (path) => path.startsWith('/agent/studio'),
+    },
+    {
+      href: '/agent/manage/integrations',
+      label: 'Bağlantılar',
+      icon: Link2,
+      match: (path) => path.startsWith('/agent/manage/integrations'),
+    },
+    {
       href: '/agent/manage/company',
       label: 'Şirket',
       icon: Building2,
-      match: (path) => path.startsWith('/agent/manage'),
+      match: (path) => path.startsWith('/agent/manage/company'),
+    },
+    {
+      href: '/account/requests',
+      label: 'Talepler',
+      icon: MessageSquare,
+      match: (path) => path.startsWith('/account/requests'),
+    },
+    {
+      href: '/account/products',
+      label: 'Ürünler',
+      icon: Grid2X2,
+      match: (path) => path.startsWith('/account/products'),
+    },
+    {
+      href: '/account/billing',
+      label: 'Ödemeler',
+      icon: CreditCard,
+      match: (path) => path.startsWith('/account/billing'),
     },
   ];
 
@@ -286,18 +322,31 @@ function NavLink({
 }) {
   const active = item.match(pathname);
   const Icon = item.icon;
+  const className = cn(
+    'flex min-h-10 w-full items-center gap-2.5 rounded-xl px-3 py-2 text-sm font-medium transition-colors duration-premium ease-premium',
+    active
+      ? 'bg-white text-zinc-950'
+      : 'text-zinc-300 hover:bg-white/[0.06] hover:text-white'
+  );
+
+  if (item.href === '/agent/studio') {
+    return (
+      <span
+        aria-disabled="true"
+        title="Yakında"
+        className={cn(
+          'flex min-h-10 w-full cursor-not-allowed items-center gap-2.5 rounded-xl px-3 py-2 text-sm font-medium text-zinc-500 opacity-55'
+        )}
+      >
+        <Icon className="h-4 w-4 shrink-0" />
+        <span className="min-w-0 flex-1">{item.label}</span>
+        <Lock className="h-3.5 w-3.5 shrink-0 opacity-70" aria-hidden />
+      </span>
+    );
+  }
 
   return (
-    <Link
-      href={item.href}
-      onClick={onNavigate}
-      className={cn(
-        'flex min-h-10 items-center gap-2.5 rounded-xl px-3 py-2 text-sm font-medium transition-colors duration-premium ease-premium',
-        active
-          ? 'bg-white text-zinc-950'
-          : 'text-zinc-300 hover:bg-white/[0.06] hover:text-white'
-      )}
-    >
+    <Link href={item.href} onClick={onNavigate} className={className}>
       <Icon className="h-4 w-4 shrink-0" />
       {item.label}
     </Link>

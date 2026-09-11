@@ -12,31 +12,31 @@ const COMING_SOON: Record<Exclude<CatalogChannel, 'service'>, ComingSoonCopy> = 
   saas: {
     eyebrow: 'Yakında',
     title: 'Bulut yazılım yakında',
-    body: 'Bağımsız bulut yazılımlarını tek seferlik lisans ve kampanya modeliyle burada listeleyeceğiz. Şimdilik canlı hub Ekosistem’de.',
+    body: 'Bulut yazılımları için ayrı bir keşif yüzeyi açılacak. Şimdilik ajan kataloğu ve yönetilen kurulum canlı.',
     bullets: [
-      'Seçilmiş bulut yazılımları ve kampanyalar',
-      'Lisans ve erişim akışı',
-      'Erken listeleme için partner başvurusu açık',
+      'Seçilmiş bulut yazılımları',
+      'Katalog üzerinden keşif',
+      'Kurulum talepleri Ekosistem’de devam ediyor',
     ],
   },
   'micro-saas': {
     eyebrow: 'Yakında',
     title: 'Mini yazılım yakında',
-    body: 'Dar kapsamlı, odaklı araçlar için ayrı bir hub açıyoruz. Küçük ürünler burada yer alacak.',
+    body: 'Dar kapsamlı araçlar için ayrı bir hub planlanıyor. Bugün ajan kataloğundan keşfedebilirsiniz.',
     bullets: [
       'Tek amaçlı mini yazılımlar',
-      'Hızlı keşif ve karşılaştırma',
-      'Geliştiriciler için erken listeleme',
+      'Hızlı keşif',
+      'Kurulum Talep Et ile onboarding',
     ],
   },
   script: {
     eyebrow: 'Yakında',
     title: 'Betikler yakında',
-    body: 'Küçük betikler, otomasyon paketleri ve teknik araçlar için ayrı hub açılıyor. Kurulum talepleri şimdilik Ekosistem’den.',
+    body: 'Küçük betikler ve otomasyon paketleri için ayrı hub açılacak. Kurulum talepleri şimdilik ajan kataloğundan.',
     bullets: [
       'Hazır betik ve otomasyon paketleri',
-      'Teknik araçlar ve şablonlar',
-      'Kurulum talebi Ekosistem hub’ında devam ediyor',
+      'Teknik araçlar',
+      'Kurulum talebi katalog üzerinden',
     ],
   },
 };

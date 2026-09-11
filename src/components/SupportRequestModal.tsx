@@ -2,7 +2,6 @@
 
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import { createPortal } from 'react-dom';
-import Link from 'next/link';
 import { useSession } from 'next-auth/react';
 import { AnimatePresence, m } from 'framer-motion';
 import {
@@ -12,8 +11,6 @@ import {
   UserRound,
   X,
 } from 'lucide-react';
-import DeveloperAvatars from '@/components/presence/DeveloperAvatars';
-import { useMatchPool } from '@/components/presence/useMatchPool';
 import { duration, easePremium } from '@/components/motion/tokens';
 import { apiFetch } from '@/lib/apiUrl';
 import { supportSuccessTitle } from '@/lib/supportDisplay';
@@ -53,7 +50,6 @@ const CATEGORY_OPTIONS: SupportCategory[] = [
 
 export default function SupportRequestModal({ open, onClose }: Props) {
   const { data: session } = useSession();
-  const { people } = useMatchPool();
   const { t: ts } = useTranslations('support');
   const { t } = useLocale();
   const [mounted, setMounted] = useState(false);
@@ -184,33 +180,32 @@ export default function SupportRequestModal({ open, onClose }: Props) {
     });
 
     try {
-      const res = await apiFetch('/api/match-request', {
+      const res = await apiFetch('/api/support/escalate', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
           need,
-          urgency,
-          category,
-          chatSummary,
           name: isLoggedIn ? undefined : name,
-          email: isLoggedIn ? undefined : email,
+          email: isLoggedIn ? session?.user?.email : email,
           companyName: guestCompany.trim() || undefined,
         }),
       });
       const data = (await res.json().catch(() => ({}))) as {
         error?: string;
-        conversationId?: number | null;
-        assigned?: Assigned | null;
-        id?: number;
       };
       if (!res.ok) {
         setSubmitError(data.error || ts('failed'));
         setPhase(isLoggedIn ? 'chat' : 'escalate');
         return;
       }
-      setAssigned(data.assigned || null);
-      setConversationId(data.conversationId ?? null);
-      setRequestId(data.id ?? null);
+      setRequestId(null);
+      setAssigned({
+        name: 'Blacknook Destek',
+        initials: 'BN',
+        color: '#14B8A6',
+        role: 'E-posta',
+      });
+      setConversationId(null);
       setPhase('done');
     } catch {
       setSubmitError(ts('failed'));
@@ -243,9 +238,6 @@ export default function SupportRequestModal({ open, onClose }: Props) {
               <div className="min-w-0">
                 <p id="support-title" className="truncate text-sm font-semibold text-[var(--bn-heading)]">
                   {ts('title')}
-                </p>
-                <p className="truncate text-[11px] text-[var(--bn-subtitle)]">
-                  {ts('subtitle')}
                 </p>
               </div>
             </div>
@@ -439,66 +431,33 @@ export default function SupportRequestModal({ open, onClose }: Props) {
                 >
                   {phase === 'matching' ? (
                     <>
-                      <div className="flex justify-center">
-                        <DeveloperAvatars people={people} count={Math.min(6, people.length)} size="md" />
-                      </div>
-                      <Loader2 className="mx-auto mt-5 h-5 w-5 animate-spin text-[var(--bn-subtitle)]" />
+                      <Loader2 className="mx-auto h-8 w-8 animate-spin text-teal-400" />
                       <p className="mt-4 font-display text-lg font-semibold text-[var(--bn-heading)]">
-                        {ts('matching')}
+                        Talep iletiliyor…
                       </p>
                       <p className="mt-2 text-sm text-[var(--bn-subtitle)]">
-                        {ts('matchingHint')}
+                        Talebiniz e-posta ile ekibe iletiliyor…
                       </p>
                     </>
                   ) : phase === 'done' ? (
                     <>
-                      <div className="mb-4 flex justify-center">
-                        {assigned ? (
-                          <DeveloperAvatars
-                            people={[
-                              {
-                                id: 'assigned',
-                                initials: assigned.initials,
-                                color: assigned.color,
-                                role: assigned.skills || assigned.role,
-                              },
-                            ]}
-                            size="md"
-                          />
-                        ) : (
-                          <Shield className="mx-auto h-10 w-10 text-teal-400" />
-                        )}
-                      </div>
-                      <p className="font-display text-lg font-semibold text-[var(--bn-heading)]">
+                      <Shield className="mx-auto h-10 w-10 text-teal-400" />
+                      <p className="mt-4 font-display text-lg font-semibold text-[var(--bn-heading)]">
                         {assigned
                           ? supportSuccessTitle(assigned.name)
                           : ts('doneReceived')}
                       </p>
                       <p className="mt-2 text-sm leading-relaxed text-[var(--bn-subtitle)]">
-                        {assigned
-                          ? ts('doneAssignedHint')
-                          : isLoggedIn
-                            ? ts('doneQueueHint')
-                            : ts('doneGuestHint')}
-                        {requestId ? ` (${ts('requestId', { id: requestId })})` : ''}
+                        Talebiniz e-posta ile ekibe iletildi. Kurulum için ürün
+                        sayfasından “Kurulum Talep Et” kullanın.
                       </p>
-                      {conversationId && isLoggedIn ? (
-                        <Link
-                          href={`/account/messages?c=${conversationId}`}
-                          onClick={onClose}
-                          className="mt-6 inline-flex h-11 items-center rounded-xl bg-[var(--bn-cta-bg)] px-6 text-sm font-semibold text-[var(--bn-cta-text)]"
-                        >
-                          {ts('goToMessages')}
-                        </Link>
-                      ) : (
-                        <button
-                          type="button"
-                          onClick={onClose}
-                          className="mt-6 h-11 rounded-xl border border-[var(--bn-card-border)] px-6 text-sm font-semibold text-[var(--bn-text)]"
-                        >
-                          {ts('close')}
-                        </button>
-                      )}
+                      <button
+                        type="button"
+                        onClick={onClose}
+                        className="mt-6 h-11 rounded-xl border border-[var(--bn-card-border)] px-6 text-sm font-semibold text-[var(--bn-text)]"
+                      >
+                        {ts('close')}
+                      </button>
                     </>
                   ) : (
                     <>

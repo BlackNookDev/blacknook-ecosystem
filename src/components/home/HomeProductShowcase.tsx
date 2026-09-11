@@ -1,293 +1,324 @@
 'use client';
 
-import { useCallback, useEffect, useMemo, useState } from 'react';
+import { useEffect, useId, useState } from 'react';
 import Link from 'next/link';
-import { ArrowRight, Bot, ChevronLeft, ChevronRight } from 'lucide-react';
+import { ArrowRight, Loader2, Search, Sparkles } from 'lucide-react';
 import { AnimatePresence, m, useReducedMotion } from 'framer-motion';
 import ServiceCatalogLogo from '@/components/ServiceCatalogLogo';
-import { useTranslations } from '@/components/LocaleProvider';
-import { duration, easePremium } from '@/components/motion/tokens';
-import { NOOK_AGENT_LAUNCH_PATH } from '@/lib/nookAgent';
-import { getHeroAgents, type ServiceCatalogEntry } from '../../../lib/data';
-
-type FloatingStyle = {
-  top?: string;
-  left?: string;
-  right?: string;
-  bottom?: string;
-  rotate: number;
-};
-
-const FLOATING_LAYOUT: Record<string, FloatingStyle> = {
-  'nook-muhasebe-mcp': { top: '10%', left: '8%', rotate: -12 },
-  'cal-com': { top: '14%', right: '10%', rotate: 10 },
-  metabase: { top: '40%', left: '5%', rotate: 8 },
-  plausible: { top: '44%', right: '6%', rotate: -8 },
-  chatwoot: { bottom: '18%', left: '7%', rotate: -6 },
-  outline: { bottom: '16%', right: '11%', rotate: 14 },
-};
-
-const FLOATING_FALLBACK: FloatingStyle[] = [
-  { top: '10%', left: '8%', rotate: -12 },
-  { top: '14%', right: '10%', rotate: 10 },
-  { top: '40%', left: '5%', rotate: 8 },
-  { top: '44%', right: '6%', rotate: -8 },
-  { bottom: '18%', left: '7%', rotate: -6 },
-  { bottom: '16%', right: '11%', rotate: 14 },
-];
-
-type FloatingItem = ServiceCatalogEntry & {
-  style: FloatingStyle;
-  delay: number;
-};
-
-function FloatingIcon({
-  item,
-  reduce,
-}: {
-  item: FloatingItem;
-  reduce: boolean | null;
-}) {
-  const { rotate } = item.style;
-
-  return (
-    <m.div
-      className="group/icon absolute"
-      style={{
-        top: item.style.top,
-        left: item.style.left,
-        right: item.style.right,
-        bottom: item.style.bottom,
-        rotate: `${rotate}deg`,
-      }}
-      animate={
-        reduce
-          ? undefined
-          : {
-              y: [0, -8, 0],
-              rotate: [rotate, rotate + 3, rotate],
-            }
-      }
-      transition={{
-        duration: 5 + item.delay,
-        repeat: Infinity,
-        ease: 'easeInOut',
-        delay: item.delay,
-      }}
-    >
-      <div className="pointer-events-auto flex flex-col items-center gap-2">
-        <div className="flex h-10 w-10 items-center justify-center rounded-xl bn-icon-tile shadow-[0_8px_28px_rgba(0,0,0,0.12)] transition group-hover/icon:scale-105 lg:h-11 lg:w-11">
-          <ServiceCatalogLogo
-            icon={item.icon}
-            brandColor={item.brandColor}
-            name={item.name}
-            size="sm"
-          />
-        </div>
-        <Link
-          href={`/service/${item.slug}`}
-          className="pointer-events-none rounded-full border border-white/10 bg-black/70 px-2 py-0.5 text-[9px] font-semibold uppercase tracking-[0.08em] text-zinc-200 opacity-0 backdrop-blur-sm transition group-hover/icon:pointer-events-auto group-hover/icon:opacity-100"
-        >
-          Ajan
-        </Link>
-      </div>
-    </m.div>
-  );
-}
+import SearchGapFeedbackModal from '@/components/home/SearchGapFeedbackModal';
+import { fadeUp, staggerContainer, duration, easePremium } from '@/components/motion/tokens';
+import {
+  INTENT_SEARCH_EXAMPLES,
+  searchCatalogByIntent,
+  type IntentMatch,
+  type IntentTech,
+} from '@/lib/intentCatalogSearch';
+import { useInstallRequestNavigate } from '@/lib/useInstallRequestNavigate';
+import { cn } from '@/lib/utils';
 
 export default function HomeProductShowcase() {
   const reduce = useReducedMotion();
-  const { t: th } = useTranslations('home');
-  const agents = useMemo(() => getHeroAgents(), []);
-  const [index, setIndex] = useState(0);
-  const [direction, setDirection] = useState(0);
+  const inputId = useId();
+  const goInstall = useInstallRequestNavigate();
+  const [query, setQuery] = useState('');
+  const [submitted, setSubmitted] = useState('');
+  const [techs, setTechs] = useState<IntentTech[]>([]);
+  const [matches, setMatches] = useState<IntentMatch[]>([]);
+  const [selectedSlug, setSelectedSlug] = useState<string | null>(null);
+  const [searching, setSearching] = useState(false);
+  const [feedbackOpen, setFeedbackOpen] = useState(false);
 
-  const floating = useMemo<FloatingItem[]>(
-    () =>
-      agents.slice(0, 6).map((item, i) => ({
-        ...item,
-        style: FLOATING_LAYOUT[item.slug] ?? FLOATING_FALLBACK[i],
-        delay: i * 0.35,
-      })),
-    [agents]
-  );
-
-  const active = agents[index];
-  const count = agents.length;
-
-  const go = useCallback(
-    (next: number) => {
-      if (!count) return;
-      setDirection(next > index ? 1 : -1);
-      setIndex((next + count) % count);
-    },
-    [count, index]
-  );
-
-  const next = useCallback(() => go(index + 1), [go, index]);
-  const prev = useCallback(() => go(index - 1), [go, index]);
+  const selected = matches.find((m) => m.service.slug === selectedSlug)?.service;
+  const hasQuery = query.trim().length > 0;
+  const showResults = hasQuery && !searching;
 
   useEffect(() => {
-    if (reduce || count < 2) return;
-    const timer = window.setInterval(next, 6000);
-    return () => window.clearInterval(timer);
-  }, [next, reduce, count]);
+    if (!matches.length) {
+      setSelectedSlug(null);
+      return;
+    }
+    if (!selectedSlug || !matches.some((m) => m.service.slug === selectedSlug)) {
+      setSelectedSlug(matches[0].service.slug);
+    }
+  }, [matches, selectedSlug]);
 
-  if (!active) return null;
+  useEffect(() => {
+    const q = query.trim();
+    if (!q) {
+      setSubmitted('');
+      setMatches([]);
+      setTechs([]);
+      setSearching(false);
+      return;
+    }
 
-  const slideVariants = {
-    enter: (d: number) => ({ x: d > 0 ? 36 : -36 }),
-    center: { x: 0 },
-    exit: (d: number) => ({ x: d > 0 ? -36 : 36 }),
+    setSearching(true);
+    const timer = window.setTimeout(() => {
+      const result = searchCatalogByIntent(q, 6);
+      setSubmitted(q);
+      setTechs(result.techs);
+      setMatches(result.matches);
+      setSearching(false);
+    }, 180);
+
+    return () => window.clearTimeout(timer);
+  }, [query]);
+
+  const onSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
   };
 
   return (
     <section
-      className="relative w-full overflow-hidden px-4 pb-10 pt-28 sm:px-6 sm:pb-14 sm:pt-32"
-      aria-label={th('featuredAgents')}
+      className="relative flex min-h-[100dvh] w-full flex-col overflow-hidden"
+      aria-label="Blacknook — doğal dil ile ajan ve MCP ara"
     >
-      <div className="pointer-events-none absolute inset-0" aria-hidden>
-        <div className="absolute left-1/2 top-[38%] h-[42vmin] w-[70vmin] -translate-x-1/2 -translate-y-1/2 rounded-full bg-[radial-gradient(circle,rgba(255,255,255,0.04)_0%,transparent_70%)]" />
-        <div className="absolute inset-x-0 bottom-0 h-28 bg-gradient-to-t from-[var(--bn-bg,#050505)] to-transparent" />
-      </div>
+      <m.div
+        className="relative z-10 mx-auto flex w-full max-w-3xl flex-1 flex-col justify-center px-4 pb-16 pt-28 sm:px-6 sm:pt-32"
+        variants={reduce ? undefined : staggerContainer}
+        initial={reduce ? false : 'hidden'}
+        animate="visible"
+      >
+        <m.div variants={reduce ? undefined : fadeUp} className="flex flex-col items-center text-center">
+          <p className="max-w-md font-display text-xl font-semibold tracking-tight text-zinc-50 sm:text-2xl">
+            Aradığınız çözümü tarif edin
+          </p>
+        </m.div>
 
-      <div className="pointer-events-none absolute inset-0 hidden md:block" aria-hidden>
-        {floating.map((item) => (
-          <FloatingIcon key={item.slug} item={item} reduce={reduce} />
-        ))}
-      </div>
-
-      <div className="relative mx-auto max-w-5xl">
-        <div className="relative overflow-hidden rounded-3xl bn-card-solid">
+        <m.form
+          variants={reduce ? undefined : fadeUp}
+          onSubmit={onSubmit}
+          className="relative isolate mt-8 w-full"
+        >
+          {/* Arama arkası — koyu mavi ışık (arayüzün altında) */}
           <div
-            className="absolute inset-0 opacity-25"
-            style={{
-              background: `radial-gradient(circle at 30% 20%, ${active.brandColor}44, transparent 58%)`,
-            }}
+            className="pointer-events-none absolute left-1/2 top-[1.75rem] -z-10 h-44 w-[135%] max-w-none -translate-x-1/2 -translate-y-1/2 sm:h-52 sm:w-[155%]"
             aria-hidden
-          />
-
-          <div className="relative grid min-h-[22rem] grid-cols-1 items-center gap-6 p-6 sm:min-h-[24rem] sm:p-8 md:grid-cols-[1fr_1.1fr] md:gap-10">
-            <div className="flex items-center justify-center">
-              <AnimatePresence mode="wait" custom={direction}>
-                <m.div
-                  key={active.slug}
-                  custom={direction}
-                  variants={reduce ? undefined : slideVariants}
-                  initial={reduce ? false : 'enter'}
-                  animate="center"
-                  exit={reduce ? undefined : 'exit'}
-                  transition={{ duration: duration.base, ease: easePremium }}
-                  drag={reduce ? false : 'x'}
-                  dragConstraints={{ left: 0, right: 0 }}
-                  dragElastic={0.12}
-                  onDragEnd={(_, info) => {
-                    if (info.offset.x < -72 || info.velocity.x < -400) next();
-                    else if (info.offset.x > 72 || info.velocity.x > 400) prev();
-                  }}
-                  className="flex flex-col items-center text-center md:items-start md:text-left"
-                >
-                  <div className="flex h-20 w-20 items-center justify-center rounded-2xl bn-icon-tile shadow-lg sm:h-24 sm:w-24">
-                    <ServiceCatalogLogo
-                      icon={active.icon}
-                      brandColor={active.brandColor}
-                      name={active.name}
-                      size="lg"
-                      framed
-                    />
-                  </div>
-                  <span className="bn-chip mt-4 inline-flex rounded-full px-3 py-1 text-[11px] font-semibold uppercase tracking-wide">
-                    {active.agentDepartment ?? th('heroAgentBadge')}
-                  </span>
-                </m.div>
-              </AnimatePresence>
-            </div>
-
-            <div className="flex min-h-[12rem] flex-col justify-center">
-              <AnimatePresence mode="wait" custom={direction}>
-                <m.div
-                  key={`${active.slug}-copy`}
-                  custom={direction}
-                  variants={reduce ? undefined : slideVariants}
-                  initial={reduce ? false : 'enter'}
-                  animate="center"
-                  exit={reduce ? undefined : 'exit'}
-                  transition={{ duration: duration.base, ease: easePremium }}
-                >
-                  <p className="text-[11px] font-semibold uppercase tracking-[0.14em] text-emerald-400/90">
-                    {th('heroAgentBadge')}
-                  </p>
-                  <h2 className="bn-heading mt-2 font-display text-2xl font-bold tracking-tight sm:text-3xl">
-                    {active.name}
-                  </h2>
-                  <p className="bn-subtitle mt-3 text-sm leading-relaxed sm:text-base">
-                    {active.description}
-                  </p>
-                  <ul className="mt-4 flex flex-wrap gap-2">
-                    {active.features.slice(0, 3).map((feature) => (
-                      <li key={feature} className="bn-chip rounded-lg px-2.5 py-1 text-xs">
-                        {feature}
-                      </li>
-                    ))}
-                  </ul>
-                  <div className="mt-6 flex flex-wrap gap-3">
-                    <Link
-                      href={`/service/${active.slug}`}
-                      className="bn-cta inline-flex items-center gap-2 rounded-full px-5 py-2.5 text-sm font-bold transition-opacity hover:opacity-90"
-                    >
-                      {th('viewAgent')}
-                      <ArrowRight className="h-4 w-4" aria-hidden />
-                    </Link>
-                    <Link
-                      href={NOOK_AGENT_LAUNCH_PATH}
-                      className="inline-flex items-center gap-2 rounded-full border border-white/15 px-5 py-2.5 text-sm font-semibold text-zinc-200 transition-colors hover:border-white/25 hover:bg-white/[0.05]"
-                    >
-                      <Bot className="h-4 w-4" aria-hidden />
-                      {th('openCockpit')}
-                    </Link>
-                  </div>
-                </m.div>
-              </AnimatePresence>
-            </div>
+          >
+            <div
+              className="absolute inset-0 blur-3xl"
+              style={{
+                background:
+                  'radial-gradient(ellipse 72% 55% at 50% 50%, rgba(30, 64, 175, 0.45) 0%, rgba(30, 58, 138, 0.22) 38%, rgba(15, 23, 42, 0.08) 62%, transparent 78%)',
+              }}
+            />
+            <div
+              className="absolute inset-[20%_10%] blur-2xl"
+              style={{
+                background:
+                  'radial-gradient(ellipse 78% 42% at 50% 50%, rgba(37, 99, 235, 0.28) 0%, rgba(29, 78, 216, 0.1) 48%, transparent 72%)',
+              }}
+            />
+            {!reduce ? (
+              <m.div
+                className="absolute inset-[30%_20%] blur-xl"
+                style={{
+                  background:
+                    'radial-gradient(ellipse 88% 36% at 50% 50%, rgba(59, 130, 246, 0.18) 0%, transparent 70%)',
+                }}
+                animate={{ opacity: [0.5, 0.85, 0.5] }}
+                transition={{ duration: 6.5, repeat: Infinity, ease: 'easeInOut' }}
+              />
+            ) : null}
           </div>
 
-          <div className="relative flex items-center justify-between border-t border-[var(--bn-card-border)] px-4 py-3 sm:px-6">
-            <div className="flex items-center gap-2">
-              {agents.map((agent, i) => (
-                <button
-                  key={agent.slug}
-                  type="button"
-                  onClick={() => go(i)}
-                  className={`h-2 rounded-full transition-all ${
-                    i === index ? 'bn-dot-active w-6' : 'bn-dot w-2 hover:opacity-80'
-                  }`}
-                  aria-label={th('goToSlide', { name: agent.name })}
-                  aria-current={i === index ? 'true' : undefined}
-                />
-              ))}
+          <label htmlFor={inputId} className="sr-only">
+            Aradığınız çözümü tarif edin
+          </label>
+          <div className="relative z-10 flex items-stretch rounded-2xl border border-white/12 bg-zinc-950/75 shadow-[0_20px_60px_rgba(0,0,0,0.35)] backdrop-blur-md focus-within:border-sky-400/35 focus-within:ring-2 focus-within:ring-sky-400/15">
+            <div className="flex items-center pl-4 text-zinc-500">
+              {searching ? (
+                <Loader2 className="h-5 w-5 animate-spin text-sky-300" aria-hidden />
+              ) : (
+                <Search className="h-5 w-5" aria-hidden />
+              )}
             </div>
-
-            <div className="flex items-center gap-1">
-              <button
-                type="button"
-                onClick={prev}
-                className="bn-icon-round inline-flex h-9 w-9 items-center justify-center rounded-full"
-                aria-label={th('prevProduct')}
-              >
-                <ChevronLeft className="h-4 w-4" />
-              </button>
-              <button
-                type="button"
-                onClick={next}
-                className="bn-icon-round inline-flex h-9 w-9 items-center justify-center rounded-full"
-                aria-label={th('nextProduct')}
-              >
-                <ChevronRight className="h-4 w-4" />
-              </button>
-            </div>
+            <input
+              id={inputId}
+              value={query}
+              onChange={(e) => setQuery(e.target.value)}
+              placeholder="Örn. WhatsApp’ımı Excel’ime entegre etmek istiyorum"
+              className="min-w-0 flex-1 bg-transparent px-3 py-4 text-sm text-zinc-50 placeholder:text-zinc-500 focus:outline-none sm:px-4 sm:text-base"
+              autoComplete="off"
+            />
+            <button
+              type="submit"
+              disabled={!hasQuery}
+              className="m-1.5 inline-flex items-center gap-1.5 rounded-xl bg-white px-4 py-2.5 text-sm font-bold text-zinc-950 transition-opacity hover:opacity-90 disabled:opacity-40"
+            >
+              Bul
+              <ArrowRight className="h-4 w-4" aria-hidden />
+            </button>
           </div>
-        </div>
-      </div>
+
+          <div className="relative z-10 mt-4 flex flex-wrap justify-center gap-2">
+            {INTENT_SEARCH_EXAMPLES.map((example) => (
+              <button
+                key={example}
+                type="button"
+                onClick={() => setQuery(example)}
+                className="max-w-full truncate rounded-full border border-white/10 bg-zinc-950/60 px-3 py-1.5 text-[11px] text-zinc-400 backdrop-blur-sm transition-colors hover:border-white/20 hover:text-zinc-200 sm:text-xs"
+              >
+                {example}
+              </button>
+            ))}
+          </div>
+        </m.form>
+
+        <AnimatePresence mode="wait">
+          {hasQuery ? (
+            <m.div
+              key="live-results"
+              initial={reduce ? false : { opacity: 0, y: 12 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={reduce ? undefined : { opacity: 0, y: -8 }}
+              transition={{ duration: duration.base, ease: easePremium }}
+              className="mt-10 w-full"
+            >
+              {searching && matches.length === 0 ? (
+                <p className="flex items-center justify-center gap-2 text-sm text-zinc-400">
+                  <Sparkles className="h-4 w-4 text-teal-300" aria-hidden />
+                  Eşleşen MCP’ler listeleniyor…
+                </p>
+              ) : (
+                <>
+                  {techs.length > 0 ? (
+                    <div className="mb-5 flex flex-wrap items-center justify-center gap-2">
+                      <span className="text-[11px] font-semibold uppercase tracking-[0.14em] text-zinc-500">
+                        Algılanan
+                      </span>
+                      {techs.map((tech) => (
+                        <span
+                          key={tech.id}
+                          className="rounded-full border border-teal-400/25 bg-teal-500/10 px-3 py-1 text-xs font-semibold text-teal-100"
+                        >
+                          {tech.label}
+                        </span>
+                      ))}
+                    </div>
+                  ) : null}
+
+                  {matches.length === 0 ? (
+                    <div className="space-y-5 text-center">
+                      <p className="text-sm text-zinc-400">
+                        Eşleşme bulunamadı. Daha spesifik yazın veya talebinizi bize bildirin.
+                      </p>
+                      <button
+                        type="button"
+                        onClick={() => setFeedbackOpen(true)}
+                        className="inline-flex w-full max-w-md items-center justify-center rounded-full border border-white/20 bg-transparent px-5 py-3 text-sm font-semibold text-zinc-100 transition-colors hover:bg-white/[0.06] sm:w-auto"
+                      >
+                        Aradığınızı bulamadınız mı? Bize talebinizi bildirin
+                      </button>
+                    </div>
+                  ) : (
+                    <ul className="space-y-3">
+                      {matches.map(({ service, reasons }) => {
+                        const active = service.slug === selectedSlug;
+                        return (
+                          <li key={service.slug}>
+                            <button
+                              type="button"
+                              onClick={() => setSelectedSlug(service.slug)}
+                              className={cn(
+                                'flex w-full items-start gap-3 rounded-2xl border p-4 text-left transition-[border-color,background-color]',
+                                active
+                                  ? 'border-white/25 bg-white/[0.07]'
+                                  : 'border-white/[0.08] bg-white/[0.02] hover:border-white/16 hover:bg-white/[0.04]'
+                              )}
+                            >
+                              <ServiceCatalogLogo
+                                icon={service.icon}
+                                brandColor={service.brandColor}
+                                name={service.name}
+                                size="md"
+                                framed
+                              />
+                              <span className="min-w-0 flex-1">
+                                <span className="block text-sm font-semibold text-zinc-50">
+                                  {service.name}
+                                </span>
+                                <span className="mt-1 line-clamp-2 block text-xs leading-relaxed text-zinc-400">
+                                  {service.description}
+                                </span>
+                                {reasons.length > 0 ? (
+                                  <span className="mt-2 flex flex-wrap gap-1.5">
+                                    {reasons.map((reason) => (
+                                      <span
+                                        key={reason}
+                                        className="rounded-md bg-white/[0.06] px-1.5 py-0.5 text-[10px] font-medium text-zinc-400"
+                                      >
+                                        {reason}
+                                      </span>
+                                    ))}
+                                  </span>
+                                ) : null}
+                              </span>
+                              <Link
+                                href={`/service/${service.slug}`}
+                                onClick={(e) => e.stopPropagation()}
+                                className="shrink-0 text-[11px] font-semibold text-teal-300/90 hover:text-teal-200"
+                              >
+                                İncele
+                              </Link>
+                            </button>
+                          </li>
+                        );
+                      })}
+                    </ul>
+                  )}
+
+                  {selected ? (
+                    <div className="mt-6 flex flex-col items-stretch gap-3 sm:items-center">
+                      <div className="flex flex-col gap-2.5 sm:flex-row sm:flex-wrap sm:justify-center">
+                        <button
+                          type="button"
+                          onClick={() =>
+                            goInstall({
+                              slug: selected.slug,
+                              name: selected.name,
+                              hint: submitted,
+                            })
+                          }
+                          className="inline-flex items-center justify-center rounded-full bg-white px-6 py-3.5 text-sm font-bold text-zinc-950 transition-opacity hover:opacity-90"
+                        >
+                          Kurulum Talep Et
+                        </button>
+                        <button
+                          type="button"
+                          onClick={() => setFeedbackOpen(true)}
+                          className="inline-flex items-center justify-center rounded-full border border-white/20 bg-transparent px-5 py-3.5 text-sm font-semibold text-zinc-100 transition-colors hover:bg-white/[0.06]"
+                        >
+                          Aradığınızı bulamadınız mı? Bize talebinizi bildirin
+                        </button>
+                      </div>
+                      <p className="text-center text-xs text-zinc-500">
+                        Seçili: <span className="text-zinc-300">{selected.name}</span>
+                      </p>
+                    </div>
+                  ) : showResults && matches.length > 0 ? (
+                    <div className="mt-6 flex justify-center">
+                      <button
+                        type="button"
+                        onClick={() => setFeedbackOpen(true)}
+                        className="inline-flex items-center justify-center rounded-full border border-white/20 bg-transparent px-5 py-3 text-sm font-semibold text-zinc-100 transition-colors hover:bg-white/[0.06]"
+                      >
+                        Aradığınızı bulamadınız mı? Bize talebinizi bildirin
+                      </button>
+                    </div>
+                  ) : null}
+                </>
+              )}
+            </m.div>
+          ) : null}
+        </AnimatePresence>
+      </m.div>
+
+      <SearchGapFeedbackModal
+        open={feedbackOpen}
+        onClose={() => setFeedbackOpen(false)}
+        searchQuery={submitted || query}
+      />
     </section>
   );
 }

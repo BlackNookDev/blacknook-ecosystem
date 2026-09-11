@@ -9,8 +9,6 @@ export default function HelpCategoryContent({ slug }: Props) {
   const category = getHelpCategory(slug);
   if (!category) notFound();
 
-  const isPartner = slug === 'partner';
-
   return (
     <main className="relative overflow-hidden px-6 pb-24 pt-28 sm:pt-32">
       <div
@@ -32,29 +30,6 @@ export default function HelpCategoryContent({ slug }: Props) {
           {category.description}
         </p>
         <p className="mt-2 text-xs text-zinc-600">{category.articles.length} makale</p>
-
-        {isPartner ? (
-          <div className="mt-6 flex flex-wrap gap-3">
-            <Link
-              href="/developers/apply"
-              className="inline-flex h-10 items-center rounded-full bg-white px-4 text-sm font-semibold text-black hover:opacity-90"
-            >
-              Geliştirici ol
-            </Link>
-            <Link
-              href="/partners/overview"
-              className="inline-flex h-10 items-center rounded-full border border-white/15 px-4 text-sm font-semibold text-zinc-200 hover:bg-white/[0.05]"
-            >
-              Geliştirici paneli
-            </Link>
-            <Link
-              href="/select"
-              className="inline-flex h-10 items-center rounded-full border border-white/15 px-4 text-sm font-semibold text-zinc-200 hover:bg-white/[0.05]"
-            >
-              Blacknook Select programı
-            </Link>
-          </div>
-        ) : null}
 
         <ul className="mt-10 divide-y divide-white/[0.06] overflow-hidden rounded-2xl border border-white/[0.08] bg-white/[0.02]">
           {category.articles.map((article) => (

@@ -10,7 +10,7 @@ import { fadeUp, staggerContainer } from '@/components/motion/tokens';
 import { NOOK_AGENT_LAUNCH_PATH } from '@/lib/nookAgent';
 
 const STATS = [
-  { value: '6', label: 'Ana ajan' },
+  { value: '7', label: 'MCP' },
   { value: '100+', label: 'MCP ajanı' },
   { value: '16', label: 'Departman' },
 ] as const;
@@ -18,7 +18,7 @@ const STATS = [
 export default function HeroPremium() {
   const reduce = useReducedMotion();
   const { data: session } = useSession();
-  const cockpitHref = session?.user
+  const panelHref = session?.user
     ? NOOK_AGENT_LAUNCH_PATH
     : `/login?callbackUrl=${encodeURIComponent(NOOK_AGENT_LAUNCH_PATH)}`;
 
@@ -60,35 +60,27 @@ export default function HeroPremium() {
             onMount
             delay={reduce ? 0 : 0.1}
             className="font-display text-[clamp(2rem,5.5vw,3.75rem)] font-bold leading-[1.08] tracking-[-0.03em] text-zinc-50"
-            lines={['İşletmenizin otonom', 'operasyon kokpiti']}
+            lines={['İşletmenizin otonom', 'operasyon paneli']}
           />
         </m.div>
-
-        <m.p
-          variants={reduce ? undefined : fadeUp}
-          className="bn-subtitle mt-5 max-w-2xl text-base leading-relaxed sm:text-lg"
-        >
-          MCP ajanlarınızı tek merkezden yönetin. Departman departman onaylayın,
-          token kullanımını izleyin, kurumsal ajan kataloğunu keşfedin.
-        </m.p>
 
         <m.div
           variants={reduce ? undefined : fadeUp}
           className="mt-8 flex flex-wrap items-center justify-center gap-3"
         >
           <Link
-            href={cockpitHref}
+            href={panelHref}
             className="inline-flex items-center gap-2 rounded-full bg-white px-6 py-3 text-sm font-bold text-zinc-950 transition-opacity hover:opacity-90"
           >
             <Bot className="h-4 w-4" aria-hidden />
-            Kokpit'e gir
+            Panele gir
             <ArrowRight className="h-4 w-4" aria-hidden />
           </Link>
           <Link
             href="/services"
             className="inline-flex items-center gap-2 rounded-full border border-white/15 px-6 py-3 text-sm font-semibold text-zinc-200 transition-colors hover:border-white/25 hover:bg-white/[0.05] hover:text-white"
           >
-            Ekosistem ajanları
+            Ekosistemi keşfet
           </Link>
         </m.div>
 

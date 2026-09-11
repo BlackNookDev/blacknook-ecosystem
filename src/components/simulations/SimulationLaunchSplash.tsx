@@ -14,7 +14,7 @@ type Props = {
 export default function SimulationLaunchSplash({
   exiting = false,
   className = '',
-  label = 'Simülasyon',
+  label = 'Önizleme',
 }: Props) {
   const reduce = useReducedMotion();
   if (reduce) return null;

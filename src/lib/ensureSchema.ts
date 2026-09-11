@@ -39,6 +39,8 @@ const CRITICAL_STATEMENTS = [
    )`,
   `CREATE INDEX IF NOT EXISTS idx_installation_requests_user ON installation_requests (user_id, created_at DESC)`,
   `CREATE INDEX IF NOT EXISTS idx_installation_requests_email ON installation_requests (email)`,
+  `ALTER TABLE installation_requests ADD COLUMN IF NOT EXISTS deployment_type VARCHAR(32)`,
+  `CREATE INDEX IF NOT EXISTS idx_installation_requests_status_created ON installation_requests (status, created_at DESC)`,
   `CREATE TABLE IF NOT EXISTS error_logs (
      id SERIAL PRIMARY KEY,
      source VARCHAR(120) NOT NULL,
@@ -124,6 +126,29 @@ END $$`,
      ON developer_workspaces (user_id, updated_at DESC)`,
   `CREATE INDEX IF NOT EXISTS idx_developer_workspaces_coder
      ON developer_workspaces (coder_workspace_id)`,
+  `CREATE TABLE IF NOT EXISTS company_integrations (
+     id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+     company_id VARCHAR(64) NOT NULL,
+     user_id INTEGER REFERENCES users(id) ON DELETE CASCADE,
+     provider VARCHAR(64) NOT NULL,
+     status VARCHAR(32) NOT NULL DEFAULT 'disconnected'
+       CHECK (status IN ('connected', 'pending_it', 'action_required', 'disconnected')),
+     assigned_departments JSONB NOT NULL DEFAULT '[]'::jsonb,
+     auth_metadata JSONB NOT NULL DEFAULT '{}'::jsonb,
+     last_sync_at TIMESTAMP,
+     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+     updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+     UNIQUE (company_id, provider)
+   )`,
+  `DO $$ BEGIN
+     ALTER TABLE company_integrations DROP CONSTRAINT IF EXISTS company_integrations_provider_check;
+   EXCEPTION WHEN undefined_table THEN NULL;
+   END $$`,
+  `ALTER TABLE company_integrations ALTER COLUMN provider TYPE VARCHAR(64)`,
+  `CREATE INDEX IF NOT EXISTS idx_company_integrations_company
+     ON company_integrations (company_id, status)`,
+  `CREATE INDEX IF NOT EXISTS idx_company_integrations_user
+     ON company_integrations (user_id, updated_at DESC)`,
 ];
 
 let ensurePromise: Promise<void> | null = null;
@@ -169,6 +194,7 @@ export async function checkRequiredSchema(): Promise<SchemaCheck> {
     { kind: 'column', table: 'products', column: 'verified' },
     { kind: 'table', table: 'developer_applications' },
     { kind: 'table', table: 'developer_workspaces' },
+    { kind: 'table', table: 'company_integrations' },
   ] as const;
 
   const missing: string[] = [];

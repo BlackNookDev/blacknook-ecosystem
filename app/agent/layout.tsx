@@ -6,7 +6,7 @@ import { NOOK_AGENT_LAUNCH_PATH } from '@/lib/nookAgent';
 
 export const metadata: Metadata = buildPageMetadata({
   title: 'NOOK Agent | Blacknook',
-  description: 'Blacknook Otonom operasyon kokpiti.',
+  description: 'Blacknook Otonom operasyon paneli.',
   path: NOOK_AGENT_LAUNCH_PATH,
   noIndex: true,
 });

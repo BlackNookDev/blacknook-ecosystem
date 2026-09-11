@@ -65,12 +65,6 @@ export default function ComingSoonCatalog({ copy }: Props) {
           Ekosistemi keşfet
           <ArrowRight className="h-3.5 w-3.5" aria-hidden />
         </Link>
-        <Link
-          href="/sell"
-          className="inline-flex h-10 items-center rounded-lg border border-white/15 px-4 text-sm font-semibold text-zinc-200 transition-colors hover:border-white/25 hover:text-white"
-        >
-          Ürün ekle
-        </Link>
       </div>
 
       <m.p

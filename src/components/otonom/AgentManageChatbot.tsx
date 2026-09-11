@@ -1,14 +1,9 @@
 'use client';
 
-import { useEffect, useMemo, useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { Download, Layers, MoreVertical, Timer } from 'lucide-react';
 import ServiceCatalogLogo from '@/components/ServiceCatalogLogo';
-import {
-  formatTokenCount,
-  listAllDepartmentServices,
-  mockMetricsForService,
-} from '@/lib/otonom/departmentServices';
-import { DEPARTMENT_LABELS } from '@/lib/otonom/catalog';
+import { formatTokenCount } from '@/lib/otonom/departmentServices';
 
 type ManagedAgent = {
   id: string;
@@ -172,29 +167,7 @@ function AgentWorkerCard({
 }
 
 export default function AgentManageChatbot() {
-  const initialAgents = useMemo(
-    () =>
-      listAllDepartmentServices().map((service) => {
-        const metrics = mockMetricsForService(service.slug);
-        return {
-          id: service.slug,
-          name: service.name,
-          department: DEPARTMENT_LABELS[service.department],
-          active: true,
-          icon: service.icon,
-          brandColor: service.brandColor,
-          avgResponseMs: metrics.avgResponseMs,
-          tokensToday: metrics.tokensToday,
-          tokenBudgetDaily: metrics.tokenBudgetDaily,
-          status: metrics.status,
-          maxWorkers: metrics.maxWorkers,
-          queuedJobs: metrics.queuedJobs,
-        };
-      }),
-    []
-  );
-
-  const [agents, setAgents] = useState<ManagedAgent[]>(initialAgents);
+  const [agents, setAgents] = useState<ManagedAgent[]>([]);
   const [reportFlash, setReportFlash] = useState('');
 
   const toggleAgent = (id: string) => {
@@ -212,11 +185,17 @@ export default function AgentManageChatbot() {
     <div className="space-y-5">
       <h2 className="font-display text-[15px] font-bold text-[var(--bn-heading)]">Ajanlar</h2>
 
-      <div className="grid grid-cols-1 gap-3 sm:grid-cols-2 xl:grid-cols-3">
-        {agents.map((agent) => (
-          <AgentWorkerCard key={agent.id} agent={agent} onToggle={toggleAgent} />
-        ))}
-      </div>
+      {agents.length > 0 ? (
+        <div className="grid grid-cols-1 gap-3 sm:grid-cols-2 xl:grid-cols-3">
+          {agents.map((agent) => (
+            <AgentWorkerCard key={agent.id} agent={agent} onToggle={toggleAgent} />
+          ))}
+        </div>
+      ) : (
+        <p className="rounded-xl border border-dashed border-white/10 bg-white/[0.02] px-4 py-6 text-sm text-zinc-500">
+          Henüz kurulu ajan yok. Katalogdan kurulum talebi oluşturduğunuzda ajanlar burada listelenir.
+        </p>
+      )}
 
       <section className="rounded-xl border border-white/[0.08] bg-white/[0.02] p-4">
         <div className="mb-3 flex flex-wrap items-center justify-between gap-2">

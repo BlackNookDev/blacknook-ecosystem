@@ -39,7 +39,7 @@ export function subscribeSimulationSplash(listener: Listener) {
   };
 }
 
-export function openSimulationSplash(label = 'Simülasyon') {
+export function openSimulationSplash(label = 'Önizleme') {
   if (typeof window === 'undefined') return;
 
   clearSplashTimers();

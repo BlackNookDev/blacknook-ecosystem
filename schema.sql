@@ -202,6 +202,7 @@ CREATE TABLE IF NOT EXISTS installation_requests (
   company_name  VARCHAR(255) NOT NULL,
   email         VARCHAR(255) NOT NULL,
   requirements  TEXT NOT NULL,
+  deployment_type VARCHAR(32),
   status        VARCHAR(20) NOT NULL DEFAULT 'active'
                 CHECK (status IN ('active', 'closed', 'cancelled')),
   created_at    TIMESTAMP DEFAULT CURRENT_TIMESTAMP

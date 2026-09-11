@@ -54,6 +54,7 @@ export function mcpAsCatalogEntry(entry: McpIntegration): ServiceCatalogEntry {
     about: normalizeAbout(entry),
     useCases: normalizeUseCases(entry),
     catalogKind: 'mcp-agent',
+    catalogTier: 'standard',
     source: 'mcp',
   };
 }

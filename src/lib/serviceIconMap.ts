@@ -10,6 +10,7 @@ import {
 /** Brands not in Simple Icons / react-icons — static or third-party logo URL */
 export const CUSTOM_LOGO_URLS: Record<string, string> = {
   'nook-muhasebe-mcp': '/bn-mark.png',
+  shopppro: '/service-logos/shopppro.png',
 };
 
 export const SIMPLE_ICON_SLUG_ALIASES: Record<string, string> = {};

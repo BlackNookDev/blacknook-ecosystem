@@ -2,20 +2,16 @@
 
 import Link from 'next/link';
 import { useReducedMotion } from 'framer-motion';
-import { ArrowUpRight } from 'lucide-react';
-import ServiceCatalogLogo from '@/components/ServiceCatalogLogo';
-import { formatTokenCount, type AgentDashboardStats } from '@/lib/otonom/mockData';
-
-const STATUS_DOT = {
-  running: 'bg-sky-400',
-  waiting: 'bg-emerald-400',
-  idle: 'bg-zinc-500',
-} as const;
+import { Code2, Lock } from 'lucide-react';
+import type { ReactNode } from 'react';
+import type { AgentDashboardStats, LiveActivity, PendingAction } from '@/lib/otonom/mockData';
+import { cn } from '@/lib/utils';
 
 export default function OverviewDashboard({ stats }: { stats: AgentDashboardStats }) {
   const reduce = useReducedMotion();
-  const maxTokens = Math.max(...stats.weekTokens.map((point) => point.value), 1);
-  const tokenUsagePercent = Math.round((stats.tokensUsedToday / stats.tokenBudgetDaily) * 100);
+  const maxOps = Math.max(...stats.weekOperations.map((point) => point.value), 1);
+  const budgetPercent = Math.round((stats.budgetUsedUsd / stats.budgetCapUsd) * 100);
+  const weekTotal = stats.weekOperations.reduce((sum, point) => sum + point.value, 0);
 
   return (
     <div className="space-y-4">
@@ -23,133 +19,237 @@ export default function OverviewDashboard({ stats }: { stats: AgentDashboardStat
         <h1 className="font-display text-2xl font-bold tracking-tight text-[var(--bn-heading)] md:text-3xl">
           Genel bakış
         </h1>
+        <button
+          type="button"
+          disabled
+          aria-disabled="true"
+          title="Yakında"
+          className="inline-flex cursor-not-allowed items-center gap-2 rounded-full border border-white/10 bg-white/40 px-4 py-2.5 text-sm font-bold text-zinc-950/50"
+        >
+          <Code2 className="h-4 w-4" aria-hidden />
+          Ajan yapılandır
+          <Lock className="h-3.5 w-3.5 opacity-70" aria-hidden />
+        </button>
       </div>
 
       <div className="grid grid-cols-2 gap-3 xl:grid-cols-4">
-        <Kpi label="Verimlilik" value={`%${stats.efficiencyGainPercent}`} />
-        <Kpi label="Token" value={formatTokenCount(stats.tokensUsedToday)} />
-        <Kpi label="Maliyet" value={`$${stats.tokenCostToday.toFixed(2)}`} />
-        <Kpi label="Uygulamalar" value={stats.activeAgents} />
+        <Kpi
+          label="Kurtarılan süre"
+          value={`${stats.hoursSaved} Saat`}
+          hint={
+            stats.hoursSavedTrendPercent > 0
+              ? `Geçen aya göre +%${stats.hoursSavedTrendPercent} verimlilik`
+              : 'Kurulum sonrası ölçülür'
+          }
+        />
+        <Kpi
+          label="Aktif otonom ajanlar"
+          value={`${stats.activeAgents} Ajan Devrede`}
+          hint={
+            stats.connectedSources > 0
+              ? `${stats.connectedSources} bağlı veri kaynağı`
+              : 'Henüz bağlı kaynak yok'
+          }
+        />
+        <Kpi
+          label="İşlenen toplam operasyon"
+          value={`${stats.totalOperations.toLocaleString('tr-TR')} İşlem`}
+          hint="Faturalar, biletler, randevular"
+        />
+        <Kpi
+          label="Maliyet & bütçe"
+          value={`$${stats.budgetUsedUsd.toFixed(2)} / $${stats.budgetCapUsd}`}
+          hint={
+            stats.budgetUsedUsd > 0
+              ? `Aylık tavanın %${budgetPercent}’i kullanıldı`
+              : 'Kullanım henüz başlamadı'
+          }
+        >
+          <div className="mt-3 h-1.5 overflow-hidden rounded-full bg-white/[0.08]">
+            <div
+              className="h-full rounded-full bg-emerald-400/90"
+              style={{ width: `${Math.min(budgetPercent, 100)}%` }}
+            />
+          </div>
+        </Kpi>
       </div>
 
       <div className="grid grid-cols-1 gap-4 xl:grid-cols-5">
         <section className="bn-card-solid rounded-2xl p-5 xl:col-span-3">
           <div className="flex items-start justify-between gap-3">
-            <h2 className="font-display text-[15px] font-bold text-[var(--bn-heading)]">
-              Token kullanımı
-            </h2>
+            <div>
+              <h2 className="font-display text-[15px] font-bold text-[var(--bn-heading)]">
+                Departman işlem hacmi
+              </h2>
+              <p className="mt-1 text-xs text-zinc-500">Ajanların tamamladığı otomatik görevler.</p>
+            </div>
             <p className="font-display text-2xl font-bold tracking-tight text-[var(--bn-heading)]">
-              {formatTokenCount(stats.weekTokens.reduce((sum, point) => sum + point.value, 0))}
+              {weekTotal.toLocaleString('tr-TR')}
             </p>
           </div>
-          <TokenChart points={stats.weekTokens} max={maxTokens} reduce={Boolean(reduce)} />
+          {weekTotal > 0 ? (
+            <OpsChart points={stats.weekOperations} max={maxOps} reduce={Boolean(reduce)} />
+          ) : (
+            <EmptyNote text="Henüz işlem kaydı yok. Ajan kurulumundan sonra burada görünecek." />
+          )}
         </section>
 
-        <section className="bn-card-solid rounded-2xl p-5 xl:col-span-2">
-          <h2 className="font-display text-[15px] font-bold text-[var(--bn-heading)]">
-            Günlük limit
-          </h2>
-          <p className="mt-2 font-display text-xl font-bold tracking-tight text-[var(--bn-heading)]">
-            {formatTokenCount(stats.tokensUsedToday)} / {formatTokenCount(stats.tokenBudgetDaily)}
-          </p>
-          <div className="mt-4">
-            <div className="h-3 overflow-hidden rounded-full bg-white/[0.06]">
-              <div
-                className="h-full rounded-full bg-violet-400/90 transition-[width] duration-500"
-                style={{ width: `${Math.min(tokenUsagePercent, 100)}%` }}
-              />
-            </div>
-          </div>
-          <ul className="mt-5 space-y-2">
-            {stats.departments
-              .filter((row) => row.agentCount > 0)
-              .map((row) => {
-                const pct = Math.round((row.tokensToday / row.tokenBudgetDaily) * 100);
-                return (
-                  <li key={row.slug} className="flex items-center justify-between gap-3 text-sm">
-                    <Link
-                      href={`/agent/departments/${row.slug}`}
-                      className="text-zinc-200 hover:text-white"
-                    >
-                      {row.name}
-                    </Link>
-                    <span className="text-[var(--bn-faint)]">
-                      {formatTokenCount(row.tokensToday)} · %{pct}
-                    </span>
+        <div className="flex flex-col gap-4 xl:col-span-2">
+          <section className="bn-card-solid rounded-2xl p-5">
+            <h2 className="font-display text-[15px] font-bold text-[var(--bn-heading)]">
+              Onay bekleyenler
+            </h2>
+            {stats.pendingActions.length > 0 ? (
+              <ul className="mt-4 space-y-3">
+                {stats.pendingActions.map((action) => (
+                  <PendingCard key={action.id} action={action} />
+                ))}
+              </ul>
+            ) : (
+              <EmptyNote text="Onay bekleyen işlem yok." className="mt-4" />
+            )}
+          </section>
+
+          <section className="bn-card-solid rounded-2xl p-5">
+            <h2 className="font-display text-[15px] font-bold text-[var(--bn-heading)]">
+              Departman yükü
+            </h2>
+            {stats.departments.some((row) => row.agentCount > 0) ? (
+              <ul className="mt-4 space-y-3">
+                {stats.departments.map((row) => (
+                  <li key={row.slug}>
+                    <div className="mb-1.5 flex items-center justify-between gap-2 text-sm">
+                      <Link
+                        href={`/agent/departments/${row.slug}`}
+                        className="text-zinc-200 hover:text-white"
+                      >
+                        {row.name}
+                      </Link>
+                      <span className="text-[11px] text-zinc-500">
+                        %{row.completedPercent} tamamlanan
+                      </span>
+                    </div>
+                    <div className="h-1.5 overflow-hidden rounded-full bg-white/[0.06]">
+                      <div
+                        className="h-full rounded-full bg-sky-400/80"
+                        style={{ width: `${Math.min(row.completedPercent, 100)}%` }}
+                      />
+                    </div>
                   </li>
-                );
-              })}
-          </ul>
-        </section>
+                ))}
+              </ul>
+            ) : (
+              <EmptyNote text="Departmanlara ajan bağlandıkça yük görünür." className="mt-4" />
+            )}
+          </section>
+        </div>
       </div>
 
       <section className="bn-card-solid rounded-2xl p-5">
         <h2 className="font-display text-[15px] font-bold text-[var(--bn-heading)]">
-          Ekosistem uygulamaları
+          Canlı ajan aktiviteleri
         </h2>
-        <ul className="mt-4 divide-y divide-white/10">
-          {stats.agents.map((agent) => (
-            <li
-              key={agent.id}
-              className="flex flex-wrap items-center justify-between gap-3 py-3 first:pt-0 last:pb-0"
-            >
-              <Link href={agent.href} className="flex min-w-0 flex-1 items-center gap-3">
-                <div
-                  className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl border border-white/10"
-                  style={{ backgroundColor: `${agent.brandColor}18` }}
-                >
-                  <ServiceCatalogLogo
-                    icon={agent.icon}
-                    brandColor={agent.brandColor}
-                    name={agent.name}
-                    size="sm"
-                  />
-                </div>
-                <div className="min-w-0">
-                  <div className="flex items-center gap-2">
-                    <p className="truncate text-sm font-semibold text-zinc-100">{agent.name}</p>
-                    <span
-                      className={`h-2 w-2 shrink-0 rounded-full ${STATUS_DOT[agent.status]}`}
-                    />
-                  </div>
-                  <p className="mt-0.5 text-xs text-[var(--bn-faint)]">{agent.department}</p>
-                </div>
-              </Link>
-
-              <Link
-                href={agent.href}
-                className="inline-flex h-9 w-9 shrink-0 items-center justify-center rounded-lg border border-white/10 text-zinc-300 transition hover:border-white/20 hover:bg-white/[0.05] hover:text-white"
-                aria-label={`${agent.name} detay sayfası`}
-              >
-                <ArrowUpRight className="h-4 w-4" aria-hidden />
-              </Link>
-            </li>
-          ))}
-        </ul>
+        {stats.liveActivities.length > 0 ? (
+          <ul className="mt-4 divide-y divide-white/[0.06]">
+            {stats.liveActivities.map((item) => (
+              <ActivityRow key={item.id} item={item} />
+            ))}
+          </ul>
+        ) : (
+          <EmptyNote text="Canlı aktivite yok. Ajanlar çalışmaya başladığında akış burada listelenir." className="mt-4" />
+        )}
       </section>
     </div>
   );
 }
 
-function Kpi({ label, value }: { label: string; value: string | number }) {
+function EmptyNote({ text, className }: { text: string; className?: string }) {
+  return (
+    <p className={cn('rounded-xl border border-dashed border-white/10 bg-white/[0.02] px-3 py-4 text-sm text-zinc-500', className)}>
+      {text}
+    </p>
+  );
+}
+
+function Kpi({
+  label,
+  value,
+  hint,
+  children,
+}: {
+  label: string;
+  value: string;
+  hint: string;
+  children?: ReactNode;
+}) {
   return (
     <article className="bn-card-solid rounded-xl p-4">
       <p className="text-[11px] font-semibold uppercase tracking-[0.14em] text-[var(--bn-faint)]">
         {label}
       </p>
-      <p className="font-display mt-2 text-2xl font-bold tracking-tight text-[var(--bn-heading)] md:text-3xl">
+      <p className="font-display mt-2 text-xl font-bold tracking-tight text-[var(--bn-heading)] md:text-2xl">
         {value}
       </p>
+      <p className="mt-1.5 text-[11px] leading-snug text-zinc-500">{hint}</p>
+      {children}
     </article>
   );
 }
 
-function TokenChart({
+function PendingCard({ action }: { action: PendingAction }) {
+  return (
+    <li className="rounded-xl border border-amber-400/20 bg-amber-500/[0.06] p-3">
+      <p className="text-[10px] font-semibold uppercase tracking-[0.12em] text-amber-200/80">
+        {action.department}
+      </p>
+      <p className="mt-1 text-sm font-medium leading-snug text-zinc-100">{action.title}</p>
+      <div className="mt-3 flex flex-wrap gap-2">
+        <button
+          type="button"
+          className="rounded-md bg-white px-2.5 py-1.5 text-[11px] font-semibold text-zinc-950"
+        >
+          {action.primaryLabel}
+        </button>
+        {action.secondaryLabel ? (
+          <Link
+            href={`/agent/departments/${action.departmentSlug}`}
+            className="rounded-md border border-white/15 px-2.5 py-1.5 text-[11px] font-semibold text-zinc-300 hover:bg-white/[0.04]"
+          >
+            {action.secondaryLabel}
+          </Link>
+        ) : null}
+      </div>
+    </li>
+  );
+}
+
+function ActivityRow({ item }: { item: LiveActivity }) {
+  const tone =
+    item.status === 'warning'
+      ? 'text-amber-200'
+      : item.status === 'resolved'
+        ? 'text-sky-200'
+        : 'text-emerald-200';
+
+  return (
+    <li className="grid grid-cols-[3rem_minmax(0,1fr)_auto] items-start gap-3 py-3 first:pt-0 last:pb-0 sm:grid-cols-[3.5rem_9rem_minmax(0,1fr)_auto] sm:items-center">
+      <span className="font-mono text-xs text-zinc-500">{item.time}</span>
+      <span className="hidden truncate text-sm font-medium text-zinc-200 sm:block">{item.agent}</span>
+      <div className="min-w-0">
+        <p className="truncate text-sm text-zinc-300 sm:hidden">{item.agent}</p>
+        <p className="truncate text-sm text-zinc-400">{item.detail}</p>
+      </div>
+      <span className={cn('shrink-0 text-[11px] font-semibold', tone)}>{item.statusLabel}</span>
+    </li>
+  );
+}
+
+function OpsChart({
   points,
   max,
   reduce,
 }: {
-  points: AgentDashboardStats['weekTokens'];
+  points: AgentDashboardStats['weekOperations'];
   max: number;
   reduce: boolean;
 }) {
@@ -176,12 +276,12 @@ function TokenChart({
         viewBox={`0 0 ${width} ${height}`}
         className="h-40 w-full"
         role="img"
-        aria-label="Token kullanımı"
+        aria-label="Haftalık işlem hacmi"
       >
         <defs>
-          <linearGradient id="bn-token-fill" x1="0" x2="0" y1="0" y2="1">
-            <stop offset="0%" stopColor="#a78bfa" stopOpacity="0.28" />
-            <stop offset="100%" stopColor="#a78bfa" stopOpacity="0" />
+          <linearGradient id="bn-ops-fill" x1="0" x2="0" y1="0" y2="1">
+            <stop offset="0%" stopColor="#34d399" stopOpacity="0.28" />
+            <stop offset="100%" stopColor="#34d399" stopOpacity="0" />
           </linearGradient>
         </defs>
         {[0.25, 0.5, 0.75, 1].map((lineY) => (
@@ -194,11 +294,11 @@ function TokenChart({
             stroke="rgba(255,255,255,0.06)"
           />
         ))}
-        <polygon points={area} fill="url(#bn-token-fill)" />
+        <polygon points={area} fill="url(#bn-ops-fill)" />
         <polyline
           points={line}
           fill="none"
-          stroke="#a78bfa"
+          stroke="#34d399"
           strokeWidth="2.5"
           strokeLinejoin="round"
           strokeLinecap="round"
@@ -214,7 +314,7 @@ function TokenChart({
               cy={y}
               r="3.5"
               fill="#18181b"
-              stroke="#a78bfa"
+              stroke="#34d399"
               strokeWidth="2"
             />
           );

@@ -42,9 +42,6 @@ export default function ServiceDealCard({ service, className }: Props) {
           </h3>
           {service.verified ? <VerifiedBadge compact className="shrink-0 text-sky-300" /> : null}
         </div>
-        <p className="bn-subtitle mt-1 line-clamp-2 text-sm leading-snug">
-          {service.description}
-        </p>
 
         <p className="mt-2 text-sm">
           <span className="bn-link-accent font-medium">Keşfet →</span>

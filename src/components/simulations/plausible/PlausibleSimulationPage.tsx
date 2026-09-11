@@ -9,7 +9,6 @@ export default function PlausibleSimulationPage() {
   return (
     <SimulationPageLayout
       title="Plausible Simülasyonu"
-      subtitle="Çerezsiz analitik · sayfalar · kaynaklar · hedefler"
       resetKey={resetKey}
       onReset={() => setResetKey((k) => k + 1)}
     >

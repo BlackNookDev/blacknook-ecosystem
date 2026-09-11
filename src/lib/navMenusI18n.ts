@@ -3,7 +3,7 @@ import type { ServiceCatalogEntry } from '../../lib/data';
 import { countBrowseCategory } from '../../lib/catalogBrowse';
 import { BROWSE_CATEGORIES, ECOSYSTEM_NAV } from '../../lib/navMenus';
 
-/** Navbar ve mobil menü — ekosistem linkleri */
+/** Navbar ve mobil menü — B2B ajan / departman linkleri */
 export function getEcosystemNav(t: TranslateFn, catalog?: ServiceCatalogEntry[]) {
   const total = catalog?.length ?? 0;
 
@@ -34,13 +34,13 @@ export function getEcosystemNav(t: TranslateFn, catalog?: ServiceCatalogEntry[])
   };
 }
 
-export function getMobileSiteLinks(t: TranslateFn) {
+export function getMobileSiteLinks(_t: TranslateFn) {
   return [
-    { href: '/developers/apply', label: t('footer.becomeDeveloper') },
-    { href: '/partners/self-submission', label: t('footer.addProduct') },
-    { href: '/sell', label: t('footer.sell') },
-    { href: '/about', label: t('footer.about') },
-    { href: '/help', label: t('footer.help') },
+    { href: '/services', label: 'Ajan kataloğu' },
+    { href: '/agent', label: 'Departman paneli' },
+    { href: '/account/requests', label: 'Kurulum talepleri' },
+    { href: '/about', label: 'Hakkımızda' },
+    { href: '/help', label: 'Yardım' },
   ] as const;
 }
 
@@ -48,9 +48,6 @@ export function getAccountNav(t: TranslateFn) {
   return [
     { href: '/account', label: t('account.profile'), icon: 'user' as const },
     { href: '/agent', label: t('account.nookAgent'), icon: 'agent' as const },
-    { href: '/account/messages', label: t('account.notifications'), icon: 'bell' as const },
     { href: '/account/requests', label: t('account.requests'), icon: 'requests' as const },
-    { href: '/account/products', label: t('account.products'), icon: 'grid' as const },
-    { href: '/account/billing', label: t('account.billing'), icon: 'card' as const },
   ] as const;
 }

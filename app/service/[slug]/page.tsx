@@ -11,10 +11,7 @@ import {
   softwareApplicationJsonLd,
 } from '@/lib/seo';
 import ServiceDetailActions from './ServiceDetailActions';
-import MarketplaceDetail from '@/components/services/MarketplaceDetail';
 import ServicePromoVisual from '@/components/services/ServicePromoVisual';
-import { getMarketplaceBySlug } from '@/lib/marketplace';
-import { ensureCriticalSchema } from '@/lib/ensureSchema';
 
 type PageProps = {
   params: { slug: string };
@@ -28,24 +25,6 @@ export function generateStaticParams() {
 }
 
 export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
-  await ensureCriticalSchema().catch(() => undefined);
-  const market = await getMarketplaceBySlug(params.slug, { includeUnlisted: true }).catch(() => null);
-  if (market?.status === 'approved') {
-    return buildPageMetadata({
-      title: `${market.title} | Blacknook`.slice(0, 60),
-      description: market.shortDescription,
-      path: `/service/${market.slug}`,
-    });
-  }
-  if (market) {
-    return buildPageMetadata({
-      title: 'Servis bulunamadı',
-      description: 'Aradığınız servis Blacknook kataloğunda yok.',
-      path: `/service/${params.slug}`,
-      noIndex: true,
-    });
-  }
-
   const service = getServiceBySlug(params.slug);
   if (!service) {
     return buildPageMetadata({
@@ -65,13 +44,6 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
 }
 
 export default async function ServiceDetailPage({ params }: PageProps) {
-  await ensureCriticalSchema().catch(() => undefined);
-  const market = await getMarketplaceBySlug(params.slug, { includeUnlisted: true }).catch(() => null);
-  if (market) {
-    if (market.status !== 'approved') notFound();
-    return <MarketplaceDetail product={market} />;
-  }
-
   const service = getServiceBySlug(params.slug);
   if (!service) notFound();
 
@@ -218,8 +190,8 @@ export default async function ServiceDetailPage({ params }: PageProps) {
                   </dd>
                 </div>
                 <div className="flex justify-between gap-4">
-                  <dt className="text-zinc-500">Çalışır</dt>
-                  <dd className="text-right font-medium text-zinc-200">Kendi sunucunuzda</dd>
+                  <dt className="text-zinc-500">Kurulum</dt>
+                  <dd className="text-right font-medium text-zinc-200">Yönetilen onboarding</dd>
                 </div>
               </dl>
             </div>

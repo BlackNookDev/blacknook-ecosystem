@@ -6,19 +6,15 @@ import { useSession } from 'next-auth/react';
 import { Eye, EyeOff, Loader2, Upload } from 'lucide-react';
 import AccountSection from '@/components/account/AccountSection';
 import LanguagePreference from '@/components/account/LanguagePreference';
-import { useLocale, useTranslations } from '@/components/LocaleProvider';
 import { apiFetch } from '@/lib/apiUrl';
 
 export default function AccountProfilePage() {
   const { data: session } = useSession();
-  const { t: ta } = useTranslations('account');
   const [email, setEmail] = useState('');
   const [phone, setPhone] = useState('');
   const [smsOptIn, setSmsOptIn] = useState(false);
   const [displayName, setDisplayName] = useState('');
   const [bio, setBio] = useState('');
-  const [matchAvailable, setMatchAvailable] = useState(false);
-  const [matchSkills, setMatchSkills] = useState('');
   const [savingProfile, setSavingProfile] = useState(false);
   const [profileFlash, setProfileFlash] = useState('');
   const [profileError, setProfileError] = useState('');
@@ -33,21 +29,17 @@ export default function AccountProfilePage() {
         const data = (await res.json().catch(() => ({}))) as {
           name?: string;
           bio?: string;
-          matchAvailable?: boolean;
-          matchSkills?: string;
         };
         if (!res.ok) return;
         if (data.name) setDisplayName(data.name);
         setBio(data.bio || '');
-        setMatchAvailable(Boolean(data.matchAvailable));
-        setMatchSkills(data.matchSkills || '');
       } catch {
         /* oturum alanları yeterli */
       }
     })();
   }, [session]);
 
-  const saveProfile = async (extra?: { matchAvailable?: boolean }) => {
+  const saveProfile = async () => {
     setSavingProfile(true);
     setProfileError('');
     setProfileFlash('');
@@ -58,8 +50,6 @@ export default function AccountProfilePage() {
         body: JSON.stringify({
           name: displayName,
           bio,
-          matchSkills,
-          matchAvailable: extra?.matchAvailable ?? matchAvailable,
         }),
       });
       const data = (await res.json().catch(() => ({}))) as { error?: string };
@@ -237,51 +227,6 @@ export default function AccountProfilePage() {
             </button>
             {profileFlash ? <p className="text-xs text-emerald-400">{profileFlash}</p> : null}
             {profileError ? <p className="text-xs text-rose-300">{profileError}</p> : null}
-          </div>
-        </AccountSection>
-
-        <AccountSection
-          title={ta('supportPool')}
-          description={ta('supportPoolDesc')}
-        >
-          <label className="flex items-start gap-3 text-sm text-zinc-300">
-            <input
-              type="checkbox"
-              checked={matchAvailable}
-              onChange={(e) => {
-                const next = e.target.checked;
-                setMatchAvailable(next);
-                void saveProfile({ matchAvailable: next });
-              }}
-              className="mt-0.5 h-4 w-4 rounded border-white/20 bg-transparent"
-            />
-            <span>
-              {ta('supportAvailable')}
-              <span className="mt-1 block text-xs text-zinc-500">
-                {ta('supportAvailableHint')}
-              </span>
-            </span>
-          </label>
-          <div className="mt-5 max-w-md">
-            <label htmlFor="match-skills" className="mb-2 block text-sm font-medium text-zinc-300">
-              {ta('expertise')}
-            </label>
-            <input
-              id="match-skills"
-              value={matchSkills}
-              onChange={(e) => setMatchSkills(e.target.value)}
-              maxLength={120}
-              placeholder="Örn. Self-host, Auth, DevOps"
-              className="h-11 w-full rounded-xl border border-white/15 bg-transparent px-4 text-sm text-zinc-100 outline-none placeholder:text-zinc-600 focus:border-white/30"
-            />
-            <button
-              type="button"
-              onClick={() => void saveProfile()}
-              disabled={savingProfile}
-              className="mt-3 inline-flex h-10 items-center rounded-xl border border-white/15 px-4 text-sm font-semibold text-zinc-100 hover:bg-white/[0.04]"
-            >
-              Uzmanlığı kaydet
-            </button>
           </div>
         </AccountSection>
 

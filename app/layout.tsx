@@ -60,12 +60,11 @@ export const metadata: Metadata = {
   publisher: 'Blacknook',
   keywords: [
     'Blacknook',
-    'yazılım ekosistemi',
-    'SaaS',
-    'geliştirici araçları',
-    'self-host',
-    'indie hacker',
-    'yazılım hub',
+    'otonom panel',
+    'MCP ajan',
+    'yönetilen kurulum',
+    'departman ajanı',
+    'kurumsal AI',
   ],
   category: 'technology',
   icons: {

@@ -5,7 +5,7 @@ import { buildPageMetadata } from '@/lib/seo';
 export const metadata: Metadata = buildPageMetadata({
   title: 'Yardım Merkezi | Blacknook',
   description:
-    'Hesap, ödeme, ürün erişimi ve partner süreçleri hakkında Blacknook yardım merkezi.',
+    'Keşif, kurulum talebi, departman paneli ve hesap hakkında Blacknook yardım merkezi.',
   path: '/help',
 });
 

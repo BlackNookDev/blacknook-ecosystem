@@ -5,8 +5,42 @@ import {
   mockMetricsForService,
 } from '@/lib/otonom/departmentServices';
 
+export type PendingAction = {
+  id: string;
+  department: string;
+  departmentSlug: DepartmentSlug;
+  title: string;
+  primaryLabel: string;
+  secondaryLabel?: string;
+};
+
+export type LiveActivity = {
+  id: string;
+  time: string;
+  agent: string;
+  detail: string;
+  status: 'done' | 'resolved' | 'warning';
+  statusLabel: string;
+};
+
 export type AgentDashboardStats = {
+  hoursSaved: number;
+  hoursSavedTrendPercent: number;
   activeAgents: number;
+  connectedSources: number;
+  totalOperations: number;
+  budgetUsedUsd: number;
+  budgetCapUsd: number;
+  weekOperations: { key: string; label: string; value: number }[];
+  pendingActions: PendingAction[];
+  departments: {
+    slug: DepartmentSlug;
+    name: string;
+    agentCount: number;
+    completedPercent: number;
+  }[];
+  liveActivities: LiveActivity[];
+  /** Eski alanlar — yönetici chatbot vb. uyumluluk */
   totalAgents: number;
   efficiencyGainPercent: number;
   hoursSavedWeek: number;
@@ -29,19 +63,11 @@ export type AgentDashboardStats = {
     brandColor: string;
     description: string;
   }[];
-  departments: {
-    slug: DepartmentSlug;
-    name: string;
-    agentCount: number;
-    efficiencyPercent: number;
-    tokensToday: number;
-    tokenBudgetDaily: number;
-  }[];
 };
 
-const SAMPLE_TOKEN_WEEK = [420_000, 510_000, 468_000, 592_000, 548_000, 501_000, 526_600];
 const DAY_LABELS = ['Paz', 'Pzt', 'Sal', 'Çar', 'Per', 'Cum', 'Cmt'];
 
+/** Gerçek kurulum yokken boş / sıfır — sahte KPI yok. */
 export function getAgentDashboardStats(): AgentDashboardStats {
   const services = listAllDepartmentServices();
   const days = Array.from({ length: 7 }, (_, index) => {
@@ -50,69 +76,54 @@ export function getAgentDashboardStats(): AgentDashboardStats {
     return date;
   });
 
-  const enriched = services.map((service) => ({
-    ...service,
-    ...mockMetricsForService(service.slug),
+  const weekOperations = days.map((date) => ({
+    key: date.toISOString().slice(0, 10),
+    label: DAY_LABELS[date.getDay()],
+    value: 0,
   }));
 
-  const tokensUsedToday = enriched.reduce((sum, item) => sum + item.tokensToday, 0);
-  const tokenBudgetDaily = enriched.reduce((sum, item) => sum + item.tokenBudgetDaily, 0);
-  const hoursSavedWeek = enriched.reduce((sum, item) => sum + item.hoursSavedWeek, 0);
-  const activeAgents = enriched.filter((item) => item.status === 'running').length;
-  const efficiencyGainPercent =
-    enriched.length === 0
-      ? 0
-      : Math.round(
-          enriched.reduce((sum, item) => sum + item.efficiencyPercent, 0) / enriched.length
-        );
+  const departments = DEPARTMENTS.map((department) => ({
+    slug: department.slug,
+    name: department.name,
+    agentCount: 0,
+    completedPercent: 0,
+  }));
 
   return {
-    activeAgents,
-    totalAgents: enriched.length,
-    efficiencyGainPercent,
-    hoursSavedWeek,
-    tokensUsedToday,
-    tokenBudgetDaily,
-    tokenCostToday: Math.round((tokensUsedToday / 1_000_000) * 4.2 * 100) / 100,
-    weekTokens: days.map((date, index) => ({
-      key: date.toISOString().slice(0, 10),
-      label: DAY_LABELS[date.getDay()],
-      value: SAMPLE_TOKEN_WEEK[index],
-    })),
-    agents: enriched.map((item) => ({
-      id: item.slug,
-      name: item.name,
-      department: DEPARTMENT_LABELS[item.department],
-      departmentSlug: item.department,
-      status: item.status,
-      efficiencyPercent: item.efficiencyPercent,
-      hoursSavedWeek: item.hoursSavedWeek,
-      tokensToday: item.tokensToday,
-      tokenBudgetDaily: item.tokenBudgetDaily,
-      href: item.href,
-      icon: item.icon,
-      brandColor: item.brandColor,
-      description: item.description,
-    })),
-    departments: DEPARTMENTS.map((department) => {
-      const deptItems = enriched.filter((item) => item.department === department.slug);
-      const agentCount = deptItems.length;
-      const tokensToday = deptItems.reduce((sum, item) => sum + item.tokensToday, 0);
-      const tokenBudgetDaily = deptItems.reduce((sum, item) => sum + item.tokenBudgetDaily, 0);
-      const efficiencyPercent =
-        agentCount === 0
-          ? 0
-          : Math.round(
-              deptItems.reduce((sum, item) => sum + item.efficiencyPercent, 0) / agentCount
-            );
-
+    hoursSaved: 0,
+    hoursSavedTrendPercent: 0,
+    activeAgents: 0,
+    connectedSources: 0,
+    totalOperations: 0,
+    budgetUsedUsd: 0,
+    budgetCapUsd: 100,
+    weekOperations,
+    pendingActions: [],
+    departments,
+    liveActivities: [],
+    totalAgents: 0,
+    efficiencyGainPercent: 0,
+    hoursSavedWeek: 0,
+    tokensUsedToday: 0,
+    tokenBudgetDaily: 0,
+    tokenCostToday: 0,
+    weekTokens: weekOperations.map((row) => ({ ...row, value: 0 })),
+    agents: services.map((item) => {
+      const metrics = mockMetricsForService(item.slug);
       return {
-        slug: department.slug,
-        name: department.name,
-        agentCount,
-        efficiencyPercent,
-        tokensToday,
-        tokenBudgetDaily,
+        id: item.slug,
+        name: item.name,
+        department: DEPARTMENT_LABELS[item.department],
+        departmentSlug: item.department,
+        status: metrics.status,
+        efficiencyPercent: metrics.efficiencyPercent,
+        hoursSavedWeek: metrics.hoursSavedWeek,
+        tokensToday: metrics.tokensToday,
+        tokenBudgetDaily: metrics.tokenBudgetDaily,
+        href: item.href,
+        icon: item.icon,
+        brandColor: item.brandColor,
+        description: item.description,
       };
     }),
   };

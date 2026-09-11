@@ -9,19 +9,19 @@ import { duration, easePremium } from '@/components/motion/tokens';
 const DEPARTMENTS = [
   {
     title: 'Ürün & Mühendislik',
-    body: 'Ekosistem deneyimini, partner araçlarını ve altyapıyı birlikte büyütüyorsun.',
+    body: 'Otonom paneli, kataloğu ve kurulum hattını birlikte büyütüyorsun.',
   },
   {
-    title: 'Partner & Büyüme',
-    body: 'Bağımsız ekiplerle ilişki kuruyor, lansmanları ve görünürlüğü şekillendiriyorsun.',
+    title: 'Satış & Müşteri başarısı',
+    body: 'Kurumsal onboarding ve müşteri ilişkilerini şekillendiriyorsun.',
   },
   {
     title: 'Tasarım',
-    body: 'Marka, ürün arayüzü ve hub vitrinini net, sakin bir görsel dilde tutuyorsun.',
+    body: 'Marka, ürün arayüzü ve keşif deneyimini net, sakin bir görsel dilde tutuyorsun.',
   },
   {
     title: 'Operasyon & Destek',
-    body: 'Kurulum taleplerinden moderasyona kadar partner ve alıcı deneyimini güçlendiriyorsun.',
+    body: 'Kurulum taleplerinden destek e-postalarına kadar alıcı deneyimini güçlendiriyorsun.',
   },
 ];
 
@@ -66,8 +66,8 @@ const OPENINGS = [
     loc: 'Uzaktan · Türkiye',
   },
   {
-    dept: 'Partner & Büyüme',
-    title: 'Partner Success Associate',
+    dept: 'Satış & Müşteri başarısı',
+    title: 'Customer Success Associate',
     loc: 'İstanbul / Uzaktan',
   },
   {
@@ -105,7 +105,7 @@ export default function CareersContent() {
               Birlikte büyüyelim
             </h1>
             <p className="mt-5 max-w-xl text-base leading-relaxed text-zinc-300 sm:text-lg">
-              Yazılımı keşfedilir kılan ekibe katıl. Partnerler ve alıcılar için sakin, güçlü bir
+              Yazılımı keşfedilir kılan ekibe katıl. Müşteriler ve ekipler için sakin, güçlü bir
               yazılım ekosistemi inşa ediyoruz.
             </p>
             <a

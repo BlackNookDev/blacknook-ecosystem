@@ -16,9 +16,6 @@ export default function EventTypesView({ activeId, onSelect }: Props) {
       <div className="mb-5 flex flex-wrap items-end justify-between gap-3">
         <div>
           <h2 className="font-display text-lg font-bold text-[var(--bn-heading)]">Etkinlik türleri</h2>
-          <p className="mt-1 text-sm text-zinc-500">
-            Sınırsız etkinlik türü · özelleştirilebilir rezervasyon linkleri
-          </p>
         </div>
         <button
           type="button"
@@ -98,7 +95,7 @@ export default function EventTypesView({ activeId, onSelect }: Props) {
           className="mt-3 inline-flex items-center gap-1.5 text-xs font-medium text-zinc-400"
         >
           <RefreshCw className="h-3.5 w-3.5" aria-hidden />
-          Simülasyon modu
+          Önizleme modu
         </button>
       </div>
     </div>

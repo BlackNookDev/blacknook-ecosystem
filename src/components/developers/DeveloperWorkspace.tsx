@@ -1,6 +1,6 @@
 'use client';
 
-import { useCallback, useEffect, useState } from 'react';
+import { useCallback, useEffect, useRef, useState } from 'react';
 import {
   Code2,
   ExternalLink,
@@ -43,11 +43,17 @@ const STATUS_LABEL: Record<string, string> = {
 type Props = {
   projectName?: string;
   className?: string;
+  /** Tam ekran uygulama modu — sidebar/panel dışında */
+  fullscreen?: boolean;
+  /** Workspace yoksa otomatik oluştur / başlat */
+  autoStart?: boolean;
 };
 
 export default function DeveloperWorkspace({
   projectName = 'default',
   className,
+  fullscreen = false,
+  autoStart = false,
 }: Props) {
   const [configured, setConfigured] = useState(true);
   const [coderUrl, setCoderUrl] = useState('http://127.0.0.1:7080');
@@ -56,6 +62,7 @@ export default function DeveloperWorkspace({
   const [error, setError] = useState<string | null>(null);
   const [busy, setBusy] = useState(false);
   const [loading, setLoading] = useState(true);
+  const autoStartedRef = useRef(false);
 
   const applyPayload = useCallback((data: ApiPayload) => {
     setConfigured(data.configured !== false);
@@ -85,6 +92,17 @@ export default function DeveloperWorkspace({
     void refresh();
     // eslint-disable-next-line react-hooks/exhaustive-deps -- mount only
   }, []);
+
+  useEffect(() => {
+    if (!autoStart || autoStartedRef.current || loading || busy || !configured) return;
+    if (workspace && !['stopped', 'failed', 'canceled'].includes(workspace.status)) {
+      autoStartedRef.current = true;
+      return;
+    }
+    autoStartedRef.current = true;
+    void runAction(workspace ? 'start' : 'create');
+    // eslint-disable-next-line react-hooks/exhaustive-deps -- one-shot autostart
+  }, [autoStart, loading, configured, workspace?.id, workspace?.status, busy]);
 
   useEffect(() => {
     if (!workspace) return;
@@ -128,9 +146,14 @@ export default function DeveloperWorkspace({
     isRunning && workspace?.accessUrl ? workspace.accessUrl : null;
 
   return (
-    <div className={cn('space-y-6', className)}>
-      <div className="overflow-hidden rounded-2xl border border-white/[0.08] bg-zinc-950">
-        <div className="flex flex-wrap items-center justify-between gap-3 border-b border-white/[0.06] px-4 py-3">
+    <div className={cn(fullscreen ? 'flex h-full min-h-0 flex-col' : 'space-y-6', className)}>
+      <div
+        className={cn(
+          'flex min-h-0 flex-1 flex-col overflow-hidden bg-zinc-950',
+          fullscreen ? 'rounded-none border-0' : 'rounded-2xl border border-white/[0.08]'
+        )}
+      >
+        <div className="flex shrink-0 flex-wrap items-center justify-between gap-3 border-b border-white/[0.06] px-4 py-3">
           <div className="inline-flex items-center gap-2 text-sm text-zinc-200">
             <Code2 className="h-4 w-4 text-teal-400" aria-hidden />
             Blacknook Studio
@@ -165,7 +188,7 @@ export default function DeveloperWorkspace({
                 ) : (
                   <Play className="h-4 w-4" aria-hidden />
                 )}
-                {workspace ? 'Başlat' : 'Workspace oluştur'}
+                {workspace ? 'Başlat' : 'Kendi sistemini oluştur'}
               </button>
             ) : (
               <button
@@ -190,7 +213,7 @@ export default function DeveloperWorkspace({
                 rel="noopener noreferrer"
                 className="inline-flex items-center gap-1.5 rounded-lg bg-white/[0.06] px-3 py-2 text-sm text-zinc-200 transition-colors hover:bg-white/[0.1] hover:text-white"
               >
-                Tam ekran
+                Yeni sekme
                 <ExternalLink className="h-3.5 w-3.5" aria-hidden />
               </a>
             ) : (
@@ -211,11 +234,19 @@ export default function DeveloperWorkspace({
           <iframe
             title="Blacknook Developer Workspace"
             src={iframeSrc}
-            className="h-[min(70vh,720px)] w-full bg-zinc-900"
+            className={cn(
+              'w-full flex-1 bg-zinc-900',
+              fullscreen ? 'min-h-0' : 'h-[min(70vh,720px)]'
+            )}
             allow="clipboard-read; clipboard-write"
           />
         ) : (
-          <div className="flex min-h-[280px] flex-col items-center justify-center gap-3 px-6 py-16 text-center">
+          <div
+            className={cn(
+              'flex flex-1 flex-col items-center justify-center gap-3 px-6 py-16 text-center',
+              fullscreen ? 'min-h-0' : 'min-h-[280px]'
+            )}
+          >
             <Terminal className="h-10 w-10 text-zinc-600" aria-hidden />
             <p className="max-w-md text-sm text-zinc-400">
               {loading
@@ -241,20 +272,22 @@ export default function DeveloperWorkspace({
         </p>
       ) : null}
 
-      <ul className="grid gap-3 text-sm text-zinc-500 sm:grid-cols-3">
-        <li className="rounded-xl border border-white/[0.06] bg-white/[0.02] px-4 py-3">
-          <span className="text-zinc-300">Altyapı</span>
-          <p className="mt-1">Coder v2 · Docker izole konteyner</p>
-        </li>
-        <li className="rounded-xl border border-white/[0.06] bg-white/[0.02] px-4 py-3">
-          <span className="text-zinc-300">Kaynak</span>
-          <p className="mt-1">2 vCPU · 2 GiB RAM</p>
-        </li>
-        <li className="rounded-xl border border-white/[0.06] bg-white/[0.02] px-4 py-3">
-          <span className="text-zinc-300">Stack</span>
-          <p className="mt-1">Node LTS · Python 3 · Git · code-server</p>
-        </li>
-      </ul>
+      {!fullscreen ? (
+        <ul className="grid gap-3 text-sm text-zinc-500 sm:grid-cols-3">
+          <li className="rounded-xl border border-white/[0.06] bg-white/[0.02] px-4 py-3">
+            <span className="text-zinc-300">Altyapı</span>
+            <p className="mt-1">Coder v2 · Docker izole konteyner</p>
+          </li>
+          <li className="rounded-xl border border-white/[0.06] bg-white/[0.02] px-4 py-3">
+            <span className="text-zinc-300">Kaynak</span>
+            <p className="mt-1">2 vCPU · 2 GiB RAM</p>
+          </li>
+          <li className="rounded-xl border border-white/[0.06] bg-white/[0.02] px-4 py-3">
+            <span className="text-zinc-300">Stack</span>
+            <p className="mt-1">Node LTS · Python 3 · Git · code-server</p>
+          </li>
+        </ul>
+      ) : null}
     </div>
   );
 }

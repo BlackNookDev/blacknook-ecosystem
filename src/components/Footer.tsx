@@ -2,7 +2,6 @@
 
 import Link from 'next/link';
 import BrandLogo from '@/components/BrandLogo';
-import FooterSellColumn from '@/components/FooterSellColumn';
 import { PaytrTrustRow } from '@/components/PaytrLogo';
 import { useTranslations } from '@/components/LocaleProvider';
 
@@ -21,7 +20,7 @@ function FooterColumn({
       <nav aria-label={ariaLabel}>
         <ul className="space-y-3">
           {links.map((link) => (
-            <li key={link.href}>
+            <li key={`${link.href}-${link.label}`}>
               <Link
                 href={link.href}
                 className="bn-subtitle text-sm transition-colors duration-premium ease-premium hover:text-[var(--bn-heading)]"
@@ -55,6 +54,12 @@ function WhatsAppIcon({ className }: { className?: string }) {
 export default function Footer() {
   const { t } = useTranslations('footer');
 
+  const productLinks = [
+    { href: '/services', label: 'Ajan kataloğu' },
+    { href: '/agent', label: 'Departman paneli' },
+    { href: '/account/requests', label: 'Kurulum talepleri' },
+  ];
+
   const accountLinks = [
     { href: '/help', label: t('help') },
     { href: '/terms', label: t('terms') },
@@ -63,19 +68,13 @@ export default function Footer() {
 
   const companyLinks = [
     { href: '/about', label: t('about') },
-    { href: '/careers', label: t('careers') },
-    { href: '/services', label: t('ecosystem') },
-  ];
-
-  const learnLinks = [
-    { href: '/learn/online-isletme', label: t('onlineBusiness') },
-    { href: '/learn/creator-economy', label: t('creatorEconomy') },
+    { href: '/services', label: 'Ekosistem' },
   ];
 
   return (
     <footer className="theme-surface relative border-t border-white/[0.06]">
       <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-white/15 to-transparent" />
-      <div className="mx-auto grid max-w-6xl grid-cols-1 gap-12 px-6 py-16 sm:grid-cols-2 lg:grid-cols-5 lg:gap-8">
+      <div className="mx-auto grid max-w-6xl grid-cols-1 gap-12 px-6 py-16 sm:grid-cols-2 lg:grid-cols-4 lg:gap-8">
         <div className="sm:col-span-2 lg:col-span-1">
           <BrandLogo textClassName="text-xl" iconClassName="h-8 w-8" />
           <div className="mt-5 flex items-center gap-2.5">
@@ -100,10 +99,9 @@ export default function Footer() {
           </div>
         </div>
 
+        <FooterColumn title="Ürün" links={productLinks} ariaLabel="Ürün" />
         <FooterColumn title={t('support')} links={accountLinks} ariaLabel={t('support')} />
         <FooterColumn title={t('company')} links={companyLinks} ariaLabel={t('company')} />
-        <FooterSellColumn />
-        <FooterColumn title={t('learn')} links={learnLinks} ariaLabel={t('learn')} />
       </div>
 
       <div className="mx-auto flex max-w-6xl flex-col items-center justify-between gap-3 border-t border-white/[0.06] px-6 py-5 sm:flex-row">

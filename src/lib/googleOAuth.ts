@@ -1,9 +1,11 @@
 /**
  * Google ile giriş.
- * Geliştirme modunda (ENABLE_DEV_AUTO_LOGIN) kapalıdır.
- * Production'da GOOGLE_CLIENT_ID + GOOGLE_CLIENT_SECRET gerekir.
+ * ENABLE_GOOGLE_OAUTH_BYPASS: buton görünür, gerçek OAuth yok.
+ * ENABLE_DEV_AUTO_LOGIN: tek tık giriş (Google UI kapalı).
+ * Canlı: bypass false + GOOGLE_CLIENT_ID/SECRET.
  */
 export {
   isGoogleOAuthEnabled,
   isGoogleOAuthUiEnabled,
+  isGoogleOAuthBypassUiEnabled,
 } from '@/lib/authMode';

@@ -8,9 +8,8 @@ import { absoluteUrl, buildPageMetadata } from '@/lib/seo';
 const catalog = getFullCatalog();
 
 export const metadata: Metadata = buildPageMetadata({
-  title: 'MCP Ajanları | Blacknook',
-  description:
-    'Kurumsal MCP ajan kataloğu ve ana ajan simülasyonları. Departman bazlı ajanları keşfedin ve kokpitte yönetin.',
+  title: 'Ekosistem | Blacknook',
+  description: 'Blacknook MCP ekosistemi',
   path: '/services',
 });
 
@@ -19,7 +18,7 @@ const itemList = {
   '@type': 'CollectionPage',
   name: 'Ekosistem | Blacknook',
   url: absoluteUrl('/services'),
-  description: 'Blacknook MCP ajan ekosistemi — ana ajanlar ve kurumsal MCP kataloğu',
+  description: 'Blacknook ajan kataloğu',
   mainEntity: {
     '@type': 'ItemList',
     numberOfItems: catalog.length,
@@ -39,7 +38,7 @@ export default function ServicesPage() {
       <Suspense
         fallback={
           <div className="mx-auto max-w-7xl px-6 py-20 text-center text-sm text-zinc-500">
-            Ekosistem yükleniyor…
+            Ajan kataloğu yükleniyor…
           </div>
         }
       >

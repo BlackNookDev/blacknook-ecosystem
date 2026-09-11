@@ -58,7 +58,7 @@ const NICHE_QUESTIONS = [
 const PLATFORMS = [
   {
     name: 'YouTube',
-    fit: 'Derin anlatım, tutorial, ürün demosu',
+    fit: 'Derin anlatım, tutorial, ürün sunumu',
     pros: ['Platform içi reklam geliri', 'Arama ile evergreen keşif', 'Kendi listenize dönüşüm'],
     cons: ['Yüksek üretim yükü', 'Ekipman ve montaj öğrenme eğrisi'],
   },
@@ -161,9 +161,9 @@ const TOOL_GROUPS = [
     icon: Radio,
     title: 'Blacknook ekosistemi',
     items: [
-      'İş araçlarını kataloğumuzdan keşfedin',
-      'Kendi dijital ürününüzü listeleyin',
-      'Select ile özel lansman fırsatını değerlendirin',
+      'İş araçlarını ve ajanları kataloğumuzdan keşfedin',
+      'Kurulum Talep Et ile yönetilen onboarding başlatın',
+      'Departman panelinde (/agent) ajanları işletin',
     ],
   },
 ];
@@ -593,10 +593,10 @@ export default function GuideCreatorEconomyContent() {
                   Online işletme rehberi
                 </Link>
                 <Link
-                  href="/sell"
+                  href="/agent"
                   className="inline-flex h-11 items-center rounded-xl border border-white/15 px-5 text-sm font-semibold text-zinc-200 hover:bg-white/[0.05]"
                 >
-                  Ürün ekle
+                  Departman paneli
                 </Link>
               </div>
             </div>

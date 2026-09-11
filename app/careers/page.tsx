@@ -6,7 +6,7 @@ import { absoluteUrl, buildPageMetadata } from '@/lib/seo';
 export const metadata: Metadata = buildPageMetadata({
   title: 'Kariyer | Blacknook',
   description:
-    'Blacknook ekibine katıl. Ürün, partner, tasarım ve operasyon rollerinde birlikte büyüyelim.',
+    'Blacknook ekibine katıl. Ürün, tasarım, satış ve operasyon rollerinde birlikte büyüyelim.',
   path: '/careers',
 });
 

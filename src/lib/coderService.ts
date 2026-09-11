@@ -2,11 +2,13 @@
  * Coder v2 REST API istemcisi — izole geliştirici workspace yönetimi.
  *
  * Ortam:
- *   CODER_URL          — örn. http://coder:7080 (Docker) veya http://127.0.0.1:7080
+ *   CODER_URL / CODER_INTERNAL_URL — sunucu API (compose: http://coder:7080)
  *   CODER_API_TOKEN    — Coder Session / API token
  *   CODER_TEMPLATE_ID  — blacknook-dev şablon UUID
  *   NEXT_PUBLIC_CODER_URL — tarayıcı erişim URL'si
  */
+
+import { existsSync } from 'fs';
 
 export type CoderWorkspaceStatus =
   | 'pending'
@@ -46,15 +48,36 @@ type CoderApiWorkspace = {
   updated_at?: string;
 };
 
+function isLikelyDockerRuntime(): boolean {
+  try {
+    return existsSync('/.dockerenv');
+  } catch {
+    return false;
+  }
+}
+
+function isLoopbackCoderUrl(url: string): boolean {
+  return /^(https?:\/\/)?(127\.0\.0\.1|localhost)(:|\/|$)/i.test(url);
+}
+
 function coderBaseUrl() {
-  return (process.env.CODER_URL || 'http://127.0.0.1:7080').replace(/\/$/, '');
+  const internal = (process.env.CODER_INTERNAL_URL || '').trim().replace(/\/$/, '');
+  const configured = (process.env.CODER_URL || '').trim().replace(/\/$/, '');
+  // Compose app konteynerinde 127.0.0.1 Coder’a ulaşmaz — sibling DNS kullan.
+  if (internal) return internal;
+  if (configured && !(isLikelyDockerRuntime() && isLoopbackCoderUrl(configured))) {
+    return configured;
+  }
+  if (isLikelyDockerRuntime()) return 'http://coder:7080';
+  return configured || 'http://127.0.0.1:7080';
 }
 
 function publicCoderUrl() {
-  return (process.env.NEXT_PUBLIC_CODER_URL || process.env.CODER_URL || 'http://127.0.0.1:7080').replace(
-    /\/$/,
-    ''
-  );
+  return (
+    process.env.NEXT_PUBLIC_CODER_URL ||
+    process.env.CODER_ACCESS_URL ||
+    'http://127.0.0.1:7080'
+  ).replace(/\/$/, '');
 }
 
 function requireConfig() {
@@ -77,16 +100,29 @@ async function coderFetch<T>(
   const token = init.token || cfgToken;
   const url = `${coderBaseUrl()}${path.startsWith('/') ? path : `/${path}`}`;
 
-  const res = await fetch(url, {
-    ...init,
-    headers: {
-      Accept: 'application/json',
-      'Content-Type': 'application/json',
-      'Coder-Session-Token': token,
-      ...(init.headers || {}),
-    },
-    cache: 'no-store',
-  });
+  let res: Response;
+  try {
+    res = await fetch(url, {
+      ...init,
+      headers: {
+        Accept: 'application/json',
+        'Content-Type': 'application/json',
+        'Coder-Session-Token': token,
+        ...(init.headers || {}),
+      },
+      cache: 'no-store',
+    });
+  } catch (err) {
+    const cause =
+      err instanceof Error && 'cause' in err && err.cause instanceof Error
+        ? err.cause.message
+        : err instanceof Error
+          ? err.message
+          : 'bağlantı hatası';
+    throw new Error(
+      `Coder API’ye ulaşılamadı (${coderBaseUrl()}): ${cause}. Compose’ta CODER_INTERNAL_URL=http://coder:7080 olmalı.`
+    );
+  }
 
   if (!res.ok) {
     let detail = '';
@@ -214,6 +250,14 @@ export async function startWorkspace(workspaceId: string): Promise<WorkspaceInfo
     body: JSON.stringify({ transition: 'start' }),
   });
   return getWorkspaceStatus(workspaceId);
+}
+
+/** Başarısız / eski workspace’i siler (orphan temizliği) */
+export async function deleteWorkspace(workspaceId: string): Promise<void> {
+  if (!workspaceId?.trim()) throw new Error('workspaceId gerekli');
+  await coderFetch(`/api/v2/workspaces/${encodeURIComponent(workspaceId)}?orphan=false`, {
+    method: 'DELETE',
+  });
 }
 
 /** Coder yapılandırması hazır mı? */

@@ -12,8 +12,6 @@ export default function DepartmentWorkspace({ department }: { department: Depart
         {department.name}
       </h1>
 
-      <p className="text-sm text-[var(--bn-subtitle)]">{department.description}</p>
-
       <Suspense fallback={<p className="text-sm text-zinc-500">Ajanlar yükleniyor…</p>}>
         <DepartmentAgentsGrid department={department.slug as DepartmentSlug} />
       </Suspense>

@@ -9,7 +9,6 @@ export default function ChatwootSimulationPage() {
   return (
     <SimulationPageLayout
       title="Chatwoot Simülasyonu"
-      subtitle="Gelen kutusu · çok kanal · AI yanıt önerileri"
       resetKey={resetKey}
       onReset={() => setResetKey((k) => k + 1)}
     >

@@ -1,5 +1,6 @@
 'use client';
 
+import { Play } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import type { SubheadingOption } from '../../../lib/catalogSubheadings';
 
@@ -29,6 +30,7 @@ export default function SubheadingFilterChips({ options, activeId, onChange, cla
       </button>
       {options.map((option) => {
         const active = activeId === option.id;
+        const isSimulation = option.id === 'simulasyon';
         return (
           <button
             key={option.id}
@@ -41,6 +43,7 @@ export default function SubheadingFilterChips({ options, activeId, onChange, cla
                 : 'border-white/10 bg-white/[0.03] text-zinc-400 hover:border-white/20 hover:text-zinc-200'
             )}
           >
+            {isSimulation ? <Play className="h-3 w-3 fill-current" aria-hidden /> : null}
             {option.label}
             <span className={cn('tabular-nums', active ? 'text-sky-300/80' : 'text-zinc-600')}>
               {option.count}

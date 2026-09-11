@@ -13,7 +13,6 @@ export default function NavDropdown() {
   const catalog = useMemo(() => getFullCatalog(), []);
   const ecosystemNav = useMemo(() => getEcosystemNav(t, catalog), [catalog, t]);
   const browseCategories = ecosystemNav.categories.filter((item) => item.href.includes('category='));
-  const channelCategories = ecosystemNav.categories.filter((item) => item.href.includes('type='));
   const [activeHref, setActiveHref] = useState(browseCategories[0]?.href ?? '');
 
   const activeCategory = browseCategories.find((item) => item.href === activeHref) ?? browseCategories[0];
@@ -78,31 +77,6 @@ export default function NavDropdown() {
                 })}
               </ul>
 
-              {channelCategories.length > 0 ? (
-                <div className="mt-3 border-t border-white/[0.06] pt-3">
-                  <p className="mb-2 px-3 text-[10px] font-semibold uppercase tracking-wider text-zinc-500">
-                    Kanallar
-                  </p>
-                  <ul className="space-y-0.5">
-                    {channelCategories.map((item) => (
-                      <li key={item.href}>
-                        <Link
-                          href={item.href}
-                          role="menuitem"
-                          className="flex items-center justify-between gap-2 rounded-lg px-3 py-2 text-sm text-zinc-400 transition-colors hover:bg-white/[0.05] hover:text-zinc-200"
-                        >
-                          <span>{item.label}</span>
-                          {'badge' in item && item.badge ? (
-                            <span className="rounded bg-amber-500/20 px-1.5 py-px text-[9px] font-bold uppercase tracking-wide text-amber-200">
-                              {item.badge}
-                            </span>
-                          ) : null}
-                        </Link>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              ) : null}
             </div>
 
             <div className="rounded-xl border border-white/[0.06] bg-white/[0.02] p-4">
@@ -110,9 +84,6 @@ export default function NavDropdown() {
                 Önizleme
               </p>
               <p className="mt-1 text-sm font-medium text-zinc-100">{activeCategory?.label}</p>
-              {'description' in activeCategory && activeCategory.description ? (
-                <p className="mt-1 text-xs leading-relaxed text-zinc-500">{activeCategory.description}</p>
-              ) : null}
               <p className="mt-2 text-xs text-sky-300">{previewCount} çözüm</p>
               <ul className="mt-3 space-y-2">
                 {preview.map((item) => (
@@ -157,9 +128,6 @@ export default function NavDropdown() {
                           </span>
                         ) : null}
                       </span>
-                      <span className="mt-0.5 block text-xs leading-snug text-zinc-500">
-                        {item.description}
-                      </span>
                     </Link>
                   </li>
                 ))}
@@ -171,9 +139,6 @@ export default function NavDropdown() {
                   className="mt-4 block rounded-xl border border-teal-500/20 bg-teal-500/[0.08] p-3 transition-colors hover:border-teal-400/30 hover:bg-teal-500/[0.12]"
                 >
                   <p className="text-sm font-semibold text-teal-100">{ecosystemNav.featured.title}</p>
-                  <p className="mt-1 text-xs leading-relaxed text-teal-200/70">
-                    {ecosystemNav.featured.description}
-                  </p>
                   <span className="mt-2 inline-flex items-center gap-1 text-xs font-medium text-teal-300">
                     {ecosystemNav.featured.cta}
                     <ArrowRight className="h-3 w-3" aria-hidden />

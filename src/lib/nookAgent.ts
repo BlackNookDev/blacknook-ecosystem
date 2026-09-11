@@ -1,4 +1,4 @@
-/** Giriş sonrası varsayılan rota — Nook Agent kokpiti */
+/** Giriş sonrası varsayılan rota — Nook Agent paneli */
 export const NOOK_AGENT_LAUNCH_PATH = '/agent';
 
 /** Eski yol — /agent'e yönlendirilir */

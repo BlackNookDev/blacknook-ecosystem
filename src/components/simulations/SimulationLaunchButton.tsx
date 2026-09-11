@@ -20,17 +20,19 @@ type Props = {
   icon?: LucideIcon;
   children?: React.ReactNode;
   'aria-label'?: string;
+  onLaunch?: () => void;
 };
 
 export default function SimulationLaunchButton({
   href,
   returnTo,
   className,
-  label = 'Simülasyon',
+  label = 'Önizleme',
   splashLabel,
   icon: Icon = Play,
   children,
   'aria-label': ariaLabel,
+  onLaunch,
 }: Props) {
   const router = useRouter();
   const reduce = useReducedMotion();
@@ -44,6 +46,7 @@ export default function SimulationLaunchButton({
   const handleLaunch = () => {
     if (launching) return;
     setLaunching(true);
+    onLaunch?.();
     markSimulationLaunch(splashLabel ?? label);
 
     if (!reduce) {
@@ -69,7 +72,7 @@ export default function SimulationLaunchButton({
       {children ?? (
         <>
           <Icon className="h-4 w-4 shrink-0" aria-hidden />
-          {label}
+          {label ? <span>{label}</span> : null}
         </>
       )}
     </button>

@@ -1,6 +1,7 @@
 import pool from '@/lib/db';
 import {
   createWorkspace,
+  deleteWorkspace,
   getWorkspaceStatus,
   startWorkspace,
   stopWorkspace,
@@ -25,7 +26,7 @@ export async function findWorkspaceByUser(
   const [rows]: any = await pool.query(
     `SELECT id, user_id, project_name, coder_workspace_id, coder_workspace_name, status, access_url
      FROM developer_workspaces
-     WHERE user_id = $1 AND project_name = $2
+     WHERE user_id = ? AND project_name = ?
      ORDER BY updated_at DESC
      LIMIT 1`,
     [userId, name]
@@ -50,7 +51,7 @@ export async function findWorkspaceByCoderId(
   const [rows]: any = await pool.query(
     `SELECT id, user_id, project_name, coder_workspace_id, coder_workspace_name, status, access_url
      FROM developer_workspaces
-     WHERE user_id = $1 AND coder_workspace_id = $2
+     WHERE user_id = ? AND coder_workspace_id = ?
      LIMIT 1`,
     [userId, coderWorkspaceId]
   );
@@ -76,7 +77,7 @@ export async function upsertWorkspaceRecord(
   await pool.query(
     `INSERT INTO developer_workspaces
        (user_id, project_name, coder_workspace_id, coder_workspace_name, status, access_url, updated_at)
-     VALUES ($1, $2, $3, $4, $5, $6, CURRENT_TIMESTAMP)
+     VALUES (?, ?, ?, ?, ?, ?, CURRENT_TIMESTAMP)
      ON CONFLICT (user_id, project_name) DO UPDATE SET
        coder_workspace_id = EXCLUDED.coder_workspace_id,
        coder_workspace_name = EXCLUDED.coder_workspace_name,
@@ -94,8 +95,8 @@ export async function syncWorkspaceStatus(
   const info = await getWorkspaceStatus(coderWorkspaceId);
   await pool.query(
     `UPDATE developer_workspaces
-     SET status = $1, access_url = $2, updated_at = CURRENT_TIMESTAMP
-     WHERE user_id = $3 AND coder_workspace_id = $4`,
+     SET status = ?, access_url = ?, updated_at = CURRENT_TIMESTAMP
+     WHERE user_id = ? AND coder_workspace_id = ?`,
     [info.status, info.accessUrl, userId, coderWorkspaceId]
   );
   return info;
@@ -107,24 +108,44 @@ export async function createUserWorkspace(
 ): Promise<WorkspaceInfo> {
   const existing = await findWorkspaceByUser(userId, projectName);
   if (existing) {
-    const info = await getWorkspaceStatus(existing.coderWorkspaceId);
-    if (info.status === 'stopped') {
-      const started = await startWorkspace(existing.coderWorkspaceId);
-      await upsertWorkspaceRecord(userId, projectName, started);
-      return started;
+    try {
+      const info = await getWorkspaceStatus(existing.coderWorkspaceId);
+      if (info.status === 'stopped') {
+        const started = await startWorkspace(existing.coderWorkspaceId);
+        await upsertWorkspaceRecord(userId, projectName, started);
+        return started;
+      }
+      if (info.status === 'running' || info.status === 'starting' || info.status === 'pending') {
+        await upsertWorkspaceRecord(userId, projectName, info);
+        return info;
+      }
+      // failed / canceled / deleted → silip yeniden oluştur
+      if (
+        info.status === 'failed' ||
+        info.status === 'canceled' ||
+        info.status === 'deleted' ||
+        info.status === 'unknown'
+      ) {
+        try {
+          await deleteWorkspace(existing.coderWorkspaceId);
+        } catch {
+          /* zaten yok / silinemiyor — yeni create denenecek */
+        }
+        await pool.query(
+          `DELETE FROM developer_workspaces WHERE user_id = ? AND project_name = ?`,
+          [userId, projectName.slice(0, 64)]
+        );
+      } else {
+        await upsertWorkspaceRecord(userId, projectName, info);
+        return info;
+      }
+    } catch {
+      // API’de yok / erişilemiyor → kayıt temizle, yeniden oluştur
+      await pool.query(
+        `DELETE FROM developer_workspaces WHERE user_id = ? AND project_name = ?`,
+        [userId, projectName.slice(0, 64)]
+      );
     }
-    if (info.status === 'running' || info.status === 'starting' || info.status === 'pending') {
-      await upsertWorkspaceRecord(userId, projectName, info);
-      return info;
-    }
-    // failed / canceled → yeniden başlatmayı dene
-    if (info.status === 'failed' || info.status === 'canceled') {
-      const started = await startWorkspace(existing.coderWorkspaceId);
-      await upsertWorkspaceRecord(userId, projectName, started);
-      return started;
-    }
-    await upsertWorkspaceRecord(userId, projectName, info);
-    return info;
   }
 
   const created = await createWorkspace(userId, projectName);

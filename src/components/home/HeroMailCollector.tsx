@@ -4,7 +4,6 @@ import { useState } from 'react';
 import { Check, Loader2, Shield, Sparkles } from 'lucide-react';
 import { m, useReducedMotion } from 'framer-motion';
 import ServiceCatalogLogo from '@/components/ServiceCatalogLogo';
-import HeroPresenceStrip from '@/components/presence/HeroPresenceStrip';
 import { duration, easePremium } from '@/components/motion/tokens';
 import { getHeroAgents } from '../../../lib/data';
 import { apiFetch } from '@/lib/apiUrl';
@@ -197,8 +196,6 @@ export default function HeroMailCollector() {
           </li>
         ))}
       </m.ul>
-
-      <HeroPresenceStrip />
     </section>
   );
 }

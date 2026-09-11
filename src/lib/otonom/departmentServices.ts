@@ -24,6 +24,7 @@ const CATEGORY_DEPARTMENT: Partial<Record<string, DepartmentSlug>> = {
   'Satın Alma': 'satin-alma',
   'Yönetim': 'yonetim',
   'Satış & CRM': 'satis',
+  'E-ticaret & Operasyon': 'e-ticaret',
   'İnsan Kaynakları': 'ik',
   'Yazılım & DevOps': 'teknoloji',
   'IT & Operasyon': 'teknoloji',
@@ -36,6 +37,7 @@ const CATEGORY_DEPARTMENT: Partial<Record<string, DepartmentSlug>> = {
 
 const SLUG_DEPARTMENT_BOOSTS: Partial<Record<string, Partial<Record<DepartmentSlug, number>>>> = {
   'nook-muhasebe-mcp': { insaat: 25, muhasebe: 8 },
+  shopppro: { 'e-ticaret': 25, satis: 10, operasyon: 8 },
 };
 
 const DEPARTMENT_KEYWORDS: Record<DepartmentSlug, string[]> = {
@@ -54,6 +56,7 @@ const DEPARTMENT_KEYWORDS: Record<DepartmentSlug, string[]> = {
   'e-ticaret': [
     'e-ticaret', 'perakende', 'mağaza', 'sepet', 'iade', 'picking', 'stok', 'katalog', 'rakip fiyat',
     'cross-sell', 'cart', 'marketplace', 'sahtekarlık', 'ürün iade', 'mağaza ziyaret', 'fiyat liste',
+    'shopppro', 'trendyol', 'hepsiburada', 'pazaryeri', 'kargo',
   ],
   insaat: [
     'inşaat', 'şantiye', 'nook', 'saha', 'masraf', 'proje', 'hakediş', 'taşeron', 'logo tiger', 'mikro erp',
@@ -105,7 +108,7 @@ function toDepartmentService(service: ServiceCatalogEntry, department: Departmen
     brandColor: service.brandColor,
     href: `/service/${service.slug}`,
     simulationPath,
-    splashLabel: simulationPath ? `${service.name} Simülasyonu` : undefined,
+    splashLabel: simulationPath ? service.name : undefined,
   };
 }
 
@@ -146,19 +149,16 @@ export function formatTokenCount(value: number): string {
   return String(value);
 }
 
-export function mockMetricsForService(slug: string) {
-  const hash = slug.split('').reduce((sum, char) => sum + char.charCodeAt(0), 0);
-  const status = hash % 5 === 0 ? 'idle' : hash % 3 === 0 ? 'waiting' : 'running';
-
+export function mockMetricsForService(_slug: string) {
   return {
-    status: status as 'running' | 'waiting' | 'idle',
-    efficiencyPercent: 72 + (hash % 23),
-    hoursSavedWeek: 4 + (hash % 14),
-    tokensToday: 28_000 + (hash % 95) * 1_200,
-    tokenBudgetDaily: 90_000 + (hash % 110) * 1_000,
-    avgResponseMs: 180 + (hash % 420),
-    lastRunMs: 95 + (hash % 280),
-    maxWorkers: 1 + (hash % 2),
-    queuedJobs: hash % 4,
+    status: 'idle' as const,
+    efficiencyPercent: 0,
+    hoursSavedWeek: 0,
+    tokensToday: 0,
+    tokenBudgetDaily: 0,
+    avgResponseMs: 0,
+    lastRunMs: 0,
+    maxWorkers: 1,
+    queuedJobs: 0,
   };
 }

@@ -7,7 +7,8 @@ export default function AccountRequestsPage() {
         Talepler
       </h1>
       <p className="mt-2 max-w-2xl text-sm leading-relaxed text-zinc-500">
-        Destek ve kurulum talepleriniz veritabanında tutulur; buradan takip edebilirsiniz.
+        Kurulum talepleriniz burada listelenir. Yeni talep için katalogdan bir ajan seçip
+        “Kurulum Talep Et” kullanın (giriş gerekir).
       </p>
 
       <div className="mt-10">

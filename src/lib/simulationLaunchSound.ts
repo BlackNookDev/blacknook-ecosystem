@@ -94,7 +94,7 @@ export function playSimulationLaunchSound() {
   }, SIMULATION_AUDIO_DURATION_S * 1000 + 80);
 }
 
-export function markSimulationLaunch(label = 'Simülasyon') {
+export function markSimulationLaunch(label = 'Önizleme') {
   if (typeof window === 'undefined') return;
   pendingLaunchAt = Date.now();
   try {

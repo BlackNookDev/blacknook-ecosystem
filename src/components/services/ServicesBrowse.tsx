@@ -12,7 +12,6 @@ import {
 import {
   filterCatalog,
   getBrowseCategoryOptions,
-  resolveBrowseDescription,
   resolveBrowseHeading,
 } from '../../../lib/catalogBrowse';
 import { getBrowseCategory } from '../../../lib/navMenus';
@@ -144,11 +143,6 @@ export default function ServicesBrowse() {
   );
 
   const heading = resolveBrowseHeading(categoryFilter === 'Tümü' ? null : categoryFilter);
-  const subtitle = resolveBrowseDescription(
-    categoryFilter === 'Tümü' ? null : categoryFilter,
-    filtered.length,
-    catalog.length
-  );
 
   return (
     <div className="mx-auto max-w-[1400px] px-4 sm:px-6">
@@ -184,7 +178,6 @@ export default function ServicesBrowse() {
           <h1 className="font-display text-3xl font-bold tracking-tight text-white sm:text-4xl">
             {typeFilter && TYPE_LABELS[typeFilter] ? TYPE_LABELS[typeFilter] : heading}
           </h1>
-          <p className="mt-1.5 text-sm text-zinc-500">{subtitle}</p>
           {typeFilter === 'script' ? (
             <p className="mt-2 text-xs text-amber-300/90">Betik kataloğu yakında yayınlanacak.</p>
           ) : null}

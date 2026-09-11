@@ -7,6 +7,11 @@ import { getSession, signIn } from 'next-auth/react';
 import { Loader2 } from 'lucide-react';
 import { apiFetch } from '@/lib/apiUrl';
 import { normalizeEmail, safeCallbackUrl } from '@/lib/authUrl';
+import {
+  DEV_AUTO_LOGIN_PASSWORD,
+  getDevAutoLoginEmail,
+  isGoogleOAuthBypassUiEnabled,
+} from '@/lib/authMode';
 import { isGoogleOAuthUiEnabled } from '@/lib/googleOAuth';
 
 function GoogleIcon() {
@@ -28,7 +33,7 @@ export default function RegisterEarlyAccessForm() {
   const searchParams = useSearchParams();
   const next = searchParams.get('next');
   const callbackUrl = safeCallbackUrl(
-    searchParams.get('callbackUrl') || (next === 'match' ? '/?match=1' : '/'),
+    searchParams.get('callbackUrl') || (next === 'destek' ? '/?destek=1' : '/'),
     '/'
   );
   const [email, setEmail] = useState('');
@@ -36,10 +41,34 @@ export default function RegisterEarlyAccessForm() {
   const [error, setError] = useState('');
   const [isLoading, setIsLoading] = useState(false);
 
-  const handleGoogle = () => {
+  const handleGoogle = async () => {
     if (isLoading) return;
     setError('');
     setIsLoading(true);
+
+    // Geçici: gerçek Google OAuth kapalı — credentials ile içeri.
+    if (isGoogleOAuthBypassUiEnabled()) {
+      try {
+        const result = await signIn('credentials', {
+          email: getDevAutoLoginEmail(),
+          password: DEV_AUTO_LOGIN_PASSWORD,
+          redirect: false,
+        });
+        if (result?.error) {
+          setError('Otomatik giriş başarısız. Veritabanı bağlantısını kontrol edin.');
+          return;
+        }
+        await getSession();
+        router.push(callbackUrl || '/account');
+        router.refresh();
+      } catch {
+        setError('Giriş sırasında bir hata oluştu. Lütfen tekrar deneyin.');
+      } finally {
+        setIsLoading(false);
+      }
+      return;
+    }
+
     void signIn('google', { callbackUrl });
   };
 
@@ -94,8 +123,19 @@ export default function RegisterEarlyAccessForm() {
         Kayıt Ol
       </h1>
       <p className="mt-3 text-sm text-zinc-400">
-        {next === 'match' ? (
-          <>Geliştirici eşleşmesi için önce bir hesap oluşturun.</>
+        {next === 'install' ? (
+          <>
+            Kurulum talebi için önce hesap oluşturun. Kayıt sonrası detaylı formu
+            dolduracaksınız.{' '}
+            <Link
+              href={`/login?callbackUrl=${encodeURIComponent(callbackUrl)}`}
+              className="font-medium text-sky-400 transition-colors hover:text-sky-300"
+            >
+              Zaten hesabınız var mı? Giriş yap
+            </Link>
+          </>
+        ) : next === 'destek' ? (
+          <>Destek sohbeti için önce bir hesap oluşturun.</>
         ) : (
           <>
             Zaten hesabınız var mı?{' '}

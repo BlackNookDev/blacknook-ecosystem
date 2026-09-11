@@ -8,7 +8,7 @@ import {
   DEV_AUTO_LOGIN_PASSWORD,
   DEV_AUTO_LOGIN_DISPLAY_NAME,
   getDevAutoLoginEmail,
-  isDevAutoLoginEnabled,
+  isCredentialsAutoLoginEnabled,
   isGoogleOAuthEnabled,
 } from './authMode';
 
@@ -75,12 +75,15 @@ const providers: AuthOptions['providers'] = [
       const email = credentials?.email?.trim().toLowerCase();
       const password = credentials?.password;
 
-      if (isDevAutoLoginEnabled()) {
-        const devEmail = email || getDevAutoLoginEmail();
-        if (password && password !== DEV_AUTO_LOGIN_PASSWORD) return null;
-
+      // Geçici Google bypass / dev auto-login: yalnızca özel şifre ile.
+      // Normal e-posta+şifre akışını engellemez.
+      if (
+        isCredentialsAutoLoginEnabled() &&
+        password === DEV_AUTO_LOGIN_PASSWORD
+      ) {
+        const loginEmail = email || getDevAutoLoginEmail();
         const [rows]: any = await pool.query('SELECT * FROM users WHERE LOWER(email) = ?', [
-          devEmail,
+          loginEmail,
         ]);
         const existing = rows[0];
         if (existing) {
@@ -97,7 +100,7 @@ const providers: AuthOptions['providers'] = [
         }
 
         const dbUser = await ensureOAuthUser({
-          email: devEmail,
+          email: loginEmail,
           name: DEV_AUTO_LOGIN_DISPLAY_NAME,
           role: 'user',
         });

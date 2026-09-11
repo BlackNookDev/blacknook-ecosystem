@@ -113,25 +113,10 @@ export function getBrowseCategoryOptions(catalog: ServiceCatalogEntry[]) {
 }
 
 export function resolveBrowseHeading(categoryParam: string | null): string {
-  if (!categoryParam || categoryParam === 'Tümü') return 'MCP ajanlarını keşfet';
+  if (!categoryParam || categoryParam === 'Tümü') return 'Departman ajanlarını keşfet';
   const browse = getBrowseCategory(categoryParam);
   if (browse) return `${browse.label} çözümleri`;
   return `${categoryParam} çözümleri`;
-}
-
-export function resolveBrowseDescription(
-  categoryParam: string | null,
-  filteredCount: number,
-  totalCount: number
-): string {
-  if (!categoryParam || categoryParam === 'Tümü') {
-    return `Ana ve kurumsal MCP ajanları · ${filteredCount} ajan`;
-  }
-  const browse = getBrowseCategory(categoryParam);
-  if (browse?.description) {
-    return `${browse.description} · ${filteredCount} çözüm`;
-  }
-  return `${filteredCount} çözüm · toplam ${totalCount}`;
 }
 
 export function getCachedFullCatalog(): ServiceCatalogEntry[] {

@@ -26,9 +26,9 @@ export type PlatformHint = {
 
 /** Hero alt satır — platform değer önerisi (sahte aktivite yok) */
 export const PLATFORM_HINTS: PlatformHint[] = [
-  { id: 'h1', message: 'Kurulum ve deploy desteği talep edilebilir' },
-  { id: 'h2', message: 'Self-host ve SaaS projelerinde eşleşme' },
-  { id: 'h3', message: 'Teknik ekip talepleri inceliyor' },
+  { id: 'h1', message: 'Kurulum Talep Et ile yönetilen onboarding' },
+  { id: 'h2', message: 'Katalogdan ajan keşfi · /agent paneli' },
+  { id: 'h3', message: 'Destek sohbeti e-posta ile ekibe ulaşır' },
 ];
 
 /** 3–10 arası; birkaç dakikada bir kayar, 1–2’de takılmaz */

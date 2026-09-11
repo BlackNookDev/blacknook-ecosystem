@@ -4,23 +4,12 @@ import { useEffect, useRef, useState } from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { useSession, signOut } from 'next-auth/react';
-import {
-  Bell,
-  CreditCard,
-  Grid2X2,
-  LogOut,
-  MessageSquare,
-  User,
-  ChevronUp,
-} from 'lucide-react';
+import { Bell, LogOut, User, ChevronUp } from 'lucide-react';
 import { cn } from '@/lib/utils';
 
 const ITEMS = [
   { href: '/account', label: 'Profil', icon: User },
   { href: '/account/messages', label: 'Mesajlar', icon: Bell },
-  { href: '/account/requests', label: 'Talepler', icon: MessageSquare },
-  { href: '/account/products', label: 'Ürünler', icon: Grid2X2 },
-  { href: '/account/billing', label: 'Ödemeler', icon: CreditCard },
 ] as const;
 
 export default function AccountProfileDock() {

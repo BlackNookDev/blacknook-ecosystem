@@ -325,7 +325,7 @@ export default function GuideOnlineBusinessContent() {
                 <Link href="/services" className="text-sky-400 hover:text-sky-300">
                   Blacknook ekosistemi
                 </Link>{' '}
-                üzerinden görünürlük, kurulum talebi ve geliştirici eşleşmesi ile büyümeyi hızlandır.
+                üzerinden görünürlük ve yönetilen kurulum talebi ile büyümeyi hızlandır.
               </li>
             </ul>
 
@@ -334,7 +334,7 @@ export default function GuideOnlineBusinessContent() {
                 Blacknook ile bir sonraki adım
               </h3>
               <p className="mt-2 text-sm leading-relaxed text-zinc-400">
-                Ürününü listelemek veya büyüme araçlarını keşfetmek için ekosisteme göz at.
+                Ajan kataloğunu keşfedin veya Kurulum Talep Et ile onboarding başlatın.
               </p>
               <Link
                 href="/services"

@@ -42,7 +42,7 @@
   },
   {
     "id": "security-patch-notifier",
-    "name": "Açık Kaynak Güvenlik Yama Bildiricisi",
+    "name": "Güvenlik Yama Bildiricisi",
     "category": "Güvenlik & Uyum",
     "description": "Şirketin kullandığı framework'ler için çıkan acil güvenlik yamalarını yazılım liderine bildirir.",
     "about": "AI-Infra-Guard, AI altyapısı, MCP sunucuları ve ajan becerileri için güvenlik taraması, zafiyet analizi ve jailbreak testleri sunar.",
@@ -57,7 +57,7 @@
       "Şirketin kullandığı framework'ler için çıkan acil güvenlik yamalarını yazılım liderine bildirir."
     ],
     "brandColor": "#B91C1C",
-    "logoUrl": "https://cdn.simpleicons.org/tencentqq/B91C1C",
+    "logoUrl": "https://cdn.simpleicons.org/snyk/B91C1C",
     "license": "Apache-2.0",
     "repo": "https://github.com/Tencent/AI-Infra-Guard"
   },
@@ -107,7 +107,7 @@
     "name": "B2B Teklif & RFP Yanıt Ajanı",
     "category": "Satış & CRM",
     "description": "Gelen teknik şartname sorularını şirketin geçmiş başarılı teklif arşivini tarayarak yanıtlar.",
-    "about": "GPT Researcher, web ve yerel kaynaklardan otonom derin araştırma yapan açık kaynak bir araştırma ajanıdır; kaynaklı raporlar üretir.",
+    "about": "GPT Researcher, web ve yerel kaynaklardan otonom derin araştırma yapan bir araştırma ajanıdır; kaynaklı raporlar üretir.",
     "features": [
       "Otonom web araştırması",
       "Kaynaklı rapor üretimi",
@@ -296,7 +296,7 @@
     "name": "E-İhracat Gümrük Tarife (GTİP) Kodlayıcı",
     "category": "Operasyon",
     "description": "Satılan ürünlerin teknik özelliklerine göre doğru GTİP gümrük kodlarını eşleştirir.",
-    "about": "GPT Researcher, web ve yerel kaynaklardan otonom derin araştırma yapan açık kaynak bir araştırma ajanıdır; kaynaklı raporlar üretir.",
+    "about": "GPT Researcher, web ve yerel kaynaklardan otonom derin araştırma yapan bir araştırma ajanıdır; kaynaklı raporlar üretir.",
     "features": [
       "Otonom web araştırması",
       "Kaynaklı rapor üretimi",
@@ -560,7 +560,7 @@
       "GitHub'a yanlışlıkla push edilen AWS/OpenAI anahtarlarını anında yakalayıp iptal eder."
     ],
     "brandColor": "#B91C1C",
-    "logoUrl": "https://cdn.simpleicons.org/tencentqq/B91C1C",
+    "logoUrl": "https://cdn.simpleicons.org/snyk/B91C1C",
     "license": "Apache-2.0",
     "repo": "https://github.com/Tencent/AI-Infra-Guard"
   },
@@ -664,7 +664,7 @@
       "Güvenlik denetimleri için gerekli log, ekran görüntüsü ve erişim kanıtlarını otomatik derler."
     ],
     "brandColor": "#B91C1C",
-    "logoUrl": "https://cdn.simpleicons.org/tencentqq/B91C1C",
+    "logoUrl": "https://cdn.simpleicons.org/snyk/B91C1C",
     "license": "Apache-2.0",
     "repo": "https://github.com/Tencent/AI-Infra-Guard"
   },
@@ -797,7 +797,7 @@
     "name": "Kredi & Müşteri Risk İstihbaratçısı",
     "category": "Muhasebe & Finans",
     "description": "Vadeli satış yapılacak şirketlerin vergi borcu, protesto ve konkordato geçmişini sorgular.",
-    "about": "GPT Researcher, web ve yerel kaynaklardan otonom derin araştırma yapan açık kaynak bir araştırma ajanıdır; kaynaklı raporlar üretir.",
+    "about": "GPT Researcher, web ve yerel kaynaklardan otonom derin araştırma yapan bir araştırma ajanıdır; kaynaklı raporlar üretir.",
     "features": [
       "Otonom web araştırması",
       "Kaynaklı rapor üretimi",
@@ -830,7 +830,7 @@
       "Şirket içi araçlarda gereksiz yere Admin yetkisine sahip kullanıcıları listeler."
     ],
     "brandColor": "#B91C1C",
-    "logoUrl": "https://cdn.simpleicons.org/tencentqq/B91C1C",
+    "logoUrl": "https://cdn.simpleicons.org/snyk/B91C1C",
     "license": "Apache-2.0",
     "repo": "https://github.com/Tencent/AI-Infra-Guard"
   },
@@ -1027,7 +1027,7 @@
     "name": "Otonom Derin Araştırma Ajanı",
     "category": "Yapay Zeka",
     "description": "Herhangi bir konuda kaynaklı derin araştırma raporu üretir.",
-    "about": "GPT Researcher, web ve yerel kaynaklardan otonom derin araştırma yapan açık kaynak bir araştırma ajanıdır; kaynaklı raporlar üretir.",
+    "about": "GPT Researcher, web ve yerel kaynaklardan otonom derin araştırma yapan bir araştırma ajanıdır; kaynaklı raporlar üretir.",
     "features": [
       "Otonom web araştırması",
       "Kaynaklı rapor üretimi",
@@ -1381,10 +1381,10 @@
     "name": "Stajyer Başvuru & Görev Değerlendirici",
     "category": "İnsan Kaynakları",
     "description": "Stajyer adaylarının gönderdiği deneme projelerini temel kriterlere göre ön elemeden geçirir.",
-    "about": "Hugging Face Spaces MCP, Hugging Face üzerindeki demo uygulamalara ve modellere MCP arayüzüyle erişim sağlar.",
+    "about": "Hugging Face Spaces MCP, Hugging Face üzerindeki örnek uygulamalara ve modellere MCP arayüzüyle erişim sağlar.",
     "features": [
       "HF Spaces erişimi",
-      "Model demo çalıştırma",
+      "Model çalıştırma",
       "Proje değerlendirme",
       "Hızlı prototipleme",
       "Açık model entegrasyonu"
@@ -1631,7 +1631,7 @@
     "id": "oss-license-auditor",
     "name": "Yazılım Bağımlılık & Lisans Denetçisi",
     "category": "Güvenlik & Uyum",
-    "description": "Kod tabanındaki açık kaynak kütüphanelerin AGPL/GPL gibi şirket için riskli lisanslarını tarar.",
+    "description": "Kod tabanındaki üçüncü taraf kütüphanelerin AGPL/GPL gibi şirket için riskli lisanslarını tarar.",
     "about": "AI-Infra-Guard, AI altyapısı, MCP sunucuları ve ajan becerileri için güvenlik taraması, zafiyet analizi ve jailbreak testleri sunar.",
     "features": [
       "MCP sunucu güvenlik taraması",
@@ -1641,10 +1641,10 @@
       "AI altyapı risk analizi"
     ],
     "useCases": [
-      "Kod tabanındaki açık kaynak kütüphanelerin AGPL/GPL gibi şirket için riskli lisanslarını tarar."
+      "Kod tabanındaki üçüncü taraf kütüphanelerin AGPL/GPL gibi şirket için riskli lisanslarını tarar."
     ],
     "brandColor": "#B91C1C",
-    "logoUrl": "https://cdn.simpleicons.org/tencentqq/B91C1C",
+    "logoUrl": "https://cdn.simpleicons.org/snyk/B91C1C",
     "license": "Apache-2.0",
     "repo": "https://github.com/Tencent/AI-Infra-Guard"
   },
@@ -1665,7 +1665,7 @@
       "Şirketin kullandığı sunucu paketlerini ulusal güvenlik zafiyeti veritabanlarıyla kıyaslar."
     ],
     "brandColor": "#B91C1C",
-    "logoUrl": "https://cdn.simpleicons.org/tencentqq/B91C1C",
+    "logoUrl": "https://cdn.simpleicons.org/snyk/B91C1C",
     "license": "Apache-2.0",
     "repo": "https://github.com/Tencent/AI-Infra-Guard"
   },
@@ -2146,5 +2146,2205 @@
     "logoUrl": "https://cdn.simpleicons.org/letsencrypt/1E40AF",
     "license": "MIT",
     "repo": "https://github.com/fiddlecube/compliant-llm"
+  },
+  {
+    "id": "hostinger-mcp",
+    "name": "Hostinger Altyapı Ajanı",
+    "category": "Sunucu ve altyapı",
+    "description": "Hosting, domain ve sunucu kaynaklarını Hostinger API üzerinden yönetir.",
+    "about": "Hostinger MCP, alan adı, hosting ve sunucu işlemlerini ajan arayüzüne bağlar; OAuth ile güvenli uzaktan yönetim sağlar.",
+    "features": [
+      "Domain ve hosting yönetimi",
+      "Kaynak izleme",
+      "OAuth bağlantısı",
+      "Hostinger API araçları"
+    ],
+    "useCases": [
+      "Web altyapı operasyonu",
+      "Domain yönetimi",
+      "Hosting otomasyonu"
+    ],
+    "brandColor": "#673DE6",
+    "logoUrl": "https://github.com/hostinger.png",
+    "license": "MIT",
+    "repo": "https://github.com/hostinger/api-mcp-server"
+  },
+  {
+    "id": "strac-dlp-mcp",
+    "name": "Strac DLP Gizlilik Ajanı",
+    "category": "Güvenlik & Uyum",
+    "description": "Metin ve dosyalardaki PII, PHI, PCI ve sırları tespit edip maskeler.",
+    "about": "Strac DLP MCP, kimlik bilgisi, kart numarası ve API anahtarı gibi hassas verileri ajan iş akışlarında otomatik tespit eder ve redakte eder.",
+    "features": [
+      "PII/PHI/PCI tespiti",
+      "Metin redaksiyonu",
+      "Dosya taraması",
+      "Strac DLP API"
+    ],
+    "useCases": [
+      "KVKK uyumu",
+      "Destek kaydı temizliği",
+      "Güvenli ajan çıktısı"
+    ],
+    "brandColor": "#DC2626",
+    "logoUrl": "https://github.com/strac-io.png",
+    "license": "MIT",
+    "repo": "https://github.com/strac-io/strac-mcp-dlp"
+  },
+  {
+    "id": "aon-offer-network",
+    "name": "AON Teklif Ağı Ajanı",
+    "category": "Satış & CRM",
+    "description": "Ajanlar için canlı fiyatlı ürün ve hizmet teklifleri sunar.",
+    "about": "Agent Offer Network, MCP ajanlarına gerçek ürün/hizmet teklifleri, fiyat ve takip edilebilir linkler sağlar.",
+    "features": [
+      "Canlı fiyat",
+      "Takip linkleri",
+      "Ürün teklif kataloğu",
+      "Ajan ticareti"
+    ],
+    "useCases": [
+      "Ajan destekli satış",
+      "Dinamik teklif",
+      "E-ticaret önerisi"
+    ],
+    "brandColor": "#16A34A",
+    "logoUrl": "https://github.com/AON-Network.png",
+    "license": "Apache-2.0",
+    "repo": "https://github.com/AON-Network/aon-mcp"
+  },
+  {
+    "id": "gobuy-trust-mcp",
+    "name": "GoBuy Ürün Güven Ajanı",
+    "category": "E-ticaret & Operasyon",
+    "description": "Pazaryeri ürünleri için kanıta dayalı güven skoru üretir.",
+    "about": "GoBuy, Amazon ve benzeri pazaryerlerindeki ürünler için 0–100 Evidence Score ve gözlemlenen sinyalleri döndürür.",
+    "features": [
+      "Ürün güven skoru",
+      "Kanıt sinyalleri",
+      "Tazelik metrikleri",
+      "Pazaryeri bağlamı"
+    ],
+    "useCases": [
+      "Tedarikçi seçimi",
+      "Ürün doğrulama",
+      "Satın alma riski"
+    ],
+    "brandColor": "#0EA5E9",
+    "logoUrl": "https://github.com/gobuy-ai.png",
+    "license": "MIT",
+    "repo": "https://github.com/gobuy-ai/gobuy-mcp"
+  },
+  {
+    "id": "nero-image-mcp",
+    "name": "Nero Görsel AI Ajanı",
+    "category": "Pazarlama & Analiz",
+    "description": "Görsel iyileştirme, arka plan kaldırma ve restorasyon yapar.",
+    "about": "Nero AI Image Processing, upscale, denoise, colorize ve background removal gibi görsel işlemleri API üzerinden ajanlara açar.",
+    "features": [
+      "Upscale",
+      "Arka plan kaldırma",
+      "Restorasyon",
+      "Sıkıştırma"
+    ],
+    "useCases": [
+      "E-ticaret görselleri",
+      "Pazarlama materyali",
+      "Arşiv restorasyonu"
+    ],
+    "brandColor": "#7C3AED",
+    "logoUrl": "https://github.com/nero-com.png",
+    "license": "MIT",
+    "repo": "https://github.com/nero-com/nero-ai-mcp"
+  },
+  {
+    "id": "servicenow-pdi-mcp",
+    "name": "ServiceNow PDI Ajanı",
+    "category": "IT & Operasyon",
+    "description": "ServiceNow PDI üzerinde kayıt, iş kuralı ve ACL incelemesi yapar.",
+    "about": "PDI Bridge, Claude ve diğer ajanların canlı ServiceNow instance’ında sorgu ve troubleshooting yapmasını sağlar.",
+    "features": [
+      "Kayıt sorgulama",
+      "Business Rule inceleme",
+      "ACL analizi",
+      "Canlı instance"
+    ],
+    "useCases": [
+      "IT ticket analizi",
+      "Sistem troubleshooting",
+      "Uyum denetimi"
+    ],
+    "brandColor": "#62D84E",
+    "logoUrl": "https://github.com/jxrlabs.png",
+    "license": "MIT",
+    "repo": "https://github.com/jxrlabs/pdi-bridge-mcp"
+  },
+  {
+    "id": "competitor-tracker-mcp",
+    "name": "Rakip İzleme Ajanı",
+    "category": "Pazarlama & Analiz",
+    "description": "Rakip sitelerindeki fiyat, ürün ve mesaj değişikliklerini takip eder.",
+    "about": "Competitor Tracker, rakip sayfalarını periyodik tarayıp anlamlı değişiklikleri etiketli raporlar olarak dosyalar.",
+    "features": [
+      "Haftalık tarama",
+      "Değişiklik algılama",
+      "Etiketli rapor",
+      "Fiyat/ürün izleme"
+    ],
+    "useCases": [
+      "Rakip fiyat takibi",
+      "Mesajlaşma analizi",
+      "Lansman izleme"
+    ],
+    "brandColor": "#EF4444",
+    "logoUrl": "https://github.com/Competitor-Tracker-Co.png",
+    "license": "MIT",
+    "repo": "https://github.com/Competitor-Tracker-Co/competitor-tracker-mcp"
+  },
+  {
+    "id": "onepanel-mcp",
+    "name": "1Panel Sunucu Ajanı",
+    "category": "Sunucu ve altyapı",
+    "description": "VPS kontrol paneli ve AI ajan yığınını tek yerden yönetir.",
+    "about": "1Panel, modern açık kaynak VPS paneli olup native AI ajan desteği ve sunucu yığını yönetimi sunar.",
+    "features": [
+      "VPS yönetimi",
+      "Ollama modeli",
+      "Ajan dağıtımı",
+      "Web panel"
+    ],
+    "useCases": [
+      "Self-host AI",
+      "Sunucu bakımı",
+      "IT operasyon"
+    ],
+    "brandColor": "#0052D9",
+    "logoUrl": "https://github.com/1Panel-dev.png",
+    "license": "GPL-3.0",
+    "repo": "https://github.com/1Panel-dev/1Panel"
+  },
+  {
+    "id": "mcp-agent-lastmile",
+    "name": "MCP Agent Çerçevesi",
+    "category": "Yapay Zeka",
+    "description": "MCP ve iş akışı kalıplarıyla etkili ajanlar kurar.",
+    "about": "lastmile-ai mcp-agent, Model Context Protocol ve basit workflow pattern’leriyle ajan uygulamaları geliştirmeyi kolaylaştırır.",
+    "features": [
+      "Workflow kalıpları",
+      "MCP araçları",
+      "Ajan orkestrasyonu",
+      "Ölçeklenebilir mimari"
+    ],
+    "useCases": [
+      "Kurumsal ajan geliştirme",
+      "Pilot AI projeleri",
+      "Süreç otomasyonu"
+    ],
+    "brandColor": "#059669",
+    "logoUrl": "https://github.com/lastmile-ai.png",
+    "license": "Apache-2.0",
+    "repo": "https://github.com/lastmile-ai/mcp-agent"
+  },
+  {
+    "id": "magic-ui-mcp",
+    "name": "21st.dev Magic UI Ajanı",
+    "category": "Yazılım & DevOps",
+    "description": "Cursor/Windsurf içinde AI ile arayüz bileşeni üretir.",
+    "about": "21st.dev Magic MCP, frontend çalışmalarında v0 benzeri hızlı UI bileşen üretimi sağlar.",
+    "features": [
+      "UI bileşen üretimi",
+      "IDE entegrasyonu",
+      "Hızlı prototip",
+      "Tasarım önerisi"
+    ],
+    "useCases": [
+      "MVP UI",
+      "Landing page",
+      "Tasarım sistemi"
+    ],
+    "brandColor": "#F97316",
+    "logoUrl": "https://github.com/21st-dev.png",
+    "license": "MIT",
+    "repo": "https://github.com/21st-dev/magic-mcp"
+  },
+  {
+    "id": "perplexity-ask-mcp",
+    "name": "Perplexity Ask Ajanı",
+    "category": "Yapay Zeka",
+    "description": "Perplexity API ile güncel web araştırması yapar.",
+    "about": "Resmi Perplexity Ask MCP, ajanlara kaynaklı ve güncel web yanıtları sağlar.",
+    "features": [
+      "Güncel web araması",
+      "Kaynaklı yanıt",
+      "API platformu",
+      "Hızlı sorgu"
+    ],
+    "useCases": [
+      "Müşteri sorusu araştırması",
+      "Trend takibi",
+      "Dokümantasyon desteği"
+    ],
+    "brandColor": "#20808D",
+    "logoUrl": "https://github.com/ppl-ai.png",
+    "license": "MIT",
+    "repo": "https://github.com/ppl-ai/modelcontextprotocol"
+  },
+  {
+    "id": "unreal-mcp",
+    "name": "Unreal Engine MCP Ajanı",
+    "category": "Yazılım & DevOps",
+    "description": "Doğal dille Unreal Engine’i kontrol eder.",
+    "about": "Unreal Engine MCP, Cursor/Claude gibi istemcilerin UE sahne ve araçlarını MCP ile yönetmesini sağlar.",
+    "features": [
+      "UE kontrolü",
+      "Doğal dil komut",
+      "Editör otomasyonu",
+      "Sahne işlemleri"
+    ],
+    "useCases": [
+      "Oyun prototipi",
+      "Sahne otomasyonu",
+      "3D içerik üretimi"
+    ],
+    "brandColor": "#0E1128",
+    "logoUrl": "https://github.com/chongdashu.png",
+    "license": "MIT",
+    "repo": "https://github.com/chongdashu/UnrealMCP"
+  },
+  {
+    "id": "ollama-mcp-bridge",
+    "name": "Ollama MCP Köprüsü",
+    "category": "Yapay Zeka",
+    "description": "Yerel Ollama modellerini MCP araçlarıyla birleştirir.",
+    "about": "MCP-LLM Bridge, Ollama üzerinden yerel LLM’lerin MCP sunucu araçlarını kullanmasını sağlar.",
+    "features": [
+      "Yerel LLM",
+      "MCP araç kullanımı",
+      "Ollama köprüsü",
+      "Gizlilik odaklı"
+    ],
+    "useCases": [
+      "On-prem AI",
+      "Veri lokalitesi",
+      "Maliyet düşürme"
+    ],
+    "brandColor": "#111827",
+    "logoUrl": "https://github.com/patruff.png",
+    "license": "MIT",
+    "repo": "https://github.com/patruff/ollama-mcp-bridge"
+  },
+  {
+    "id": "nixos-mcp",
+    "name": "NixOS Paket Ajanı",
+    "category": "Yazılım & DevOps",
+    "description": "NixOS paket ve kaynak bilgilerini halüsinasyonsuz sunar.",
+    "about": "MCP-NixOS, NixOS paketleri ve kaynakları için doğru, güncel bilgi sağlayan bir MCP sunucusudur.",
+    "features": [
+      "Paket sorgusu",
+      "NixOS kaynakları",
+      "Doğru metadata",
+      "Geliştirici desteği"
+    ],
+    "useCases": [
+      "Paket keşfi",
+      "Altyapı seçimi",
+      "DevOps araştırma"
+    ],
+    "brandColor": "#5277C3",
+    "logoUrl": "https://github.com/utensils.png",
+    "license": "MIT",
+    "repo": "https://github.com/utensils/mcp-nixos"
+  },
+  {
+    "id": "just-prompt-mcp",
+    "name": "Just Prompt Çoklu LLM",
+    "category": "Yapay Zeka",
+    "description": "OpenAI, Anthropic, Gemini, Groq, DeepSeek ve Ollama’ya tek arayüz.",
+    "about": "just-prompt, önde gelen LLM sağlayıcılarına birleşik MCP arayüzü sunar.",
+    "features": [
+      "Çoklu sağlayıcı",
+      "Birleşik API",
+      "Model karşılaştırma",
+      "Ollama dahil"
+    ],
+    "useCases": [
+      "Model seçimi",
+      "Maliyet optimizasyonu",
+      "Sağlayıcı bağımsızlığı"
+    ],
+    "brandColor": "#6B7280",
+    "logoUrl": "https://github.com/disler.png",
+    "license": "MIT",
+    "repo": "https://github.com/disler/just-prompt"
+  },
+  {
+    "id": "shell-coding-agent-mcp",
+    "name": "Shell & Coding Ajanı",
+    "category": "Yazılım & DevOps",
+    "description": "MCP istemcilerinde shell ve kodlama ajanı çalıştırır.",
+    "about": "rusiaaman shell/coding agent, Claude ve diğer MCP istemcilerinde komut satırı ve kod görevlerini yürütür.",
+    "features": [
+      "Shell yürütme",
+      "Kodlama ajanı",
+      "MCP istemci uyumu",
+      "Otonom görev"
+    ],
+    "useCases": [
+      "DevOps otomasyonu",
+      "Repo görevleri",
+      "Hızlı fix"
+    ],
+    "brandColor": "#374151",
+    "logoUrl": "https://github.com/rusiaaman.png",
+    "license": "MIT",
+    "repo": "https://github.com/rusiaaman/wcgw"
+  },
+  {
+    "id": "home-assistant-mcp",
+    "name": "Home Assistant Ajanı",
+    "category": "Operasyon",
+    "description": "Akıllı bina ve ofis otomasyonunu kontrol eder.",
+    "about": "Home Assistant MCP, sensör, ışık, iklim ve otomasyonları LLM ajanlarına açar.",
+    "features": [
+      "Cihaz kontrolü",
+      "Sensör okuma",
+      "Otomasyon tetikleme",
+      "Enerji izleme"
+    ],
+    "useCases": [
+      "Akıllı ofis",
+      "Enerji tasarrufu",
+      "Tesis yönetimi"
+    ],
+    "brandColor": "#41BDF5",
+    "logoUrl": "https://github.com/tevonsb.png",
+    "license": "MIT",
+    "repo": "https://github.com/tevonsb/homeassistant-mcp"
+  },
+  {
+    "id": "open-multi-agent-canvas",
+    "name": "Multi-Agent Canvas",
+    "category": "Yapay Zeka",
+    "description": "Birden fazla ajanı tek sohbette yönetir.",
+    "about": "CopilotKit Open Multi-Agent Canvas, dinamik çoklu ajan sohbeti ve MCP sunucu ekleme imkanı sunar.",
+    "features": [
+      "Çoklu ajan UI",
+      "Dinamik konuşma",
+      "MCP ekleme",
+      "Araştırma modu"
+    ],
+    "useCases": [
+      "Araştırma ekipleri",
+      "Çapraz uzman ajanlar",
+      "Ürün geliştirme"
+    ],
+    "brandColor": "#7C3AED",
+    "logoUrl": "https://github.com/CopilotKit.png",
+    "license": "MIT",
+    "repo": "https://github.com/CopilotKit/open-multi-agent-canvas"
+  },
+  {
+    "id": "web-agent-protocol-mcp",
+    "name": "Web Agent Protocol",
+    "category": "Otomasyon & İş Akışı",
+    "description": "Tarayıcı etkileşimlerini kaydedip tekrar oynatır.",
+    "about": "WAP, kullanıcı web etkileşimlerini kaydederek ajanların aynı akışı MCP ile yeniden çalıştırmasını sağlar.",
+    "features": [
+      "Kayıt/oynatma",
+      "Tarayıcı otomasyonu",
+      "MCP desteği",
+      "Akış şablonları"
+    ],
+    "useCases": [
+      "Form otomasyonu",
+      "QA senaryoları",
+      "Süreç dokümantasyonu"
+    ],
+    "brandColor": "#0D9488",
+    "logoUrl": "https://github.com/OTA-Tech-AI.png",
+    "license": "MIT",
+    "repo": "https://github.com/OTA-Tech-AI/web-agent-protocol"
+  },
+  {
+    "id": "remote-macos-mcp",
+    "name": "Remote macOS Use Ajanı",
+    "category": "IT & Operasyon",
+    "description": "Yerel/uzak macOS’u ekstra API anahtarı olmadan kontrol eder.",
+    "about": "Remote MacOs Use, Claude Desktop’tan macOS masaüstünü genel amaçlı ajan olarak kontrol etmeyi sağlar.",
+    "features": [
+      "macOS kontrolü",
+      "Uzak erişim",
+      "Ekstra API key yok",
+      "Masaüstü otomasyonu"
+    ],
+    "useCases": [
+      "IT destek",
+      "Masaüstü otomasyon",
+      "Uzak yönetim"
+    ],
+    "brandColor": "#A3A3A3",
+    "logoUrl": "https://github.com/baryhuang.png",
+    "license": "MIT",
+    "repo": "https://github.com/baryhuang/mcp-remote-macos-use"
+  },
+  {
+    "id": "one-mcp-aggregator",
+    "name": "1MCP Birleşik Geçit",
+    "category": "Yapay Zeka",
+    "description": "Birden fazla MCP sunucusunu tek sunucuda toplar.",
+    "about": "1MCP, çoklu MCP sunucularını tek endpoint altında aggregate ederek kurumsal yönetimi sadeleştirir.",
+    "features": [
+      "Sunucu birleştirme",
+      "Merkezi config",
+      "Tek bağlantı",
+      "Yönetim kolaylığı"
+    ],
+    "useCases": [
+      "Kurumsal MCP yönetimi",
+      "Ajan altyapısı",
+      "IT sadeleştirme"
+    ],
+    "brandColor": "#4F46E5",
+    "logoUrl": "https://github.com/1mcp-app.png",
+    "license": "MIT",
+    "repo": "https://github.com/1mcp-app/agent"
+  },
+  {
+    "id": "intervals-icu-mcp",
+    "name": "Intervals.icu Wellness Ajanı",
+    "category": "İnsan Kaynakları",
+    "description": "Antrenman ve wellness verilerine ajan erişimi sağlar.",
+    "about": "Intervals.icu MCP, Claude/ChatGPT’yi Intervals.icu API’sine bağlayarak spor verisi sorgular.",
+    "features": [
+      "Antrenman verisi",
+      "API bağlantısı",
+      "Claude/ChatGPT uyumu",
+      "Wellness metrikleri"
+    ],
+    "useCases": [
+      "Kurumsal wellness",
+      "Spor analizi",
+      "Sağlık programı"
+    ],
+    "brandColor": "#F59E0B",
+    "logoUrl": "https://github.com/mvilanova.png",
+    "license": "MIT",
+    "repo": "https://github.com/mvilanova/intervals-mcp"
+  },
+  {
+    "id": "hass-mcp",
+    "name": "Hass-MCP Ofis Otomasyon",
+    "category": "Operasyon",
+    "description": "Home Assistant’ı Claude ve LLM’lerden kontrol eder.",
+    "about": "voska Hass-MCP, Home Assistant varlıklarını sorgulama ve kontrol için MCP sunucusudur.",
+    "features": [
+      "Varlık kontrolü",
+      "Durum sorgusu",
+      "Otomasyon",
+      "LLM uyumu"
+    ],
+    "useCases": [
+      "Akıllı ofis",
+      "Tesis otomasyonu",
+      "Enerji yönetimi"
+    ],
+    "brandColor": "#18BCF2",
+    "logoUrl": "https://github.com/voska.png",
+    "license": "MIT",
+    "repo": "https://github.com/voska/hass-mcp"
+  },
+  {
+    "id": "sequential-thinking-mas",
+    "name": "Sequential Thinking MAS",
+    "category": "Yapay Zeka",
+    "description": "Agno tabanlı çoklu ajan sıralı düşünme süreci yürütür.",
+    "about": "Sequential Thinking MAS, karmaşık problemleri adım adım çözen multi-agent sistemi MCP üzerinden sunar.",
+    "features": [
+      "Sıralı düşünme",
+      "Çoklu ajan",
+      "Agno framework",
+      "Yapılandırılmış çıktı"
+    ],
+    "useCases": [
+      "Stratejik analiz",
+      "Kök neden",
+      "Karar desteği"
+    ],
+    "brandColor": "#A855F7",
+    "logoUrl": "https://github.com/FradSer.png",
+    "license": "MIT",
+    "repo": "https://github.com/FradSer/mcp-server-sequential-thinking"
+  },
+  {
+    "id": "perplexity-research-mcp",
+    "name": "Perplexity Araştırma Ajanı",
+    "category": "Yapay Zeka",
+    "description": "Perplexity AI ile araştırma ve dokümantasyon desteği sağlar.",
+    "about": "DaInfernalCoder Perplexity MCP, araştırma ve dokümantasyon asistanlığı için Perplexity’yi MCP’ye bağlar.",
+    "features": [
+      "Araştırma sorgusu",
+      "Dokümantasyon",
+      "Kaynaklı cevap",
+      "Hackathon ödüllü"
+    ],
+    "useCases": [
+      "Teknik araştırma",
+      "İçerik desteği",
+      "Bilgi toplama"
+    ],
+    "brandColor": "#1FB8CD",
+    "logoUrl": "https://github.com/DaInfernalCoder.png",
+    "license": "MIT",
+    "repo": "https://github.com/DaInfernalCoder/perplexity-mcp"
+  },
+  {
+    "id": "gemini-mcp-server",
+    "name": "Gemini MCP Ajanı",
+    "category": "Yapay Zeka",
+    "description": "Google Gemini API’sini MCP sunucusu olarak sunar.",
+    "about": "aliargun Gemini MCP Server, Gemini modellerine MCP istemcilerinden erişim sağlar.",
+    "features": [
+      "Gemini erişimi",
+      "MCP sunucu",
+      "Uzun bağlam",
+      "Çok dilli"
+    ],
+    "useCases": [
+      "Doküman özeti",
+      "Çok dilli içerik",
+      "Görsel anlama"
+    ],
+    "brandColor": "#4285F4",
+    "logoUrl": "https://github.com/aliargun.png",
+    "license": "MIT",
+    "repo": "https://github.com/aliargun/gemini-mcp-server"
+  },
+  {
+    "id": "langchain-mcp",
+    "name": "LangChain MCP Köprüsü",
+    "category": "Yapay Zeka",
+    "description": "LangChain ajanlarına MCP araç desteği ekler.",
+    "about": "rectalogic langchain-mcp, LangChain ekosistemini MCP araçlarıyla genişletir.",
+    "features": [
+      "LangChain uyumu",
+      "MCP tool binding",
+      "Orkestrasyon",
+      "Kurumsal AI"
+    ],
+    "useCases": [
+      "Ajan geliştirme",
+      "Araç genişletme",
+      "Kurumsal AI"
+    ],
+    "brandColor": "#1C3C3C",
+    "logoUrl": "https://github.com/rectalogic.png",
+    "license": "MIT",
+    "repo": "https://github.com/rectalogic/langchain-mcp"
+  },
+  {
+    "id": "openapi-mcp-docker",
+    "name": "OpenAPI MCP Ajanı",
+    "category": "Yazılım & DevOps",
+    "description": "Mevcut API dokümanlarını ajan araçlarına dönüştürür.",
+    "about": "OpenAPI-MCP, OpenAPI spesifikasyonundan Dockerize MCP sunucusu üreterek herhangi bir REST API’yi ajan erişimine açar.",
+    "features": [
+      "OpenAPI dönüşüm",
+      "Dockerize",
+      "REST çağrıları",
+      "Dinamik araçlar"
+    ],
+    "useCases": [
+      "Legacy entegrasyon",
+      "Hızlı API bağlama",
+      "İç sistem otomasyonu"
+    ],
+    "brandColor": "#6366F1",
+    "logoUrl": "https://github.com/ckanthony.png",
+    "license": "MIT",
+    "repo": "https://github.com/ckanthony/openapi-mcp"
+  },
+  {
+    "id": "custom-prompts-mcp",
+    "name": "Custom Prompts Şablon Ajanı",
+    "category": "Yapay Zeka",
+    "description": "Kurumsal prompt şablonlarını hot-reload ile yönetir.",
+    "about": "Claude Custom Prompts MCP, düşünme çerçeveleri ve kalite kapılarıyla prompt şablon sunucusu sağlar.",
+    "features": [
+      "Hot-reload",
+      "Şablon kütüphanesi",
+      "Kalite kapıları",
+      "Düşünme çerçeveleri"
+    ],
+    "useCases": [
+      "Standart promptlar",
+      "Kalite güvence",
+      "Ekip eğitimi"
+    ],
+    "brandColor": "#D97706",
+    "logoUrl": "https://github.com/minipuft.png",
+    "license": "MIT",
+    "repo": "https://github.com/minipuft/claude-custom-prompts-mcp"
+  },
+  {
+    "id": "rubber-duck-mcp",
+    "name": "Rubber Duck Çoklu Model",
+    "category": "Yapay Zeka",
+    "description": "Birden fazla OpenAI-uyumlu LLM’e danışarak perspektif üretir.",
+    "about": "MCP Rubber Duck, sorunları farklı AI “ördeklerine” açıklayıp araştırma ve çoklu bakış açısı toplar.",
+    "features": [
+      "Çoklu LLM",
+      "Araştırma yeteneği",
+      "Perspektif karşılaştırma",
+      "MCP bridge"
+    ],
+    "useCases": [
+      "Karar desteği",
+      "Kod review",
+      "Strateji tartışması"
+    ],
+    "brandColor": "#F59E0B",
+    "logoUrl": "https://github.com/nesquikm.png",
+    "license": "MIT",
+    "repo": "https://github.com/nesquikm/mcp-rubber-duck"
+  },
+  {
+    "id": "ollama-mcp-server",
+    "name": "Ollama MCP Sunucusu",
+    "category": "Yapay Zeka",
+    "description": "Ollama yerel modellerine MCP erişimi sağlar.",
+    "about": "rawveg Ollama MCP Server, yerel Ollama modellerini MCP istemcilerine bağlar.",
+    "features": [
+      "Yerel model",
+      "Ollama API",
+      "Gizlilik",
+      "Düşük maliyet"
+    ],
+    "useCases": [
+      "On-prem LLM",
+      "Offline AI",
+      "Veri lokalitesi"
+    ],
+    "brandColor": "#111827",
+    "logoUrl": "https://github.com/rawveg.png",
+    "license": "MIT",
+    "repo": "https://github.com/rawveg/ollama-mcp"
+  },
+  {
+    "id": "lmstudio-mcp",
+    "name": "LM Studio MCP Ajanı",
+    "category": "Yapay Zeka",
+    "description": "LM Studio’da çalışan yerel modellere Claude erişimi verir.",
+    "about": "LMStudio-MCP, Claude’un LM Studio üzerinden yerel LLM’lerle konuşmasını sağlar.",
+    "features": [
+      "LM Studio köprüsü",
+      "Yerel model",
+      "Claude bağlantısı",
+      "MCP protokolü"
+    ],
+    "useCases": [
+      "Yerel AI deneme",
+      "Gizlilik",
+      "Maliyet kontrolü"
+    ],
+    "brandColor": "#6D28D9",
+    "logoUrl": "https://github.com/infinitimeless.png",
+    "license": "MIT",
+    "repo": "https://github.com/infinitimeless/LMStudio-MCP"
+  },
+  {
+    "id": "any-chat-completions-mcp",
+    "name": "Any Chat Completions Ajanı",
+    "category": "Yapay Zeka",
+    "description": "Herhangi bir LLM’i araç olarak MCP’ye bağlar.",
+    "about": "any-chat-completions-mcp, OpenAI uyumlu herhangi bir chat completion uç noktasını MCP tool olarak sunar.",
+    "features": [
+      "Her LLM",
+      "Tool olarak model",
+      "Esnek endpoint",
+      "MCP sunucu"
+    ],
+    "useCases": [
+      "Model routing",
+      "Yedek LLM",
+      "Özel endpoint"
+    ],
+    "brandColor": "#0F172A",
+    "logoUrl": "https://github.com/pyroprompts.png",
+    "license": "MIT",
+    "repo": "https://github.com/pyroprompts/any-chat-completions-mcp"
+  },
+  {
+    "id": "llm-gateway-mcp",
+    "name": "LLM Gateway Ajanı",
+    "category": "Yapay Zeka",
+    "description": "Çoklu LLM, tarayıcı, belge ve vektör yetenekleri sunar.",
+    "about": "LLM Gateway MCP, ajanlara çok sağlayıcılı LLM delegasyonu, browser automation, document processing ve memory sistemleri açar.",
+    "features": [
+      "Multi-provider LLM",
+      "Tarayıcı otomasyonu",
+      "Belge işleme",
+      "Vektör/memory"
+    ],
+    "useCases": [
+      "Kurumsal AI platform",
+      "Operasyon otomasyonu",
+      "Çok yetenekli ajan"
+    ],
+    "brandColor": "#1F2937",
+    "logoUrl": "https://github.com/Dicklesworthstone.png",
+    "license": "MIT",
+    "repo": "https://github.com/Dicklesworthstone/llm_gateway_mcp"
+  },
+  {
+    "id": "megpt-author-mcp",
+    "name": "meGPT İçerik Arşiv Ajanı",
+    "category": "Pazarlama & Analiz",
+    "description": "Yazar içeriklerini LLM’e yükleyip kişiselleştirilmiş yanıt üretir.",
+    "about": "meGPT, bir yazarın çok formatlı içeriğini işleyerek MCP sunucusuna dönüştürür.",
+    "features": [
+      "İçerik indeksleme",
+      "Yazar profili",
+      "Bağlamsal yanıt",
+      "MCP sunucu"
+    ],
+    "useCases": [
+      "Bilgi tabanı",
+      "Uzman simülasyonu",
+      "İçerik kişiselleştirme"
+    ],
+    "brandColor": "#78716C",
+    "logoUrl": "https://github.com/adrianco.png",
+    "license": "MIT",
+    "repo": "https://github.com/adrianco/meGPT"
+  },
+  {
+    "id": "claude-code-mcp",
+    "name": "MCP Claude Code Ajanı",
+    "category": "Yazılım & DevOps",
+    "description": "Claude Code yeteneklerini MCP üzerinden genişletir.",
+    "about": "SDGLBL MCP Claude Code, Claude Code benzeri kodlama yeteneklerini MCP implementasyonu olarak sunar.",
+    "features": [
+      "Kodlama yetenekleri",
+      "MCP implementasyon",
+      "Geliştirici araçları",
+      "Otonom görev"
+    ],
+    "useCases": [
+      "Kod üretimi",
+      "Repo otomasyonu",
+      "Geliştirici asistanı"
+    ],
+    "brandColor": "#D97706",
+    "logoUrl": "https://github.com/SDGLBL.png",
+    "license": "MIT",
+    "repo": "https://github.com/SDGLBL/mcp-claude-code"
+  },
+  {
+    "id": "mcp-manager-ui",
+    "name": "MCP Manager UI",
+    "category": "IT & Operasyon",
+    "description": "Claude Desktop MCP sunucularını web UI ile yönetir.",
+    "about": "zueai MCP Manager, Claude uygulamasındaki MCP sunucularını basit bir web arayüzüyle yönetir.",
+    "features": [
+      "Web UI",
+      "Sunucu yönetimi",
+      "Claude Desktop",
+      "Kolay config"
+    ],
+    "useCases": [
+      "IT MCP yönetimi",
+      "Ekip kurulumu",
+      "Yapılandırma"
+    ],
+    "brandColor": "#64748B",
+    "logoUrl": "https://github.com/zueai.png",
+    "license": "MIT",
+    "repo": "https://github.com/zueai/mcp-manager"
+  },
+  {
+    "id": "solon-ai-mcp",
+    "name": "Solon AI Java Ajan Çerçevesi",
+    "category": "Yazılım & DevOps",
+    "description": "Java’da LLM tool, RAG, MCP ve ReAct/Team ajanları kurar.",
+    "about": "Solon Ai, Java 8–25 için LLM-tool, RAG, MCP ve agent framework sunar; Spring Boot vb. ile gömülebilir.",
+    "features": [
+      "Java AI framework",
+      "RAG",
+      "MCP",
+      "ReAct/Team Agent"
+    ],
+    "useCases": [
+      "Kurumsal Java AI",
+      "Mikroservis ajan",
+      "RAG uygulaması"
+    ],
+    "brandColor": "#E11D48",
+    "logoUrl": "https://github.com/opensolon.png",
+    "license": "Apache-2.0",
+    "repo": "https://github.com/opensolon/solon-ai"
+  },
+  {
+    "id": "agentchat-platform",
+    "name": "AgentChat Platform",
+    "category": "Yapay Zeka",
+    "description": "Çok ajanlı sohbet, RAG, memory ve MCP entegre platform.",
+    "about": "智言/AgentChat, LangChain, MCP, RAG, HITL ve vektör arama ile çok ajanlı görev platformudur.",
+    "features": [
+      "Çok ajan sohbet",
+      "RAG/Memory",
+      "MCP protokolü",
+      "FastAPI backend"
+    ],
+    "useCases": [
+      "Kurumsal asistan",
+      "Bilgi tabanı Q&A",
+      "Görev işbirliği"
+    ],
+    "brandColor": "#2563EB",
+    "logoUrl": "https://github.com/Shy2593666979.png",
+    "license": "MIT",
+    "repo": "https://github.com/Shy2593666979/AgentChat"
+  },
+  {
+    "id": "ollmcp-client",
+    "name": "Ollama MCP Client (ollmcp)",
+    "category": "Yapay Zeka",
+    "description": "Yerel LLM’ler için TUI MCP istemcisi ve ajan modu.",
+    "about": "jonigl ollmcp, Ollama üzerinde tools/prompts/resources, agent mode, multi-server ve HITL sunar.",
+    "features": [
+      "TUI istemci",
+      "Ajan modu",
+      "Multi-server",
+      "HITL/streaming"
+    ],
+    "useCases": [
+      "Yerel ajan denemesi",
+      "MCP geliştirme",
+      "Offline AI"
+    ],
+    "brandColor": "#0EA5E9",
+    "logoUrl": "https://github.com/jonigl.png",
+    "license": "MIT",
+    "repo": "https://github.com/jonigl/mcp-client-for-ollama"
+  },
+  {
+    "id": "ue5-genai-plugin",
+    "name": "UE5 Generative AI Plugin",
+    "category": "Yazılım & DevOps",
+    "description": "Unreal Engine’de çoklu LLM ve MCP sunucu desteği.",
+    "about": "Unreal Engine Generative AI Support Plugin, GPT/Claude/Gemini/Ollama vb. ve MCP UE5 sunucusu sunar.",
+    "features": [
+      "Çoklu LLM",
+      "MCP UE5",
+      "NPC AI",
+      "3D üretim entegrasyonu"
+    ],
+    "useCases": [
+      "Oyun AI",
+      "NPC davranış",
+      "İçerik üretimi"
+    ],
+    "brandColor": "#111827",
+    "logoUrl": "https://github.com/prajwalshettydev.png",
+    "license": "MIT",
+    "repo": "https://github.com/prajwalshettydev/unreal-engine-generative-ai-support-plugin"
+  },
+  {
+    "id": "orders-of-magnitude-mcp",
+    "name": "Orders of Magnitude API Kataloğu",
+    "category": "Yapay Zeka",
+    "description": "1000+ pay-per-call API’yi ajan altyapısına bağlar.",
+    "about": "Orders of Magnitude x402 API Catalog, finans, hava, coğrafya ve ajan altyapısı endpoint’lerini sunar.",
+    "features": [
+      "1000+ API",
+      "Pay-per-call",
+      "x402 ödemeler",
+      "Ajan altyapısı"
+    ],
+    "useCases": [
+      "Veri API erişimi",
+      "Ajan servisleri",
+      "Mikro ödeme API"
+    ],
+    "brandColor": "#059669",
+    "logoUrl": "https://github.com/OrdersOfMagnitudeLLC.png",
+    "license": "Apache-2.0",
+    "repo": "https://github.com/OrdersOfMagnitudeLLC/x402-api-catalog"
+  },
+  {
+    "id": "getintel-mcp",
+    "name": "GetIntel Araştırma Bağlayıcısı",
+    "category": "Yapay Zeka",
+    "description": "GetIntel MCP connector ile kurumsal istihbarat dokümanlarına erişir.",
+    "about": "GetIntel, public docs ve tool manifest ile ajan araştırma bağlayıcısı sunar.",
+    "features": [
+      "Tool manifest",
+      "Doküman erişimi",
+      "Araştırma connector",
+      "API"
+    ],
+    "useCases": [
+      "Pazar istihbaratı",
+      "Araştırma",
+      "Risk değerlendirme"
+    ],
+    "brandColor": "#0891B2",
+    "logoUrl": "https://github.com/tarang8811.png",
+    "license": "MIT",
+    "repo": "https://github.com/tarang8811/getintel-mcp"
+  },
+  {
+    "id": "q-ring-secrets-mcp",
+    "name": "q-ring Sır Yönetim Ajanı",
+    "category": "Güvenlik & Uyum",
+    "description": "AI coding ajanları için quantum-inspired keyring ve sır yönetimi.",
+    "about": "q-ring, superposition/entanglement metaforuyla 44 MCP tool’luk güvenli secret keyring sunar.",
+    "features": [
+      "Secret keyring",
+      "44 MCP tool",
+      "CLI",
+      "Güvenli saklama"
+    ],
+    "useCases": [
+      "Ajan secret yönetimi",
+      "Dev güvenlik",
+      "Credential vault"
+    ],
+    "brandColor": "#7C3AED",
+    "logoUrl": "https://github.com/I4cTime.png",
+    "license": "MIT",
+    "repo": "https://github.com/I4cTime/q-ring"
+  },
+  {
+    "id": "scvd-observatory-mcp",
+    "name": "scvd.store Kanıt Gözlemcisi",
+    "category": "Satış & CRM",
+    "description": "Ajan ticaretinde endpoint/ödeme kanıtlarını bağımsız gözlemler.",
+    "about": "scvd.store, agentic commerce için imzalı gözlem ve kanıt observatory’sidir.",
+    "features": [
+      "İmzalı gözlem",
+      "Ödeme kanıtı",
+      "Bağımsız doğrulama",
+      "USDC/Base"
+    ],
+    "useCases": [
+      "Ajan ticaret güveni",
+      "Ödeme doğrulama",
+      "Compliance"
+    ],
+    "brandColor": "#DC2626",
+    "logoUrl": "https://github.com/seancrecord.png",
+    "license": "MIT",
+    "repo": "https://github.com/seancrecord/scvd.store"
+  },
+  {
+    "id": "sphere-agent-marketplace",
+    "name": "Sphere Ajan Pazaryeri",
+    "category": "Yapay Zeka",
+    "description": "Ajanların servis yayınlayıp escrow ile işlem yaptığı açık pazar.",
+    "about": "Sphere, AI ajanlarının kayıt, servis yayınlama ve escrow kontratlarıyla işlem yaptığı açık marketplace’tir.",
+    "features": [
+      "Ajan kaydı",
+      "Servis yayınlama",
+      "Escrow",
+      "Açık pazar"
+    ],
+    "useCases": [
+      "Ajan ekonomisi",
+      "Servis ticareti",
+      "Orkestrasyon"
+    ],
+    "brandColor": "#4F46E5",
+    "logoUrl": "https://github.com/dtajitdinov-aris.png",
+    "license": "MIT",
+    "repo": "https://github.com/dtajitdinov-aris/sphere"
+  },
+  {
+    "id": "hypnothera-skill",
+    "name": "Hypnothera Kişisel Ajan Skill",
+    "category": "İnsan Kaynakları",
+    "description": "Asistanın sizi bilgisinden kişiselleştirilmiş seans üretir.",
+    "about": "Hypnothera agent skill, AI asistanın kullanıcı bağlamından kişiselleştirilmiş hypnosis session oluşturur.",
+    "features": [
+      "Kişiselleştirme",
+      "Agent skill",
+      "Bağlam kullanımı",
+      "Seans üretimi"
+    ],
+    "useCases": [
+      "Wellness",
+      "Kişisel asistan",
+      "İçerik deneyimi"
+    ],
+    "brandColor": "#DB2777",
+    "logoUrl": "https://github.com/La-Salida.png",
+    "license": "MIT",
+    "repo": "https://github.com/La-Salida/hypnothera"
+  },
+  {
+    "id": "browserbase-mcp",
+    "name": "Browserbase Tarayıcı Ajanı",
+    "category": "Otomasyon & İş Akışı",
+    "description": "Bulut tarayıcı oturumlarıyla web otomasyonu yürütür.",
+    "about": "Browserbase MCP, ajanların bulutta yönetilen tarayıcılarda gezinme ve otomasyon yapmasını sağlar.",
+    "features": [
+      "Bulut tarayıcı",
+      "Oturum yönetimi",
+      "Web otomasyonu",
+      "Ölçeklenebilir"
+    ],
+    "useCases": [
+      "Web QA",
+      "Veri toplama",
+      "Form otomasyonu"
+    ],
+    "brandColor": "#F97316",
+    "logoUrl": "https://github.com/browserbase.png",
+    "license": "MIT",
+    "repo": "https://github.com/browserbase/mcp-server-browserbase"
+  },
+  {
+    "id": "firecrawl-mcp",
+    "name": "Firecrawl Web Ajanı",
+    "category": "Yapay Zeka",
+    "description": "Siteleri LLM-hazır Markdown’a çevirerek tarar.",
+    "about": "Firecrawl MCP, web sayfalarını temiz, yapılandırılmış içerik olarak ajanlara sunar.",
+    "features": [
+      "Site crawl",
+      "Markdown çıktı",
+      "LLM-ready",
+      "API"
+    ],
+    "useCases": [
+      "Doküman toplama",
+      "Araştırma",
+      "İçerik pipeline"
+    ],
+    "brandColor": "#EA580C",
+    "logoUrl": "https://github.com/mendableai.png",
+    "license": "MIT",
+    "repo": "https://github.com/mendableai/firecrawl-mcp-server"
+  },
+  {
+    "id": "puppeteer-mcp",
+    "name": "Puppeteer Tarayıcı Ajanı",
+    "category": "Otomasyon & İş Akışı",
+    "description": "Programatik tarayıcı kontrolü ve ekran görüntüsü alır.",
+    "about": "MCP Puppeteer, navigasyon, form doldurma ve screenshot araçları sunar.",
+    "features": [
+      "Navigasyon",
+      "Form doldurma",
+      "Screenshot",
+      "Element etkileşimi"
+    ],
+    "useCases": [
+      "Web test",
+      "RPA",
+      "Görsel rapor"
+    ],
+    "brandColor": "#40B5A4",
+    "logoUrl": "https://avatars.githubusercontent.com/u/182288589?v=4",
+    "license": "Apache-2.0",
+    "repo": "https://github.com/modelcontextprotocol/servers/tree/main/src/puppeteer"
+  },
+  {
+    "id": "gdrive-mcp",
+    "name": "Google Drive MCP Ajanı",
+    "category": "Operasyon",
+    "description": "Drive dosyalarını listeler, okur ve arar.",
+    "about": "MCP Google Drive, ekip dokümanlarına kontrollü ajan erişimi sağlar.",
+    "features": [
+      "Dosya listeleme",
+      "Doküman okuma",
+      "Arama",
+      "Paylaşım kontrolü"
+    ],
+    "useCases": [
+      "Doküman arama",
+      "Rapor toplama",
+      "Bilgi erişimi"
+    ],
+    "brandColor": "#4285F4",
+    "logoUrl": "https://avatars.githubusercontent.com/u/182288589?v=4",
+    "license": "MIT",
+    "repo": "https://github.com/modelcontextprotocol/servers/tree/main/src/gdrive"
+  },
+  {
+    "id": "sqlite-mcp",
+    "name": "SQLite MCP Ajanı",
+    "category": "Veri & Raporlama",
+    "description": "Yerel SQLite veritabanlarını sorgular.",
+    "about": "MCP SQLite, dosya tabanlı DB’lere hızlı ve güvenli ajan erişimi verir.",
+    "features": [
+      "SQL sorgu",
+      "Yerel DB",
+      "Hızlı erişim",
+      "Basit kurulum"
+    ],
+    "useCases": [
+      "Saha veri",
+      "Prototip",
+      "Yerel rapor"
+    ],
+    "brandColor": "#003B57",
+    "logoUrl": "https://avatars.githubusercontent.com/u/182288589?v=4",
+    "license": "MIT",
+    "repo": "https://github.com/modelcontextprotocol/servers/tree/main/src/sqlite"
+  },
+  {
+    "id": "markitdown-mcp",
+    "name": "MarkItDown Belge Ajanı",
+    "category": "Operasyon",
+    "description": "PDF/Office/görsel/ses dosyalarını Markdown’a çevirir.",
+    "about": "MarkItDown MCP, 29+ formatı yapılandırılmış Markdown’a dönüştürerek ajan okumasına hazırlar.",
+    "features": [
+      "29+ format",
+      "PDF/Office",
+      "OCR",
+      "Ses→metin"
+    ],
+    "useCases": [
+      "Sözleşme",
+      "Fatura",
+      "Rapor işleme"
+    ],
+    "brandColor": "#0EA5E9",
+    "logoUrl": "https://github.com/microsoft.png",
+    "license": "MIT",
+    "repo": "https://github.com/microsoft/markitdown"
+  },
+  {
+    "id": "upstash-mcp",
+    "name": "Upstash Sunucusuz Veri",
+    "category": "Veri & Raporlama",
+    "description": "Sunucusuz Redis/Kafka verisine ajan erişimi.",
+    "about": "Upstash MCP, düşük gecikmeli sunucusuz veri katmanını ajanlara bağlar.",
+    "features": [
+      "Redis",
+      "Kafka",
+      "Sunucusuz",
+      "Düşük gecikme"
+    ],
+    "useCases": [
+      "Cache",
+      "Realtime",
+      "Mikroservis"
+    ],
+    "brandColor": "#00E9A3",
+    "logoUrl": "https://github.com/upstash.png",
+    "license": "MIT",
+    "repo": "https://github.com/upstash/mcp-server"
+  },
+  {
+    "id": "e2b-mcp",
+    "name": "E2B Kod Sandbox Ajanı",
+    "category": "Yazılım & DevOps",
+    "description": "Güvenli bulut sandbox’ta kod çalıştırır.",
+    "about": "E2B MCP, ajanların izole ortamlarda kod yürütmesini sağlar.",
+    "features": [
+      "Güvenli sandbox",
+      "Kod yürütme",
+      "İzolasyon",
+      "Bulut"
+    ],
+    "useCases": [
+      "Kod deneme",
+      "Data analysis",
+      "Güvenli exec"
+    ],
+    "brandColor": "#FF4800",
+    "logoUrl": "https://github.com/e2b-dev.png",
+    "license": "Apache-2.0",
+    "repo": "https://github.com/e2b-dev/mcp-server"
+  },
+  {
+    "id": "browser-use-mcp",
+    "name": "Browser Use Ajanı",
+    "category": "Otomasyon & İş Akışı",
+    "description": "LLM ile otonom tarayıcı kullanımı sağlar.",
+    "about": "Browser Use MCP, web görevlerini otonom ajan olarak yürütmeye odaklanır.",
+    "features": [
+      "Otonom browse",
+      "Görev yürütme",
+      "Web ajan",
+      "MCP"
+    ],
+    "useCases": [
+      "Web RPA",
+      "Araştırma",
+      "Form işleri"
+    ],
+    "brandColor": "#22C55E",
+    "logoUrl": "https://github.com/browser-use.png",
+    "license": "MIT",
+    "repo": "https://github.com/browser-use/browser-use"
+  },
+  {
+    "id": "notion-mcp",
+    "name": "Notion MCP Ajanı",
+    "category": "Operasyon",
+    "description": "Notion sayfa ve veritabanlarını yönetir.",
+    "about": "Notion MCP entegrasyonları, wiki ve görev veritabanlarını ajan erişimine açar.",
+    "features": [
+      "Sayfa okuma/yazma",
+      "DB sorgu",
+      "Arama",
+      "Görev"
+    ],
+    "useCases": [
+      "Bilgi tabanı",
+      "Proje wiki",
+      "Görev otomasyonu"
+    ],
+    "brandColor": "#000000",
+    "logoUrl": "https://github.com/makenotion.png",
+    "license": "MIT",
+    "repo": "https://github.com/makenotion/notion-mcp-server"
+  },
+  {
+    "id": "linear-mcp",
+    "name": "Linear Issue Ajanı",
+    "category": "Yazılım & DevOps",
+    "description": "Linear issue ve proje yönetimini ajanla yürütür.",
+    "about": "Linear MCP, issue oluşturma, güncelleme ve sprint takibini kolaylaştırır.",
+    "features": [
+      "Issue CRUD",
+      "Proje",
+      "Sprint",
+      "Arama"
+    ],
+    "useCases": [
+      "Bug triage",
+      "Sprint plan",
+      "Ürün yönetimi"
+    ],
+    "brandColor": "#5E6AD2",
+    "logoUrl": "https://github.com/linear.png",
+    "license": "MIT",
+    "repo": "https://github.com/linear/linear-mcp"
+  },
+  {
+    "id": "sentry-mcp",
+    "name": "Sentry Hata Ajanı",
+    "category": "Yazılım & DevOps",
+    "description": "Uygulama hatalarını ve performans olaylarını inceler.",
+    "about": "Sentry MCP, error/issue inceleme ve triage’ı ajanlara açar.",
+    "features": [
+      "Issue sorgu",
+      "Hata detayı",
+      "Performans",
+      "Triage"
+    ],
+    "useCases": [
+      "Incident",
+      "Bug analizi",
+      "SRE"
+    ],
+    "brandColor": "#362D59",
+    "logoUrl": "https://github.com/getsentry.png",
+    "license": "MIT",
+    "repo": "https://github.com/getsentry/sentry-mcp"
+  },
+  {
+    "id": "jira-mcp",
+    "name": "Jira İş Takip Ajanı",
+    "category": "Operasyon",
+    "description": "Jira ticket ve sprint işlemlerini yönetir.",
+    "about": "Jira MCP sunucuları, kurumsal iş kalemi yönetimini ajan arayüzüne bağlar.",
+    "features": [
+      "Ticket CRUD",
+      "Sprint",
+      "Arama",
+      "Yorum"
+    ],
+    "useCases": [
+      "ITSM",
+      "Proje yönetimi",
+      "Destek"
+    ],
+    "brandColor": "#0052CC",
+    "logoUrl": "https://github.com/atlassian.png",
+    "license": "Apache-2.0",
+    "repo": "https://github.com/atlassian/atlassian-mcp-server"
+  },
+  {
+    "id": "hubspot-mcp",
+    "name": "HubSpot CRM Ajanı",
+    "category": "Satış & CRM",
+    "description": "CRM kişi, şirket ve deal verilerine erişir.",
+    "about": "HubSpot MCP, satış pipeline ve müşteri verisini ajan otomasyonuna bağlar.",
+    "features": [
+      "Contact/Company",
+      "Deal",
+      "Pipeline",
+      "Arama"
+    ],
+    "useCases": [
+      "Satış ops",
+      "Lead zenginleştirme",
+      "CRM sync"
+    ],
+    "brandColor": "#FF7A59",
+    "logoUrl": "https://github.com/hubspot.png",
+    "license": "MIT",
+    "repo": "https://github.com/hubspot/hubspot-mcp-server"
+  },
+  {
+    "id": "shopify-mcp",
+    "name": "Shopify Mağaza Ajanı",
+    "category": "E-ticaret & Operasyon",
+    "description": "Shopify ürün, sipariş ve stok işlemlerini yönetir.",
+    "about": "Shopify MCP, e-ticaret operasyonlarını ajan arayüzüne taşır.",
+    "features": [
+      "Ürün",
+      "Sipariş",
+      "Stok",
+      "Müşteri"
+    ],
+    "useCases": [
+      "Mağaza ops",
+      "Stok sync",
+      "Sipariş yönetimi"
+    ],
+    "brandColor": "#96BF48",
+    "logoUrl": "https://github.com/Shopify.png",
+    "license": "MIT",
+    "repo": "https://github.com/Shopify/shopify-mcp"
+  },
+  {
+    "id": "airtable-mcp",
+    "name": "Airtable Veri Ajanı",
+    "category": "Operasyon",
+    "description": "Airtable base kayıtlarını sorgular ve günceller.",
+    "about": "Airtable MCP, no-code veri tabanlarını ajan iş akışlarına bağlar.",
+    "features": [
+      "Kayıt CRUD",
+      "Base sorgu",
+      "Filtre",
+      "Güncelleme"
+    ],
+    "useCases": [
+      "Ops veri",
+      "İç araç",
+      "Envanter"
+    ],
+    "brandColor": "#18BFFF",
+    "logoUrl": "https://github.com/airtable.png",
+    "license": "MIT",
+    "repo": "https://github.com/domdomegg/airtable-mcp-server"
+  },
+  {
+    "id": "todoist-mcp",
+    "name": "Todoist Görev Ajanı",
+    "category": "Operasyon",
+    "description": "Kişisel/ekip görevlerini Todoist’te yönetir.",
+    "about": "Todoist MCP, görev oluşturma ve takip otomasyonu sağlar.",
+    "features": [
+      "Görev CRUD",
+      "Proje",
+      "Etiket",
+      "Hatırlatma"
+    ],
+    "useCases": [
+      "Kişisel verimlilik",
+      "Ekip görev",
+      "Ops checklist"
+    ],
+    "brandColor": "#E44332",
+    "logoUrl": "https://github.com/Doist.png",
+    "license": "MIT",
+    "repo": "https://github.com/Doist/todoist-ai"
+  },
+  {
+    "id": "calendar-mcp",
+    "name": "Google Calendar Ajanı",
+    "category": "Operasyon",
+    "description": "Takvim etkinliklerini oluşturur ve sorgular.",
+    "about": "Google Calendar MCP, toplantı planlama ve ajanda yönetimini ajanlara açar.",
+    "features": [
+      "Etkinlik CRUD",
+      "Uygunluk",
+      "Hatırlatma",
+      "Takvim listesi"
+    ],
+    "useCases": [
+      "Randevu",
+      "Toplantı planı",
+      "Ajanda"
+    ],
+    "brandColor": "#4285F4",
+    "logoUrl": "https://github.com/nspady.png",
+    "license": "MIT",
+    "repo": "https://github.com/nspady/google-calendar-mcp"
+  },
+  {
+    "id": "gmail-mcp",
+    "name": "Gmail İletişim Ajanı",
+    "category": "Müşteri Destek",
+    "description": "Gmail kutusu okur, arar ve taslak oluşturur.",
+    "about": "Gmail MCP, e-posta triage ve yanıt otomasyonu için ajan araçları sunar.",
+    "features": [
+      "E-posta arama",
+      "Okuma",
+      "Taslak",
+      "Etiket"
+    ],
+    "useCases": [
+      "Destek inbox",
+      "Satış mail",
+      "Triage"
+    ],
+    "brandColor": "#EA4335",
+    "logoUrl": "https://github.com/GongRzhe.png",
+    "license": "MIT",
+    "repo": "https://github.com/GongRzhe/Gmail-MCP-Server"
+  },
+  {
+    "id": "obsidian-mcp",
+    "name": "Obsidian Bilgi Ajanı",
+    "category": "Operasyon",
+    "description": "Obsidian vault notlarını arar ve günceller.",
+    "about": "Obsidian MCP, kişisel/kurumsal bilgi tabanını ajan erişimine açar.",
+    "features": [
+      "Not arama",
+      "Okuma/yazma",
+      "Vault",
+      "Bağlantılar"
+    ],
+    "useCases": [
+      "Bilgi tabanı",
+      "Araştırma notları",
+      "Second brain"
+    ],
+    "brandColor": "#7C3AED",
+    "logoUrl": "https://github.com/bartolli.png",
+    "license": "MIT",
+    "repo": "https://github.com/bartolli/mcp-obsidian"
+  },
+  {
+    "id": "figma-mcp",
+    "name": "Figma Tasarım Ajanı",
+    "category": "Pazarlama & Analiz",
+    "description": "Figma dosya ve bileşen bilgisine erişir.",
+    "about": "Figma MCP, tasarım sistemini ve frame bilgilerini ajanlara açar.",
+    "features": [
+      "Dosya okuma",
+      "Bileşen",
+      "Yorum",
+      "Tasarım token"
+    ],
+    "useCases": [
+      "Tasarım QA",
+      "Hand-off",
+      "UI audit"
+    ],
+    "brandColor": "#F24E1E",
+    "logoUrl": "https://github.com/GLips.png",
+    "license": "MIT",
+    "repo": "https://github.com/GLips/Figma-Context-MCP"
+  },
+  {
+    "id": "youtube-mcp",
+    "name": "YouTube İçerik Ajanı",
+    "category": "Pazarlama & Analiz",
+    "description": "Video metadata ve transcript erişimi sağlar.",
+    "about": "YouTube MCP, içerik araştırma ve özetleme için video verisini ajanlara sunar.",
+    "features": [
+      "Video metadata",
+      "Transcript",
+      "Arama",
+      "Kanal"
+    ],
+    "useCases": [
+      "İçerik araştırma",
+      "Rakip video",
+      "Özet"
+    ],
+    "brandColor": "#FF0000",
+    "logoUrl": "https://github.com/ZubeidHendricks.png",
+    "license": "MIT",
+    "repo": "https://github.com/ZubeidHendricks/youtube-mcp-server"
+  },
+  {
+    "id": "tavily-mcp",
+    "name": "Tavily Araştırma Ajanı",
+    "category": "Yapay Zeka",
+    "description": "Ajanlar için optimize web arama ve araştırma API’si.",
+    "about": "Tavily MCP, RAG ve araştırma ajanları için arama sonuçlarını yapılandırır.",
+    "features": [
+      "Web arama",
+      "Araştırma API",
+      "RAG hazır",
+      "Kaynaklar"
+    ],
+    "useCases": [
+      "Derin araştırma",
+      "RAG",
+      "Pazar istihbaratı"
+    ],
+    "brandColor": "#0EA5E9",
+    "logoUrl": "https://github.com/tavily-ai.png",
+    "license": "MIT",
+    "repo": "https://github.com/tavily-ai/tavily-mcp"
+  },
+  {
+    "id": "exa-mcp",
+    "name": "Exa Neural Search Ajanı",
+    "category": "Yapay Zeka",
+    "description": "Neural web arama ile yüksek kaliteli kaynak bulur.",
+    "about": "Exa MCP, ajanların semantik web araması yapmasını sağlar.",
+    "features": [
+      "Neural search",
+      "Kaynak kalitesi",
+      "Semantik",
+      "API"
+    ],
+    "useCases": [
+      "Araştırma",
+      "Lead bulma",
+      "İçerik keşfi"
+    ],
+    "brandColor": "#111827",
+    "logoUrl": "https://github.com/exa-labs.png",
+    "license": "MIT",
+    "repo": "https://github.com/exa-labs/exa-mcp-server"
+  },
+  {
+    "id": "duckduckgo-mcp",
+    "name": "DuckDuckGo Arama Ajanı",
+    "category": "Yapay Zeka",
+    "description": "Gizlilik odaklı web araması yapar.",
+    "about": "DuckDuckGo MCP, API anahtarsız web arama sonuçlarını ajanlara sunar.",
+    "features": [
+      "Web arama",
+      "Gizlilik",
+      "API key yok",
+      "Hızlı sorgu"
+    ],
+    "useCases": [
+      "Araştırma",
+      "Haber",
+      "Teknik sorgu"
+    ],
+    "brandColor": "#DE5833",
+    "logoUrl": "https://github.com/nickclyde.png",
+    "license": "MIT",
+    "repo": "https://github.com/nickclyde/duckduckgo-mcp-server"
+  },
+  {
+    "id": "wikipedia-mcp",
+    "name": "Wikipedia Bilgi Ajanı",
+    "category": "Yapay Zeka",
+    "description": "Wikipedia maddelerini arar ve özetler.",
+    "about": "Wikipedia MCP, ansiklopedik bilgiye yapılandırılmış ajan erişimi sağlar.",
+    "features": [
+      "Madde arama",
+      "Özet",
+      "Çok dilli",
+      "Kaynak"
+    ],
+    "useCases": [
+      "Araştırma",
+      "Bilgi doğrulama",
+      "İçerik"
+    ],
+    "brandColor": "#000000",
+    "logoUrl": "https://github.com/Rudra-ravi.png",
+    "license": "MIT",
+    "repo": "https://github.com/Rudra-ravi/wikipedia-mcp"
+  },
+  {
+    "id": "weather-mcp",
+    "name": "Hava Durumu Ajanı",
+    "category": "Operasyon",
+    "description": "Konum bazlı hava durumu ve tahmin sunar.",
+    "about": "Weather MCP, operasyon ve lojistik için güncel meteoroloji verisi sağlar.",
+    "features": [
+      "Güncel hava",
+      "Tahmin",
+      "Konum",
+      "API"
+    ],
+    "useCases": [
+      "Lojistik plan",
+      "Saha operasyon",
+      "Etkinlik"
+    ],
+    "brandColor": "#38BDF8",
+    "logoUrl": "https://github.com/tzolov.png",
+    "license": "MIT",
+    "repo": "https://github.com/tzolov/mcp-weather"
+  },
+  {
+    "id": "time-mcp",
+    "name": "Zaman & Saat Dilimi Ajanı",
+    "category": "Operasyon",
+    "description": "Saat dilimi dönüşümü ve zaman hesapları yapar.",
+    "about": "Time MCP, global ekipler için doğru zaman dönüşümü araçları sunar.",
+    "features": [
+      "Timezone",
+      "Dönüşüm",
+      "Tarih hesap",
+      "UTC"
+    ],
+    "useCases": [
+      "Toplantı planı",
+      "Global ekip",
+      "SLA"
+    ],
+    "brandColor": "#64748B",
+    "logoUrl": "https://avatars.githubusercontent.com/u/182288589?v=4",
+    "license": "MIT",
+    "repo": "https://github.com/modelcontextprotocol/servers/tree/main/src/time"
+  },
+  {
+    "id": "sequentialthinking-official",
+    "name": "Sequential Thinking Resmi",
+    "category": "Yapay Zeka",
+    "description": "Adım adım düşünme zinciri ile problem çözer.",
+    "about": "Resmi Sequential Thinking MCP, karmaşık görevleri düşünme adımlarına böler.",
+    "features": [
+      "Düşünme adımları",
+      "Revizyon",
+      "Hipotez",
+      "Yapılandırılmış"
+    ],
+    "useCases": [
+      "Analiz",
+      "Planlama",
+      "Debugging"
+    ],
+    "brandColor": "#8B5CF6",
+    "logoUrl": "https://avatars.githubusercontent.com/u/182288589?v=4",
+    "license": "MIT",
+    "repo": "https://github.com/modelcontextprotocol/servers/tree/main/src/sequentialthinking"
+  },
+  {
+    "id": "everart-mcp",
+    "name": "EverArt Görsel Üretim",
+    "category": "Pazarlama & Analiz",
+    "description": "AI ile görsel üretim araçları sunar.",
+    "about": "EverArt MCP, pazarlama görselleri için generative image araçları sağlar.",
+    "features": [
+      "Görsel üretim",
+      "Model seçimi",
+      "Pazarlama asset",
+      "API"
+    ],
+    "useCases": [
+      "Kreatif",
+      "Sosyal medya",
+      "Kampanya"
+    ],
+    "brandColor": "#EC4899",
+    "logoUrl": "https://avatars.githubusercontent.com/u/182288589?v=4",
+    "license": "MIT",
+    "repo": "https://github.com/modelcontextprotocol/servers/tree/main/src/everart"
+  },
+  {
+    "id": "aws-kb-mcp",
+    "name": "AWS Knowledge Base RAG",
+    "category": "Yapay Zeka",
+    "description": "AWS Bedrock Knowledge Base üzerinden RAG sorgusu yapar.",
+    "about": "AWS KB Retrieval MCP, kurumsal bilgi tabanından retrieval-augmented yanıt üretir.",
+    "features": [
+      "Bedrock KB",
+      "RAG",
+      "Kurumsal bilgi",
+      "Retrieval"
+    ],
+    "useCases": [
+      "İç doküman Q&A",
+      "Destek",
+      "Politika sorgu"
+    ],
+    "brandColor": "#FF9900",
+    "logoUrl": "https://avatars.githubusercontent.com/u/182288589?v=4",
+    "license": "Apache-2.0",
+    "repo": "https://github.com/modelcontextprotocol/servers/tree/main/src/aws-kb-retrieval-server"
+  },
+  {
+    "id": "git-mcp",
+    "name": "Git Yerel Repo Ajanı",
+    "category": "Yazılım & DevOps",
+    "description": "Yerel git depolarını okur ve durumunu raporlar.",
+    "about": "MCP Git, commit geçmişi ve repo durumu için ajan araçları sunar.",
+    "features": [
+      "Status",
+      "Log",
+      "Diff",
+      "Branch"
+    ],
+    "useCases": [
+      "Kod inceleme",
+      "Release notu",
+      "Repo audit"
+    ],
+    "brandColor": "#F05032",
+    "logoUrl": "https://avatars.githubusercontent.com/u/182288589?v=4",
+    "license": "MIT",
+    "repo": "https://github.com/modelcontextprotocol/servers/tree/main/src/git"
+  },
+  {
+    "id": "sqlite-explorer-mcp",
+    "name": "SQLite Explorer Ajanı",
+    "category": "Veri & Raporlama",
+    "description": "SQLite şema keşfi ve güvenli sorgu yapar.",
+    "about": "SQLite Explorer MCP, yerel veri setlerini güvenli şekilde inceler.",
+    "features": [
+      "Şema keşfi",
+      "Güvenli SQL",
+      "Yerel dosya",
+      "Keşif"
+    ],
+    "useCases": [
+      "Analiz",
+      "Audit",
+      "Prototip"
+    ],
+    "brandColor": "#0EA5E9",
+    "logoUrl": "https://github.com/hannesrudolph.png",
+    "license": "MIT",
+    "repo": "https://github.com/hannesrudolph/sqlite-explorer-fastmcp-mcp-server"
+  },
+  {
+    "id": "docker-mcp",
+    "name": "Docker Konteyner Ajanı",
+    "category": "Yazılım & DevOps",
+    "description": "Docker container ve image işlemlerini yönetir.",
+    "about": "Docker MCP, konteyner yaşam döngüsünü ajan arayüzüne bağlar.",
+    "features": [
+      "Container list",
+      "Start/stop",
+      "Logs",
+      "Image"
+    ],
+    "useCases": [
+      "DevOps",
+      "Ortam yönetimi",
+      "Debug"
+    ],
+    "brandColor": "#2496ED",
+    "logoUrl": "https://github.com/ckreiling.png",
+    "license": "MIT",
+    "repo": "https://github.com/ckreiling/mcp-server-docker"
+  },
+  {
+    "id": "kubernetes-mcp",
+    "name": "Kubernetes Ops Ajanı",
+    "category": "Sunucu ve altyapı",
+    "description": "K8s pod, servis ve deployment durumunu yönetir.",
+    "about": "Kubernetes MCP, küme kaynaklarını sorgulama ve operasyon araçları sunar.",
+    "features": [
+      "Pod/Service",
+      "Deploy",
+      "Logs",
+      "Cluster sorgu"
+    ],
+    "useCases": [
+      "SRE",
+      "Incident",
+      "Deploy kontrol"
+    ],
+    "brandColor": "#326CE5",
+    "logoUrl": "https://github.com/Flux159.png",
+    "license": "MIT",
+    "repo": "https://github.com/Flux159/mcp-server-kubernetes"
+  },
+  {
+    "id": "terraform-mcp",
+    "name": "Terraform IaC Ajanı",
+    "category": "Sunucu ve altyapı",
+    "description": "Terraform plan/state bilgisini ajanlarla inceler.",
+    "about": "Terraform MCP, altyapı kodu ve state keşfini destekler.",
+    "features": [
+      "Plan inceleme",
+      "State",
+      "Modül",
+      "IaC"
+    ],
+    "useCases": [
+      "Cloud audit",
+      "Change review",
+      "Ops"
+    ],
+    "brandColor": "#7B42BC",
+    "logoUrl": "https://github.com/hashicorp.png",
+    "license": "MPL-2.0",
+    "repo": "https://github.com/hashicorp/terraform-mcp-server"
+  },
+  {
+    "id": "prometheus-mcp",
+    "name": "Prometheus Metrik Ajanı",
+    "category": "IT & Operasyon",
+    "description": "Prometheus metriklerini sorgular ve alarm bağlamı verir.",
+    "about": "Prometheus MCP, PromQL ile gözlemlenebilirlik verisini ajanlara açar.",
+    "features": [
+      "PromQL",
+      "Metrik",
+      "Alert bağlamı",
+      "Observability"
+    ],
+    "useCases": [
+      "Incident",
+      "Kapasite",
+      "SRE"
+    ],
+    "brandColor": "#E6522C",
+    "logoUrl": "https://github.com/pab1it0.png",
+    "license": "MIT",
+    "repo": "https://github.com/pab1it0/prometheus-mcp-server"
+  },
+  {
+    "id": "grafana-mcp",
+    "name": "Grafana Gözlem Ajanı",
+    "category": "IT & Operasyon",
+    "description": "Grafana dashboard ve datasource bilgisine erişir.",
+    "about": "Grafana MCP, operasyon panolarını ajan sorgularına açar.",
+    "features": [
+      "Dashboard",
+      "Datasource",
+      "Sorgu",
+      "Observability"
+    ],
+    "useCases": [
+      "NOC",
+      "Incident",
+      "KPI"
+    ],
+    "brandColor": "#F46800",
+    "logoUrl": "https://github.com/grafana.png",
+    "license": "Apache-2.0",
+    "repo": "https://github.com/grafana/mcp-grafana"
+  },
+  {
+    "id": "mongodb-mcp",
+    "name": "MongoDB Veri Ajanı",
+    "category": "Veri & Raporlama",
+    "description": "MongoDB koleksiyonlarını sorgular.",
+    "about": "MongoDB MCP, NoSQL veri erişimini ajan iş akışlarına bağlar.",
+    "features": [
+      "Collection sorgu",
+      "Aggregation",
+      "Index keşfi",
+      "NoSQL"
+    ],
+    "useCases": [
+      "Ürün veri",
+      "Log",
+      "Analiz"
+    ],
+    "brandColor": "#47A248",
+    "logoUrl": "https://github.com/mongodb-js.png",
+    "license": "Apache-2.0",
+    "repo": "https://github.com/mongodb-js/mongodb-mcp-server"
+  },
+  {
+    "id": "mysql-mcp",
+    "name": "MySQL Veri Ajanı",
+    "category": "Veri & Raporlama",
+    "description": "MySQL veritabanlarını güvenli sorgular.",
+    "about": "MySQL MCP, ilişkisel veri raporlama için ajan erişimi sağlar.",
+    "features": [
+      "SQL",
+      "Şema",
+      "Güvenli sorgu",
+      "Rapor"
+    ],
+    "useCases": [
+      "İş zekası",
+      "Ops rapor",
+      "Audit"
+    ],
+    "brandColor": "#4479A1",
+    "logoUrl": "https://github.com/benborla.png",
+    "license": "MIT",
+    "repo": "https://github.com/benborla/mcp-server-mysql"
+  },
+  {
+    "id": "snowflake-mcp",
+    "name": "Snowflake Bulut Veri Ajanı",
+    "category": "Veri & Raporlama",
+    "description": "Snowflake warehouse sorgularını çalıştırır.",
+    "about": "Snowflake MCP, bulut veri ambarı analitiğini ajanlara açar.",
+    "features": [
+      "Warehouse SQL",
+      "Bulut DW",
+      "Analitik",
+      "Güvenli erişim"
+    ],
+    "useCases": [
+      "Kurumsal BI",
+      "Finans rapor",
+      "Data ops"
+    ],
+    "brandColor": "#29B5E8",
+    "logoUrl": "https://github.com/isaacwasserman.png",
+    "license": "MIT",
+    "repo": "https://github.com/isaacwasserman/mcp-snowflake-server"
+  },
+  {
+    "id": "bigquery-mcp",
+    "name": "BigQuery Analitik Ajanı",
+    "category": "Veri & Raporlama",
+    "description": "Google BigQuery üzerinde analitik sorgular çalıştırır.",
+    "about": "BigQuery MCP, GCP veri ambarı sorgularını ajan arayüzüne bağlar.",
+    "features": [
+      "BigQuery SQL",
+      "Dataset keşfi",
+      "Analitik",
+      "GCP"
+    ],
+    "useCases": [
+      "Marketing analytics",
+      "Ürün metrik",
+      "Finans"
+    ],
+    "brandColor": "#4285F4",
+    "logoUrl": "https://github.com/lucatraweek.png",
+    "license": "MIT",
+    "repo": "https://github.com/lucatraweek/mcp-server-bigquery"
+  },
+  {
+    "id": "neon-mcp",
+    "name": "Neon Serverless Postgres",
+    "category": "Yazılım & DevOps",
+    "description": "Neon Postgres projelerini yönetir ve sorgular.",
+    "about": "Neon MCP, serverless Postgres operasyonlarını ajanlara açar.",
+    "features": [
+      "Proje yönetimi",
+      "SQL",
+      "Branching",
+      "Serverless"
+    ],
+    "useCases": [
+      "Backend ops",
+      "Preview DB",
+      "Geliştirme"
+    ],
+    "brandColor": "#00E599",
+    "logoUrl": "https://github.com/neondatabase.png",
+    "license": "Apache-2.0",
+    "repo": "https://github.com/neondatabase/mcp-server-neon"
+  },
+  {
+    "id": "vercel-mcp",
+    "name": "Vercel Deploy Ajanı",
+    "category": "Yazılım & DevOps",
+    "description": "Vercel proje ve deployment durumunu yönetir.",
+    "about": "Vercel MCP, frontend deploy ve proje operasyonlarını destekler.",
+    "features": [
+      "Deploy",
+      "Proje",
+      "Log",
+      "Ortam"
+    ],
+    "useCases": [
+      "Release",
+      "Preview",
+      "SRE frontend"
+    ],
+    "brandColor": "#000000",
+    "logoUrl": "https://github.com/vercel.png",
+    "license": "Apache-2.0",
+    "repo": "https://github.com/vercel/vercel-mcp"
+  },
+  {
+    "id": "netlify-mcp",
+    "name": "Netlify Site Ajanı",
+    "category": "Yazılım & DevOps",
+    "description": "Netlify site ve deploy işlemlerini yönetir.",
+    "about": "Netlify MCP, JAMstack sitelerinin ajanla yönetilmesini sağlar.",
+    "features": [
+      "Site list",
+      "Deploy",
+      "Build",
+      "Domain"
+    ],
+    "useCases": [
+      "Web ops",
+      "Release",
+      "Marketing site"
+    ],
+    "brandColor": "#00C7B7",
+    "logoUrl": "https://github.com/netlify.png",
+    "license": "MIT",
+    "repo": "https://github.com/netlify/netlify-mcp"
+  },
+  {
+    "id": "cloudinary-mcp",
+    "name": "Cloudinary Medya Ajanı",
+    "category": "Pazarlama & Analiz",
+    "description": "Medya varlıklarını dönüştürüp yönetir.",
+    "about": "Cloudinary MCP, görsel/video asset pipeline’ını ajanlara açar.",
+    "features": [
+      "Asset yönet",
+      "Transform",
+      "CDN medya",
+      "Upload"
+    ],
+    "useCases": [
+      "E-ticaret görsel",
+      "Pazarlama asset",
+      "Medya ops"
+    ],
+    "brandColor": "#3448C5",
+    "logoUrl": "https://github.com/cloudinary.png",
+    "license": "MIT",
+    "repo": "https://github.com/cloudinary/mcp-servers"
+  },
+  {
+    "id": "twilio-mcp",
+    "name": "Twilio İletişim Ajanı",
+    "category": "Müşteri Destek",
+    "description": "SMS ve ses iletişimi gönderir.",
+    "about": "Twilio MCP, müşteri iletişim kanallarını ajan otomasyonuna bağlar.",
+    "features": [
+      "SMS",
+      "Voice",
+      "Mesaj",
+      "API"
+    ],
+    "useCases": [
+      "OTP",
+      "Destek bildirim",
+      "Satış SMS"
+    ],
+    "brandColor": "#F22F46",
+    "logoUrl": "https://github.com/twilio-labs.png",
+    "license": "MIT",
+    "repo": "https://github.com/twilio-labs/mcp"
+  },
+  {
+    "id": "resend-mcp",
+    "name": "Resend E-posta Ajanı",
+    "category": "Pazarlama & Analiz",
+    "description": "Transactional e-posta gönderimini yönetir.",
+    "about": "Resend MCP, ürün ve pazarlama e-postalarını ajanlarla gönderir.",
+    "features": [
+      "E-posta gönder",
+      "Template",
+      "Domain",
+      "API"
+    ],
+    "useCases": [
+      "Transactional mail",
+      "Onboarding",
+      "Bildirim"
+    ],
+    "brandColor": "#000000",
+    "logoUrl": "https://github.com/resend.png",
+    "license": "MIT",
+    "repo": "https://github.com/resend/resend-mcp"
+  },
+  {
+    "id": "posthog-mcp",
+    "name": "PostHog Ürün Analitik",
+    "category": "Pazarlama & Analiz",
+    "description": "Ürün olayları ve feature flag verisine erişir.",
+    "about": "PostHog MCP, ürün analitiği ve deney yönetimini ajanlara açar.",
+    "features": [
+      "Event sorgu",
+      "Feature flag",
+      "Funnel",
+      "Ürün insight"
+    ],
+    "useCases": [
+      "Ürün analitiği",
+      "Deney",
+      "Growth"
+    ],
+    "brandColor": "#F54E00",
+    "logoUrl": "https://github.com/PostHog.png",
+    "license": "MIT",
+    "repo": "https://github.com/PostHog/mcp"
+  },
+  {
+    "id": "mixpanel-mcp",
+    "name": "Mixpanel Analitik Ajanı",
+    "category": "Pazarlama & Analiz",
+    "description": "Mixpanel olay ve kullanıcı metriklerini sorgular.",
+    "about": "Mixpanel MCP, ürün kullanım analitiğini ajan raporlarına bağlar.",
+    "features": [
+      "Event",
+      "Kullanıcı",
+      "Funnel",
+      "Rapor"
+    ],
+    "useCases": [
+      "Growth",
+      "Retention",
+      "Ürün KPI"
+    ],
+    "brandColor": "#7856FF",
+    "logoUrl": "https://github.com/mixpanel.png",
+    "license": "MIT",
+    "repo": "https://github.com/mixpanel/mcp-mixpanel"
+  },
+  {
+    "id": "intercom-mcp",
+    "name": "Intercom Destek Ajanı",
+    "category": "Müşteri Destek",
+    "description": "Intercom konuşma ve kullanıcı verisini yönetir.",
+    "about": "Intercom MCP, müşteri destek inbox otomasyonunu destekler.",
+    "features": [
+      "Konuşma",
+      "Kullanıcı",
+      "Mesaj",
+      "Inbox"
+    ],
+    "useCases": [
+      "Destek triage",
+      "CRM destek",
+      "CS ops"
+    ],
+    "brandColor": "#6AFDEF",
+    "logoUrl": "https://github.com/intercom.png",
+    "license": "MIT",
+    "repo": "https://github.com/intercom/mcp-server"
+  },
+  {
+    "id": "zendesk-mcp",
+    "name": "Zendesk Ticket Ajanı",
+    "category": "Müşteri Destek",
+    "description": "Zendesk ticket oluşturma ve güncelleme yapar.",
+    "about": "Zendesk MCP, kurumsal destek ticket yaşam döngüsünü ajanlara açar.",
+    "features": [
+      "Ticket CRUD",
+      "Arama",
+      "Yorum",
+      "Atama"
+    ],
+    "useCases": [
+      "L1 destek",
+      "Triage",
+      "SLA"
+    ],
+    "brandColor": "#03363D",
+    "logoUrl": "https://github.com/zendesk.png",
+    "license": "Apache-2.0",
+    "repo": "https://github.com/reminia/zendesk-mcp-server"
+  },
+  {
+    "id": "asana-mcp",
+    "name": "Asana Proje Ajanı",
+    "category": "Operasyon",
+    "description": "Asana görev ve proje yönetimini yürütür.",
+    "about": "Asana MCP, iş yönetimi süreçlerini ajan otomasyonuna bağlar.",
+    "features": [
+      "Görev",
+      "Proje",
+      "Atama",
+      "Durum"
+    ],
+    "useCases": [
+      "PMO",
+      "Ops",
+      "Ekip koordinasyon"
+    ],
+    "brandColor": "#F06A6A",
+    "logoUrl": "https://github.com/ahushh.png",
+    "license": "MIT",
+    "repo": "https://github.com/ahushh/asana-mcp-server"
   }
 ]

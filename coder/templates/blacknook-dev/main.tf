@@ -11,8 +11,7 @@ terraform {
 
 locals {
   username = data.coder_workspace_owner.me.name
-  # 2 vCPU, 2 GiB RAM
-  cpu_nano  = 2 * 1000 * 1000 * 1000
+  # 2 vCPU, 2 GiB RAM (docker provider v4: cpus string, memory bytes)
   memory_b  = 2 * 1024 * 1024 * 1024
   image_tag = "blacknook-dev:latest"
 }
@@ -114,8 +113,8 @@ resource "docker_container" "workspace" {
   hostname = data.coder_workspace.me.name
 
   # Kaynak limitleri: 2 vCPU / 2 GiB
-  nano_cpus = local.cpu_nano
-  memory    = local.memory_b
+  cpus   = "2"
+  memory = local.memory_b
 
   entrypoint = ["sh", "-c", replace(coder_agent.main.init_script, "/localhost|127\\.0\\.0\\.1/", "host.docker.internal")]
   env        = ["CODER_AGENT_TOKEN=${coder_agent.main.token}"]

@@ -23,7 +23,7 @@ export default function CalComSimulationPage() {
     <div className="fixed inset-0 z-10 flex h-[100dvh] min-h-0 flex-col overflow-hidden bg-[var(--bn-bg)]">
       <header className="flex shrink-0 items-center justify-between gap-3 border-b border-[var(--bn-border)] bg-[var(--bn-nav-bg)] px-4 py-3 backdrop-blur-xl sm:px-6">
         <div className="flex min-w-0 items-center gap-3">
-          <SimulationBackLink fallback="/agent" aria-label="Kokpit'e dön" />
+          <SimulationBackLink fallback="/agent" aria-label="Panele dön" />
           <Image
             src="/bn-mark.png"
             alt=""
@@ -34,9 +34,6 @@ export default function CalComSimulationPage() {
           <div className="min-w-0">
             <p className="truncate font-display text-sm font-semibold text-[var(--bn-heading)]">
               Cal Simülasyonu
-            </p>
-            <p className="truncate text-xs text-[var(--bn-subtitle)]">
-              Takvim · workflows · ödemeler · ekip · embed
             </p>
           </div>
         </div>
@@ -50,7 +47,7 @@ export default function CalComSimulationPage() {
             <span className="hidden sm:inline">Sistemi sıfırla</span>
           </button>
           <span className="hidden rounded-full border border-white/20 bg-white/[0.04] px-3 py-1 text-[11px] font-semibold text-zinc-200 md:inline">
-            Blacknook · Simülasyon
+            Blacknook · Önizleme
           </span>
         </div>
       </header>

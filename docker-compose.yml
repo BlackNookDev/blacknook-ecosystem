@@ -18,8 +18,10 @@ services:
         NEXT_PUBLIC_GOOGLE_OAUTH: ${NEXT_PUBLIC_GOOGLE_OAUTH:-}
         NEXT_PUBLIC_CODER_URL: ${NEXT_PUBLIC_CODER_URL:-http://127.0.0.1:7080}
         NEXT_PUBLIC_CODER_FEATURE_ENABLED: ${NEXT_PUBLIC_CODER_FEATURE_ENABLED:-false}
+        NEXT_PUBLIC_AGENT_STUDIO_ENABLED: ${NEXT_PUBLIC_AGENT_STUDIO_ENABLED:-true}
         NEXT_PUBLIC_ENABLE_DEV_AUTO_LOGIN: ${NEXT_PUBLIC_ENABLE_DEV_AUTO_LOGIN:-false}
         NEXT_PUBLIC_ENABLE_GOOGLE_OAUTH: ${NEXT_PUBLIC_ENABLE_GOOGLE_OAUTH:-true}
+        NEXT_PUBLIC_ENABLE_GOOGLE_OAUTH_BYPASS: ${NEXT_PUBLIC_ENABLE_GOOGLE_OAUTH_BYPASS:-true}
         NEXT_PUBLIC_OTONOM_APP_URL: ${NEXT_PUBLIC_OTONOM_APP_URL:-https://agent.blacknook.com}
     restart: unless-stopped
     environment:
@@ -42,6 +44,11 @@ services:
       SUPPORT_DEMO_MODE: ${SUPPORT_DEMO_MODE:-false}
       OPENAI_API_KEY: ${OPENAI_API_KEY:-}
       OPENAI_SUPPORT_MODEL: ${OPENAI_SUPPORT_MODEL:-gpt-4o-mini}
+      RUNPOD_API_KEY: ${RUNPOD_API_KEY:-}
+      RUNPOD_ENDPOINT_ID: ${RUNPOD_ENDPOINT_ID:-}
+      RUNPOD_API_STYLE: ${RUNPOD_API_STYLE:-openai}
+      RUNPOD_MODEL: ${RUNPOD_MODEL:-}
+      RUNPOD_TIMEOUT_MS: ${RUNPOD_TIMEOUT_MS:-900000}
       SMTP_HOST: ${SMTP_HOST:-}
       SMTP_PORT: ${SMTP_PORT:-587}
       SMTP_SECURE: ${SMTP_SECURE:-false}
@@ -52,22 +59,32 @@ services:
       ADMIN_PASSWORD: ${ADMIN_PASSWORD:-BlacknookAdmin1}
       ADMIN_NAME: ${ADMIN_NAME:-Admin}
       UPLOAD_DIR: /app/uploads
-      # Coder v2 — sunucu tarafı API (compose ağı)
-      CODER_URL: ${CODER_URL:-http://coder:7080}
+      # Coder v2 — sunucu tarafı API (compose DNS). Host’taki CODER_URL=127.0.0.1
+      # shell env’i .env’i ezer; bu yüzden ayrı INTERNAL değişkeni kullanıyoruz.
+      CODER_URL: ${CODER_INTERNAL_URL:-http://coder:7080}
       CODER_API_TOKEN: ${CODER_API_TOKEN:-}
       CODER_TEMPLATE_ID: ${CODER_TEMPLATE_ID:-}
       NEXT_PUBLIC_CODER_URL: ${NEXT_PUBLIC_CODER_URL:-http://127.0.0.1:7080}
       NEXT_PUBLIC_CODER_FEATURE_ENABLED: ${NEXT_PUBLIC_CODER_FEATURE_ENABLED:-false}
+      NEXT_PUBLIC_AGENT_STUDIO_ENABLED: ${NEXT_PUBLIC_AGENT_STUDIO_ENABLED:-true}
       ENABLE_DEV_AUTO_LOGIN: ${ENABLE_DEV_AUTO_LOGIN:-false}
       NEXT_PUBLIC_ENABLE_DEV_AUTO_LOGIN: ${NEXT_PUBLIC_ENABLE_DEV_AUTO_LOGIN:-false}
       ENABLE_GOOGLE_OAUTH: ${ENABLE_GOOGLE_OAUTH:-true}
       NEXT_PUBLIC_ENABLE_GOOGLE_OAUTH: ${NEXT_PUBLIC_ENABLE_GOOGLE_OAUTH:-true}
+      ENABLE_GOOGLE_OAUTH_BYPASS: ${ENABLE_GOOGLE_OAUTH_BYPASS:-true}
+      NEXT_PUBLIC_ENABLE_GOOGLE_OAUTH_BYPASS: ${NEXT_PUBLIC_ENABLE_GOOGLE_OAUTH_BYPASS:-true}
       DEV_AUTO_LOGIN_EMAIL: ${DEV_AUTO_LOGIN_EMAIL:-demo@blacknook.com}
+      PITCH_DECK_PASSWORD: ${PITCH_DECK_PASSWORD:-}
       NEXT_PUBLIC_OTONOM_APP_URL: ${NEXT_PUBLIC_OTONOM_APP_URL:-https://agent.blacknook.com}
     ports:
       - '127.0.0.1:${APP_PORT:-18080}:3000'
     volumes:
       - blacknook_marketplace_uploads:/app/uploads
+      # Studio: üretilen dosyaları Coder workspace konteynerine yazmak için
+      - /var/run/docker.sock:/var/run/docker.sock
+    # Docker Desktop VM sock root:root 660
+    group_add:
+      - '0'
     expose:
       - '3000'
     healthcheck:
@@ -95,9 +112,10 @@ services:
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
       - coder_home:/home/coder
-    # Docker Desktop (macOS): sock genelde herkese yazılabilir; Linux'ta docker grubu GID'si gerekebilir.
-    # group_add:
-    #   - "999"
+    # Docker Desktop VM içinde sock root:root 660; coder kullanıcısına root grubu gerekir.
+    # Linux host'ta genelde docker grubu GID'si (örn. 999) yeterli olur.
+    group_add:
+      - '0'
     depends_on:
       coder-db:
         condition: service_healthy

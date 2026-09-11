@@ -1,8 +1,9 @@
 /**
  * Geliştirme: tek tıkla giriş (Google kapalı).
- * Production / push öncesi: Google OAuth + normal kimlik bilgileri.
+ * Geçici: Google butonu → gerçek OAuth yok, credentials ile içeri (bypass).
+ * Production / canlı: bypass kapat, Google OAuth + normal kimlik bilgileri.
  *
- * Yerel: .env → ENABLE_DEV_AUTO_LOGIN=true
+ * Yerel: .env → ENABLE_DEV_AUTO_LOGIN=true veya ENABLE_GOOGLE_OAUTH_BYPASS=true
  * Push: pre-push hook → auth:prod
  */
 
@@ -21,8 +22,21 @@ export function isDevAutoLoginUiEnabled(): boolean {
   return readFlag(process.env.NEXT_PUBLIC_ENABLE_DEV_AUTO_LOGIN);
 }
 
+/** Google butonu görünür ama gerçek OAuth yok — canlıya almadan önce kapat. */
+export function isGoogleOAuthBypassEnabled(): boolean {
+  return (
+    readFlag(process.env.ENABLE_GOOGLE_OAUTH_BYPASS) ||
+    readFlag(process.env.NEXT_PUBLIC_ENABLE_GOOGLE_OAUTH_BYPASS)
+  );
+}
+
+export function isGoogleOAuthBypassUiEnabled(): boolean {
+  return readFlag(process.env.NEXT_PUBLIC_ENABLE_GOOGLE_OAUTH_BYPASS);
+}
+
 export function isGoogleOAuthExplicitlyDisabled(): boolean {
   if (isDevAutoLoginEnabled()) return true;
+  if (isGoogleOAuthBypassEnabled()) return true;
   return (
     process.env.ENABLE_GOOGLE_OAUTH === 'false' ||
     process.env.NEXT_PUBLIC_ENABLE_GOOGLE_OAUTH === 'false'
@@ -37,9 +51,15 @@ export function isGoogleOAuthEnabled(): boolean {
 }
 
 export function isGoogleOAuthUiEnabled(): boolean {
+  if (isGoogleOAuthBypassUiEnabled()) return true;
   if (isDevAutoLoginUiEnabled()) return false;
   if (process.env.NEXT_PUBLIC_ENABLE_GOOGLE_OAUTH === 'false') return false;
   return process.env.NEXT_PUBLIC_ENABLE_GOOGLE_OAUTH !== 'false';
+}
+
+/** Credentials ile “Google” bypass / auto-login yolu (şifre eşleşince). */
+export function isCredentialsAutoLoginEnabled(): boolean {
+  return isDevAutoLoginEnabled() || isGoogleOAuthBypassEnabled();
 }
 
 export const DEV_AUTO_LOGIN_PASSWORD = 'bn-dev-auto';

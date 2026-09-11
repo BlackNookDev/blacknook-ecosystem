@@ -10,6 +10,7 @@ import {
   DEV_AUTO_LOGIN_PASSWORD,
   getDevAutoLoginEmail,
   isDevAutoLoginUiEnabled,
+  isGoogleOAuthBypassUiEnabled,
 } from '@/lib/authMode';
 import { isGoogleOAuthUiEnabled } from '@/lib/googleOAuth';
 
@@ -70,6 +71,11 @@ export default function LoginForm() {
 
   const handleGoogle = () => {
     if (isLoading) return;
+    // Geçici: gerçek Google OAuth kapalı — credentials ile içeri.
+    if (isGoogleOAuthBypassUiEnabled()) {
+      void handleQuickLogin();
+      return;
+    }
     setError('');
     setIsLoading(true);
     void signIn('google', { callbackUrl });
@@ -110,7 +116,7 @@ export default function LoginForm() {
           Giriş yap
         </h1>
         <p className="mt-3 text-sm text-zinc-400">
-          Geliştirme modu: Google doğrulaması kapalı. Tek tıkla oturum açılır.
+          Yerel oturum: tek tıkla giriş.
         </p>
 
         {error ? (

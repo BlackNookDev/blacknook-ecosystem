@@ -148,7 +148,7 @@ CANDIDATES: list[dict] = [
      "useCases": ["Kurumsal chatbot genişletme", "Ajan yetenek artırma"]},
     {"id": "huggingface-spaces", "repo": "evalstate/mcp-hfspace", "name": "HuggingFace Model Asistanı", "category": "Yapay Zeka", "brandColor": "#FFD21E",
      "description": "HuggingFace modellerine ve space'lere ajan erişimi.",
-     "about": "HuggingFace Model Asistanı, açık kaynak AI modellerine ve HuggingFace Spaces'e NOOK Agent üzerinden erişim sağlar.",
+     "about": "HuggingFace Model Asistanı, yapay zeka modellerine ve HuggingFace Spaces'e NOOK Agent üzerinden erişim sağlar.",
      "features": ["Model keşfi", "Space çalıştırma", "Kolay yapılandırma"],
      "useCases": ["Model deneme ve seçimi", "Özel AI yetenek ekleme"]},
     {"id": "intervals-fitness", "repo": "mvilanova/intervals-mcp", "name": "Intervals.icu Asistanı", "category": "İnsan Kaynakları", "brandColor": "#F59E0B",

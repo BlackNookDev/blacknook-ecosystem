@@ -19,7 +19,7 @@ export const SUPPORT_URGENCY_LABELS: Record<SupportUrgency, string> = {
 };
 
 export const SUPPORT_CATEGORY_LABELS: Record<SupportCategory, string> = {
-  install: 'Kurulum & deploy',
+  install: 'Kurulum sorusu (bilgi)',
   security: 'Güvenlik & sertleştirme',
   integration: 'Entegrasyon & API',
   incident: 'Arıza / acil müdahale',
@@ -28,19 +28,20 @@ export const SUPPORT_CATEGORY_LABELS: Record<SupportCategory, string> = {
 };
 
 export const SUPPORT_WELCOME =
-  'Merhaba, ben Blacknook Destek asistanıyım. Kurulum, güvenlik sertleştirme, entegrasyon veya acil teknik konularda yardımcı olabilirim. Sizi teknik desteğe bağlarken sorununuzdan bahsedin.';
+  'Merhaba, ben Blacknook Destek asistanıyım. Platform sorularında yardımcı olabilirim. Ürün kurulumu için “Kurulum Talep Et” kullanın; buradan ekibe e-posta ile ulaşabilirsiniz.';
 
-export const SUPPORT_SYSTEM_PROMPT = `Sen Blacknook Destek asistanısın. Blacknook, self-host ve SaaS yazılım ekosistemi vitrinidir.
+export const SUPPORT_SYSTEM_PROMPT = `Sen Blacknook Destek asistanısın. Blacknook; ajan kataloğu, yönetilen kurulum ve /agent otonom paneli sunan kurumsal platformdur.
 
 Görevin:
 - Türkçe, profesyonel ve sakin bir dille yanıt ver.
-- Kurulum, güvenlik (IAM, MFA, sertleştirme, KVKK/veri egemenliği), entegrasyon ve acil arıza konularında ilk triage yap.
-- Kullanıcıyı teknik ekibe bağlamadan önce aciliyeti ve konuyu netleştir.
+- Kurulum ortamı (KVKK / bulut / kendi sunucu), güvenlik, entegrasyon ve acil arıza konularında ilk triage yap.
+- Ürün kurulumu için kullanıcıyı “Kurulum Talep Et” akışına yönlendir; destek sohbeti kurulum kuyruğuna yazılmaz.
+- Kullanıcıyı ekibe e-posta ile bağlamadan önce aciliyeti ve konuyu netleştir.
 - Kesin güvenlik garantisi veya yasal uyumluluk sertifikası verme; gerektiğinde uzman ekibe yönlendir.
 - Kısa paragraflar kullan; madde işaretleri uygunsa kullan.
 - Üretim ortamı şifreleri, API anahtarları veya gizli bilgi isteme.
 
-Kullanıcı teknik personele bağlanmak istediğinde veya kritik bir olay bildirdiğinde, özet hazır olduğunu belirt ve "Teknik ekibe bağlan" butonunu kullanmasını öner.`;
+Kullanıcı ekibe bağlanmak istediğinde veya kritik bir olay bildirdiğinde, özet hazır olduğunu belirt ve "Teknik ekibe bağlan" butonunu kullanmasını öner.`;
 
 export function buildSupportNeedSummary(params: {
   urgency?: SupportUrgency;
@@ -139,7 +140,7 @@ function demoSupportReply(messages: SupportChatMessage[]) {
   const turn = messages.filter((m) => m.role === 'user').length;
 
   if (/merhaba|selam|günaydın|iyi akşam/.test(lastUser) && turn <= 1) {
-    return 'Merhaba! Blacknook Destek hattına hoş geldiniz. Kurulum, güvenlik, entegrasyon veya acil teknik konularda size yardımcı olabilirim. Sizi teknik desteğe bağlarken sorununuzdan bahsedin.';
+    return 'Merhaba! Blacknook Destek hattına hoş geldiniz. Platform sorularında yardımcı olabilirim. Ürün kurulumu için “Kurulum Talep Et” kullanın; buradan ekibe e-posta ile ulaşabilirsiniz.';
   }
 
   if (/acil|kritik|hack|sız|saldır|üretim|down|çöktü|erişilemiyor/.test(lastUser)) {

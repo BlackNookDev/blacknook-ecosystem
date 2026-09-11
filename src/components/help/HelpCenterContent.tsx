@@ -6,10 +6,9 @@ import {
   BookOpen,
   ChevronRight,
   CreditCard,
-  Handshake,
   HelpCircle,
   Layers,
-  Package,
+  LayoutDashboard,
   Search,
   Shield,
   UserCog,
@@ -20,10 +19,9 @@ import { HELP_CATEGORIES, searchHelp } from '../../../lib/helpCenter';
 const CATEGORY_ICONS: Record<string, LucideIcon> = {
   genel: HelpCircle,
   servisler: Layers,
+  panel: LayoutDashboard,
   hesap: UserCog,
   odeme: CreditCard,
-  urunler: Package,
-  partner: Handshake,
   guvenlik: Shield,
 };
 
@@ -47,7 +45,7 @@ export default function HelpCenterContent() {
           Blacknook Yardım
         </h1>
         <p className="mx-auto mt-4 max-w-xl text-sm leading-relaxed text-zinc-400 sm:text-base">
-          Servisler, kurulum talepleri, hesap ve partner süreçleri hakkında dürüst yanıtlar.
+          Keşif, kurulum talebi, departman paneli ve hesap hakkında yanıtlar.
         </p>
 
         <label className="relative mx-auto mt-8 block max-w-xl">
@@ -60,7 +58,7 @@ export default function HelpCenterContent() {
             type="search"
             value={query}
             onChange={(e) => setQuery(e.target.value)}
-            placeholder="Sorunu yaz… örn. kurulum, eşleşme, partner"
+            placeholder="Sorunu yaz… örn. kurulum, panel, katalog"
             className="h-12 w-full rounded-full border border-white/10 bg-white/[0.04] pl-11 pr-4 text-sm text-zinc-100 outline-none placeholder:text-zinc-600 focus:border-white/25 focus:ring-2 focus:ring-white/10"
           />
         </label>
