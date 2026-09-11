@@ -31,6 +31,21 @@ function isDeprecatedPath(pathname: string): boolean {
   );
 }
 
+function clearPitchAccessCookie(response: NextResponse) {
+  response.cookies.set({
+    name: PITCH_ACCESS_COOKIE,
+    value: '',
+    httpOnly: true,
+    sameSite: 'lax',
+    path: '/',
+    maxAge: 0,
+  });
+}
+
+function isPitchFamilyPath(pathname: string): boolean {
+  return pathname === '/pitch' || pathname.startsWith('/pitch/');
+}
+
 export function middleware(request: NextRequest) {
   const { pathname } = request.nextUrl;
 
@@ -38,7 +53,11 @@ export function middleware(request: NextRequest) {
     const url = request.nextUrl.clone();
     url.pathname = '/';
     url.search = '';
-    return NextResponse.redirect(url);
+    const response = NextResponse.redirect(url);
+    if (request.cookies.get(PITCH_ACCESS_COOKIE)?.value === '1') {
+      clearPitchAccessCookie(response);
+    }
+    return response;
   }
 
   if (isPitchProtectedPath(pathname)) {
@@ -49,21 +68,16 @@ export function middleware(request: NextRequest) {
       url.search = `?next=${encodeURIComponent(pathname)}`;
       return NextResponse.redirect(url);
     }
+    return NextResponse.next();
   }
 
-  // Zaten cookie varsa unlock’a gerek yok
+  // Unlock her zaman şifre ister (eski oturumu düşür).
   if (isPitchUnlockPath(pathname)) {
-    const hasAccess = request.cookies.get(PITCH_ACCESS_COOKIE)?.value === '1';
-    if (hasAccess) {
-      const next = request.nextUrl.searchParams.get('next');
-      const url = request.nextUrl.clone();
-      url.pathname =
-        next && next.startsWith('/pitch') && !next.startsWith('//')
-          ? next
-          : '/pitch';
-      url.search = '';
-      return NextResponse.redirect(url);
+    const response = NextResponse.next();
+    if (request.cookies.get(PITCH_ACCESS_COOKIE)?.value === '1') {
+      clearPitchAccessCookie(response);
     }
+    return response;
   }
 
   const allowedOrigin = getAllowedOrigin();
@@ -81,6 +95,17 @@ export function middleware(request: NextRequest) {
   }
 
   const response = NextResponse.next();
+
+  // Pitch dışına (sayfa navigasyonu) çıkınca erişimi sil.
+  // /api/* isteklerinde silme — unlock sonrası session poll cookie’yi düşürmesin.
+  if (
+    !pathname.startsWith('/api/') &&
+    !isPitchFamilyPath(pathname) &&
+    request.cookies.get(PITCH_ACCESS_COOKIE)?.value === '1'
+  ) {
+    clearPitchAccessCookie(response);
+  }
+
   if (allowedOrigin && pathname.startsWith('/api/')) {
     response.headers.set('Access-Control-Allow-Origin', allowedOrigin);
     response.headers.set('Access-Control-Allow-Credentials', 'true');
@@ -90,22 +115,9 @@ export function middleware(request: NextRequest) {
 
 export const config = {
   matcher: [
-    '/api/:path*',
-    '/sell',
-    '/sell/:path*',
-    '/select',
-    '/select/:path*',
-    '/vendor',
-    '/vendor/:path*',
-    '/developers',
-    '/developers/:path*',
-    '/partners',
-    '/partners/:path*',
-    '/admin/developers',
-    '/admin/developers/:path*',
-    '/admin/products',
-    '/admin/products/:path*',
-    '/pitch',
-    '/pitch/:path*',
+    /*
+     * Pitch erişim çerezini site genelinde yönetmek için statik asset’ler hariç tüm path’ler.
+     */
+    '/((?!_next/static|_next/image|favicon.ico|.*\\..*).*)',
   ],
 };

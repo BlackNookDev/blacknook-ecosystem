@@ -27,7 +27,7 @@ export type SubheadingOption = {
 export const SPECIAL_SUBHEADINGS: SubheadingDefinition[] = [
   {
     id: 'simulasyon',
-    label: 'Önizleme',
+    label: 'Simülasyon',
     match: (item) =>
       Boolean(item.demoUrl?.includes('/simulasyon')) || SIMULATION_SLUGS.has(item.slug),
   },

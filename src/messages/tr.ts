@@ -86,7 +86,7 @@ const tr = {
     nextProduct: 'Sonraki ajan',
     goToSlide: '{name} slaydına git',
     agents: {
-      title: 'MCP Ajanları',
+      title: 'Ekosistem',
       more: 'Tüm ajanları keşfet',
     },
     groups: {

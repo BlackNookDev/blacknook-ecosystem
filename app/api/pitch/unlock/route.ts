@@ -32,6 +32,7 @@ export async function POST(request: Request) {
     process.env.NEXTAUTH_URL?.startsWith('https://') === true ||
     Boolean(process.env.VERCEL);
 
+  // Session cookie: tarayıcı kapanınca düşer; pitch’ten çıkınca middleware siler.
   response.cookies.set({
     name: PITCH_ACCESS_COOKIE,
     value: '1',
@@ -39,7 +40,6 @@ export async function POST(request: Request) {
     sameSite: 'lax',
     secure,
     path: '/',
-    maxAge: 60 * 60 * 24 * 30,
   });
 
   return response;

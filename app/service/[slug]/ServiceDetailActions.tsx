@@ -55,7 +55,7 @@ export default function ServiceDetailActions({ serviceName, serviceSlug, demoUrl
       {simulationPath ? (
         <SimulationLaunchButton
           href={simulationPath}
-          label="Önce önizle"
+          label="Simülasyon"
           className="inline-flex w-full items-center justify-center gap-2 rounded-full bg-white px-6 py-3.5 text-sm font-bold text-zinc-950 transition-opacity hover:opacity-90 disabled:opacity-60"
         />
       ) : null}

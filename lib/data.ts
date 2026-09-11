@@ -200,7 +200,6 @@ export const HERO_AGENTS: ServiceCatalogEntry[] = [
     agentDepartment: 'E-ticaret',
     category: 'E-ticaret & Operasyon',
     brandColor: '#E11D2E',
-    demoUrl: 'https://shopppro.io/tr',
     features: [
       'Amazon, Trendyol, Hepsiburada ve kendi mağaza senkronu',
       'YZ ile stok, fiyat ve katalog toplu işlemleri',

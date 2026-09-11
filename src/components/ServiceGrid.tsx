@@ -14,7 +14,7 @@ import {
 export default function ServiceGrid() {
   const { t: th } = useTranslations('home');
   const heroAgents = useMemo(() => getHeroAgents(), []);
-  const mcpAgents = useMemo(() => getFeaturedMcpAgents(6), []);
+  const mcpAgents = useMemo(() => getFeaturedMcpAgents(17), []);
   const allAgents = useMemo(
     () => [...heroAgents, ...mcpAgents.map(asOfficialCatalog)],
     [heroAgents, mcpAgents]

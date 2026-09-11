@@ -76,7 +76,7 @@ export default function BrowseProductCard({ service, className }: Props) {
         {hasCatalogSimulation(service) ? (
           <span className="absolute right-2.5 top-2.5 inline-flex items-center gap-1 rounded-full bg-emerald-500/20 px-2 py-0.5 text-[10px] font-bold uppercase tracking-wide text-emerald-200 ring-1 ring-emerald-400/30">
             <Play className="h-2.5 w-2.5 fill-current" aria-hidden />
-            Önizleme
+            Simülasyon
           </span>
         ) : null}
       </div>

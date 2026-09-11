@@ -86,7 +86,7 @@ const en = {
     nextProduct: 'Next agent',
     goToSlide: 'Go to {name} slide',
     agents: {
-      title: 'MCP Agents',
+      title: 'Ecosystem',
       more: 'Explore all agents',
     },
     groups: {

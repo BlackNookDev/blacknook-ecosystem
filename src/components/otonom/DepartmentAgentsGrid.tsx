@@ -62,7 +62,7 @@ function DepartmentServiceCard({ service }: { service: DepartmentService }) {
             href={service.simulationPath}
             label=""
             splashLabel={service.splashLabel}
-            aria-label="Ürün önizlemesi"
+            aria-label="Simülasyon"
             className="inline-flex h-[2.125rem] w-[2.125rem] items-center justify-center rounded-lg border border-emerald-400/25 bg-emerald-500/10 text-emerald-300 transition-colors hover:border-emerald-400/45 hover:bg-emerald-500/20 hover:text-emerald-200"
           />
         ) : null}

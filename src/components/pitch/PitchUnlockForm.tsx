@@ -2,12 +2,19 @@
 
 import { useRouter, useSearchParams } from 'next/navigation';
 import { FormEvent, useState } from 'react';
+import { useReducedMotion } from 'framer-motion';
 import { Loader2, Lock } from 'lucide-react';
 import { PitchTechBackground } from '@/components/pitch/ui/PitchTechBackground';
+import {
+  markSimulationLaunch,
+  playSimulationLaunchSound,
+  SIMULATION_NAVIGATE_DELAY_MS,
+} from '@/lib/simulationLaunchSound';
 
 export default function PitchUnlockForm() {
   const router = useRouter();
   const searchParams = useSearchParams();
+  const reduce = useReducedMotion();
   const nextPath = searchParams.get('next') || '/pitch';
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
@@ -29,6 +36,7 @@ export default function PitchUnlockForm() {
 
       if (!res.ok) {
         setError(data.error || 'Şifre doğrulanamadı.');
+        setIsLoading(false);
         return;
       }
 
@@ -36,11 +44,19 @@ export default function PitchUnlockForm() {
         nextPath.startsWith('/pitch') && !nextPath.startsWith('//')
           ? nextPath
           : '/pitch';
-      router.replace(target);
-      router.refresh();
+
+      markSimulationLaunch('Pitch');
+      if (!reduce) {
+        playSimulationLaunchSound();
+      }
+
+      const delay = reduce ? 80 : SIMULATION_NAVIGATE_DELAY_MS;
+      window.setTimeout(() => {
+        router.replace(target);
+        router.refresh();
+      }, delay);
     } catch {
       setError('Bağlantı hatası. Lütfen tekrar deneyin.');
-    } finally {
       setIsLoading(false);
     }
   };
