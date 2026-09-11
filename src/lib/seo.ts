@@ -5,11 +5,11 @@ export const SITE_URL = (process.env.NEXT_PUBLIC_SITE_URL || 'https://blacknook.
   ''
 );
 
-export const SITE_NAME = 'Blacknook';
+export const SITE_NAME = 'Blacknook Ecosystem';
 
 export const SITE_TAGLINE = 'Kurumsal otonomi paneli';
 
-export const DEFAULT_TITLE = 'Blacknook — Keşfet, kur, işlet';
+export const DEFAULT_TITLE = 'Blacknook Ecosystem';
 
 /** max ~155–160 chars */
 export const DEFAULT_DESCRIPTION =
