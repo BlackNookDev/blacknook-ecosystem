@@ -15,22 +15,35 @@ import {
 } from '@/lib/intentCatalogSearch';
 import { useInstallRequestNavigate } from '@/lib/useInstallRequestNavigate';
 import { cn } from '@/lib/utils';
-import { getHeroAgents } from '../../../lib/data';
+import { getHeroAgents, getServiceBySlug } from '../../../lib/data';
 
-/** Kenarlara yayılmış; orta arama kolonu ve sağ-alt destek balonu boş bırakılır */
-const FLOATING = getHeroAgents().map((s, i) => ({
-  ...s,
-  style: [
-    { top: '14%', left: '5%', rotate: -12, size: 'lg' as const },
-    { top: '12%', right: '6%', rotate: 10, size: 'md' as const },
-    { top: '36%', left: '3%', rotate: 8, size: 'md' as const },
-    { top: '34%', right: '3.5%', rotate: -8, size: 'lg' as const },
-    { top: '58%', left: '6%', rotate: -6, size: 'md' as const },
-    { top: '62%', right: '7%', rotate: 14, size: 'md' as const },
-    { top: '78%', left: '14%', rotate: 4, size: 'sm' as const },
-  ][i],
-  delay: i * 0.35,
-}));
+/** Arama çevresinde dağınık; BN markası / shopppro yok; Notion ile doldurulur */
+const FLOATING_STYLES: Array<{
+  top: string;
+  left?: string;
+  right?: string;
+  rotate: number;
+  size: 'sm' | 'md' | 'lg';
+}> = [
+  { top: '10%', left: '8%', rotate: -12, size: 'lg' },
+  { top: '16%', right: '9%', rotate: 10, size: 'md' },
+  { top: '38%', left: '4%', rotate: 8, size: 'md' },
+  { top: '48%', right: '5%', rotate: -8, size: 'lg' },
+  { top: '68%', left: '11%', rotate: -6, size: 'md' },
+  { top: '72%', right: '12%', rotate: 14, size: 'md' },
+];
+
+const FLOATING = [
+  ...getHeroAgents().filter((s) => s.slug !== 'shopppro' && s.slug !== 'nook-muhasebe-mcp'),
+  getServiceBySlug('mcp-notion-mcp'),
+]
+  .filter((s): s is NonNullable<typeof s> => Boolean(s))
+  .slice(0, FLOATING_STYLES.length)
+  .map((s, i) => ({
+    ...s,
+    style: FLOATING_STYLES[i],
+    delay: i * 0.35,
+  }));
 
 export default function HomeProductShowcase() {
   const reduce = useReducedMotion();
