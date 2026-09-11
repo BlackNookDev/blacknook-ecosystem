@@ -15,6 +15,22 @@ import {
 } from '@/lib/intentCatalogSearch';
 import { useInstallRequestNavigate } from '@/lib/useInstallRequestNavigate';
 import { cn } from '@/lib/utils';
+import { getHeroAgents } from '../../../lib/data';
+
+/** Kenarlara yayılmış; orta arama kolonu ve sağ-alt destek balonu boş bırakılır */
+const FLOATING = getHeroAgents().map((s, i) => ({
+  ...s,
+  style: [
+    { top: '14%', left: '5%', rotate: -12, size: 'lg' as const },
+    { top: '12%', right: '6%', rotate: 10, size: 'md' as const },
+    { top: '36%', left: '3%', rotate: 8, size: 'md' as const },
+    { top: '34%', right: '3.5%', rotate: -8, size: 'lg' as const },
+    { top: '58%', left: '6%', rotate: -6, size: 'md' as const },
+    { top: '62%', right: '7%', rotate: 14, size: 'md' as const },
+    { top: '78%', left: '14%', rotate: 4, size: 'sm' as const },
+  ][i],
+  delay: i * 0.35,
+}));
 
 export default function HomeProductShowcase() {
   const reduce = useReducedMotion();
@@ -73,6 +89,62 @@ export default function HomeProductShowcase() {
       className="relative flex min-h-[100dvh] w-full flex-col overflow-hidden"
       aria-label="Blacknook — doğal dil ile ajan ve MCP ara"
     >
+      <AnimatePresence>
+        {!hasQuery ? (
+          <m.div
+            key="hero-floating-icons"
+            className="pointer-events-none absolute inset-0 z-[1] hidden md:block"
+            aria-hidden
+            initial={reduce ? false : { opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={reduce ? undefined : { opacity: 0, transition: { duration: 0.25 } }}
+            transition={{ duration: 0.45, ease: easePremium }}
+          >
+            {FLOATING.map((item) =>
+              item.style ? (
+                <m.div
+                  key={item.slug}
+                  className="absolute"
+                  style={{
+                    top: item.style.top,
+                    left: item.style.left,
+                    right: item.style.right,
+                    rotate: `${item.style.rotate}deg`,
+                  }}
+                  animate={
+                    reduce
+                      ? undefined
+                      : {
+                          y: [0, -8, 0],
+                          rotate: [
+                            item.style.rotate,
+                            item.style.rotate + 3,
+                            item.style.rotate,
+                          ],
+                        }
+                  }
+                  transition={{
+                    duration: 5 + item.delay,
+                    repeat: Infinity,
+                    ease: 'easeInOut',
+                    delay: item.delay,
+                  }}
+                >
+                  <div className="flex h-10 w-10 items-center justify-center rounded-xl border border-white/10 bg-white/[0.06] shadow-[0_8px_28px_rgba(0,0,0,0.4)] backdrop-blur-md lg:h-11 lg:w-11">
+                    <ServiceCatalogLogo
+                      icon={item.icon}
+                      brandColor={item.brandColor}
+                      name={item.name}
+                      size="sm"
+                    />
+                  </div>
+                </m.div>
+              ) : null
+            )}
+          </m.div>
+        ) : null}
+      </AnimatePresence>
+
       <m.div
         className="relative z-10 mx-auto flex w-full max-w-3xl flex-1 flex-col justify-center px-4 pb-16 pt-28 sm:px-6 sm:pt-32"
         variants={reduce ? undefined : staggerContainer}
